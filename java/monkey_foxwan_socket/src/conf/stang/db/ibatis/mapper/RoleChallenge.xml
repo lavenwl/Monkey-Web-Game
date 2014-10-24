@@ -1,0 +1,107 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleChallenge">
+	<typeAlias alias="RoleChallengeDetail"
+		type="com.stang.game.entity.detail.RoleChallengeDetail" />
+
+	<cacheModel id="RoleChallengeCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="updateRoleChallenge" />
+	</cacheModel>
+
+	<resultMap class="RoleChallengeDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="militaryid" column="militaryid"/>
+		<result property="roleid" column="roleid"/>
+		<result property="flag" column="flag"/>
+		<result property="success" column="success"/>
+		<result property="totals" column="totals"/>
+		<result property="win" column="win"/>
+	</resultMap>
+	<resultMap class="RoleChallengeDetail" id="listResult2">
+		<result property="id" column="id" />
+	</resultMap>
+	<insert id="insertRoleChallengetwo" parameterClass="RoleChallengeDetail">
+		INSERT INTO role_challenge(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="success">success</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">totals</isNotEmpty>
+		<isNotEmpty prepend="," property="win">win</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="success">#success#</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">#totals#</isNotEmpty>
+		<isNotEmpty prepend="," property="win">#win#</isNotEmpty>
+		)
+	</insert>
+	<insert id="insertRoleChallenge" parameterClass="java.util.Map">
+		INSERT INTO role_challenge(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="success">success</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">totals</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="success">#success#</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">#totals#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateRoleChallenge" parameterClass="java.util.HashMap">
+		UPDATE role_challenge SET roleid=#roleid#
+		<isNotEmpty prepend="," property="militaryid">
+			militaryid = #militaryid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="success">
+			success = #success#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">
+			totals = #totals#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="win">
+			win = #win#
+		</isNotEmpty>
+		WHERE roleid = #roleid#
+	</update>
+	<update id="updateRoleChallengetwo" parameterClass="RoleChallengeDetail">
+		UPDATE role_challenge SET roleid=#roleid#
+		<isNotEmpty prepend="," property="militaryid">
+			militaryid = #militaryid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="success">
+			success = #success#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="totals">
+			totals = #totals#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="win">
+			win = #win#
+		</isNotEmpty>
+		WHERE roleid = #roleid#
+	</update>
+	<select id="findRoleChallengeById" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM role_challenge WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+	</select>
+	<select id="findRoleChallengeById2" parameterClass="java.util.HashMap" resultMap="listResult2">
+		SELECT id FROM role_challenge WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+	</select>
+	<select id="findAllRoleChallenge" resultMap="listResult">
+		SELECT * FROM role_challenge where FLAG =1
+	</select>  
+</sqlMap>

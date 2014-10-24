@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="game_astrology_correction">
+	<typeAlias alias="EntityGameAstrologyCorrectionDetail" type="com.stang.game.ffd.entity.detail.EntityGameAstrologyCorrectionDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityGameAstrologyCorrectionDetail" id="listResult">
+		<result property="Correction_id" column="CORRECTION_ID"/>
+		<result property="Correction_lv" column="CORRECTION_LV"/>
+		<result property="Correction_value" column="CORRECTION_VALUE"/>
+		<result property="Flag" column="FLAG"/>
+		
+		
+	</resultMap>
+		
+		<!-- 添加新的星魂模型数据 -->	
+		<insert id="addGameAstrologyCorrection" parameterClass="EntityGameAstrologyCorrectionDetail">
+		INSERT INTO GAME_ASTROLOGY_CORRECTION(
+		<isNotEmpty prepend="" property="correction_lv">CORRECTION_LV</isNotEmpty>
+		<isNotEmpty prepend="," property="correction_value">CORRECTION_VALUE</isNotEmpty>
+		
+		)VALUES(
+		<isNotEmpty prepend="" property="correction_lv">#correction_lv#</isNotEmpty>
+		<isNotEmpty prepend="," property="correction_value">#correction_value#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	<!-- 查询所有星魂的数据 -->
+	<select id="findGameAstrologyCorrection" parameterClass="java.util.HashMap" resultMap="listResult">
+	SELECT 
+		CORRECTION_ID,
+		CORRECTION_LV,
+		CORRECTION_VALUE,
+		FLAG
+	FROM
+		GAME_ASTROLOGY_CORRECTION
+		<dynamic prepend="WHERE"> 
+		 <isNotEmpty property="correction_id" prepend="AND">
+    	   		CORRECTION_ID = #correction_id#
+    	 </isNotEmpty>
+		 <isNotEmpty property="correction_lv" prepend="AND">
+    	   		CORRECTION_LV = #correction_lv#
+	     </isNotEmpty>
+    	 <isNotEmpty property="correction_value" prepend="AND">
+    	   		CORRECTION_VALUE = #correction_value#
+    	 </isNotEmpty>
+    	 <isNotEmpty property="flag" prepend="AND">
+    	   		FLAG = #flag#
+    	 </isNotEmpty>
+    	 
+			<!--<isNotNull prepend="AND">   
+           	ID IN    
+	             <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>
+            </isNotNull> -->   
+		</dynamic>	
+	</select>
+	
+</sqlMap>
+		
+		

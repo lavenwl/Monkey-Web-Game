@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRole">
+	<typeAlias alias="GameRoleDetail"
+		type="com.stang.game.entity.detail.GameRoleDetail" />
+
+	<cacheModel id="gameRoleCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertRole" />
+		<flushOnExecute statement="updateRole" />
+		<flushOnExecute statement="updateMap" />
+		
+		<flushOnExecute statement="upRoleYin" />
+		<flushOnExecute statement="addRoleCoin" />
+		<flushOnExecute statement="subRoleCoin" />
+		<flushOnExecute statement="addRoleYin" />
+		<flushOnExecute statement="subRoleYin" />
+		<flushOnExecute statement="subRoleGongxun" />
+		<flushOnExecute statement="addRoleGongxun" />
+		
+		<flushOnExecute statement="addRoleLevel" />
+		<flushOnExecute statement="addRoleExp" />	
+		<flushOnExecute statement="subRolejunling" /><!-- 减少军令 -->
+		<flushOnExecute statement="addRolejunling" /><!-- 每小时增加军令1 -->
+		<flushOnExecute statement="addRolejunlingtime" /><!--军令时间 -->
+		<flushOnExecute statement="updateRolestate" />
+		<flushOnExecute statement="updateRolerefertime" />
+		<flushOnExecute statement="updateRolestateseven" />
+		<flushOnExecute statement="updateRoleSupsign" /><!--补签状态 -->
+		<flushOnExecute statement="updateRoleDaynumstate" /><!--领取礼包的状态 -->
+		<flushOnExecute statement="addRolecoinspend" /><!--领取礼包的状态 -->
+		<flushOnExecute statement="updateRoleVip" /><!--更新Vip等级 -->
+		<flushOnExecute statement="updateRoleline" />
+	</cacheModel>
+
+	<resultMap class="GameRoleDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="mapid" column="mapid" />
+		<result property="placeid" column="placeid" />
+		<result property="exp" column="exp" />
+		<result property="coin" column="coin" />
+		<result property="yin" column="yin" />
+		<result property="gongxun" column="gongxun" />
+		<result property="flag" column="flag" />
+		<result property="vip" column="vip" />
+		<result property="junling" column="junling" /><!-- 增加军令配置 -->
+		<result property="jltime" column="jltime" /><!-- 军令增加1时间 -->
+		<result property="tasktime" column="tasktime" />
+		<result property="state" column="state" />
+		<result property="refertime" column="refertime" />
+		<result property="stateseven" column="stateseven" />
+		<result property="supsign" column="supsign" />
+		<result property="daynumstate" column="daynumstate" />
+		<result property="coinspend" column="coinspend" />
+		<result property="mapid2" column="mapid2" />
+		<result property="placeid2" column="placeid2" />
+		<result property="signjl" column="signjl" />
+		<result property="challengenum" column="challengenum"/>
+		<result property="challengetime" column="challengetime"/>
+		<result property="num" column="num"/>
+		<result property="nowtime" column="nowtime"/>
+		<result property="day" column="day"/>
+		<result property="integral" column="integral"/>
+		<result property="helpstep" column="helpstep"/>
+		<result property="roleline" column="roleline"/>
+		<result property="huangzuan" column="huangzuan"/>
+		<result property="huangzuaninfo" column="huangzuaninfo"/>
+		<result property="invite" column="invite"/>
+		<result property="ids" column="ids"/>
+		<result property="yesterday" column="yesterday"/>
+		<result property="today" column="today"/>
+		<result property="live" column="live"/>
+		<result property="huangzuangift" column="huangzuangift"/>
+		<result property="friends" column="friends"/>
+		<result property="vips" column="vips"/>
+		<result property="imposenum" column="imposenum"/>
+		<result property="share" column="share"/>
+	</resultMap>
+
+	<select id="findRoleById" parameterClass="int"
+		resultClass="GameRoleDetail">
+		SELECT * FROM game_role WHERE FLAG =1 AND id =#id#
+	</select>
+	
+	<select id="getRoleByLevel" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM game_role WHERE FLAG =1 
+		<isNotEmpty prepend="AND" property="level">
+			level BETWEEN #level#-2 AND #level#+8
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleline">
+			roleline = #roleline#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id != #id#
+		</isNotEmpty>
+	</select>
+	
+	<update id="updateRoleline" parameterClass="java.util.Map">
+		UPDATE game_role SET roleline=#roleline# 
+		WHERE FLAG =1 AND id =#id#
+	</update>
+	
+	<update id="updateMap" parameterClass="java.util.Map">
+		UPDATE game_role SET mapid=#mapid# , placeid=#placeid#
+		WHERE FLAG =1 AND id =#id#
+	</update>
+	
+	<update id="addRoleCoin" parameterClass="java.util.Map">
+		UPDATE game_role SET coin = coin+#coin# WHERE id =#id#
+	</update>
+	<update id="addRoleYin" parameterClass="java.util.Map">
+		UPDATE game_role SET  yin =yin+#yin#  WHERE id =#id#
+	</update>
+	<update id="addRoleGongxun" parameterClass="java.util.Map">
+		UPDATE game_role SET gongxun = gongxun+#gongxun# WHERE id =#id#
+	</update>
+	<update id="subRoleCoin" parameterClass="java.util.Map">
+		UPDATE game_role SET coin = coin-#coin# WHERE id =#id#
+	</update>
+	<update id="subRoleYin" parameterClass="java.util.Map">
+		UPDATE game_role SET yin = yin-#yin# WHERE id =#id#
+	</update>
+	
+	<update id="upRoleYin">
+		UPDATE game_role SET yin=#yin# WHERE id =#id#
+	</update>
+	
+	<update id="subRoleGongxun" parameterClass="java.util.Map">
+		UPDATE game_role SET gongxun = gongxun-#gongxun# WHERE id =#id#
+	</update>
+	<update id="addRoleLevel" parameterClass="java.util.Map">
+		UPDATE game_role SET level =#level#,exp=#exp# WHERE id =#id#
+	</update>
+	<update id="addRoleExp" parameterClass="java.util.Map">
+		UPDATE game_role SET exp=#exp# WHERE id =#id#
+	</update>
+	
+	<!--  游戏开始，减少1个军令 -->
+	<update id="subRolejunling" parameterClass="java.util.Map">
+		UPDATE game_role SET junling = junling-#junling# WHERE id =#id#
+	</update>
+	
+	<!-- 军令小于15，每小时增加1 -->
+	<update id="addRolejunling" parameterClass="java.util.Map">
+		UPDATE game_role SET junling = #junling# 
+		WHERE id =#id#
+	</update>
+	
+	<!-- 每日签到的状态 -->
+	<update id="updateRolestate" parameterClass="java.util.Map">
+		UPDATE game_role SET state = #state# WHERE id =#id#
+	</update>
+		<!-- 领取签到按多天计算的礼包状态 -->
+	<update id="updateRoleDaynumstate" parameterClass="java.util.Map">
+		UPDATE game_role SET daynumstate = #daynumstate# WHERE id =#id#
+	</update>
+	
+	<!-- 更新七天在线礼包 -->
+	<update id="updateRolestateseven" parameterClass="java.util.Map">
+		UPDATE game_role SET stateseven = #stateseven# WHERE id =#id#
+	</update>
+	
+		<!--更新参照时间 -->
+	<update id="updateRolerefertime" parameterClass="java.util.Map">
+		UPDATE game_role SET refertime = #refertime# WHERE id =#id#
+	</update>
+		<!-- 更新每日活跃积分 -->
+	<update id="updateRoleintegral" parameterClass="java.util.Map">
+		UPDATE game_role SET integral = #integral# WHERE id =#id#
+	</update>
+	
+		<!-- 更新下山掠夺时间 -->
+	<update id="updateRolenowtime" parameterClass="java.util.Map">
+		UPDATE game_role SET nowtime = #nowtime# WHERE id =#id#
+	</update>
+		<!-- 更新新手进度 -->
+	<update id="updateRolehelpstep" parameterClass="java.util.Map">
+		UPDATE game_role SET helpstep = #helpstep# WHERE id =#id#
+	</update>
+	
+	
+			<!--更新补签状态数组 -->
+	<update id="updateRoleSupsign" parameterClass="java.util.Map">
+		UPDATE game_role SET supsign = #supsign# WHERE id =#id#
+	</update>
+	
+				<!--更新用户消耗的金币经验 -->
+	<update id="addRolecoinspend" parameterClass="java.util.Map">
+		UPDATE game_role SET  coinspend = coinspend + #coinspend#  WHERE id =#id#
+	</update>
+	
+				<!--更新用户Vip等级 -->
+	<update id="updateRoleVip" parameterClass="java.util.Map">
+		UPDATE game_role SET  id = #id#  
+		<isNotEmpty prepend="," property="vip">vip = #vip#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid = #mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2 = #mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid = #placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2 = #placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp = #exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level = #level#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin = #yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun = #gongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">signjl = #signjl#</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling = #junling#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num = #num#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day = #day#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">challengenum=#challengenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengetime">challengetime=#challengetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="today">today = #today#</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">yesterday = #yesterday#</isNotEmpty>
+		<isNotEmpty prepend="," property="live">live = #live#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">huangzuangift = #huangzuangift#</isNotEmpty>
+		<isNotEmpty prepend="," property="friends">friends = #friends#</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">vips = #vips#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">imposenum = #imposenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="share">share = #share#</isNotEmpty>
+
+		WHERE id =#id#
+	</update>
+	
+	<!-- 增加军令时间1小时 -->
+	<update id="addRolejunlingtime" parameterClass="java.util.Map">
+		UPDATE game_role SET jltime = #jltime# WHERE id =#id#
+	</update>
+
+	<insert id="insertRole" parameterClass="GameRoleDetail">
+		INSERT INTO game_role (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling</isNotEmpty>
+		<isNotEmpty prepend="," property="jltime">jltime</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktime">tasktime</isNotEmpty>
+		<isNotEmpty prepend="," property="state">state</isNotEmpty>
+		<isNotEmpty prepend="," property="refertime">refertime</isNotEmpty>
+		<isNotEmpty prepend="," property="stateseven">stateseven</isNotEmpty>
+		<isNotEmpty prepend="," property="supsign">supsign</isNotEmpty>
+		<isNotEmpty prepend="," property="daynumstate">daynumstate</isNotEmpty>
+		<isNotEmpty prepend="," property="coinspend">coinspend</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">challengenum</isNotEmpty>
+		<isNotEmpty prepend="," property="today">today</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">yesterday</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">invite</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">vips</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">huangzuangift</isNotEmpty>
+		
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">#coin#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">#yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">#gongxun#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">#mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">#placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">#junling#</isNotEmpty>
+		<isNotEmpty prepend="," property="jltime">#jltime#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktime">#tasktime#</isNotEmpty>
+		<isNotEmpty prepend="," property="state">#state#</isNotEmpty>
+		<isNotEmpty prepend="," property="refertime">#refertime#</isNotEmpty>
+		<isNotEmpty prepend="," property="stateseven">#stateseven#</isNotEmpty>
+		<isNotEmpty prepend="," property="supsign">#supsign#</isNotEmpty>
+		<isNotEmpty prepend="," property="daynumstate">#daynumstate#</isNotEmpty>
+		<isNotEmpty prepend="," property="coinspend">#coinspend#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">#challengenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="today">#today#</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">#yesterday#</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">#invite#</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">#vips#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">#huangzuangift#</isNotEmpty>
+		)
+	</insert>
+
+	<update id="updateRole" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+		<isNotEmpty prepend="," property="name">name=#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">
+			level=#level#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp=#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin=#coin#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin=#yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">
+			gongxun=#gongxun#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag=#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">
+			mapid=#mapid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid=#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2=#mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2=#placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">signjl=#signjl#</isNotEmpty>
+		
+		WHERE id = #id#
+	</update>
+
+</sqlMap>

@@ -1,0 +1,31 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameStar">
+	<typeAlias alias="GameStarDetail"
+		type="com.stang.game.entity.detail.GameStarDetail" />
+
+	<cacheModel id="GameStarCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameStarDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="starlevel" column="starlevel" />
+		<result property="levelexp" column="levelexp" />
+		<result property="statusadd" column="statusadd" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	
+	<select id="getallgamestar" resultMap="listResult">
+		SELECT * FROM game_star
+	</select>
+
+	
+	
+	<select id="getgamestars"  parameterClass="int" resultMap="listResult" cacheModel="GameStarCache">
+		SELECT * from game_star where starlevel=#starlevel#
+	</select>
+	
+	
+
+</sqlMap>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameFoe">
+	<typeAlias alias="GameFoeDetail"
+		type="com.stang.game.entity.detail.GameFoeDetail" />
+
+	<cacheModel id="GameFoeCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameFoeDetail" id="listResult">
+		<result property="foeid" column="foeid" />
+		<result property="foename" column="foename" />
+		<result property="foedesc" column="foedesc" />
+		<result property="type" column="type" />
+		<result property="flag" column="flag" />
+		<result property="fangyu" column="fangyu" />
+		<result property="xueliang" column="xueliang" />
+		<result property="sudu" column="sudu" />
+	</resultMap>
+
+	<select id="getGameFoe" resultMap="listResult"  >
+		SELECT * FROM game_foe
+	</select>
+	
+		<select id="findAllFoe"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_foe  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameFoeByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_foe WHERE foeid=#id#
+	</select>
+	
+	<insert id="insertGameFoe" parameterClass="GameFoeDetail">
+		INSERT INTO game_foe(
+		<isNotEmpty prepend="" property="foeid">foeid</isNotEmpty>
+		<isNotEmpty prepend="," property="foename">foename</isNotEmpty>
+		<isNotEmpty prepend="," property="foedesc">foedesc</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="fangyu">fangyu</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">xueliang</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">sudu</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+	) VALUES(
+		<isNotEmpty prepend="" property="foeid">#foeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="foename">#foename#</isNotEmpty>
+		<isNotEmpty prepend="," property="foedesc">#foedesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="fangyu">#fangyu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">#xueliang#</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">#sudu#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+	)
+	</insert>
+
+<update id="updateGameFoe" parameterClass="java.util.HashMap">
+		UPDATE game_foe SET 
+			foename = #foename#,
+			foedesc = #foedesc#,
+			type = #type#,
+			fangyu = #fangyu#,
+			xueliang = #xueliang#,
+			sudu = #sudu#,
+			flag = #flag#
+		WHERE foeid =#id#
+	</update>
+
+</sqlMap>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Zhugong">
+	<typeAlias alias="ZhugongDetail"
+		type="com.stang.game.entity.detail.ZhugongDetail" />
+
+	<cacheModel id="zhugongCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="ZhugongDetail" id="listResult">
+		<result property="name" column="name" />
+		<result property="jjs" column="jjs" />
+		<result property="hjs" column="hjs" />
+		<result property="zjs" column="zjs" />
+	<result property="roleId" column="roleId" />
+	</resultMap>
+
+	
+	<select id="getallzhugong" resultMap="listResult">
+		SELECT * FROM zhugong
+	</select>
+	
+</sqlMap>

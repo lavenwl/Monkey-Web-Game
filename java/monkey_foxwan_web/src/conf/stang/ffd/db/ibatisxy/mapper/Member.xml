@@ -1,0 +1,30 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Member">
+	<typeAlias alias="MemberDetail"
+		type="com.stang.game.entity.detail.MemberDetail" />
+
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="MemberDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="username" column="member_username" />
+		<result property="password" column="member_password" />
+		<result property="flag" column="flag" />
+		<result property="allfriends" column="allfriends" />
+		<result property="invite" column="invite" />
+	</resultMap>
+
+	<select id="findMemberByOpenid" parameterClass="string"  resultMap="listResult" >
+		SELECT * FROM member WHERE FLAG =1 and member_username=#openid#
+	</select>
+	<select id="findMemberByParam" parameterClass="java.util.Map"  resultMap="listResult" >
+		SELECT * FROM member WHERE FLAG =1 and member_username=#openid# and serverid=#serverid#
+	</select>
+	
+	<select id="findMemberByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM member WHERE FLAG =1 and id=#id#
+	</select>
+</sqlMap>

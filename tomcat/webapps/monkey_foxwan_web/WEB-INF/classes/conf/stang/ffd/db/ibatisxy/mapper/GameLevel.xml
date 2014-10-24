@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameLevel">
+	<typeAlias alias="GameLevelDetail"
+		type="com.stang.game.entity.detail.GameLevelDetail" />
+
+	<cacheModel id="gameLevelCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameLevelDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="level" column="level" />
+		<result property="needexp" column="needexp" />
+		<result property="getcoin" column="getcoin" />
+		<result property="getexp" column="getexp" />
+		<result property="getgongxun" column="getgongxun" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	
+	
+	<select id="getGameLevel" resultMap="listResult"  >
+		SELECT * FROM game_level
+	</select>
+	
+		<select id="findAllLevel"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_level  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameLevelByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_level WHERE id=#id#
+	</select>
+	
+	<!-- 得到所有等级信息  -->
+	<select id="allGameLevelDetail" resultMap="listResult"
+		cacheModel="gameLevelCache">
+		SELECT * FROM game_level WHERE FLAG = 1
+	</select>
+
+	<!-- 根据序列号得到等级信息  -->
+	<select id="getGameLevelByRoleLevel" resultMap="listResult"
+		parameterClass="int" cacheModel="gameLevelCache">
+		SELECT * FROM game_level WHERE FLAG = 1 and level = #level#
+	</select>
+
+<insert id="insertGameLevel" parameterClass="GameLevelDetail">
+		INSERT INTO game_level(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="getcoin">getcoin</isNotEmpty>
+		<isNotEmpty prepend="," property="getgongxun">getgongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">getexp</isNotEmpty>
+		<isNotEmpty prepend="," property="needexp">needexp</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="getcoin">#getcoin#</isNotEmpty>
+		<isNotEmpty prepend="," property="getgongxun">#getgongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">#getexp#</isNotEmpty>
+		<isNotEmpty prepend="," property="needexp">#needexp#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateGameLevel" parameterClass="java.util.HashMap">
+		UPDATE game_level SET 
+			level = #level#,
+			getcoin = #getcoin#,
+			getgongxun = #getgongxun#,
+			getexp = #getexp#,
+			needexp = #needexp#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+
+</sqlMap>

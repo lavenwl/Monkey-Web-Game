@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamePlane">
+	<typeAlias alias="EntityGamePlaneDetail" type="com.stang.game.ffd.entity.detail.EntityGamePlaneDetail" />
+	
+	<cacheModel id="gamePlaneCache" type="OSCACHE">
+	<!-- <flushInterval hours="24" /> -->
+		<flushOnExecute statement="insertEntityGamePlaneDetail"/>
+		<flushOnExecute statement="updateEntityGamePlaneDetail"/>
+	</cacheModel>
+	<cacheModel id="gamePlaneNameCache" type="OSCACHE">
+	<!-- <flushInterval hours="24" /> -->
+		<flushOnExecute statement="insertEntityGamePlaneDetail"/>
+		<flushOnExecute statement="updateEntityGamePlaneDetail"/>
+	</cacheModel>
+	
+	<resultMap class="EntityGamePlaneDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="isBind" column="IS_BIND"/>
+		<result property="pbookId" column="PBOOK_ID"/>
+		<result property="planeName" column="PLANE_NAME"/>
+		<result property="planeDesc" column="PLANE_DESC"/>
+		<result property="planeRes" column="PLANE_RES"/>
+		<result property="planeType" column="PLANE_TYPE"/>
+		<result property="planeStar" column="PLANE_STAR"/>
+		<result property="planeAtk" column="PLANE_ATK"/>
+		<result property="planeDef" column="PLANE_DEF"/>
+		<result property="planeAgi" column="PLANE_AGI"/>
+		<result property="planeHp" column="PLANE_HP"/>
+		<result property="planeWeight" column="PLANE_WEIGHT"/>
+		<result property="planeOil" column="PLANE_OIL"/>
+		<result property="planeAtkPropAdd" column="PLANE_ATK_PROP_ADD"/>
+		<result property="planeDefPropAdd" column="PLANE_DEF_PROP_ADD"/>
+		<result property="planeAgiPropAdd" column="PLANE_AGI_PROP_ADD"/>
+		<result property="planeHpPropAdd" column="PLANE_HP_PROP_ADD"/>
+		<result property="planeWeightPropAdd" column="PLANE_WEIGHT_PROP_ADD"/>
+		<result property="planeOilPropAdd" column="PLANE_OIL_PROP_ADD"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="grade" column="GRADE"/>
+		<result property="planeRes2" column="PLANE_RES2"/>
+		<result property="planeLevel" column="PLANE_LEVEL"/>
+		<result property="planeAtkX" column="PLANE_ATK_X"/>
+		<result property="planeAtkY" column="PLANE_ATK_Y"/>
+		<result property="coinBuy" column="COIN_BUY"/>
+		<result property="rmbBuy" column="RMB_BUY"/>
+		<result property="isBase" column="IS_BASE"/>
+		<result property="isMarket" column="IS_MARKET"/>
+		<result property="isGoodFree" column="IS_GOOD_FREE"/>
+		<result property="isBattleGift" column="IS_BATTLE_GIFT"/>
+		<result property="planeSellGold" column="PLANE_SELL_GOLD"/>
+		
+	</resultMap>
+	
+	<!-- 录入飞机(模型/基本)信息 -->
+	<insert id="insertEntityGamePlaneDetail" parameterClass="EntityGamePlaneDetail">
+		INSERT INTO GAME_PLANE (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">IS_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="pbookId">PBOOK_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="planeName">PLANE_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDesc">PLANE_DESC</isNotEmpty>
+			<isNotEmpty prepend="," property="planeRes">PLANE_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="planeType">PLANE_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="planeStar">PLANE_STAR</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtk">PLANE_ATK</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDef">PLANE_DEF</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAgi">PLANE_AGI</isNotEmpty>
+			<isNotEmpty prepend="," property="planeHp">PLANE_HP</isNotEmpty>
+			<isNotEmpty prepend="," property="planeWeight">PLANE_WEIGHT</isNotEmpty>
+			<isNotEmpty prepend="," property="planeOil">PLANE_OIL</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkPropAdd">PLANE_ATK_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDefPropAdd">PLANE_DEF_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAgiPropAdd">PLANE_AGI_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="planeHpPropAdd">PLANE_HP_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="planeWeightPropAdd">PLANE_WEIGHT_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="planeOilPropAdd">PLANE_OIL_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+			<isNotEmpty prepend="," property="planeRes2">PLANE_RES2</isNotEmpty>
+			<isNotEmpty prepend="," property="planeLevel">PLANE_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkX">PLANE_ATK_X</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkY">PLANE_ATK_Y</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">COIN_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">RMB_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">IS_BASE</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">IS_MARKET</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">IS_GOOD_FREE</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">IS_BATTLE_GIFT</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">#isBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="pbookId">#pbookId#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeName">#planeName#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDesc">#planeDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeRes">#planeRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeType">#planeType#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeStar">#planeStar#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtk">#planeAtk#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDef">#planeDef#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAgi">#planeAgi#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeHp">#planeHp#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeWeight">#planeWeight#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeOil">#planeOil#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkPropAdd">#planeAtkPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeDefPropAdd">#planeDefPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAgiPropAdd">#planeAgiPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeHpPropAdd">#planeHpPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeWeightPropAdd">#planeWeightPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeOilPropAdd">#planeOilPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeRes2">#planeRes2#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeLevel">#planeLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkX">#planeAtkX#</isNotEmpty>
+			<isNotEmpty prepend="," property="planeAtkY">#planeAtkY#</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">#coinBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">#rmbBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">#isBase#</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">#isMarket#</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">#isGoodFree#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">#isBattleGift#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateEntityGamePlaneDetail" parameterClass="EntityGamePlaneDetail">
+		UPDATE GAME_PLANE SET 
+		<isNotEmpty prepend="" property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="pbookId">
+			PBOOK_ID = #pbookId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeName">
+			PLANE_NAME = #planeName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeDesc">
+			PLANE_DESC = #planeDesc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeRes">
+			PLANE_RES = #planeRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeType">
+			PLANE_TYPE = #planeType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeStar">
+			PLANE_STAR = #planeStar#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="planeAtk">
+			PLANE_ATK = #planeAtk#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="planeDef">
+			PLANE_DEF = #planeDef#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeAgi">
+			PLANE_AGI = #planeAgi#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeHp">
+			PLANE_HP = #planeHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeWeight">
+			PLANE_WEIGHT = #planeWeight#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeOil">
+			PLANE_OIL = #planeOil#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeAtkPropAdd">
+			PLANE_ATK_PROP_ADD = #planeAtkPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeDefPropAdd">
+			PLANE_DEF_PROP_ADD = #planeDefPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeAgiPropAdd">
+			PLANE_AGI_PROP_ADD = #planeAgiPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeHpPropAdd">
+			PLANE_HP_PROP_ADD = #planeHpPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeWeightPropAdd">
+			PLANE_WEIGHT_PROP_ADD = #planeWeightPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeOilPropAdd">
+			PLANE_OIL_PROP_ADD = #planeOilPropAdd#
+		</isNotEmpty>	
+		
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeRes2">
+			PLANE_RES2 = #planeRes2# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeLevel">
+			PLANE_LEVEL = #planeLevel# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeAtkX">
+			PLANE_ATK_X = #planeAtkX# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeAtkY">
+			PLANE_ATK_Y = #planeAtkY# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="coinBuy">
+			COIN_BUY = #coinBuy# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rmbBuy">
+			RMB_BUY = #rmbBuy# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBase">
+			IS_BASE = #isBase# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isMarket">
+			IS_MARKET = #isMarket# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isGoodFree">
+			IS_GOOD_FREE = #isGoodFree# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBattleGift">
+			IS_BATTLE_GIFT = #isBattleGift# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据序列组获得飞机信息 -->
+	<select id="findGamePlanesByIds" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gamePlaneCache">
+		SELECT 
+			ID,
+			IS_BIND,
+			PBOOK_ID,
+			PLANE_NAME,
+			PLANE_DESC,
+			PLANE_RES,
+			PLANE_TYPE,
+			PLANE_STAR,
+			PLANE_ATK,
+			PLANE_DEF,
+			PLANE_AGI,
+			PLANE_HP,
+			PLANE_WEIGHT,
+			PLANE_OIL,
+			PLANE_ATK_PROP_ADD,
+			PLANE_DEF_PROP_ADD,
+			PLANE_SELL_GOLD,
+			PLANE_AGI_PROP_ADD,
+			PLANE_HP_PROP_ADD,
+			PLANE_WEIGHT_PROP_ADD,
+			PLANE_OIL_PROP_ADD,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			PLANE_RES2,
+			PLANE_LEVEL,
+			PLANE_ATK_X,
+			PLANE_ATK_Y,
+			COIN_BUY,
+			RMB_BUY,
+			IS_BASE,
+			IS_MARKET,
+			IS_GOOD_FREE ,
+			IS_BATTLE_GIFT   
+		FROM 
+			GAME_PLANE 
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<!-- 根据序列号得到种族信息  -->
+	<select id="getEntityGamePlaneDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="gamePlaneCache">
+		SELECT 
+			ID,
+			IS_BIND,
+			PBOOK_ID,
+			PLANE_NAME,
+			PLANE_DESC,
+			PLANE_RES,
+			PLANE_TYPE,
+			PLANE_STAR,
+			PLANE_ATK,
+			PLANE_DEF,
+			PLANE_AGI,
+			PLANE_HP,
+			PLANE_WEIGHT,
+			PLANE_OIL,
+			PLANE_ATK_PROP_ADD,
+			PLANE_DEF_PROP_ADD,
+			PLANE_AGI_PROP_ADD,
+			PLANE_HP_PROP_ADD,
+			PLANE_WEIGHT_PROP_ADD,
+			PLANE_SELL_GOLD,
+			PLANE_OIL_PROP_ADD,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			PLANE_RES2,
+			PLANE_LEVEL,
+			PLANE_ATK_X,
+			PLANE_ATK_Y,
+			COIN_BUY,
+			RMB_BUY,
+			IS_BASE,
+			IS_MARKET,
+			IS_GOOD_FREE,
+			IS_BATTLE_GIFT      
+		FROM 
+			GAME_PLANE    
+		WHERE FLAG = 1 	
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty prepend="AND" property="isBind">
+				IS_BIND = #isBind# 
+			</isNotEmpty>
+    	   	<isNotEmpty prepend="AND" property="pbookId">
+				PBOOK_ID = #pbookId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeName">
+				PLANE_NAME = #planeName# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeDesc">
+				PLANE_DESC = #planeDesc# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeRes">
+				PLANE_RES = #planeRes# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeType">
+				PLANE_TYPE = #planeType# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeStar">
+				PLANE_STAR = #planeStar# 
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="planeAtk">
+				PLANE_ATK = #planeAtk#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeDef">
+				PLANE_DEF = #planeDef# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeAgi">
+				PLANE_AGI = #planeAgi# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeHp">
+				PLANE_HP = #planeHp# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeWeight">
+				PLANE_WEIGHT = #planeWeight# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeOil">
+				PLANE_OIL = #planeOil#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeAtkPropAdd">
+				PLANE_ATK_PROP_ADD = #planeAtkPropAdd# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeDefPropAdd">
+				PLANE_DEF_PROP_ADD = #planeDefPropAdd# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeAgiPropAdd">
+				PLANE_AGI_PROP_ADD = #planeAgiPropAdd# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeHpPropAdd">
+				PLANE_HP_PROP_ADD = #planeHpPropAdd# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeWeightPropAdd">
+				PLANE_WEIGHT_PROP_ADD = #planeWeightPropAdd# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeOilPropAdd">
+				PLANE_OIL_PROP_ADD = #planeOilPropAdd# 
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="grade">
+				GRADE = #grade# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeRes2">
+				PLANE_RES2 = #planeRes2# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeLevel">
+				PLANE_LEVEL = #planeLevel# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeAtkX">
+				PLANE_ATK_X = #planeAtkX# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="planeAtkY">
+				PLANE_ATK_Y = #planeAtkY# 
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">
+				COIN_BUY = #coinBuy# 
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">
+				RMB_BUY = #rmbBuy# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isBase">
+				IS_BASE = #isBase# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isMarket">
+				IS_MARKET = #isMarket# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isGoodFree">
+				IS_GOOD_FREE = #isGoodFree# 
+			</isNotEmpty>
+			<isNotEmpty property="isBattleGift" prepend="AND">
+    	   		IS_BATTLE_GIFT = #isBattleGift#  
+    	   	</isNotEmpty>
+	</select>
+	
+	 <!-- 更新信息 -->
+	<update id="updateGamePlane"   parameterClass="java.util.HashMap">
+	UPDATE GAME_PLANE SET
+	    <isNotEmpty prepend=" " property="id"> ID=#id# </isNotEmpty>
+		<isNotEmpty prepend="," property="planeName"> PLANE_NAME=#planeName# </isNotEmpty>
+		<isNotEmpty prepend="," property="planeDesc"> PLANE_DESC=#planeDesc# </isNotEmpty>
+	WHERE 
+	  FLAG=1
+	  <isNotEmpty prepend="AND" property="id"> ID=#id# </isNotEmpty>
+	</update>
+	<select id="getPlaneNameById" resultClass="String" parameterClass="java.util.HashMap" cacheModel="gamePlaneNameCache">
+		SELECT PLANE_NAME FROM GAME_PLANE WHERE ID = #id#
+	</select>
+	
+</sqlMap>

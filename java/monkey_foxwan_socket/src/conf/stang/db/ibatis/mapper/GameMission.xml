@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMission">
+	<typeAlias alias="GameMissionDetail"
+		type="com.stang.game.entity.detail.GameMissionDetail" />
+
+	<cacheModel id="gameMissionCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameMissionDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="artdesc" column="artdesc" />
+		<result property="goal" column="goal" />
+		<result property="jiangli" column="jiangli" />
+		<result property="flag" column="flag" />
+		<result property="mapid" column="mapid" />
+		
+	</resultMap>
+
+	<select id="getGameMission" resultClass="GameMissionDetail" >
+		SELECT * FROM game_mission WHERE FLAG =1
+	</select>
+	
+	<select id="findGameMissionById" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_mission WHERE FLAG =1 and mapid=#mapid#
+	</select>
+</sqlMap>

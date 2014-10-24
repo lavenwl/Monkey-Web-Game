@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Activity">
+	<typeAlias alias="ActivityDetail"
+		type="com.stang.game.entity.detail.ActivityDetail" />
+
+	<cacheModel id="activityCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="ActivityDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="url" column="url" />
+		<result property="type" column="type" />
+		<result property="conditions" column="conditions" />
+		<result property="reward" column="reward" />
+		<result property="flag" column="flag" />
+		<result property="month" column="month" />
+		<result property="monthend" column="monthend" />
+		<result property="day" column="day" />
+		<result property="dayend" column="dayend" />
+		<result property="isnew" column="isnew" />
+		<result property="description" column="description" />
+		<result property="tipurl" column="tipurl" />
+	</resultMap>
+
+	<select id="getActivityByParams" parameterClass="java.util.Map" resultMap="listResult" >
+		SELECT * FROM activity WHERE flag in(1,0)
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		
+	</select>
+	
+	<update id="updateActivityById" parameterClass="java.util.HashMap">
+		UPDATE activity SET flag=#flag#
+		<isNotEmpty prepend="," property="url">url = #url#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type = #type#</isNotEmpty>
+		<isNotEmpty prepend="," property="conditions">conditions = #conditions#</isNotEmpty>
+		<isNotEmpty prepend="," property="reward">reward = #reward#</isNotEmpty>
+		<isNotEmpty prepend="," property="month">month = #month#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day = #day#</isNotEmpty>
+		<isNotEmpty prepend="," property="monthend">monthend = #monthend#</isNotEmpty>
+		<isNotEmpty prepend="," property="dayend">dayend = #dayend#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew = #isnew#</isNotEmpty>
+		<isNotEmpty prepend="," property="description">description = #description#</isNotEmpty>
+		<isNotEmpty prepend="," property="tipurl">tipurl = #tipurl#</isNotEmpty>
+		WHERE
+		id=#id#
+	</update>
+	
+</sqlMap>

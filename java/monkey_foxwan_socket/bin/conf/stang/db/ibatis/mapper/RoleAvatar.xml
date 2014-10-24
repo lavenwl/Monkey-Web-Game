@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleAvatar">
+	<typeAlias alias="RoleAvatarDetail"
+		type="com.stang.game.entity.detail.RoleAvatarDetail" />
+
+	<cacheModel id="roleAvatarCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleAvatar" />
+		<flushOnExecute statement="updateAvatar" />
+		<flushOnExecute statement="deleteRoleAvatar" />
+	</cacheModel>
+
+	<resultMap class="RoleAvatarDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="roleid" column="ROLEID" />
+		<result property="avatarid" column="AVATARID" />
+		<result property="isused" column="ISUSED" />
+		<result property="level" column="LEVEL" />
+		<result property="flag" column="FLAG" />
+		<result property="address" column="ADDRESS" />
+	</resultMap>
+	
+		<select id="findAllRoleAvatar" resultMap="listResult">
+		SELECT * FROM role_avatar
+	</select> 
+	
+	
+
+	<!-- 录入信息 -->
+	<insert id="insertRoleAvatar"
+		parameterClass="RoleAvatarDetail">
+		INSERT INTO role_avatar (
+		<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">ROLEID</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarId">
+			AVATARID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="level">LEVEL</isNotEmpty>
+		<isNotEmpty prepend="," property="isused">ISUSED</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="address">ADDRESS</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarid">
+			#avatarid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="isused">#isused#</isNotEmpty>i
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="address">
+			#address#
+		</isNotEmpty>
+		)
+	</insert>
+
+	<!-- 缓存使用更新信息 -->
+	<update id="updateRoleAvatar" parameterClass="RoleAvatarDetail">
+		UPDATE role_avatar SET
+		<isNotEmpty prepend="" property="roleid">ROLEID = #roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="isused">ISUSED = #isused#</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarid">AVATARID = #avatarid#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">LEVEL = #level#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG = #flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="address">ADDRESS = #address#</isNotEmpty>
+		<isNotEmpty prepend="," property="address">TIIME = #time#</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+
+	<!-- 更新信息 -->
+	<update id="updateAvatar"
+		parameterClass="java.util.HashMap">
+		UPDATE role_avatar SET
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isused">
+			ISUSED = #isused#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+
+	<delete id="deleteRoleAvatar" parameterClass="java.util.HashMap">
+		DELETE FROM role_avatar WHERE 
+			ROLEID = #roleid#
+		<isNotEmpty property="avatarid" prepend="AND">
+			AVATARID = #avatarid#
+		</isNotEmpty>
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="isused" prepend="AND">
+			ISUSED = #isused#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="address">
+			address=#address#
+		</isNotEmpty>
+	</delete>
+	
+	<select id="getRoleAvatarDetail" parameterClass="java.util.HashMap"
+		resultMap="listResult" >
+		SELECT * FROM role_avatar WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarid">
+			avatarid = #avatarid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isused">
+			isused = #isused#
+		</isNotEmpty>
+	</select>
+</sqlMap>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Gametotem">
+	<typeAlias alias="GametotemDetail"
+		type="com.stang.game.entity.detail.GametotemDetail" />
+
+	<cacheModel id="gametotemCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GametotemDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="level" column="level" />
+		<result property="flag" column="flag" />
+		<result property="quality" column="quality" />
+		<result property="icon" column="icon" />
+		<result property="halo" column="halo" />
+		<result property="isshop" column="isshop" />
+		<result property="indexs" column="indexs" />
+	</resultMap>
+
+	<select id="getGametotem" resultMap="listResult">
+		SELECT * FROM game_totem
+	</select>
+	
+	
+	<select id="getGametotembyparam" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="gametotemCache">
+		SELECT * FROM game_totem WHERE type = #type# and level = #level#
+	
+	</select>
+	<select id="getGametotembyid" parameterClass="int"
+		resultMap="listResult" cacheModel="gametotemCache">
+		SELECT * FROM game_totem WHERE id=#id#
+	
+	</select>
+
+</sqlMap>

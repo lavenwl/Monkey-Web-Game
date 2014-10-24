@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GMRejectIpsDetail">
+	<typeAlias alias="GMRejectIpsDetail" type="com.stang.game.ffd.entity.detail.GMRejectIpsDetail" />
+	
+	<cacheModel id="GMRejectIpsDetailCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGMRejectIpsDetail"/>
+		<flushOnExecute statement="updateGMRejectIpsDetail"/>
+		<flushOnExecute statement="deleteGMRejectIpsDetail"/>
+	</cacheModel>
+	
+	<resultMap class="GMRejectIpsDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="startIp" column="START_IP"/>
+		<result property="endIp" column="END_IP"/>
+		<result property="startIpNum" column="START_IP_NUM"/>
+		<result property="endIpNum" column="END_IP_NUM"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="overTime" column="OVER_TIME"/>
+		<result property="flag" column="FLAG"/>
+	</resultMap>
+	
+	<select id="findGMRejectIpsDetailByTime" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT 
+			ID,                                                                                                              
+			START_IP,
+			END_IP,
+			START_IP_NUM,
+			END_IP_NUM,
+			START_TIME,
+			OVER_TIME,
+			FLAG
+			FROM GM_REJECT_IPS
+		WHERE <![CDATA[OVER_TIME < #endTime# AND OVER_TIME IS NOT NULL]]> AND FLAG = 1
+	</select>
+	
+	<insert id="insertGMRejectIpsDetail" parameterClass="GMRejectIpsDetail">
+		INSERT INTO GM_REJECT_IPS (
+			<isNotEmpty prepend="" property="startIp">START_IP</isNotEmpty>
+			<isNotEmpty prepend="," property="endIp">END_IP</isNotEmpty>
+			<isNotEmpty prepend="," property="startIpNum">START_IP_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="endIpNum">END_IP_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="overTime">OVER_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="startIp">#startIp#</isNotEmpty>
+			<isNotEmpty prepend="," property="endIp">#endIp#</isNotEmpty>
+			<isNotEmpty prepend="," property="startIpNum">#startIpNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="endIpNum">#endIpNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">#startTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="overTime">#overTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			)
+	</insert>
+	
+	<update id="updateGMRejectIpsDetail" parameterClass="java.util.HashMap">
+		UPDATE GM_REJECT_IPS SET 
+		OVER_TIME = #overTime#
+		<isNotEmpty prepend="," property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startIp">
+			START_IP = #startIp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="endIp">
+			END_IP = #endIp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startIpNum">
+			START_IP_NUM = #startIpNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="endIpNum">
+			END_IP_NUM = #endIpNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">
+			START_TIME = #startTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>	
+	
+	<select id="findGMRejectIpsDetailByParam" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GMRejectIpsDetailCache">
+		SELECT 
+			ID,                                                                                                              
+			START_IP,
+			END_IP,
+			START_IP_NUM,
+			END_IP_NUM,
+			START_TIME,
+			OVER_TIME,
+			FLAG
+		FROM 
+			GM_REJECT_IPS
+		WHERE 
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+				ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startIp">
+				START_IP = #startIp# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endIp">
+				END_IP = #endIp#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="startIpNum">
+				START_IP_NUM = #startIpNum#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endIpNum">
+				END_IP_NUM = #endIpNum#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startTime">
+				START_TIME = #startTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="overTime">
+				OVER_TIME = #overTime# 
+			</isNotEmpty>
+			ORDER BY START_TIME DESC
+			<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+			</isNotEmpty>
+	</select>	
+	
+	<delete id="deleteGMRejectIpsDetail" parameterClass="java.util.HashMap">
+		DELETE FROM GM_REJECT_IPS 
+		WHERE 
+			START_IP = #startIp# AND END_IP = #endIp#
+	</delete>
+	<select id="getGMRejectIpsCount" resultClass="int">
+		SELECT COUNT(ID) FROM GM_REJECT_IPS
+	</select>
+	
+</sqlMap>
+	

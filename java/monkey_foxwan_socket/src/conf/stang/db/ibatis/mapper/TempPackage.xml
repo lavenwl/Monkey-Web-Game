@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="TempPackage">
+	<typeAlias alias="TempPackageDetail" type="com.stang.game.entity.detail.TempPackageDetail" />
+		<cacheModel id="TempPackageCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertTempPackageDetail"/>
+		<flushOnExecute statement="insertTempPackage"/>
+		<flushOnExecute statement="updateTempPackageByParam"/>
+		<flushOnExecute statement="updateTempPackageByList"/>
+		<flushOnExecute statement="deleteTempPackageDetailByParam"/>
+		<flushOnExecute statement="deleteTempPackageDetailByIds"/>
+		
+		
+	</cacheModel>
+	<resultMap class="TempPackageDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="mId" column="MID"/>
+		<result property="typeId" column="TYPEID"/>
+		<result property="pId" column="PID"/>
+		<result property="flag" column = "FLAG"/>
+		<result property="num" column = "NUM"/>
+		<result property="time" column = "TIME"/>
+	</resultMap>
+	
+	<select id="findAllTempPackage" resultMap="listResult">
+		SELECT * FROM temp_package WHERE FLAG = 1
+	</select>
+	
+	<select id="getTempPackage" parameterClass="java.util.Map" resultMap="listResult" cacheModel="TempPackageCache">
+		SELECT *
+		FROM temp_package WHERE FLAG = 1 
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mId">
+			MID = #mId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="pId">
+			PID = #pId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="num">
+			NUM = #num#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="time">
+			ITEM = #time#
+		</isNotEmpty>
+
+
+	</select>
+	<update id="updateTempPackageByParam" parameterClass="java.util.HashMap">
+		UPDATE temp_package SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">
+			MID = #mId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="pId">
+			PID = #pId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="num">
+			NUM = #num#
+		</isNotEmpty>
+			WHERE  ID = #id#
+
+	</update>
+	
+	<insert id="insertTempPackageDetail" parameterClass="TempPackageDetail">
+		INSERT INTO temp_package (
+			<isNotEmpty prepend="" property="mId">MID</isNotEmpty>
+			<isNotEmpty prepend="," property="typeId">TYPEID</isNotEmpty>
+			<isNotEmpty prepend="," property="pId">PID</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="num">NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="time">TIME</isNotEmpty>
+			)
+			VALUES(
+			<isNotEmpty prepend="" property="mId">#mId#</isNotEmpty>
+			<isNotEmpty prepend="," property="typeId">#typeId#</isNotEmpty>
+			<isNotEmpty prepend="," property="pId">#pId#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+			<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+			)
+	</insert>
+	
+	<insert id="insertTempPackage" parameterClass="TempPackageDetail">
+		INSERT INTO temp_package (
+			<isNotEmpty prepend="" property="mId">MID</isNotEmpty>
+			<isNotEmpty prepend="," property="typeId">TYPEID</isNotEmpty>
+			<isNotEmpty prepend="," property="pId">PID</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="num">NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="time">TIME</isNotEmpty>
+			)
+			VALUES(
+			<isNotEmpty prepend="" property="mId">#mId#</isNotEmpty>
+			<isNotEmpty prepend="," property="typeId">#typeId#</isNotEmpty>
+			<isNotEmpty prepend="," property="pId">#pId#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+			<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+			)
+	</insert>
+	
+	<update id="updateTempPackageByList" parameterClass="TempPackageDetail">
+		UPDATE TEMP_PACKAGE SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">
+			MID = #mId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="pId">
+			PID = #pId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="num">
+			NUM = #num#
+		</isNotEmpty>
+			WHERE  ID = #id#
+
+	</update>
+	<delete id ="deleteTempPackageDetailByParam" parameterClass="java.util.Map">
+		DELETE FROM temp_package WHERE FLAG=1 
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mId">
+			MID = #mId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="AND" property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="AND" property="pId">
+			PID = #pId#
+		</isNotEmpty>	
+		<isNotEmpty prepend="AND" property="num">
+			NUM = #num#
+		</isNotEmpty>
+	</delete>
+	
+	<delete id ="deleteTempPackageDetailByIds" parameterClass="java.util.Map">
+		DELETE FROM temp_package WHERE 
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+
+	</delete>
+	
+</sqlMap>

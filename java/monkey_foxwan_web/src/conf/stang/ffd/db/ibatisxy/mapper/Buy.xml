@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Buy">
+	<typeAlias alias="BuyDetail"
+		type="com.stang.game.entity.detail.BuyDetail" />
+
+	<cacheModel id="BuyCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="BuyDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="openid" column="openid" />
+		<result property="payitem" column="payitem" />
+		<result property="time" column="time" />
+	
+	</resultMap>
+
+	<select id="getBuy" parameterClass="String"  resultMap="listResult" >
+		SELECT * FROM buy WHERE openid=#openid#
+	</select>
+	<select id="getAllBuy"  resultMap="listResult" >
+		SELECT * FROM buy
+	</select>
+	<select id="findAll"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from buy limit #page#,#pageSize#
+	</select>
+	
+	<select id="findbytime"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from buy where time between #time# and #timet#
+	</select>
+		<select id="findbytimeandopenid"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from buy where time between #time# and #timet# and openid=#openid#
+	</select>
+</sqlMap>

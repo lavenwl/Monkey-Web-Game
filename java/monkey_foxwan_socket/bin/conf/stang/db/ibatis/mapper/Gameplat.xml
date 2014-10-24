@@ -1,0 +1,35 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamePlatsDetail">
+	<typeAlias alias="GamePlatsDetail"
+		type="com.stang.game.entity.detail.GamePlatsDetail" />
+
+	<cacheModel id="GamePlatsCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GamePlatsDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="mid" column="mid" />
+		<result property="res" column="res" />
+		<result property="resodds" column="resodds" />
+		<result property="flag" column="flag" />
+		<result property="index" column="index" />
+	</resultMap>
+
+	<select id="getGamePlats" resultClass="GamePlatsDetail">
+		SELECT * FROM game_plat WHERE FLAG =1
+	</select>
+	
+	<select id="findGamePlatByparams" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM game_plat WHERE  FLAG =1
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mid">
+			mid=#mid#
+		</isNotEmpty>
+	</select>
+
+</sqlMap>

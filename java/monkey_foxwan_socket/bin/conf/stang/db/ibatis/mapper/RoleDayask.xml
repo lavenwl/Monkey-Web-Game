@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleDaytask">
+	<typeAlias alias="RoleDaytaskDetail"
+		type="com.stang.game.entity.detail.RoleDaytaskDetail" />
+
+	<cacheModel id="RoleDaytaskCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleDaytask" />
+		<flushOnExecute statement="updateRoleDaytask" />
+	</cacheModel>
+
+	<resultMap class="RoleDaytaskDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleid" column="roleid" />
+		<result property="qianghua" column="qianghua" />
+		<result property="lueduo" column="lueduo" />
+		<result property="qiangduo" column="qiangduo" />
+		<result property="zhaomu" column="zhaomu" />
+		<result property="xiulian" column="xiulian" />
+		<result property="zhangdou" column="zhangdou" />
+		<result property="baoxiang" column="baoxiang" />
+		<result property="integralstatue" column="integralstatue" />
+		<result property="box" column="box" />
+		<result property="day" column="day" />
+		<result property="middlerecruit" column="middlerecruit" />
+		<result property="toprecruit" column="toprecruit" />
+		
+	</resultMap>
+      <select id="findAllRoleDayTask" resultMap="listResult">
+		SELECT * FROM role_daytask
+	</select>  
+
+
+	<select id="findRoleDaytaskByRId" parameterClass="int"
+		resultClass="RoleDaytaskDetail">
+		SELECT * FROM role_daytask WHERE  roleid =#roleid#
+	</select>
+	
+	<update id="updateRoleDaytask" parameterClass="java.util.Map">
+		UPDATE role_daytask SET  roleid=#roleid#
+		<isNotEmpty prepend="," property="qianghua">qianghua=#qianghua#</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">lueduo=#lueduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">qiangduo=#qiangduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">zhaomu=#zhaomu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">xiulian=#xiulian#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">zhangdou=#zhangdou#</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">baoxiang=#baoxiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">integralstatue=#integralstatue#</isNotEmpty>
+		<isNotEmpty prepend="," property="box">box=#box#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day=#day#</isNotEmpty>
+		
+		WHERE roleid =#roleid#
+	</update>
+	<update id="updateRoleDaytaskzm" parameterClass="java.util.Map">
+		UPDATE role_daytask SET  roleid=#roleid#
+		<isNotEmpty prepend="," property="qianghua">qianghua=#qianghua#</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">lueduo=#lueduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">qiangduo=#qiangduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">zhaomu=#zhaomu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">xiulian=#xiulian#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">zhangdou=#zhangdou#</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">baoxiang=#baoxiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">integralstatue=#integralstatue#</isNotEmpty>
+		<isNotEmpty prepend="," property="box">box=#box#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day=#day#</isNotEmpty>
+		
+		WHERE roleid =#roleid#
+	</update>
+	
+
+	<insert id="insertRoleDaytask" parameterClass="java.util.Map">
+		INSERT INTO role_daytask(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="qianghua">qianghua</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">lueduo</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">qiangduo</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">zhaomu</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">xiulian</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">zhangdou</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">baoxiang</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">integralstatue</isNotEmpty>
+		<isNotEmpty prepend="," property="box">box</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		) VALUES (
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="qianghua">#qianghua#</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">#lueduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">#qiangduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">#zhaomu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">#xiulian#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">#zhangdou#</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">#baoxiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">#integralstatue#</isNotEmpty>
+		<isNotEmpty prepend="," property="box">#box#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
+	<update id="updateRoleDaytasktwo" parameterClass="RoleDaytaskDetail">
+		UPDATE role_daytask SET  
+		<isNotEmpty prepend="" property="roleid">roleid=#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="qianghua">qianghua=#qianghua#</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">lueduo=#lueduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">qiangduo=#qiangduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">zhaomu=#zhaomu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">xiulian=#xiulian#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">zhangdou=#zhangdou#</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">baoxiang=#baoxiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">integralstatue=#integralstatue#</isNotEmpty>
+		<isNotEmpty prepend="," property="box">box=#box#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day=#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="id">id=#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="middlerecruit">middlerecruit=#middlerecruit#</isNotEmpty>
+		<isNotEmpty prepend="," property="toprecruit">toprecruit=#toprecruit#</isNotEmpty>
+		
+		WHERE roleid =#roleid#
+	</update>
+	
+	
+	
+		<insert id="insertRoleDaytasktwo" parameterClass="RoleDaytaskDetail">
+		INSERT INTO role_daytask(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="qianghua">qianghua</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">lueduo</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">qiangduo</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">zhaomu</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">xiulian</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">zhangdou</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">baoxiang</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">integralstatue</isNotEmpty>
+		<isNotEmpty prepend="," property="box">box</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		<isNotEmpty prepend="," property="middlerecruit">middlerecruit</isNotEmpty>
+		<isNotEmpty prepend="," property="toprecruit">toprecruit</isNotEmpty>
+		) VALUES (
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="qianghua">#qianghua#</isNotEmpty>
+		<isNotEmpty prepend="," property="lueduo">#lueduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangduo">#qiangduo#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhaomu">#zhaomu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiulian">#xiulian#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhangdou">#zhangdou#</isNotEmpty>
+		<isNotEmpty prepend="," property="baoxiang">#baoxiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="integralstatue">#integralstatue#</isNotEmpty>
+		<isNotEmpty prepend="," property="box">#box#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="middlerecruit">#middlerecruit#</isNotEmpty>
+		<isNotEmpty prepend="," property="toprecruit">#toprecruit#</isNotEmpty>
+		)
+	</insert>
+	
+	
+
+</sqlMap>

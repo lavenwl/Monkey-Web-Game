@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMission">
+	<typeAlias alias="GameMissionDetail"
+		type="com.stang.game.entity.detail.GameMissionDetail" />
+
+	<cacheModel id="gameMissionCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameMissionDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="artdesc" column="artdesc" />
+		<result property="goal" column="goal" />
+		<result property="jiangli" column="jiangli" />
+		<result property="flag" column="flag" />
+		
+	</resultMap>
+
+	
+	<select id="getGameMission" resultMap="listResult"  >
+		SELECT * FROM game_mission
+	</select>
+	
+		<select id="findAllMission"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_mission  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameMissionByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_mission WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameMission" parameterClass="GameMissionDetail">
+		INSERT INTO game_mission(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">artdesc</isNotEmpty>
+		<isNotEmpty prepend="," property="goal">goal</isNotEmpty>
+		<isNotEmpty prepend="," property="jiangli">jiangli</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">#artdesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="goal">#goal#</isNotEmpty>
+		<isNotEmpty prepend="," property="jiangli">#jiangli#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+	)
+	</insert>
+	<update id="updateGameMission" parameterClass="java.util.HashMap">
+		UPDATE game_mission SET 
+			name = #name#,
+			artdesc = #artdesc#,
+			goal = #goal#,
+			jiangli = #jiangli#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+</sqlMap>

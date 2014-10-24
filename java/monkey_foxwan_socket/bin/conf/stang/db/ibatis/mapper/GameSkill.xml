@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameSkill">
+	<typeAlias alias="GameSkillDetail"
+		type="com.stang.game.entity.detail.GameSkillDetail" />
+
+	<cacheModel id="gameSkillCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameSkillDetail" id="listResult">
+		<result column="id" property="id" />
+		<result column="skillname" property="skillName" />
+		<result column="skilldesc" property="skillDesc" />
+		<result column="skillicon" property="skillIcon" />
+		<result column="skillmc" property="skillMc" />
+		<result column="skillmcclip" property="skillMcclip" />
+		<result column="type" property="type" />
+		<result column="skilltype" property="skillType" />
+		<result column="mpcost" property="mpcost" />
+		<result column="skillcd" property="skillCd" />
+		<result column="skillarea" property="skillArea" />
+		<result column="skillbuffid" property="skillBuffId" />
+		<result column="nameurl" property="nameurl" />		
+		<result column="flag" property="flag" />
+		<result column="skillodd" property="skillodd"/>
+	</resultMap>
+
+	<select id="getGameSkill" resultClass="GameSkillDetail" >
+		SELECT * FROM game_skill WHERE FLAG =1
+	</select>
+	
+	
+	<select id="getGameSkillById" resultMap="listResult" parameterClass="int" cacheModel="gameSkillCache">
+		SELECT * FROM game_skill WHERE FLAG =1 AND id=#id#
+	</select>
+</sqlMap>

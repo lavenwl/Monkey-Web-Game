@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Delivery">
+	<typeAlias alias="DeliveryDetail"
+		type="com.stang.game.entity.detail.DeliveryDetail" />
+
+	<cacheModel id="deliveryCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="updateDelivery" />
+	</cacheModel>
+
+	<resultMap class="DeliveryDetail" id="listResult">
+		<result property="openid" column="openid" />
+		<result property="payitem" column="payitem" />
+		<result property="token" column="token_id" />
+		<result property="billno" column="billno" />
+		<result property="zoneid" column="zoneid" />
+		<result property="errno" column="provide_errno" />
+		<result property="amt" column="amt" />
+		<result property="coins" column="payamt_coins" />
+		<result property="status" column="status" />
+	</resultMap>
+	
+	<insert id="insertDelivery" parameterClass="DeliveryDetail">
+		INSERT INTO member (
+		<isNotEmpty prepend="," property="token">token</isNotEmpty>
+		<isNotEmpty prepend="," property="payitem">payitem</isNotEmpty>
+		<isNotEmpty prepend="," property="openid">openid</isNotEmpty>
+		<isNotEmpty prepend="," property="billno">billno</isNotEmpty>
+		<isNotEmpty prepend="," property="zoneid">zoneid</isNotEmpty>
+		<isNotEmpty prepend="," property="errno">errno</isNotEmpty>
+		<isNotEmpty prepend="," property="amt">amt</isNotEmpty>
+		<isNotEmpty prepend="," property="coins">coins</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="," property="token">#token#</isNotEmpty>
+		<isNotEmpty prepend="," property="payitem">#payitem#</isNotEmpty>
+		<isNotEmpty prepend="," property="openid">#openid#</isNotEmpty>
+		<isNotEmpty prepend="," property="billno">#billno#</isNotEmpty>
+		<isNotEmpty prepend="," property="zoneid">#zoneid#</isNotEmpty>
+		<isNotEmpty prepend="," property="errno">#errno#</isNotEmpty>
+		<isNotEmpty prepend="," property="amt">#amt#</isNotEmpty>
+		<isNotEmpty prepend="," property="coins">#coins#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">#status#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateDeliveryc" parameterClass="DeliveryDetail">
+		UPDATE delivery SET 
+		<isNotEmpty prepend="," property="token">token_id = #token#</isNotEmpty>
+		<isNotEmpty prepend="," property="payitem">payitem = #payitem#</isNotEmpty>
+		<isNotEmpty prepend="," property="openid">openid = #openid#</isNotEmpty>
+		<isNotEmpty prepend="," property="billno">billno = #billno#</isNotEmpty>
+		<isNotEmpty prepend="," property="zoneid">zoneid = #zoneid#</isNotEmpty>
+		<isNotEmpty prepend="," property="errno">errno = #errno#</isNotEmpty>
+		<isNotEmpty prepend="," property="amt">amt = #amt#</isNotEmpty>
+		<isNotEmpty prepend="," property="coins">coins = #coins#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status = #status#</isNotEmpty>
+		WHERE openid = #openid#
+	</update>
+	
+	
+	<update id="updateDelivery" parameterClass="java.util.Map">
+		UPDATE delivery SET status=#status# 
+		<isNotEmpty prepend="," property="token">token_id = #token#</isNotEmpty>
+		<isNotEmpty prepend="," property="payitem">payitem = #payitem#</isNotEmpty>
+		WHERE openid = #openid#
+	</update>
+	<select id="findAllDelivery" resultMap="listResult">
+		SELECT * FROM delivery
+	</select>
+
+	<select id="findDeliveryByopenid" parameterClass="string"  resultMap="listResult" >
+		SELECT * FROM delivery WHERE openid = #openid#
+	</select>
+	
+	<select id="findDeliveryByList" parameterClass="java.util.HashMap"
+		resultMap="listResult" >
+		SELECT * FROM delivery WHERE openid = #openid#
+		<isNotEmpty prepend="AND" property="level">
+			zoneid = #serverid#
+		</isNotEmpty>
+	</select>
+	
+</sqlMap>

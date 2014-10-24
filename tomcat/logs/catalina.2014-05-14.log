@@ -1,0 +1,30 @@
+May 14, 2014 4:38:15 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+May 14, 2014 4:38:15 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+May 14, 2014 4:38:15 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1328 ms
+May 14, 2014 4:38:15 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 14, 2014 4:38:15 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+May 14, 2014 4:38:15 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+May 14, 2014 4:38:16 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+May 14, 2014 4:38:16 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+May 14, 2014 4:38:16 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+May 14, 2014 4:38:16 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+May 14, 2014 4:38:16 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+May 14, 2014 4:38:19 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+May 14, 2014 4:38:19 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+May 14, 2014 4:38:19 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/24  config=null
+May 14, 2014 4:38:19 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3808 ms

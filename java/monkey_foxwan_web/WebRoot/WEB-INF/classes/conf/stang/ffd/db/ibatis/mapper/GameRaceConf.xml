@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceConf">
+	<typeAlias alias="GameRaceConfDetail" type="com.stang.game.ffd.entity.detail.GameRaceConfDetail" />
+	
+	<resultMap class="GameRaceConfDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="signUpStartTime" column="SIGN_UP_START_TIME"/>
+		<result property="signUpEndTime" column="SIGN_UP_END_TIME"/>
+		<result property="type" column="TYPE"/>
+		<result property="maxNum" column="MAX_NUM"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="signUpRestrict" column="SIGN_UP_RESTRICT"/>
+		<result property="signUpCalendar" column="SIGN_UP_CALENDAR"/>
+		<result property="teamNum" column="TEAM_NUM"/>
+		<result property="buyItemStartTime" column="BUY_ITEM_START_TIME"/>
+		<result property="buyItemEndTime" column="BUY_ITEM_END_TIME"/>
+		<result property="raceName" column="RACE_NAME"/>
+		<result property="flag" column="Flag"/>
+		<result property="timeBetweenTwoRace" column="TIME_BETWEEN_TWO_RACE"/>
+		<result property="raceDes" column="RACE_DES"/>
+		<result property="startLevel" column="START_LEVEL"/>
+		<result property="endLevel" column="END_LEVEL"/>
+		<result property="signUpMoney" column="SIGN_UP_MONEY"/>
+		<result property="signUpMoneyType" column="SIGN_UP_MONEY_TYPE"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceConfDetail" parameterClass="GameRaceConfDetail">
+		INSERT INTO GAME_RACE_CONF (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpStartTime">SIGN_UP_START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpEndTime">SIGN_UP_END_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="type">TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="maxNum">MAX_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpRestrict">SIGN_UP_RESTRICT</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpCalendar">SIGN_UP_CALENDAR</isNotEmpty>
+			<isNotEmpty prepend="," property="teamNum">TEAM_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="buyItemStartTime">BUY_ITEM_START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="buyItemEndTime">BUY_ITEM_END_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="raceName">RACE_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="timeBetweenTwoRace">TIME_BETWEEN_TWO_RACE</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpStartTime">#signUpStartTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpEndTime">#signUpEndTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+			<isNotEmpty prepend="," property="maxNum">#maxNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">#startTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpRestrict">#signUpRestrict#</isNotEmpty>
+			<isNotEmpty prepend="," property="signUpCalendar">#signUpCalendar#</isNotEmpty>
+			<isNotEmpty prepend="," property="teamNum">#teamNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="buyItemStartTime">#buyItemStartTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="buyItemEndTime">#buyItemEndTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="raceName">#raceName#</isNotEmpty>			
+			<isNotEmpty prepend="," property="timeBetweenTwoRace">#timeBetweenTwoRace#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceConfDetail" parameterClass="GameRaceConfDetail">
+		UPDATE GAME_RACE_CONF SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="signUpStartTime">
+			SIGN_UP_START_TIME = #signUpStartTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="signUpEndTime">
+			SIGN_UP_END_TIME = #signUpEndTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="maxNum">
+			MAX_NUM = #maxNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">
+			START_TIME = #startTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="signUpRestrict">
+			SIGN_UP_RESTRICT = #signUpRestrict#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="signUpCalendar">
+			SIGN_UP_CALENDAR = #signUpCalendar#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="teamNum">
+			TEAM_NUM = #teamNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="buyItemStartTime">
+			BUY_ITEM_START_TIME = #buyItemStartTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="buyItemEndTime">
+			BUY_ITEM_END_TIME = #buyItemEndTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="raceName">
+			RACE_NAME = #raceName#
+		</isNotEmpty>		
+		<isNotEmpty prepend="," property="timeBetweenTwoRace">
+			TIME_BETWEEN_TWO_RACE = #timeBetweenTwoRace#
+		</isNotEmpty>				
+		WHERE ID = #id#
+	</update>
+	
+	<select id="getGameRaceConfCount" resultClass="int">
+		SELECT COUNT(ID) FROM GAME_RACE_CONF
+	</select>
+	<select id="getGameRaceConfDetail" resultMap="listResult" parameterClass="java.util.Map">
+		SELECT 
+			ID,
+			SIGN_UP_START_TIME,
+			SIGN_UP_END_TIME,
+			TYPE,
+			MAX_NUM,
+			START_TIME,
+			SIGN_UP_RESTRICT,
+			SIGN_UP_CALENDAR,
+			TEAM_NUM,
+			BUY_ITEM_START_TIME,
+			BUY_ITEM_END_TIME,
+			RACE_NAME,
+			FLAG,
+			TIME_BETWEEN_TWO_RACE,
+			RACE_DES,
+			START_LEVEL,
+			END_LEVEL,
+			SIGN_UP_MONEY,
+			SIGN_UP_MONEY_TYPE
+		FROM 
+			GAME_RACE_CONF   
+		WHERE 
+			1 = 1
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="signUpStartTime">
+			SIGN_UP_START_TIME = #signUpStartTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="signUpEndTime">
+			SIGN_UP_END_TIME = #signUpEndTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="maxNum">
+			MAX_NUM = #maxNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="startTime">
+			START_TIME = #startTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="signUpRestrict">
+			SIGN_UP_RESTRICT = #signUpRestrict#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="signUpCalendar">
+			SIGN_UP_CALENDAR = #signUpCalendar#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="teamNum">
+			TEAM_NUM = #teamNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="buyItemStartTime">
+			BUY_ITEM_START_TIME = #buyItemStartTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="buyItemEndTime">
+			BUY_ITEM_END_TIME = #buyItemEndTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="raceName">
+			RACE_NAME = #raceName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="timeBetweenTwoRace">
+			TIME_BETWEEN_TWO_RACE = #timeBetweenTwoRace#
+		</isNotEmpty>
+		ORDER BY START_TIME DESC
+		<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+		</isNotEmpty>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">-->
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="32"
+		maxSessions="10" maxTransactions="5" useStatementNamespaces="false" />
+
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver" />		
+	<!-- <property name="JDBC.ConnectionURL"
+				value="jdbc:mysql://122.224.80.73:3306/flight_data_collector?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+			<property name="JDBC.Username" value="3tangwebuser" />
+			<property name="JDBC.Password" value="104d3ff4c47" /> -->
+		  <property name="JDBC.ConnectionURL"
+				value="jdbc:mysql://192.168.2.22:3309/flight_data_collector?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+			<property name="JDBC.Username" value="root" />
+			<property name="JDBC.Password" value="root"/>
+			
+			<property name="Pool.MaximumActiveConnections" value="25" />
+			<property name="Pool.MaximumIdleConnections" value="15" />
+			<property name="Pool.MaximumWait" value="1000" />
+			
+			<property name="Pool.PingQuery" value="select id from ta"/> 
+      		<property name="Pool.PingEnabled" value="true"/> 
+      		<property name="Pool.PingConnectionsOlderThan" value="28000000"/> 
+    		<property name="Pool.PingConnectionsNotUsedFor" value="28000000"/> 
+		</dataSource>
+	</transactionManager>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/CaseLog.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/CaseDateEx.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/FilterIP.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/FilterRole.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/GmLog.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/RightValue.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/RightUser.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/MessageManager.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/CaseInfo.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/KeyWord.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/LogSendGift.xml" />
+    <sqlMap resource="conf/stang/ffd/db/ibatis/mapper/GMRejectChatIds.xml"/>
+    <sqlMap resource="conf/stang/ffd/db/ibatis/mapper/GMRejectLoginIds.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/DubiousData.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/LogReject.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/GMRejectIpsDetail.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/LogRejectIps.xml"/>
+	<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/checkDay.xml"/>
+		<sqlMap resource="conf/stang/ffd/db/ibatis/mapper/Server.xml"/>
+
+</sqlMapConfig>

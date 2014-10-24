@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleItem">
+	<typeAlias alias="RoleItemDetail"
+		type="com.stang.game.entity.detail.RoleItemDetail" />
+
+	<cacheModel id="roleItemCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleItem" />
+		<flushOnExecute statement="delRoleItem" />
+		<flushOnExecute statement="sbRoleItemNum" />
+		<flushOnExecute statement="addRoleItemNum" />
+		<flushOnExecute statement="subRoleItem" />
+		<flushOnExecute statement="updateRoleItemByParams" />
+		<flushOnExecute statement="UpdateItemCache" />
+	</cacheModel>
+
+	<resultMap class="RoleItemDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="roleid" column="ROLEID" />
+		<result property="itemid" column="ITEMID" />
+		<result property="flag" column="FLAG" />
+		<result property="num" column="NUM" />
+		<result property="type" column="type" />
+		<result property="isuse" column="isuse" />
+		<result property="activitynum" column="activitynum" />
+		<result property="isnew" column="isnew" />
+	</resultMap>
+	
+	<select id="findAllRoleItem" resultMap="listResult">
+		SELECT * FROM role_item
+	</select>  
+	
+
+	<!-- 录入信息 -->
+	<insert id="insertRoleItem" parameterClass="RoleItemDetail">
+		INSERT INTO role_item (
+		<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">ROLEID</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">ITEMID</isNotEmpty>
+		<isNotEmpty prepend="," property="num">NUM</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="isuse">isuse</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">#itemid#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="isuse">#isuse#</isNotEmpty>
+		)
+	</insert>
+	<!-- 更新信息 -->
+	<update id="sbRoleItemNum" parameterClass="java.util.HashMap">
+		UPDATE role_item SET NUM = NUM - #num# WHERE
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>   
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+	</update>
+	
+	<!-- 更新信息 -->
+	<update id="addRoleItemNum" parameterClass="java.util.HashMap">
+		UPDATE role_item SET NUM = NUM + #num# WHERE
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+	</update>
+	
+	
+	 <update id="UpdateItemCache" parameterClass="java.util.List">
+        
+      <iterate conjunction="">
+        update role_item set
+        num=num+#list[].num# 
+        where roleid=#list[].roleid# and itemid=#list[].itemid#;
+      </iterate>
+       
+    </update>
+	
+	
+	<update id="subRoleItem" parameterClass="java.util.HashMap">
+		UPDATE role_item SET NUM = NUM - #num# WHERE
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+	</update>
+	
+	<update id="updateRoleItemByParams" parameterClass="java.util.HashMap">
+		UPDATE role_item SET flag=1
+		<isNotEmpty prepend="," property="activitynum">activitynum = #activitynum#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew = #isnew#</isNotEmpty>
+		WHERE
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+	</update>
+	
+	<delete id="delRoleItem" parameterClass="java.util.HashMap">
+		DELETE FROM role_item WHERE 
+			roleid = #roleid#
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+	</delete>
+
+
+	<!-- 根据角色序列号查询该角色所拥有的战斗性道具 -->
+	<select id="findRoleItemsByRoleId"
+		parameterClass="int" resultMap="listResult" >
+		<!-- cacheModel="roleItemCache"> -->
+		SELECT * FROM role_item WHERE roleid= #roleid#
+	</select>
+	
+	<select id="findRoleItemsById" resultMap="listResult">
+		SELECT * FROM role_item WHERE id= #id#
+	</select>
+
+	<select id="getRoleItem" parameterClass="java.util.HashMap"
+		resultMap="listResult"  cacheModel="roleItemCache">
+		SELECT * FROM role_item WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isuse">
+			isuse = #isuse#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		
+	</select>
+
+	<select id="getRoleItemByitem" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="roleItemCache">
+		SELECT * FROM role_item WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+
+	</select>
+	
+	<select id="getRoleItemByNum" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM role_item WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="num">
+			NUM > #num#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isuse">
+			isuse = #isuse#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+	</select>
+	
+	
+	
+	
+	<delete id="deleteRoleItem" parameterClass="RoleItemDetail">
+		DELETE FROM role_item WHERE 
+			roleid = #roleid#
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="itemid" prepend="AND">
+			itemid = #itemid#
+		</isNotEmpty>
+		<isNotEmpty property="num" prepend="AND">
+			num = #num#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			flag = #flag#
+		</isNotEmpty>
+		<isNotEmpty property="isuse" prepend="AND">
+			isuse = #isuse#
+		</isNotEmpty>
+		<isNotEmpty property="activitynum" prepend="AND">
+			activitynum = #activitynum#
+		</isNotEmpty>
+		<isNotEmpty property="isnew" prepend="AND">
+			isnew = #isnew#
+		</isNotEmpty>
+	</delete>
+	
+	
+	
+	
+	
+	
+	<update id="updateRoleItem" parameterClass="RoleItemDetail">
+		UPDATE role_item SET
+		<isNotEmpty prepend="" property="flag">flag=1</isNotEmpty>
+		<isNotEmpty prepend="," property="activitynum">activitynum = #activitynum#</isNotEmpty>
+		<isNotEmpty prepend="," property="id">id = #id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleid">roleid = #roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num = #num#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type = #type#</isNotEmpty>
+		<isNotEmpty prepend="," property="isuse">isuse = #isuse#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">itemid = #itemid#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew = #isnew#</isNotEmpty>
+		WHERE
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="itemid">
+			ITEMID = #itemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+	</update>
+	
+	
+	
+	
+
+</sqlMap>

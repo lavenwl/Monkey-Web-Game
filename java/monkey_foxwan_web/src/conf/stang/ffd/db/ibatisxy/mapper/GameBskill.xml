@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBskill">
+	<typeAlias alias="GameBskillDetail"
+		type="com.stang.game.entity.detail.GameBskillDetail" />
+
+	<cacheModel id="gameBskillCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBskillDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="artdesc" column="artdesc" />
+		<result property="buffid" column="buffid" />
+		<result property="target" column="target" />
+		<result property="jilv" column="jilv" />
+		<result property="chufa" column="chufa" />
+		<result property="fanwei" column="fanwei" />
+		<result property="shanghai" column="shanghai" />
+		<result property="cishu" column="cishu" />
+		<result property="time" column="time" />
+		<result property="bullet" column="bullet" />
+		<result property="cd" column="cd" />
+		<result property="flag" column="flag" />
+
+		
+	</resultMap>
+
+	
+	
+	
+	
+	<select id="getGameBskill" resultMap="listResult"  >
+		SELECT * FROM game_bskill
+	</select>
+	
+		<select id="findAllBskill"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_bskill  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameBskillByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_bskill WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameBskill" parameterClass="GameBskillDetail">
+		INSERT INTO game_bskill(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">artdesc</isNotEmpty>
+		<isNotEmpty prepend="," property="buffid">buffid</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="target">target</isNotEmpty>
+		<isNotEmpty prepend="," property="jilv">jilv</isNotEmpty>
+		<isNotEmpty prepend="," property="chufa">chufa</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">fanwei</isNotEmpty>
+		<isNotEmpty prepend="," property="shanghai">shanghai</isNotEmpty>
+		<isNotEmpty prepend="," property="cishu">cishu</isNotEmpty>
+		<isNotEmpty prepend="," property="bullet">bullet</isNotEmpty>
+		<isNotEmpty prepend="," property="cd">cd</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">#artdesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="buffid">#buffid#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="target">#target#</isNotEmpty>
+		<isNotEmpty prepend="," property="jilv">#jilv#</isNotEmpty>
+		<isNotEmpty prepend="," property="chufa">#chufa#</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">#fanwei#</isNotEmpty>
+			<isNotEmpty prepend="," property="shanghai">#shanghai#</isNotEmpty>
+			<isNotEmpty prepend="," property="cishu">#cishu#</isNotEmpty>
+			<isNotEmpty prepend="," property="bullet">#bullet#</isNotEmpty>
+			<isNotEmpty prepend="," property="cd">#cd#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameBskill" parameterClass="java.util.HashMap">
+		UPDATE game_bskill SET 
+			name = #name#,
+			artdesc = #artdesc#,
+			buffid = #buffid#,
+			type = #type#,
+			target = #target#,
+			jilv = #jilv#,
+			chufa = #chufa#,
+			fanwei = #fanwei#,
+			shanghai = #shanghai#,
+			cishu = #cishu#,
+			time = #time#,
+			bullet = #bullet#,
+			cd = #cd#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="order_info">
+	<typeAlias alias="EntityOrderInfoDetail"
+		type="com.stang.game.ffd.entity.detail.EntityOrderInfoDetail" />
+	<resultMap class="EntityOrderInfoDetail" id="listResult">
+		<result property="orderId" column="ORDERID" />
+		<result property="member_username" column="MEMBER_USERNAME" />
+		<result property="point" column="POINT" />
+		<result property="dataTime" column="DATATIME" />
+		<result property="serverId" column="SERVERID" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	<select id="findOrderInfoNewGuk" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ORDERID, MEMBER_USERNAME, POINT, DATATIME, SERVERID, FLAG
+		FROM ORDER_INFO WHERE FLAG = 1
+		<isNotEmpty property="orderId" prepend="AND">
+			ORDERID = #orderId#
+		</isNotEmpty>
+		<isNotEmpty property="member_username" prepend="AND">
+			MEMBER_USERNAME = #member_username#
+		</isNotEmpty>
+		<isNotEmpty property="likeMember_username" prepend="AND">
+			MEMBER_USERNAME LIKE  '%$likeMember_username$%'
+		</isNotEmpty>
+		<isNotEmpty property="point" prepend="AND">
+			POINT = #point#
+		</isNotEmpty>
+		
+		<isNotEmpty property="dataTime" prepend="AND">
+			<![CDATA[ DATATIME > #dataTime# ]]>
+		</isNotEmpty>
+		<isNotEmpty property="dataTime2" prepend="AND">
+			<![CDATA[ DATATIME < #dataTime2# ]]>
+		</isNotEmpty>
+		<isNotEmpty property="serverId" prepend="AND">
+			SERVERID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			FLAG = #flag#
+		</isNotEmpty>
+	</select>
+
+
+	
+</sqlMap>

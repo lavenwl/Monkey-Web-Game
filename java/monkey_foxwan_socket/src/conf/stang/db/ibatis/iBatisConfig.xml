@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>		
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" 
+		maxRequests="50"
+		maxSessions="30" 
+		maxTransactions="15" 
+		useStatementNamespaces="false" />	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+		<property name="JDBC.Driver" value="com.mysql.jdbc.Driver" />
+		    <!-- 狐玩一区 -->
+		     <property name="JDBC.ConnectionURL" value="jdbc:mysql://localhost:3306/monkey?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+		     <property name="JDBC.Username" value="root"/>
+		     <property name="JDBC.Password" value="root"/>
+			<!-- 外网主服 -->
+			<!--<property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.14.214:1026/monkey4?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />-->
+			<!--<property name="JDBC.Username" value="root"/>-->
+			<!--<property name="JDBC.Password" value="3tang!@ddxy"/>-->
+			<!-- 外网三服 -->
+			<!--<property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.14.214:1025/monkey2?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />-->
+			<!--<property name="JDBC.Username" value="root"/>-->
+			<!--<property name="JDBC.Password" value="root"/>-->
+		    <!-- 外网四服 -->
+			<!--<property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.14.214:1025/monkey2?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />-->
+			<!--<property name="JDBC.Username" value="root"/>-->
+			<!--<property name="JDBC.Password" value="3tang!@ddxy"/>-->
+			
+			<property name="Pool.MaximumActiveConnections" value="300"/>	<!-- 最大连接数 -->
+			<property name="Pool.MaximumIdleConnections"   value="15"/>	<!-- 允许挂机的最大连接数 -->
+			<property name="Pool.MaximumWait"  value="10000"/>			<!-- 最长等待时间 -->
+			<property name ="Pool.LogAbandoned"  value ="false" />
+			<property name ="Pool.RemoveAbandonedTimeout"  value ="180" />
+			<property name ="Pool.RemoveAbandoned"  value ="true" />
+			<property name="Pool.PingQuery"   value="select id from xml_store"/> 
+      		<property name="Pool.PingEnabled" value="false"/> 
+      		<property name="Pool.PingConnectionsOlderThan"  value="1"/> 
+    		<property name="Pool.PingConnectionsNotUsedFor" value="1"/> 
+			<property name="Pool.TimeToWait" value="180"/> 
+             <!--dbcp for new ibatis  -->
+             <property name="Pool.LogAbandoned" value="false"/>
+             <property name="Pool.RemoveAbandoned" value="true"/> 
+             <property name="Pool.RemoveAbandonedTimeout" value="10"/>
+       		 <property name="Pool.InitialSize" value="50"/>
+             <property name="Pool.MinIdle" value="5"/>
+             <property name="Pool.PoolPreparedStatements" value="true" />   
+			 <property name="Pool.MaxOpenPreparedStatements" value="10" />  
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/AutoId.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameChLevel.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameMap.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gamemilitary.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gamemlevel.xml" />
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gameplat.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameRole.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gametower.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleMap.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameSkill.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/CdkStore.xml" />
+	
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameFoe.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameFoeskill.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleMilitary.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameItem.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GamePrice.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameLevel.xml" />
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameAvatar.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleAvatar.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleImpose.xml" />
+    <sqlMap resource="conf/stang/db/ibatis/mapper/RoleIns.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleItem.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameEquip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameEProperty.xml" />
+    <sqlMap resource="conf/stang/db/ibatis/mapper/GameEIns.xml" />
+	
+    <sqlMap resource="conf/stang/db/ibatis/mapper/GamblingItem.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameVip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTavern.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/TempPackage.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleEquip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBuff.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleQuicktime.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleChallenge.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTaskTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleDayask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameRobot.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Member.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Delivery.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameCharts.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameChartstwo.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Coin.xml" />
+
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Dantiao.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Zhugong.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Qunzhan.xml" />
+
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Host.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/ChallengeRecord.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gamestar.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBing.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameMission.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBmap.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleBing.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBskill.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBbuff.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Activity.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameJingjiStatic.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameJingjiFinal.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Server.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Callgift.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Shopdiscount.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gametotem.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Roletotem.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameYellowVip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/StateToState.xml" />
+</sqlMapConfig>

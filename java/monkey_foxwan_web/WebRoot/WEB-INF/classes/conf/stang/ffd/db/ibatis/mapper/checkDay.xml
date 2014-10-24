@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="checkDay">
+	<typeAlias alias="EntityCheckDayDbDetail" type="com.stang.game.ffd.entity.detail.EntityCheckDayDbDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityCheckDayDbDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="createDate" column="CREATEDATE"/>
+		<result property="jsonValue" column="JSONVALUE"/>
+	</resultMap>
+	
+	
+	
+	
+	<!-- 根据节点 -->
+	<select id="findAllCheckDayDb" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			CREATEDATE,
+			JSONVALUE
+		FROM  
+			CHECK_DAY 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="createDate" prepend="AND">
+    	   		CREATEDATE LIKE '%$createDate$%'
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="jsonValue" prepend="AND">
+    	   		JASONVALUE = #jasonValue#
+    	   	</isNotEmpty>
+    	   ORDER BY CREATEDATE DESC
+    	   	<isNotEmpty property="limit1" prepend="limit">
+    		  #limit1#,#limit2#
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 插入数据╮(╯_╰)╭15分钟一次。 -->
+	<insert id="AddCheckDayDb" parameterClass="java.util.HashMap">
+			INSERT INTO CHECK_DAY (
+				<isNotEmpty prepend="" property="jsonValue">JSONVALUE</isNotEmpty>
+				<isNotEmpty prepend="," property="createDate">CREATEDATE</isNotEmpty>
+				)
+		VALUES 
+			(
+		<isNotEmpty prepend="" property="jsonValue">#jsonValue#</isNotEmpty>
+				<isNotEmpty prepend="," property="createDate">#createDate#</isNotEmpty>
+				)
+	</insert>
+	
+	<!-- 查询当前的数据库的条数 -->
+	<select id="searchCheckDayCount" resultClass="int" parameterClass="java.util.HashMap">
+		SELECT 
+		  count(*)
+		FROM  
+			check_day 
+		WHERE 
+			FLAG = 1
+    	   	<isNotEmpty property="createDate" prepend="AND">
+    		 		CREATEDATE LIKE  '%$createDate$%'
+    	   	</isNotEmpty>
+    	   ORDER BY CREATEDATE DESC
+	</select>
+	
+</sqlMap>
+		
+		

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Shopdiscount">
+	<typeAlias alias="ShopdiscountDetail"
+		type="com.stang.game.entity.detail.ShopdiscountDetail" />
+
+	<cacheModel id="shopdiscountCache" type="OSCACHE">
+		<flushInterval hours="20" />
+	</cacheModel>
+
+	<resultMap class="ShopdiscountDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="month" column="month" />
+		<result property="monthend" column="monthend" />
+		<result property="day" column="day" />
+		<result property="dayend" column="dayend" />
+		<result property="discount" column="discount" />
+		<result property="flag" column="flag" />
+		
+	</resultMap>
+
+	<select id="getShopdiscount" parameterClass="java.util.Map" 
+	resultMap="listResult">
+		SELECT * FROM shopdiscount
+	</select>
+	
+</sqlMap>

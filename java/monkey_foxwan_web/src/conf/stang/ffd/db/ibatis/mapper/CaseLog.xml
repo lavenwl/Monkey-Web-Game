@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Member">
+	<typeAlias alias="EntityCaseLogDetail" type="com.stang.game.ffd.entity.detail.EntityCaseLogDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityCaseLogDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="server_id" column="SERVER_ID"/>
+		<result property="user_id" column="USER_ID"/>
+		<result property="case_time" column="CASE_TIME"/>
+		<result property="case_id" column="CASE_ID"/>
+		<result property="case_ex_desc" column="CASE_EX_DESC"/>
+		<result property="flag" column="flag"/>
+	</resultMap>
+	
+	
+	<!-- 获得信息 -->
+	<select id="getCaseLog" resultMap="listResult"  parameterClass="java.util.HashMap" cacheModel="MemberCache">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME < #createTime2#]]> 
+			</isNotEmpty>
+    	  AND(CASE_ID=69 OR CASE_ID=68 OR CASE_ID=88 OR CASE_ID=89 OR CASE_ID=90 OR CASE_ID=91 OR CASE_ID=91 OR CASE_ID=92 OR CASE_ID=93 OR CASE_ID=94 OR CASE_ID=95
+    	  OR CASE_ID=96 OR CASE_ID=97 OR CASE_ID=98 OR CASE_ID=99 OR CASE_ID=100 OR CASE_ID=101 OR CASE_ID=102 OR CASE_ID=103 OR CASE_ID=104 OR CASE_ID=105
+    	   OR CASE_ID=4 OR CASE_ID=1 OR CASE_ID=3 OR CASE_ID=5) ORDER BY CASE_TIME DESC
+	</select>
+	
+	<!-- 根据节点 -->
+	<select id="getAllPointByParams" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="case_id" prepend="AND">
+    	   		CASE_ID = #case_id#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME < #createTime2#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id1" prepend="AND">
+				(<![CDATA[ CASE_ID = #case_id1#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id2" prepend="OR">
+				<![CDATA[ CASE_ID = #case_id2#]]>)
+			</isNotEmpty>
+			<isNotEmpty property="likeTime" prepend="AND">
+				CASE_TIME LIKE '%$likeTime$%'
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+	
+	
+	<select id="getAllPointByParamsTwo" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 AND (CASE_ID = #case_id1# OR CASE_ID = #case_id2#)
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="case_id" prepend="AND">
+    	   		CASE_ID = #case_id#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME < #createTime2#]]> 
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+	
+	<!-- 查看最高在线的数据 -->
+	<select id="getCaseLogMaxOnlineOld" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME < #createTime2#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id1" prepend="AND">
+				<![CDATA[ CASE_ID >= #case_id1#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id2" prepend="AND">
+				<![CDATA[ CASE_ID <= #case_id2#]]> 
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+	
+	<select id="getCaseLogMaxOnline" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME < #createTime2#]]> 
+			</isNotEmpty>
+			AND (case_id=2 or case_id=3 or case_id=31)
+    	   ORDER BY CASE_TIME ASC
+	</select>
+	
+	
+	<!-- 查看最高在线的数据 -->
+	<select id="getCaseLogMaxOnlineForLike" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+			<isNotEmpty property="createTime" prepend="AND">
+				CASE_TIME LIKE '%$"createTime"$%' 
+			</isNotEmpty>
+			<isNotEmpty property="case_id1" prepend="AND">
+				<![CDATA[ CASE_ID >= #case_id1#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id2" prepend="AND">
+				<![CDATA[ CASE_ID <= #case_id2#]]> 
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+
+	<!-- like 查找法 双参数 -->
+	<select id="getCaseInfoLikes" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+			<isNotEmpty property="createTime" prepend="AND">
+				CASE_TIME LIKE '%$createTime$%' 
+			</isNotEmpty>
+			<isNotEmpty property="case_id1" prepend="AND">
+				<![CDATA[ CASE_ID >= #case_id1#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="case_id2" prepend="AND">
+				<![CDATA[ CASE_ID <= #case_id2#]]> 
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+	
+	<!-- like 查找法单参数 -->
+	<select id="getCaseInfoLike" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_TIME" prepend="AND">
+    	   		CASE_TIME = #CASE_TIME#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+			<isNotEmpty property="createTime" prepend="AND">
+				CASE_TIME LIKE '%$createTime$%' 
+			</isNotEmpty>
+			<isNotEmpty property="case_id1" prepend="AND">
+				CASE_ID = #case_id1#
+			</isNotEmpty>
+    	   ORDER BY CASE_TIME ASC
+	</select>
+
+
+	
+	
+	
+	
+	<!-- 新手引导检测 -->
+	<select id="getCaseLogNovice2" resultClass="java.util.HashMap"  parameterClass="java.util.HashMap">
+	SELECT 
+	case_id,
+	count(distinct user_id) AS ct
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 and 
+			<![CDATA[((case_id>=31 and case_id<=67) OR (case_id>=125 and case_id<=142))]]>
+			and
+				 CASE_TIME like '$createTime1$%'
+			 group by case_id
+	</select>
+	
+		<select id="getCaseLogNovice" resultClass="java.util.HashMap"  parameterClass="java.util.HashMap">
+	SELECT 
+	case_id,
+	count(distinct user_id) AS ct
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 and 
+			<![CDATA[(case_id>=#case_id1# and case_id<=#case_id2#)]]>
+			and
+				 CASE_TIME like '$createTime1$%'
+			 group by case_id
+	</select>
+	
+	
+	<!-- 获得当前的在线人数  -->
+     	<select id="getOnlineUser" parameterClass="java.util.HashMap" resultMap="listResult" >
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1311228195125 
+		WHERE 
+			FLAG = 1 
+			AND
+			
+	</select>	
+	
+	
+	<!-- 根据时间来刷新数据 -->
+	<select id="getCheckDayByDateAndCaseId" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1311228195125 
+		WHERE 
+			FLAG = 1 AND case_time like '%$case_time$%' and case_id = #case_id#
+			
+	</select>
+	
+	
+	<select id="searchTwoTables" parameterClass="java.util.HashMap" resultMap="listResult">
+		select * from case_log_1312549729578 where case_time like '%$liketime$%' and 
+		 user_id in(select id from flight.game_role where flag=1 and <![CDATA[CREATE_TIME < #liketime# ]]> ) and case_id=#case_id# group by user_id 
+	</select>
+	
+	<select id="getNewPlayer" parameterClass="java.util.HashMap" resultMap="listResult">
+		select * from case_log_1312549729578 where case_time like '%$liketime$%' and 
+		 user_id in(select id from flight.game_role where flag=1 and CREATE_TIME like '%$liketime$%') and case_id=#case_id# group by user_id 
+	</select>
+	
+	
+		
+	<select id="getQh" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME <= #createTime2#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime3" prepend="AND">
+				CASE_TIME LIKE '%$createTime3$%' 
+			</isNotEmpty>
+			 ORDER BY CASE_TIME 
+	</select>
+	
+	
+	<select id="getTimeOnline" resultMap="listResult"  parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			SERVER_ID,
+			USER_ID,
+			CASE_TIME,
+			CASE_ID,
+			CASE_EX_DESC,
+			FLAG
+		FROM  
+			case_log_1312549729578 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="SERVER_ID" prepend="AND">
+    	   		SERVER_ID = #SERVER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="USER_ID" prepend="AND">
+    	   		USER_ID = #USER_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_ID" prepend="AND">
+    	   		CASE_ID = #CASE_ID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="CASE_EX_DESC" prepend="AND">
+    	   		CASE_EX_DESC = #CASE_EX_DESC#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime1" prepend="AND">
+				<![CDATA[ CASE_TIME >=#createTime1# ]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime2" prepend="AND">
+				<![CDATA[ CASE_TIME <= #createTime2#]]> 
+			</isNotEmpty>
+			<isNotEmpty property="createTime3" prepend="AND">
+				CASE_TIME LIKE '%$createTime3$%' 
+			</isNotEmpty>
+			 ORDER BY CASE_TIME DESC
+	</select>
+	
+	<select id="getRegCount" resultClass="int" parameterClass="java.util.Map">
+		 select distinct(user_id) from case_log_1312549729578 where
+		  <![CDATA[ case_time > #likeTime# ]]> AND <![CDATA[case_time < #likeTime2#]]> 
+	</select>
+	
+	<select id="getNoRepleAllCount" resultClass="int" parameterClass="java.util.Map">
+		select distinct(user_id) from case_log_1312549729578 where 
+		<![CDATA[ (case_time > #likeTime# ]]> AND <![CDATA[case_time < #likeTime2#)]]>  and case_id=#case_id#
+	</select>
+									  
+	<select id="getOnlineTimeForUser" resultMap="listResult"  parameterClass="java.util.HashMap">
+		select * from case_log_1312549729578 where <![CDATA[ (case_time >= #case_time1# ]]> AND <![CDATA[case_time < #case_time2#)]]>  and (case_id=2 or case_id=3) order by user_id,case_time desc
+	</select>
+	
+</sqlMap>
+		
+		

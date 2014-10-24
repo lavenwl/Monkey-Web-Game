@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamePrice">
+	<typeAlias alias="GamePriceDetail"
+		type="com.stang.game.entity.detail.GamePriceDetail" />
+
+	<cacheModel id="GamePriceCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GamePriceDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="resId" column="RESID" />
+		<result property="resType" column="RESTYPE" />
+		<result property="resCost" column="RESCOST" />
+		<result property="costType" column="COSTTYPE" />
+		<result property="keepTime" column="KEEPTIME" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	<select id="getAllGamePrice" resultClass="GamePriceDetail" cacheModel="GamePriceCache">
+		SELECT * from game_price WHERE FLAG = 1;
+	</select>
+
+	<select id="getGamePriceById" parameterClass="int"
+		resultClass="GamePriceDetail">
+		SELECT * from game_price WHERE FLAG = 1 and resId=#id#;
+	</select>
+
+
+
+	<select id="getGamePrice" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="GamePriceCache">
+		SELECT * FROM game_price WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="resId">
+			resId=#resId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="resType">
+			resType = #resType#
+		</isNotEmpty>
+
+	</select>
+	
+	
+	<insert id="insertGameItem" parameterClass="GameItemDetail">
+		INSERT INTO game_price(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="resId">resId</isNotEmpty>
+		<isNotEmpty prepend="," property="resType">resType</isNotEmpty>
+		<isNotEmpty prepend="," property="resCost">resCost</isNotEmpty>
+		<isNotEmpty prepend="," property="costType">costType</isNotEmpty>
+		<isNotEmpty prepend="," property="keepTime">keepTime</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">createTime</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+	) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="resId">#resId#</isNotEmpty>
+		<isNotEmpty prepend="," property="resType">#resType#</isNotEmpty>
+		<isNotEmpty prepend="," property="resCost">#resCost#</isNotEmpty>
+		<isNotEmpty prepend="," property="costType">#costType#</isNotEmpty>
+		<isNotEmpty prepend="," property="keepTime">#keepTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameItem" parameterClass="java.util.HashMap">
+		UPDATE game_price SET 
+			resId = #resId#,
+			resType = #resType#,
+			resCost = #resCost#,
+			costType = #costType#,
+			keepTime = #keepTime#,
+			createTime = #createTime#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+</sqlMap>

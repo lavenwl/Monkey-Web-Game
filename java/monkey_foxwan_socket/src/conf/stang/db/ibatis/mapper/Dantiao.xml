@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Dantiao">
+	<typeAlias alias="DantiaoDetail"
+		type="com.stang.game.entity.detail.DantiaoDetail" />
+
+	<cacheModel id="dantiaoCache" type="OSCACHE">
+		<flushInterval hours="23" />
+	</cacheModel>
+
+	<resultMap class="DantiaoDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleId" column="roleId" />
+		<result property="zgongji" column="zgongji" />
+		<result property="zxueliang" column="zxueliang" />
+		<result property="rmname" column="rmname" />
+		<result property="grname" column="grname" />
+	</resultMap>
+
+<select id="getalldantiao" resultMap="listResult">
+		SELECT * FROM dantiao
+	</select>
+	
+	
+	
+	
+</sqlMap>

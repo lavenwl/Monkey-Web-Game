@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceLog">
+	<typeAlias alias="GameRaceLogDetail" type="com.stang.game.ffd.entity.detail.GameRaceLogDetail" />
+	
+	<cacheModel id="GameRaceLogCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameRaceLogDetail"/>
+		<flushOnExecute statement="updateGameRaceLogDetail"/>
+	</cacheModel>
+	
+	<resultMap class="GameRaceLogDetail" id="listResult">
+		<result property="battleId" column="BATTLE_ID"/>
+		<result property="log" column="LOG"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceLogDetail" parameterClass="GameRaceLogDetail">
+		INSERT INTO GAME_RACE_LOG (
+			<isNotEmpty prepend="" property="battleId">BATTLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="log">LOG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="battleId">#battleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="log">#log#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceLogDetail" parameterClass="GameRaceLogDetail">
+		UPDATE GAME_RACE_LOG SET 
+		<isNotEmpty prepend="" property="battleId">
+			BATTLE_ID = #battleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="log">
+			LOG = #log#
+		</isNotEmpty>
+		WHERE BATTLE_ID = #battleId#
+	</update>
+	
+	
+	<select id="getGameRaceLogDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="GameRaceLogCache">
+		SELECT 
+			BATTLE_ID,
+			LOG
+		FROM 
+			GAME_RACE_LOG   
+		WHERE 
+			<isNotEmpty property="battleId" prepend="">
+    	   		BATTLE_ID = #battleId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="log" prepend="AND">
+    	   		LOG = #log# 
+    	   	</isNotEmpty>
+	</select>
+	
+</sqlMap>

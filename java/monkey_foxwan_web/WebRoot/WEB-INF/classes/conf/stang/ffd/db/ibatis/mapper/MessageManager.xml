@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="MessageManager">
+	<typeAlias alias="MessageManagerDetail"
+		type="com.stang.game.ffd.entity.detail.MessageManagerDetail"/>
+	<resultMap class="MessageManagerDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="uid" column="UID" />
+		<result property="op_time" column="OP_TIME" />
+		<result property="uname" column="UNAME"/>
+		<result property="message" column="MESSAGE" />
+		<result property="send_time" column="SEND_TIME" />
+		<result property="next_time" column="NEXT_TIME" />
+		<result property="times" column="TIMES" />
+		<result property="int_time" column="INT_TIME" />
+		<result property="type" column="TYPE" />
+		<result property="herf" column="HERF" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	
+	<select id="findMessageManagerByFlag" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ID, UNAME,UID,OP_TIME,MESSAGE,SEND_TIME,NEXT_TIME,TIMES,INT_TIME,TYPE,HERF,FLAG FROM MESSAGE_MANAGER  
+		WHERE FLAG = #flag# AND <![CDATA[TIMES <> 0]]> order by NEXT_TIME
+	</select>
+	<select id="findMessageManagerByFlagOrderByOpTime" resultMap="listResult">
+		SELECT ID, UNAME,UID,OP_TIME,MESSAGE,SEND_TIME,NEXT_TIME,TIMES,INT_TIME,TYPE,HERF,FLAG FROM MESSAGE_MANAGER  
+		WHERE FLAG = 1 ORDER BY OP_TIME DESC
+	</select>
+	<select id="findMessageManagerByTime" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ID,UID,UNAME,OP_TIME,MESSAGE,SEND_TIME,NEXT_TIME,TIMES,INT_TIME,TYPE,HERF,FLAG FROM MESSAGE_MANAGER 
+		WHERE <![CDATA[NEXT_TIME < #endTime# AND TIMES <> 0]]> AND FLAG = 1
+	</select>
+	<update id="updateMessageManagerDetailByIDs" parameterClass="java.util.Map">
+		UPDATE MESSAGE_MANAGER SET TIMES = 0 WHERE ID IN
+			<iterate property="ids" open="(" close=")"
+				conjunction=",">
+				#ids[]#
+			</iterate>
+	</update>	
+	<update id="updateMessageManagerDetail" parameterClass="MessageManagerDetail">
+		UPDATE MESSAGE_MANAGER SET
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty> 
+		<isNotEmpty prepend="," property="uid">
+			UID = #uid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">
+			UNAME = #uname#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="op_time">
+			OP_TIME = #op_time#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="message">
+			MESSAGE = #message#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="send_time">
+			SEND_TIME = #send_time#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="next_time">
+			NEXT_TIME = #next_time#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="times">
+			TIMES = #times#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="herf">
+			HERF = #herf#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="int_time">
+			INT_TIME = #int_time#
+		</isNotEmpty>
+		
+		WHERE ID = #id#
+	</update>	
+
+	<insert id="insertMessageManagerDetail" parameterClass="MessageManagerDetail">
+			INSERT INTO MESSAGE_MANAGER (
+			<isNotEmpty prepend="" property="uid">UID</isNotEmpty>
+			<isNotEmpty prepend="," property="uname">UNAME</isNotEmpty>
+			<isNotEmpty prepend="," property="op_time">OP_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="message">MESSAGE</isNotEmpty>
+			<isNotEmpty prepend="," property="send_time">SEND_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="next_time">NEXT_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="times">TIMES</isNotEmpty>
+			<isNotEmpty prepend="," property="int_time">INT_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="type">TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="herf">HERF</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(	
+			<isNotEmpty prepend="" property="uid">#uid#</isNotEmpty>
+			<isNotEmpty prepend="," property="uname">#uname#</isNotEmpty>
+			<isNotEmpty prepend="," property="op_time">#op_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="message">#message#</isNotEmpty>
+			<isNotEmpty prepend="," property="send_time">#send_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="next_time">#next_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="times">#times#</isNotEmpty>
+			<isNotEmpty prepend="," property="int_time">#int_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+			<isNotEmpty prepend="," property="herf">#herf#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+		)
+	</insert>
+
+
+</sqlMap>

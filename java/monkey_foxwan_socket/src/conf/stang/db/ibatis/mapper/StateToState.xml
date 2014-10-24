@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Statetostate">
+	<typeAlias alias="StatetostateDetail"
+		type="com.stang.game.entity.detail.StatetostateDetail" />
+
+	<resultMap class="StatetostateDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="source" column="SOURCE" />
+		<result property="receiver" column="RECEIVER" />
+		<result property="type" column="TYPE" />
+		<result property="itemid" column="ITEMID" />
+		<result property="describe" column="DES" />
+		<result property="statue" column="STATUE" />
+		<result property="time" column="TIME" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+	
+	
+	<select id="findAllStatetostate1" resultMap="listResult">
+		SELECT * FROM statetostate where flag = 1 ORDER BY statue, time desc
+	</select>
+	
+	<select id="findAllStatetostate2" parameterClass="long"  resultMap="listResult">
+		SELECT * FROM statetostate where flag = 2 and time > #time# ORDER BY statue, time desc
+	</select>
+	
+	<!-- 录入自动化主键信息 -->
+	<insert id="insertStatetostate" parameterClass="StatetostateDetail">
+		INSERT INTO statetostate (
+		<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+		<isNotEmpty prepend="," property="source">SOURCE</isNotEmpty>
+		<isNotEmpty prepend="," property="receiver">RECEIVER</isNotEmpty>
+		<isNotEmpty prepend="," property="type">TYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">ITEMID</isNotEmpty>
+		<isNotEmpty prepend="," property="describe">DES</isNotEmpty>
+		<isNotEmpty prepend="," property="statue">STATUE</isNotEmpty>
+		<isNotEmpty prepend="," property="time">TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="source">#source#</isNotEmpty>
+		<isNotEmpty prepend="," property="receiver">#receiver#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">#itemid#</isNotEmpty>
+		<isNotEmpty prepend="," property="describe">#describe#</isNotEmpty>
+		<isNotEmpty prepend="," property="statue">#statue#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+
+	<!-- 更新自动化主键信息 -->
+	<update id="updateStatetostate" parameterClass="StatetostateDetail">
+		UPDATE statetostate SET
+		<isNotEmpty prepend="" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="," property="source">SOURCE = #source#</isNotEmpty>
+		<isNotEmpty prepend="," property="receiver">RECEIVER = #receiver#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">TYPE = #type#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemid">ITEMID = #itemid#</isNotEmpty>
+		<isNotEmpty prepend="," property="describe">DES = #describe#</isNotEmpty>
+		<isNotEmpty prepend="," property="statue">STATUE = #statue#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">TIME = #time#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG = #flag#</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	
+</sqlMap>

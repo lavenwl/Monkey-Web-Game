@@ -1,0 +1,64 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameEProperty">
+	<typeAlias alias="GameEPropertyDetail"
+		type="com.stang.game.entity.detail.GameEPropertyDetail" />
+
+	<cacheModel id="GameEPropertyCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameEPropertyDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="attack" column="attack" />
+		<result property="hp" column="hp" />
+		<result property="speed" column="speed" />
+		<result property="quality" column="quality" />
+	</resultMap>
+
+
+	<select id="getGameEProperty" resultMap="listResult"  >
+		SELECT * FROM game_equipproperty
+	</select>
+	
+		<select id="findAllEProperty"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_equipproperty  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameEPropertyByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_equipproperty WHERE id=#id#
+	</select>
+
+
+	
+	<insert id="insertGameEProperty" parameterClass="GameEPropertyDetail">
+		INSERT INTO game_equipproperty(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">speed</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">attack</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">quality</isNotEmpty>
+		<isNotEmpty prepend="," property="hp">hp</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">#speed#</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">#attack#</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">#quality#</isNotEmpty>
+		<isNotEmpty prepend="," property="hp">#hp#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+<update id="updateGameEProperty" parameterClass="java.util.HashMap">
+		UPDATE game_equipproperty SET 
+			type = #type#,
+			speed = #speed#,
+			attack = #attack#,
+			hp = #hp#,
+			quality = #quality#
+		WHERE id =#id#
+	</update>
+</sqlMap>

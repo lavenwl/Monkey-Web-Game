@@ -1,0 +1,106 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+a{text-decoration:none;}
+
+.wrapper {
+	width: 950px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.content {
+	#background: url(img/content.png) no-repeat center top;
+	height: 580px;
+	position: relative
+}
+
+/*ï¿½ï¿½Ü°ï¿½ï¿½Ê¾*/
+.warmtips {
+	bottom: 0px;
+	height: 50px;
+	background-color: #5555FF;
+	position: relative
+}
+
+.warmtips p {
+	font-size: 12px;
+	line-height: 20px;
+	padding: 5px 20px;
+	color: #FFFFFF;
+}
+
+#memberUsername {
+	width: 180px;
+	height: 22px;
+	top: 219px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	font-family: Verdana, "ï¿½ï¿½ï¿½ï¿½";
+}
+
+#memberPassword {
+	width: 180px;
+	height: 22px;
+	top: 277px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+}
+#all_top {
+	background: url('img/top2.jpg');
+	width: 950px;
+	height: 150px;
+	margin: 0 auto;
+}
+#all_foot {
+	background: url('img/banner2.jpg');
+	width: 950px;
+	height: 250px
+	margin: 0 auto;
+}
+
+#tijiao {
+	width: 120px;
+	height: 48px;
+	top: 330px;
+	left: 340px;
+	position: absolute;
+}
+
+.denglu,.denglu2 {
+	width: 198px;
+	height: 109px;
+	top: 290px;
+	left: 600px;
+	position: absolute;
+	display: block;
+	border: 0;
+	text-indent: -9999999px;
+	overflow: hidden;
+}
+
+.denglu {
+	background: url(img/tower-login.png) no-repeat 0 0;
+	
+}
+
+.denglu2 {
+	background: url(img/tower-login2.png) no-repeat 0 0;
+}
+
+#foot{
+	background-color:#A07E62;
+	width: 950px;
+	margin: 0 auto;
+	font-size:12px;
+	float:left;
+	font-family:"ºÚÌå";
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+		<sqlMap namespace="GiftBagTypeInfo">
+	<typeAlias alias="EntityGiftBagTypeInfoDetail" type="com.stang.game.ffd.entity.detail.EntityGiftBagTypeInfoDetail" />
+	
+		<resultMap class="EntityGiftBagTypeInfoDetail" id="listResult">
+			<result property="ID" column="ID" />
+			<result property="GTI_NAME" column="GTI_NAME" />
+			<result property="CREATE_TIME" column="CREATE_TIME" />
+			<result property="FLAG" column="FLAG" />
+		</resultMap>
+		
+		<!-- 录入礼包组信息 -->
+		<insert id="addGiftBagTypeInfo" parameterClass="EntityGiftBagTypeInfoDetail">
+			INSERT INTO GIFTBAG_TYPE_INFO(FLAG,GTI_NAME,ID)VALUE(
+				<isNotEmpty prepend="" property="FLAG">
+				#FLAG#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="GTI_NAME">
+				#GTI_NAME#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="ID">
+				#ID#
+			</isNotEmpty>
+			)
+			</insert>
+			
+		<!-- 查询当前所有的礼包组的信息 -->
+		<select id="findAllGiftTypeInfo" 
+			resultMap="listResult" parameterClass="EntityGiftBagTypeInfoDetail">
+				SELECT ID,GTI_NAME,CREATE_TIME,FLAG FROM GIFTBAG_TYPE_INFO WHERE FLAG=1
+				<isNotEmpty property="GTI_NAME" prepend="AND">
+					GTI_NAME=#GTI_NAME#
+				</isNotEmpty>
+				<isNotEmpty property="CREATE_TIME" prepend="AND">
+					CREATE_TIME=#CREATE_TIME#
+				</isNotEmpty>
+				<isNotEmpty property="ID" prepend="AND">
+					ID=#ID#
+				</isNotEmpty>
+			</select>
+			
+			<select id="findAllGiftTypeAll" 
+			resultMap="listResult" parameterClass="EntityGiftBagTypeInfoDetail">
+				SELECT ID,GTI_NAME,CREATE_TIME,FLAG FROM GIFTBAG_TYPE_INFO order by ID DESC
+			</select>
+			
+			<select id="findAllGiftTypeInfoAll" 
+			resultMap="listResult" parameterClass="EntityGiftBagTypeInfoDetail">
+				SELECT ID,GTI_NAME,CREATE_TIME,FLAG FROM GIFTBAG_TYPE_INFO where FLAG=1 order by ID DESC
+			</select>
+			
+			<select id="findAllGiftTypeInfoByName" 
+			resultMap="listResult" parameterClass="EntityGiftBagTypeInfoDetail">
+				SELECT ID,GTI_NAME,FLAG,CREATE_TIME FROM GIFTBAG_TYPE_INFO WHERE GTI_NAME=#GTI_NAME#
+			</select>
+			
+			
+			<!-- 修改当前礼包的名称 -->
+			<update id="updateGiftTypeInfo" parameterClass="EntityGiftBagTypeInfoDetail">
+				UPDATE GIFTBAG_TYPE_INFO SET GTI_NAME=#GTI_NAME# WHERE ID=#ID#
+			</update>
+			
+			<!-- 修改当前礼包的状态 -->
+			<update id="updateGiftTypeInfoStats" parameterClass="EntityGiftBagTypeInfoDetail">
+				UPDATE GIFTBAG_TYPE_INFO SET FLAG=#FLAG# WHERE ID=#ID#
+			</update>
+			
+			</sqlMap>

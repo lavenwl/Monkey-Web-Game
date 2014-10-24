@@ -1,0 +1,83 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameTower">
+	<typeAlias alias="GameTowerDetail"
+		type="com.stang.game.entity.detail.GameTowerDetail" />
+
+	<cacheModel id="GameTowerCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameTowerDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="desc" column="desc" />
+		<result property="type" column="type" />
+		<result property="shottype" column="shottype" />
+		<result property="bombtype" column="bombtype" />
+		<result property="gjextra" column="gjextra" />
+		<result property="gsextra" column="gsextra" />
+		<result property="fwextra" column="fwextra" />
+		<result property="fanwei" column="fanwei" />
+		<result property="description" column="description" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	<select id="getGameTower" resultClass="GameTowerDetail" cacheModel="GameTowerCache">
+		SELECT * FROM game_tower WHERE FLAG =1
+	</select>
+
+	<select id="getGameTowerLevel" resultClass="GameTowerDetail">
+		SELECT * FROM game_tower WHERE FLAG =1 and id=#towerid#
+	</select>
+	
+	
+	<insert id="insertGametower" parameterClass="GameTowerDetail">
+		INSERT INTO game_tower(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="desc">desc</isNotEmpty>
+		<isNotEmpty prepend="," property="bombtype">bombtype</isNotEmpty>
+		<isNotEmpty prepend="," property="shottype">shottype</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="gjextra">gjextra</isNotEmpty>
+		<isNotEmpty prepend="," property="gsextra">gsextra</isNotEmpty>
+		<isNotEmpty prepend="," property="fwextra">fwextra</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">fanwei</isNotEmpty>
+		<isNotEmpty prepend="," property="description">description</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="desc">#desc#</isNotEmpty>
+		<isNotEmpty prepend="," property="bombtype">#bombtype#</isNotEmpty>
+		<isNotEmpty prepend="," property="shottype">#shottype#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="gjextra">#gjextra#</isNotEmpty>
+		<isNotEmpty prepend="," property="gsextra">#gsextra#</isNotEmpty>
+			<isNotEmpty prepend="," property="fwextra">#fwextra#</isNotEmpty>
+			<isNotEmpty prepend="," property="fanwei">#fanwei#</isNotEmpty>
+			<isNotEmpty prepend="," property="description">#description#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGametower" parameterClass="java.util.HashMap">
+		UPDATE game_tower SET 
+			name = #name#,
+			desc = #desc#,
+			bombtype = #bombtype#,
+			shottype = #shottype#,
+			type = #type#,
+			level = #level#,
+			gjextra = #gjextra#,
+			gsextra = #gsextra#,
+			fwextra = #fwextra#,
+			fanwei = #fanwei#,
+			description = #description#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+</sqlMap>

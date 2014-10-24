@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Server">
+	<typeAlias alias="ServerDetail"
+		type="com.stang.game.entity.detail.ServerDetail" />
+
+	<cacheModel id="serverCache" type="OSCACHE">
+		<flushInterval hours="5" />
+	</cacheModel>
+
+	<resultMap class="ServerDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="statue_mag" column="statue_mag" />
+		<result property="statue_tui" column="statue_tui" />
+		<result property="statue_xin" column="statue_xin" />
+		<result property="statue_on" column="statue_on" />
+		<result property="onlineNum" column="online_num" />
+		<result property="server_ip" column="server_ip" />
+	</resultMap>
+
+	<select id="getAllServer" resultMap="listResult" >
+		SELECT * FROM server_table
+	</select>
+	
+	<select id="getAllNewServer" resultMap="listResult" >
+		SELECT * FROM server_table where statue_xin=1
+	</select>
+	<select id="getnamebyid" resultMap="listResult" parameterClass="int" cacheModel="serverCache">
+		SELECT * FROM server_table where id=#id#
+	</select>
+	
+		<update id="updateServer" parameterClass="ServerDetail">
+		UPDATE server_table SET
+		<isNotEmpty prepend="" property="id">id = #id#</isNotEmpty>
+		<isNotEmpty prepend="," property="onlineNum">online_num = #onlineNum#</isNotEmpty>
+		WHERE
+		<isNotEmpty prepend="" property="id">
+			id = #id#
+		</isNotEmpty>   
+		
+	</update>
+	
+</sqlMap>

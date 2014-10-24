@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Sendgiftlog">
+	<typeAlias alias="SendgiftlogDetail"
+		type="com.stang.game.entity.detail.SendgiftlogDetail" />
+
+	<cacheModel id="sfgCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="SendgiftlogDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="menage" column="menage" />
+		<result property="wanjiaid" column="wanjiaid" />
+		<result property="lipin" column="lipin" />
+		<result property="time" column="time" />
+		<result property="ip" column="ip" />
+	</resultMap>
+	
+	
+	<select id="getAllsfg"  resultMap="listResult" >
+		SELECT * FROM sendgiftlog order by time desc
+	</select>
+
+
+	
+	<insert id="insertsendgift" parameterClass="SendgiftlogDetail">
+		INSERT INTO sendgiftlog(
+		<isNotEmpty prepend="" property="menage">menage</isNotEmpty>
+		<isNotEmpty prepend="," property="wanjiaid">wanjiaid</isNotEmpty>
+		<isNotEmpty prepend="," property="lipin">lipin</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="ip">ip</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="menage">#menage#</isNotEmpty>
+		<isNotEmpty prepend="," property="wanjiaid">#wanjiaid#</isNotEmpty>
+		<isNotEmpty prepend="," property="lipin">#lipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="ip">#ip#</isNotEmpty>
+		)
+	</insert>
+	
+</sqlMap>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Activity">
+	<typeAlias alias="ActivityDetail"
+		type="com.stang.game.entity.detail.ActivityDetail" />
+
+	<cacheModel id="activityCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="ActivityDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="url" column="url" />
+		<result property="type" column="type" />
+		<result property="conditions" column="conditions" />
+		<result property="reward" column="reward" />
+		<result property="flag" column="flag" />
+		<result property="month" column="month" />
+		<result property="monthend" column="monthend" />
+		<result property="day" column="day" />
+		<result property="dayend" column="dayend" />
+		<result property="isnew" column="isnew" />
+		<result property="description" column="description" />
+		<result property="tipurl" column="tipurl" />
+		<result property="serverid" column="serverid" />
+	</resultMap>
+	
+	<select id="findAllActivity" resultMap="listResult">
+		SELECT * FROM activity
+	</select>
+
+	<select id="getActivityByParams" parameterClass="java.util.Map" resultMap="listResult" >
+		SELECT * FROM activity WHERE FLAG = 1
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="month">
+			month = #month#
+		</isNotEmpty>
+		order by isnew desc
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,152 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleTask">
+	<typeAlias alias="RoleTaskDetail"
+		type="com.stang.game.entity.detail.RoleTaskDetail" />
+
+	<cacheModel id="RoleTaskCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleTask" />
+		<flushOnExecute statement="updateRoleTaskTye" />
+		<flushOnExecute statement="updateRoleTaskTime" />
+		<flushOnExecute statement="updateRoleTasknumday" />
+		<flushOnExecute statement="updateRoleTaskDailynum" />
+		<flushOnExecute statement="updateRoleTaskStatus" />
+	</cacheModel>
+
+	<resultMap class="RoleTaskDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleId" column="roleId" />
+		<result property="tasktype" column="tasktype" />
+		<result property="dailynum" column="dailynum" />
+		<result property="type" column="type" />
+		<result property="taskid" column="taskid" />
+		<result property="taskoldid" column="taskoldid" />
+		<result property="time" column="time" />
+		<result property="day" column="day" />
+		<result property="status" column="status" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	
+	<select id="findAllRoleTask" resultMap="listResult">
+		SELECT * FROM role_task
+	</select>  
+	
+	
+	<insert id="insertRoleTask" parameterClass="java.util.Map">
+		INSERT INTO role_task (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype</isNotEmpty>
+		<isNotEmpty prepend="," property="dailynum">dailynum</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">taskid</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">taskoldid</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="dailynum">#dailynum#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">#taskid#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">#taskoldid#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">#status#</isNotEmpty>
+		)
+	</insert>
+	
+	<select id="findRoleTask" parameterClass="int" resultClass="RoleTaskDetail">
+		SELECT * FROM role_task WHERE roleId =#roleId#
+	</select>
+	
+	<update id="updateRoleTaskTye" parameterClass="java.util.Map">
+		UPDATE role_task SET type=#type# 
+	    WHERE roleId = #roleId#
+	</update>
+	
+	<update id="updateRoleTaskTime" parameterClass="java.util.Map">
+		UPDATE role_task SET time=#time# , taskid=#taskid#
+	    WHERE roleId = #roleId#
+	</update>
+	
+	<update id="updateRoleTasknumday" parameterClass="java.util.Map">
+		UPDATE role_task SET dailynum=#dailynum# , day=#day# , status=#status#
+	    WHERE roleId = #roleId#
+	</update>
+	
+	<update id="updateRoleTaskDailynum" parameterClass="java.util.Map">
+		UPDATE role_task SET dailynum=dailynum + #dailynum#
+	    WHERE roleId = #roleId#
+	</update>
+	
+	<update id="updateRoleTaskStatus" parameterClass="java.util.Map">
+		UPDATE role_task SET FLAG = 1
+		<isNotEmpty prepend="," property="status">status=#status#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype=#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type=#type#</isNotEmpty>
+	    WHERE roleId = #roleId#
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+		<update id="updateRoleTasktwo" parameterClass="RoleTaskDetail">
+		UPDATE role_task SET FLAG = 1
+		<isNotEmpty prepend="," property="status">status=#status#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype=#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type=#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="id">id=#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId=#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">taskid=#taskid#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">taskoldid=#taskoldid#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">tasknum=#tasknum#</isNotEmpty>
+		<isNotEmpty prepend="," property="ctime">ctime=#ctime#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag=#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="dailynum">dailynum=#dailynum#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time=#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day=#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="states">states=#states#</isNotEmpty>
+	    WHERE roleId = #roleId#
+	</update>
+	
+	<insert id="insertRoleTasktwo" parameterClass="RoleTaskDetail">
+		INSERT INTO role_task (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype</isNotEmpty>
+		<isNotEmpty prepend="," property="dailynum">dailynum</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">taskid</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">taskoldid</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">tasknum</isNotEmpty>
+		<isNotEmpty prepend="," property="ctime">ctime</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="states">states</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="dailynum">#dailynum#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">#taskid#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">#taskoldid#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">#status#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">#tasknum#</isNotEmpty>
+		<isNotEmpty prepend="," property="ctime">#ctime#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="states">#states#</isNotEmpty>
+		)
+	</insert>
+	
+</sqlMap>

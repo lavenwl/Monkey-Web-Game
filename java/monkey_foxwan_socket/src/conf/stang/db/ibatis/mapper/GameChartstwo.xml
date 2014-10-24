@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameChartstwo">
+	<typeAlias alias="GameChartstwoDetail"
+		type="com.stang.game.entity.detail.GameChartstwoDetail" />
+
+	<cacheModel id="gameChartstwoCache" type="OSCACHE">
+		<flushInterval hours="23" />
+		<flushOnExecute statement="updateDelivery" />
+	</cacheModel>
+
+	<resultMap class="GameChartstwoDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="num" column="num" />
+		<result property="top" column="top" />
+		<result property="hot" column="hot" />
+		<result property="nums" column="nums" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="flag" column="flag" />
+		<result property="role_name" column="role_name" />
+		<result property="blood" column="blood" />
+		<result property="attack" column="attack" />
+		<result property="oneattack" column="oneattack" />
+		<result property="roleId" column="roleId" />
+		<result property="serverId" column="serverid" />
+		<result property="mapd" column="mapd" />
+	</resultMap>
+	
+	<select id="findAllGameChartstwo" resultMap="listResult">
+		SELECT * FROM game_chartstwo
+	</select>
+
+
+	 <procedure id="callproc" parameterClass="java.util.HashMap">    
+      <![CDATA[  
+      { call proc_add(#serverid#)}  
+   	  ]]> 
+    </procedure> 
+	
+
+<update id="xgzdsxo" >
+alter table zhugong modify hjs int
+	</update>
+<update id="xgzdsxt" >
+alter table zhugong modify jjs int
+	</update>
+<update id="xgzdsxf" >
+alter table zhugong modify zjs int
+	</update>
+
+
+
+
+<update id="xgczsqz" >
+alter table qunzhan modify hjs int
+	</update>
+<update id="xgczsqzt" >
+alter table qunzhan modify jjs int
+	</update>
+
+
+
+
+
+	<insert id="insertGameChartstwo" parameterClass="java.util.List" >
+	      <![CDATA[
+          insert into game_chartstwo(
+              num,
+		top,
+		hot,
+		nums,
+		name,
+	type,
+		role_name,
+	blood,
+	attack,
+		oneattack,
+		flag,
+	roleId
+          ) values
+      ]]>
+      <iterate conjunction=",">
+      <![CDATA[
+          (
+             #list[].num#,
+		#list[].top#,
+		#list[].hot#,
+	#list[].nums#,
+		#list[].name#,
+		#list[].type#,
+		#list[].role_name#,
+		#list[].blood#,
+	#list[].attack#,
+			#list[].oneattack#,
+		#list[].flag#,
+		#list[].roleId#
+          )
+      ]]>
+      </iterate>
+	</insert>
+	
+
+	
+
+
+<insert id="insertGameChartsthree" parameterClass="java.util.List" >
+	      <![CDATA[
+          insert into game_charts(
+          id,
+         num,
+		top,
+		hot,
+		nums,
+		name,
+	    type,
+		flag,
+		role_name,
+	    blood,
+	    attack,
+		oneattack,
+	    roleId
+          ) values
+      ]]>
+      <iterate conjunction=",">
+      <![CDATA[
+          (
+          	 #list[].id#,
+             #list[].num#,
+		     #list[].top#,
+		     #list[].hot#,
+	        #list[].nums#,
+		    #list[].name#,
+		    #list[].type#,
+		    #list[].flag#,
+		   #list[].role_name#,
+		    #list[].blood#,
+	        #list[].attack#,
+			#list[].oneattack#,
+		   #list[].roleId#
+          )
+      ]]>
+      </iterate>
+	</insert>
+
+	
+	
+	<select id="findByNumtwo" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_chartstwo WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY top desc,hot desc,nums desc
+		limit #page#,#size#
+	</select>
+	<select id="findByQZtwo" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_chartstwo WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY attack desc,top desc,hot desc
+		limit #page#,#size#
+	</select>
+	
+	<select id="findByDTtwo"  >
+		SELECT * FROM game_chartstwo WHERE FLAG =3
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY oneattack desc,blood desc
+		limit #page#,#size#
+	</select>
+	
+	
+	<delete id="deletegamechart" parameterClass="java.util.HashMap">
+		DELETE FROM game_chartstwo
+			
+	</delete>
+	<delete id="deletegamechartone" parameterClass="java.util.HashMap">
+		DELETE FROM game_charts
+			
+	</delete>
+	
+	<delete id="dropdantiao" >
+		drop table dantiao;
+			
+	</delete>
+	<delete id="dropzhugong" >
+		drop table zhugong;
+			
+	</delete>
+	<delete id="dropqz" >
+		drop table qunzhan;
+			
+	</delete>
+	
+	
+	
+	
+	
+	<select id="createqz"  >
+	
+create table qunzhan as (select * from (select *, sum(zgongji) sum from (
+select jjs, hjs, zgongji, name, id, gjb.roleId from(
+select id, roleId, 
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as zgongji from (
+select rm.id, rm.roleId, gongji, gjiacheng, xueliang, xljiacheng, rm.level, 
+			 re.attack, re1.attack attack1, re2.attack attack2, re3.attack attack3, re4.attack attack4, re5.attack attack5,
+			 re.hpMax, re1.hpMax hpMax1, re2.hpMax hpMax2, re3.hpMax hpMax3, re4.hpMax hpMax4, re5.hpMax hpMax5 from (
+			 select * from role_military 
+														where roleId in(select id from game_role where level > 8 and isoffical = 0)
+																	and challenge =1) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equips re on rm.wuqi = re.id
+left join role_equips re1 on rm.huwan = re1.id
+left join role_equips re2 on rm.yifu = re2.id
+left join role_equips re3 on rm.touguan = re3.id
+left join role_equips re4 on rm.xiezi = re4.id
+left join role_equips re5 on rm.shipin = re5.id
+)as a ) as gjb left join (
+select roleId, name, case when godnum is null then '0' else godnum end jjs, case when hongnum is null then '0' else hongnum end hjs, case when total is null then '0' else total end zjs from (
+select rm.roleId, gr.name, count(militaryid) total from role_military rm left join game_role gr on rm.roleId = gr.id group by roleId
+)as a left join (
+select roleId god_roleId, count(roleId) godnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 5
+) as hong group by roleId
+) as b on a.roleId = b.god_roleId left join (
+select roleId hong_roleId, count(roleId) hongnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 4
+) as hong group by roleId
+)as c on a.roleId = c.hong_roleId
+) as jsb on gjb.roleId = jsb.roleId 
+)as b group by roleId limit 0,500)as a order by sum desc)
+	
+	</select>
+	
+	
+	
+	
+	
+		<select id="createzhugongb"  >
+		create table zhugong as (select name, roleId, case when godnum is null then '0' else godnum end jjs, case when hongnum is null then '0' else hongnum end hjs, case when total is null then '0' else total end zjs from (
+select rm.roleId, gr.name, count(militaryid) total from role_military rm left join game_role gr on rm.roleId = gr.id where isoffical = 0 group by roleId
+)as a left join (
+select roleId god_roleId, count(roleId) godnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 5
+) as hong group by roleId
+) as b on a.roleId = b.god_roleId left join (
+select roleId hong_roleId, count(roleId) hongnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 4
+) as hong group by roleId
+)as c on a.roleId = c.hong_roleId
+order by godnum desc, hongnum desc, total desc limit 0, 500)
+	</select>
+	
+	
+	
+	
+	
+	
+		<select id="createdantiaob"  >
+create table dantiao as (select * from (
+select id, rmname, roleId, grname,
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as zgongji,
+			xueliang + xljiacheng*(level-1) 
+							+ case when hpMax is null then '0' else hpMax end 
+							+ case when hpMax1 is null then '0' else hpMax1 end 
+							+ case when hpMax2 is null then '0' else hpMax2 end 
+							+ case when hpMax3 is null then '0' else hpMax3 end 
+							+ case when hpMax4 is null then '0' else hpMax4 end 
+							+ case when hpMax5 is null then '0' else hpMax5 end as zxueliang from (
+select rm.id, rm.name rmname, rm.roleId, gr.name grname, gongji, gjiacheng, xueliang, xljiacheng, rm.level, 
+			 re.attack, re1.attack attack1, re2.attack attack2, re3.attack attack3, re4.attack attack4, re5.attack attack5,
+			 re.hpMax, re1.hpMax hpMax1, re2.hpMax hpMax2, re3.hpMax hpMax3, re4.hpMax hpMax4, re5.hpMax hpMax5 from (select * from role_military where roleId in(select id from game_role where level > 8 and isoffical=0)) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equips re on rm.wuqi = re.id
+left join role_equips re1 on rm.huwan = re1.id
+left join role_equips re2 on rm.yifu = re2.id
+left join role_equips re3 on rm.touguan = re3.id
+left join role_equips re4 on rm.xiezi = re4.id
+left join role_equips re5 on rm.shipin = re5.id
+)as a order by zgongji desc, zxueliang desc 
+) last where not exists(select  1 from (
+
+select id, roleId, 
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as zgongji,
+			xueliang + xljiacheng*(level-1) 
+							+ case when hpMax is null then '0' else hpMax end 
+							+ case when hpMax1 is null then '0' else hpMax1 end 
+							+ case when hpMax2 is null then '0' else hpMax2 end 
+							+ case when hpMax3 is null then '0' else hpMax3 end 
+							+ case when hpMax4 is null then '0' else hpMax4 end 
+							+ case when hpMax5 is null then '0' else hpMax5 end as zxueliang from (
+select rm.id, rm.name rmname, rm.roleId, gr.name grname, gongji, gjiacheng, xueliang, xljiacheng, rm.level, 
+			 re.attack, re1.attack attack1, re2.attack attack2, re3.attack attack3, re4.attack attack4, re5.attack attack5,
+			 re.hpMax, re1.hpMax hpMax1, re2.hpMax hpMax2, re3.hpMax hpMax3, re4.hpMax hpMax4, re5.hpMax hpMax5 from (select * from role_military where roleId in(select id from game_role where level > 8 and isoffical=0)) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equips re on rm.wuqi = re.id
+left join role_equips re1 on rm.huwan = re1.id
+left join role_equips re2 on rm.yifu = re2.id
+left join role_equips re3 on rm.touguan = re3.id
+left join role_equips re4 on rm.xiezi = re4.id
+left join role_equips re5 on rm.shipin = re5.id
+)as a order by zgongji desc, zxueliang desc 
+) last1 where last.roleId=last1.roleId and last1.zgongji>last.zgongji) limit 0,500)
+	</select>
+	
+	
+	
+</sqlMap>

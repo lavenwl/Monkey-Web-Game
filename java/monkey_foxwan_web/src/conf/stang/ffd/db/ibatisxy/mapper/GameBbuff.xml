@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBbuff">
+	<typeAlias alias="GameBbuffDetail"
+		type="com.stang.game.entity.detail.GameBbuffDetail" />
+
+	<cacheModel id="gameBbuffCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBbuffDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="artdesc" column="artdesc" />
+		<result property="shanghai" column="shanghai" />
+		<result property="cishu" column="cishu" />
+		<result property="time" column="time" />
+		<result property="flag" column="flag"/>
+
+	</resultMap>
+
+	
+	
+	
+	
+	<select id="getGameBbuff" resultMap="listResult"  >
+		SELECT * FROM game_bbuff
+	</select>
+	
+		<select id="findAllBbuff"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_bbuff  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameBbuffByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_bbuff WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameBbuff" parameterClass="GameBbuffDetail">
+		INSERT INTO game_bbuff(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">artdesc</isNotEmpty>
+		<isNotEmpty prepend="," property="shanghai">shanghai</isNotEmpty>
+		<isNotEmpty prepend="," property="cishu">cishu</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">#artdesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="shanghai">#shanghai#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="cishu">#cishu#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameBbuff" parameterClass="java.util.HashMap">
+		UPDATE game_bbuff SET 
+			name = #name#,
+			artdesc = #artdesc#,
+			shanghai = #shanghai#,
+			type = #type#,
+			time = #time#,
+			cishu = #cishu#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

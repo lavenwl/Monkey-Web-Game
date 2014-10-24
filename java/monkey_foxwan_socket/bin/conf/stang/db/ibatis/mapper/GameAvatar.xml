@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameAvatar">
+	<typeAlias alias="GameAvatarDetail"
+		type="com.stang.game.entity.detail.GameAvatarDetail" />
+
+	<cacheModel id="gameAvatarCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameAvatarDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="avatarName" column="AVATARNAME" />
+		<result property="avatarRes" column="AVATARRES" />
+		<result property="avatarType" column="AVATARTYPE" />
+		<result property="isMarket" column="ISMARKET" />
+		<result property="isBase" column="ISBASE" />
+		<result property="avatarDh" column="AVATARDH" />
+		<result property="sellcoin" column="SELLCOIN" />
+		<result property="selltype" column="SELLTYPE" />
+	</resultMap>
+	
+	<select id="findAllGameAvatar" resultMap="listResult">
+		SELECT * FROM game_avatar
+	</select>
+	
+	<!-- 根据序列组获得游戏装饰信息 -->
+	<select id="findGameAvatarsByIds" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="gameAvatarCache">
+		SELECT * FROM game_avatar
+	</select>
+	
+
+	<!-- 获得所有游戏装饰信息 -->
+	<select id="allGameAvatars" resultMap="listResult"
+		cacheModel="gameAvatarCache">
+		SELECT * FROM game_avatar WHERE FLAG
+		= 1 ORDER BY ID ASC
+	</select>
+
+	
+
+	<select id="getGameAvatarDetail" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="gameAvatarCache">
+		SELECT * FROM game_avatar 
+		WHERE FLAG= 1 
+		<isNotEmpty prepend="AND" property="avatarName">
+			AVATARNAME = #avatarName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarRes">
+			AVATARRES = #avatarRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarType">
+			AVATARTYPE = #avatarType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isMarket">
+			ISMARKET = #isMarket#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isBase">
+			ISBASE = #isBase#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarDh">
+			AVATARDH = #avatarDh#
+		</isNotEmpty>
+	</select>
+</sqlMap>

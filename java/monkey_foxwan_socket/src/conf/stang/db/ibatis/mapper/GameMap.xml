@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMap">
+	<typeAlias alias="GameMapDetail"
+		type="com.stang.game.entity.detail.GameMapDetail" />
+
+	<cacheModel id="gameMapCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameMapDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="desc" column="desc" />
+		<result property="battery" column="battery" />
+		<result property="flag" column="flag" />
+		<result property="getgongxun" column="getgongxun"/>
+		<result property="getexp" column="getexp"/>
+		<result property="getyin" column="getyin"/>
+		<result property="tower" column="tower"/>
+		<result property="dongwu" column="dongwu"/>
+		<result property="zuobiao" column="zuobiao"/>
+	</resultMap>
+
+	<select id="getGameMap" resultClass="GameMapDetail">
+		SELECT * FROM game_map WHERE FLAG =1
+	</select>
+	
+	<select id="findGameMapByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_map WHERE FLAG =1 and id=#id#
+	</select>
+
+</sqlMap>

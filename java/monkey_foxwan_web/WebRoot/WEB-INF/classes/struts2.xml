@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>  
+ <constant name="struts.i18n.encoding" value="UTF-8"/><!-- 指定默认编码 -->
+	
+	<package name="servlet" extends="struts-default">
+		<!-- 配置servlet指向 -->
+   		<action name="Loading" class="apiinterface.AllAction" method="Loading">
+   			<result name="Loading">/Loading</result>
+   		</action>
+   		
+   		<action name="Loadingtohomejsp" class="apiinterface.AllAction" method="Loadingtohomejsp">
+   			<result name="Loadingtohomejsp">/Loadingtohomejsp</result>
+   		</action>
+   		
+   		<action name="Server" class="apiinterface.AllAction" method="Server">
+   			<result name="Server">/Server</result>
+   		</action>
+   		
+   		<action name="IsRoleServlet" class="apiinterface.AllAction" method="IsRoleServlet">
+   			<result name="IsRoleServlet">/IsRoleServlet</result>
+   		</action>
+   		
+   		<action name="QQRedirectURL" class="apiinterface.AllAction" method="QQRedirectURL">
+   			<result name="QQRedirectURL">/QQRedirectURL</result>
+   		</action>
+   		
+   		<action name="GetMoney" class="apiinterface.AllAction" method="GetMoney">
+   			<result name="GetMoney">/GetMoney</result>
+   		</action>
+   		
+   		<action name="Chongzhi" class="apiinterface.AllAction" method="Chongzhi">
+   			<result name="Chongzhi">/Chongzhi</result>
+   		</action>
+   		
+   		<action name="QQOpenApi" class="apiinterface.AllAction" method="QQOpenApi">
+   			<result name="QQOpenApi">/QQOpenApi</result>
+   		</action>
+   		
+   		<action name="HuangzuanApi" class="apiinterface.AllAction" method="HuangzuanApi">
+   			<result name="HuangzuanApi">/HuangzuanApi</result>
+   		</action>
+   		
+   		<action name="Friends" class="apiinterface.AllAction" method="Friends">
+   			<result name="Friends">/Friends</result>
+   		</action>
+   		
+   		<action name="GroupFriends" class="apiinterface.AllAction" method="GroupFriends">
+   			<result name="GroupFriends">/GroupFriends</result>
+   		</action>
+   		
+   		<action name="NewName" class="apiinterface.AllAction" method="NewName">
+   			<result name="NewName">/NewName</result>
+   		</action>
+   		
+   		<action name="share" class="apiinterface.AllAction" method="share">
+   			<result name="share">/share</result>
+   		</action>
+   		
+   		<action name="login" class="apiinterface.AllAction" method="login">
+   			<result name="login">/login</result>
+   		</action>
+   		
+   		<action name="register" class="apiinterface.AllAction" method="register">
+   			<result name="register">/register</result>
+   		</action>
+   		
+   		<action name="access" class="apiinterface.AllAction" method="access">
+   			<result name="access">/access</result>
+   		</action>
+   		
+   		<action name="inv" class="apiinterface.AllAction" method="inv">
+   			<result name="inv">/inv</result>
+   		</action>
+   		
+   		<action name="recharge" class="apiinterface.AllAction" method="recharge">
+   			<result name="recharge">/recharge</result>
+   		</action>
+   		
+   		<action name="consume" class="apiinterface.AllAction" method="consume">
+   			<result name="consume">/consume</result>
+   		</action>
+   		
+   		<action name="quit" class="apiinterface.AllAction" method="quit">
+   			<result name="quit">/quit</result>
+   		</action>
+   		
+   		<action name="report" class="apiinterface.AllAction" method="report">
+   			<result name="report">/report</result>
+   		</action>
+   		
+   		<action name="goods" class="apiinterface.AllAction" method="goods">
+   			<result name="goods">/goods</result>
+   		</action>
+   		
+   		<action name="send" class="apiinterface.AllAction" method="send">
+   			<result name="send">/send</result>
+   		</action>
+   		
+   		<action name="delivery" class="apiinterface.AllAction" method="delivery">
+   			<result name="delivery">/delivery</result>
+   		</action>
+   		
+   		<action name="token" class="apiinterface.AllAction" method="token">
+   			<result name="token">/token</result>
+   		</action>
+   		
+   		<action name="home" class="apiinterface.AllAction" method="home">
+   			<result name="home">/home</result>
+   		</action>
+   		
+   		<action name="goods2" class="apiinterface.AllAction" method="goods2">
+   			<result name="goods2">/goods2</result>
+   		</action>
+   		<action name="Yanzheng" class="apiinterface.AllAction" method="Yanzheng">
+   			<result name="Yanzheng">/Yanzheng</result>
+   		</action>
+   		<action name="TopUp" class="apiinterface.AllAction" method="TopUp">
+   			<result name="TopUp">/TopUp</result>
+   		</action>
+   		
+	</package>
+</struts>

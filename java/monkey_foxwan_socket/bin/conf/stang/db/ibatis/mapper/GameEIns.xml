@@ -1,0 +1,28 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameEIns">
+	<typeAlias alias="GameEInsDetail"
+		type="com.stang.game.entity.detail.GameEInsDetail" />
+
+	<cacheModel id="GameEInsCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameEInsDetail" id="listResult">
+		<result property="level" column="level" />
+		<result property="price" column="price" />
+		
+	</resultMap>
+
+	<select id="getGameEIns" resultClass="GameEInsDetail" >
+		SELECT * FROM game_intensify WHERE FLAG =1
+	</select>
+	
+	<select id="getGameEInsById"  parameterClass="int" resultMap="listResult"
+	resultClass="GameEInsDetail">
+		SELECT * from game_intensify where level=#level#
+	</select>
+	
+	
+
+</sqlMap>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMap">
+	<typeAlias alias="GameMapDetail"
+		type="com.stang.game.entity.detail.GameMapDetail" />
+
+	<cacheModel id="gameTaskCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameMapDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="desc" column="desc" />
+		<result property="battery" column="battery" />
+		<result property="flag" column="flag" />
+		<result property="getgongxun" column="getgongxun"/>
+		<result property="getexp" column="getexp"/>
+		<result property="getyin" column="getyin"/>
+	</resultMap>
+
+	<select id="getGameMap" resultMap="listResult"  cacheModel="gameTaskCache">
+		SELECT * FROM game_map
+	</select>
+	
+		<select id="findAllMap"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_map  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameMapByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_map WHERE id=#id#
+	</select>
+
+	<insert id="insertGameMap" parameterClass="GameMapDetail">
+		INSERT INTO game_map(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="battery">battery</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="getgongxun">getgongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">getexp</isNotEmpty>
+		<isNotEmpty prepend="," property="getyin">getyin</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="battery">#battery#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="getgongxun">#getgongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">#getexp#</isNotEmpty>
+		<isNotEmpty prepend="," property="getyin">#getyin#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+	)
+	</insert>
+	
+
+
+<update id="updateGameMapps" parameterClass="java.util.HashMap">
+		UPDATE game_map SET 
+			name = #name#,
+			battery = #battery#,
+			flag = #flag#,
+			getgongxun = #getgongxun#,
+			getexp = #getexp#,
+			getyin = #getyin#
+		WHERE id =#id#
+	</update>
+
+
+</sqlMap>

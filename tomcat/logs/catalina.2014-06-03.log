@@ -1,0 +1,3 @@
+Jun 3, 2014 11:32:00 AM org.apache.tomcat.util.http.Parameters processParameters
+INFO: Character decoding failed. Parameter [cips] with value [115.226.207.45gCenter","_ac_type":1000,"item_id":3,"ut":1401762336930,"gender":"U","level":60}]80F6%u56CA,%u5929%u8695%u80F6%u56CA,%u9E9D%u9999%u5FC3%u8111%u4E50%u80F6%u56CA,%u767D%u7663%u590F%u5854%u70ED%u80F6%u56CA,%u9664%u969C%u5219%u6D77%u752B%u80F6%u56CA,%u7075%u829D%u5317%u82AA,%u6D88%u6726%u80F6%u56CA,%u7FC1%u6CA5%u901A%u9897%u7C92] has been ignored. Note that the name and value quoted here may be corrupted due to the failed decoding. Use debug level logging to see the original, non-corrupted values.
+org.apache.tomcat.util.buf.UDecoder$DecodeException: isHexDigit

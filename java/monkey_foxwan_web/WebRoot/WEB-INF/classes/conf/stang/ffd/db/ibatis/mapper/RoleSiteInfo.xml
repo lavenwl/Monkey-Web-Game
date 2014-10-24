@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleSiteInfo">
+	<typeAlias alias="RoleSiteInfoDetail" type="com.stang.game.ffd.entity.detail.RoleSiteInfoDetail" />
+
+	<resultMap class="RoleSiteInfoDetail" id="listResult">
+		<result property="role_id" column="ROLE_ID"/>
+		<result property="role_site" column="ROLE_SITE"/>
+		<result property="team_id" column="TEAM_ID"/>
+		<result property="room_type" column="ROOM_TYPE"/>
+		<result property="room_id" column="ROOM_ID"/>
+		<result property="flag" column="FLAG"/>
+		<result property="servive_id" column="SERVIVE_ID"/>
+		<result property="room_area" column="ROOM_AREA"/>
+	</resultMap>
+	<!-- 录入大区信息 -->
+	<insert id="insertRoleSiteInfo" parameterClass="java.util.Map">
+		INSERT INTO ROLE_SITE_INFO (
+			<isNotEmpty prepend="" property="role_id">ROLE_ID</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="role_id">#role_id#</isNotEmpty>
+		)
+	</insert>
+	
+		<insert id="insertRoleSiteInfoDetail" parameterClass="RoleSiteInfoDetail">
+		INSERT INTO ROLE_SITE_INFO (
+			<isNotEmpty prepend="" property="role_id">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="role_site">ROLE_SITE</isNotEmpty>
+			<isNotEmpty prepend="," property="team_id">TEAM_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="room_type">ROOM_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="room_id">ROOM_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="servive_id">SERVIVE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="room_area">ROOM_AREA</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="role_id">#role_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="role_site">#role_site#</isNotEmpty>
+			<isNotEmpty prepend="," property="team_id">#team_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="room_type">#room_type#</isNotEmpty>
+			<isNotEmpty prepend="," property="room_id">#room_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="servive_id">#servive_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="room_area">#room_area#</isNotEmpty>
+		)
+	</insert>
+	
+
+	<!-- 获得信息 -->
+	<select id="getRoleSiteInfoDetail" resultMap="listResult" parameterClass="java.util.Map" >
+		SELECT 
+			ROLE_ID,
+			ROLE_SITE,
+			TEAM_ID,
+			ROOM_TYPE,
+			ROOM_ID,
+			FLAG,
+			SERVIVE_ID,
+			ROOM_AREA  
+		FROM 
+			ROLE_SITE_INFO    
+		WHERE FLAG = 1 	
+    	   <isNotEmpty property="role_id" prepend="AND">
+    	   		ROLE_ID = #role_id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="role_site" prepend="AND">
+    	   		ROLE_SITE = #role_site# 
+    	   	</isNotEmpty>
+    	    <isNotEmpty property="team_id" prepend="AND">
+    	   		TEAM_ID = #team_id# 
+    	   	</isNotEmpty>
+    	   <isNotEmpty property="room_type" prepend="AND">
+    	   		ROOM_TYPE = #room_type# 
+    	   	</isNotEmpty>
+ 	    	<isNotEmpty property="room_id" prepend="AND">
+    	   		ROOM_ID = #room_id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="flag" prepend="AND">
+    	   		FLAG = #flag# 
+    	   	</isNotEmpty>
+    	   	 <isNotEmpty property="servive_id" prepend="AND">
+    	   		SERVIVE_ID = #servive_id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="room_area" prepend="AND">
+    	   		ROOM_AREA = #room_area# 
+ 			</isNotEmpty>
+   			ORDER BY ROOM_AREA DESC
+	</select>
+	
+	<!-- 更新大区信息 -->
+	<update id="updateRoleSiteInfoDetail" parameterClass="RoleSiteInfoDetail">
+		UPDATE ROLE_SITE_INFO SET 
+		<isNotEmpty prepend="" property="role_id">
+			ROLE_ID = #role_id# 
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="role_site">
+			ROLE_SITE = #role_site# 
+		</isNotEmpty>		
+     	<isNotEmpty prepend="," property="team_id">
+			TEAM_ID = #team_id# 
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="room_type">
+			ROOM_TYPE = #room_type# 
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="room_id">
+			ROOM_ID = #room_id# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="servive_id">
+			SERVIVE_ID = #servive_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="room_area">
+			ROOM_AREA = #room_area# 
+		</isNotEmpty>
+		WHERE ROLE_ID = #role_id#
+
+	</update>
+	<delete id="deleteRoleSiteInfoDetail" parameterClass="java.util.Map">
+		DELETE FROM ROLE_SITE_INFO WHERE ROLE_ID = #role_id# 
+	</delete>
+	
+	<delete id="deleteRoleSiteInfoDetailAll">
+		DELETE FROM ROLE_SITE_INFO  
+	</delete>
+</sqlMap>

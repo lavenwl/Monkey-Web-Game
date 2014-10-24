@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBuff">
+	<typeAlias alias="GameBuffDetail"
+		type="com.stang.game.entity.detail.GameBuffDetail" />
+
+	<cacheModel id="gameBuffCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBuffDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="buffDip" column="buffdip" />
+		<result property="type" column="type" />
+		<result property="buffAtktime" column="buffatktime" />
+		<result property="buffKeeptime" column="buffKeeptime" />
+		<result property="atkperson" column="atkperson" />
+		<result property="bufftype" column="bufftype" />
+		<result property="bufftime" column="bufftime" />
+		<result property="flag" column="flag" />
+		<result property="buffobj" column="buffobj" />
+		<result property="speed" column="speed" />
+		<result property="attack" column="attack" />
+		<result property="health" column="health" />
+		<result property="miss" column="miss" />
+		<result property="baoji" column="baoji" />
+	</resultMap>
+
+	<select id="getGameBuff" resultClass="GameBuffDetail" >
+		SELECT * FROM game_buff WHERE FLAG =1
+	</select>
+	
+	<select id="getGameBuffById" parameterClass="int" resultMap="listResult" cacheModel="gameBuffCache">
+		SELECT * FROM game_buff WHERE FLAG =1 AND id=#id#
+	</select>
+	
+</sqlMap>

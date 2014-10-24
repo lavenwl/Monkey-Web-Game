@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="DubiousData">
+	<typeAlias alias="EntityDubiousDataDetail" type="com.stang.game.ffd.entity.detail.EntityDubiousDataDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityDubiousDataDetail" id="listResult">
+		<result property="PRICEMIN" column="PRICEMIN"/>
+		<result property="ITEMTYPE" column="ITEMTYPE"/>
+		<result property="ITEMID" column="ITEMID"/>
+		<result property="PRICEMAX" column="PRICEMAX"/>
+		<result property="ITEMNAME" column="ITEMNAME"/>
+		<result property="FLAG" column="FLAG"/>
+	</resultMap>
+	
+	
+	<!-- 获得信息 -->
+	<select id="findAllDubious" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT 
+			PRICEMIN,
+			ITEMTYPE,
+			ITEMID,
+			PRICEMAX,
+			ITEMNAME,
+			FLAG
+		FROM  
+			DUBIOUSDATA 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="PRICEMIN" prepend="AND" >
+    	   		PRICEMIN = #PRICEMIN#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="ITEMTYPE" prepend="AND">
+    	   		ITEMTYPE = #ITEMTYPE#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="ITEMID" prepend="AND">
+    	   		ITEMID = #ITEMID#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="PRICEMAX" prepend="AND">
+    	   		PRICEMAX = #PRICEMAX#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="ITEMNAME" prepend="AND">
+    	   		ITEMNAME = #ITEMNAME#
+    	   	</isNotEmpty>
+    	 
+	</select>
+	
+	
+	<insert id="addDubiousData" parameterClass="java.util.HashMap">
+		INSERT INTO DUBIOUSDATA(
+		<isNotEmpty prepend="" property="PRICEMIN">PRICEMIN</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMTYPE">ITEMTYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMID">ITEMID</isNotEmpty>
+		<isNotEmpty prepend="," property="PRICEMAX">PRICEMAX</isNotEmpty>
+		<isNotEmpty prepend="," property="FLAG">FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMNAME">ITEMNAME</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="PRICEMIN">#PRICEMIN#</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMTYPE">#ITEMTYPE#</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMID">#ITEMID#</isNotEmpty>
+		<isNotEmpty prepend="," property="PRICEMAX">#PRICEMAX#</isNotEmpty>
+		<isNotEmpty prepend="," property="FLAG">#FLAG#</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMNAME">#ITEMNAME#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateDubiousData" parameterClass="java.util.HashMap">
+		UPDATE DUBIOUSDATA SET 
+		<isNotEmpty prepend="" property="PRICEMIN">PRICEMIN = #PRICEMIN#</isNotEmpty>
+		<isNotEmpty prepend="," property="PRICEMAX">PRICEMAX = #PRICEMAX#</isNotEmpty>
+		<isNotEmpty prepend="," property="FLAG">FLAG = #FLAG#</isNotEmpty>
+		<isNotEmpty prepend="," property="ITEMNAME">ITEMNAME = #ITEMNAME#</isNotEmpty>
+		WHERE ITEMTYPE=#ITEMTYPE# AND ITEMID=#ITEMID#
+	</update>
+</sqlMap>
+		
+		

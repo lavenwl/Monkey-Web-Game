@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameScene">
+	<typeAlias alias="GameSceneDetail" type="com.stang.game.ffd.entity.detail.GameSceneDetail" />
+	
+	<cacheModel id="gameSceneCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameSceneDetail"/>
+		<flushOnExecute statement="updateGameSceneDetail"/>
+	</cacheModel>
+	
+	<resultMap class="GameSceneDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="sceneName" column="SCENE_NAME"/>
+		<result property="sceneRes" column="SCENE_RES"/>
+		<result property="sceneRes2" column="SCENE_RES2"/>
+		<result property="sceneRes3" column="SCENE_RES3"/>
+		<result property="sceneRes4" column="SCENE_RES4"/>
+		<result property="sceneRes5" column="SCENE_RES5"/>
+		<result property="sceneType" column="SCENE_TYPE"/>
+		<result property="sceneLevel" column="SCENE_LEVEL"/>
+		<result property="barrierTypeNum" column="BARRIER_TYPE_NUM"/>
+		<result property="barrierMaxX" column="BARRIER_MAX_X"/>
+		<result property="barrierMinX" column="BARRIER_MIN_X"/>
+		<result property="barrierMaxY" column="BARRIER_MAX_Y"/>
+		<result property="barrierMinY" column="BARRIER_MIN_Y"/>
+		<result property="barrierCreateMin" column="BARRIER_CREATE_MIN"/>
+		<result property="barrierCreateMax" column="BARRIER_CREATE_MAX"/>
+		<result property="buffInfo" column="BUFF_INFO"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="sceneThumb" column="SCENE_THUMB"/>
+		<result property="plainPosion" column="PLAIN_POSITION"/>
+		<result property="sceneGate" column="SCENE_GATE"/>
+		<result property="sceneBalkId" column="SCENE_BALK_ID"/>
+		<result property="sceneTalk" column="SCENE_TALK"/>
+		<result property="sceneMission" column="SCENE_MISSION"/>
+		<result property="sceneDifficult" column="SCENE_DIFFICULT"/>
+		<result property="sceneShow" column="SCENE_SHOW"/>
+		<result property="sceneGroup" column="SCENE_GROUP"/>
+		<result property="sceneDesc" column="SCENE_DESC"/>
+		<result property="sceneBarrier" column="SCENE_BARRIER"/>
+		<result property="sceneHot" column="SCENE_HOT"/>
+		
+		
+		
+	</resultMap>
+	
+	<insert id="insertGameSceneDetail" parameterClass="GameSceneDetail">
+		INSERT INTO GAME_SCENE (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneName">SCENE_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes">SCENE_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes2">SCENE_RES2</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes3">SCENE_RES3</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes4">SCENE_RES4</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes5">SCENE_RES5</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneType">SCENE_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneLevel">SCENE_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierTypeNum">BARRIER_TYPE_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMaxX">BARRIER_MAX_X</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMinX">BARRIER_MIN_X</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMaxY">BARRIER_MAX_Y</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMinY">BARRIER_MIN_Y</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierCreateMin">BARRIER_CREATE_MIN</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierCreateMax">BARRIER_CREATE_MAX</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneThumb">SCENE_THUMB</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneBalkId">SCENE_BALK_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneTalk">SCENE_TALK</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneMission">SCENE_MISSION</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneDifficult">SCENE_DIFFICULT</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneShow">SCENE_SHOW</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneGroup">SCENE_GROUP</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneDesc">SCENE_DESC</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneBarrier">SCENE_BARRIER</isNotEmpty>
+  			<isNotEmpty prepend="," property="sceneHot">SCENE_HOT</isNotEmpty>
+
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneName">#sceneName#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes">#sceneRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes2">#sceneRes2#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes3">#sceneRes3#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes4">#sceneRes4#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneRes5">#sceneRes5#</isNotEmpty>			
+			<isNotEmpty prepend="," property="sceneType">#sceneType#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneLevel">#sceneLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierTypeNum">#barrierTypeNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMaxX">#barrierMaxX#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMinX">#barrierMinX#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMaxY">#barrierMaxY#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierMinY">#barrierMinY#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierCreateMin">#barrierCreateMin#</isNotEmpty>
+			<isNotEmpty prepend="," property="barrierCreateMax">#barrierCreateMax#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneThumb">#sceneThumb#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneBalkId">#sceneBalkId#</isNotEmpty>     
+			<isNotEmpty prepend="," property="sceneTalk">#sceneTalk#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneMission">#sceneMission#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneDifficult">#sceneDifficult#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneShow">#sceneShow#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneGroup">#sceneGroup#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneDesc">#sceneDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneBarrier">#sceneBarrier#</isNotEmpty>
+			<isNotEmpty prepend="," property="sceneHot">#sceneHot#</isNotEmpty>
+			)			
+	</insert>
+	
+	<update id="updateGameSceneDetail" parameterClass="GameSceneDetail">
+		UPDATE GAME_SCENE SET 
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneName">
+			SCENE_NAME = #sceneName# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneRes">
+			SCENE_RES = #sceneRes# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneRes2">
+			SCENE_RES2 = #sceneRes2# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneRes3">
+			SCENE_RES3 = #sceneRes3# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneRes4">
+			SCENE_RES4 = #sceneRes4# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneRes5">
+			SCENE_RES5 = #sceneRes5# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneType">
+			SCENE_TYPE = #sceneType# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneLevel">
+			SCENE_LEVEL = #sceneLevel# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierTypeNum">
+			BARRIER_TYPE_NUM = #barrierTypeNum# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierMaxX">
+			BARRIER_MAX_X = #barrierMaxX# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierMinX">
+			BARRIER_MIN_X = #barrierMinX# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierMaxY">
+			BARRIER_MAX_Y = #barrierMaxY# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierMinY">
+			BARRIER_MIN_Y = #barrierMinY# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierCreateMin">
+			BARRIER_CREATE_MIN = #barrierCreateMin# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="barrierCreateMax">
+			BARRIER_CREATE_MAX = #barrierCreateMax# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneThumb">
+			SCENE_THUMB = #sceneThumb# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneBalkId">
+    		SCENE_BALK_ID = #sceneBalkId# 
+    	</isNotEmpty>
+    	<isNotEmpty prepend="," property="sceneTalk">
+    		SCENE_TALK = #sceneTalk# 
+    	</isNotEmpty>
+    	<isNotEmpty prepend="," property="sceneMission">
+    		SCENE_MISSION = #sceneMission# 
+    	</isNotEmpty>
+		<isNotEmpty prepend="," property="sceneDifficult">
+    		SCENE_DIFFICULT = #sceneDifficult# 
+    	</isNotEmpty>    	
+    	<isNotEmpty prepend="," property="sceneShow">
+    		SCENE_SHOW = #sceneShow# 
+    	</isNotEmpty>
+    	<isNotEmpty prepend="," property="sceneGroup">
+    		SCENE_GROUP = #sceneGroup# 
+    	</isNotEmpty>        
+    	<isNotEmpty prepend="," property="sceneDesc">
+    		SCENE_DESC = #sceneDesc# 
+    	</isNotEmpty>      
+    	<isNotEmpty prepend="," property="sceneBarrier">
+    		SCENE_BARRIER = #sceneBarrier# 
+    	</isNotEmpty>
+    	<isNotEmpty prepend="," property="sceneHot">
+    		SCENE_HOT = #sceneHot# 
+    	</isNotEmpty>          
+		WHERE ID = #id#
+		</update>
+		
+		<select id="GameScene" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameSceneCache">
+		SELECT 
+			ID,
+			SCENE_NAME,
+			SCENE_RES,
+			SCENE_RES2,
+			SCENE_RES3,
+			SCENE_RES4,
+			SCENE_RES5,
+			SCENE_TYPE,
+			SCENE_LEVEL,
+			BARRIER_TYPE_NUM,
+			BARRIER_MAX_X,
+			BARRIER_MIN_X,
+			BARRIER_MAX_Y,
+			BARRIER_MIN_Y,
+			BUFF_INFO,
+			SCENE_GATE,
+			BARRIER_CREATE_MIN,
+			BARRIER_CREATE_MAX,
+			PLAIN_POSITION,
+			CREATE_TIME,
+			FLAG,
+			SCENE_THUMB,
+			SCENE_BALK_ID, 
+			SCENE_TALK,
+			SCENE_MISSION,
+			SCENE_DIFFICULT,
+			SCENE_SHOW,
+			SCENE_GROUP,
+			SCENE_DESC,
+			SCENE_BARRIER,
+			SCENE_HOT
+		FROM 
+			GAME_SCENE
+		WHERE  
+			FLAG = 1  
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sceneName" prepend="AND">
+    	   		SCENE_NAME = #sceneName# 
+    	   	</isNotEmpty>  
+    	   	<isNotEmpty property="sceneRes" prepend="AND">
+    	   		SCENE_RES = #sceneRes# 
+    	   	</isNotEmpty>
+    	   <isNotEmpty property="sceneRes2" prepend="AND">
+    	   		SCENE_RES2 = #sceneRes2# 
+    	   	</isNotEmpty>
+    	   <isNotEmpty property="sceneRes3" prepend="AND">
+    	   		SCENE_RES3 = #sceneRes3# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sceneRes4" prepend="AND">
+    	   		SCENE_RES4 = #sceneRes4# 
+    	   	</isNotEmpty>
+    	   <isNotEmpty property="sceneRes5" prepend="AND">
+    	   		SCENE_RES5 = #sceneRes5# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sceneType" prepend="AND">
+    	   		SCENE_TYPE = #sceneType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sceneLevel" prepend="AND">
+    	   		SCENE_LEVEL <![CDATA[<=]]> #sceneLevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierTypeNum" prepend="AND">
+    	   		BARRIER_TYPE_NUM = #barrierTypeNum# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierMaxX" prepend="AND">
+    	   		BARRIER_MAX_X = #barrierMaxX# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierMinX" prepend="AND">
+    	   		BARRIER_MIN_X = #barrierMinX# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierMaxY" prepend="AND">
+    	   		BARRIER_MAX_Y = #barrierMaxY# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierMinY" prepend="AND">
+    	   		BARRIER_MIN_Y = #barrierMinY# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierCreateMin" prepend="AND">
+    	   		BARRIER_CREATE_MIN = #barrierCreateMin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="barrierCreateMax" prepend="AND">
+    	   		BARRIER_CREATE_MAX = #barrierCreateMax# 
+    	   	</isNotEmpty>   	
+    	   	<isNotEmpty property="sceneThumb" prepend="AND">
+    	   		SCENE_THUMB = #sceneThumb# 
+    	   		
+    	   	</isNotEmpty>     
+    	   	<isNotEmpty property="sceneBalkId" prepend="AND">
+    	   		SCENE_BALK_ID = #sceneBalkId# 
+    	   	</isNotEmpty>     
+    	   	<isNotEmpty property="sceneTalk" prepend="AND">
+    	   		SCENE_TALK = #sceneTalk# 
+    	   	</isNotEmpty>
+     	   	<isNotEmpty property="sceneMission" prepend="AND">
+    	   		SCENE_MISSION = #sceneMission# 
+    	   	</isNotEmpty>  
+     	   	<isNotEmpty property="sceneDifficult" prepend="AND">
+    	   		SCENE_DIFFICULT = #sceneDifficult# 
+    	   	</isNotEmpty>  
+    	   <isNotEmpty property="sceneShow" prepend="AND">
+    	   		SCENE_SHOW = #sceneShow# 
+    	   	</isNotEmpty>  
+    	   <isNotEmpty property="sceneGroup" prepend="AND">
+    	   		SCENE_GROUP = #sceneGroup# 
+    	   	</isNotEmpty>  
+    	   <isNotEmpty property="sceneDesc" prepend="AND">
+    	   		SCENE_DESC = #sceneDesc# 
+    	   	</isNotEmpty>    
+    	   <isNotEmpty property="sceneBarrier" prepend="AND">
+    	   		SCENE_BARRIER = #sceneBarrier# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sceneHot" prepend="AND">
+    	   		SCENE_HOT = #sceneHot# 
+    	   	</isNotEmpty>    
+		</select>
+	
+</sqlMap>
+	
+	

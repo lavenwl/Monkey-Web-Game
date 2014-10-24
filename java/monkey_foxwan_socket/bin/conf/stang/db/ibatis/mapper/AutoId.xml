@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="AutoId">
+	<typeAlias alias="AutoIdDetail"
+		type="com.stang.game.entity.detail.AutoIdDetail" />
+
+	<!-- cacheModel id="autoIdCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertAutoIdDetail"/>
+		<flushOnExecute statement="updateAutoIdDetail"/>
+		<flushOnExecute statement="updateKeyValueByTableName"/>
+		<flushOnExecute statement="updateKeyValueAddOneByTableName"/>
+		</cacheModel-->
+
+	<resultMap class="AutoIdDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="tableName" column="TABLENAME" />
+		<result property="keyName" column="KEYNAME" />
+		<result property="keyValue" column="KEYVALUE" />
+		<result property="createTime" column="CREATETIME" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+	
+	
+	<select id="findAllAutoId" resultMap="listResult">
+		SELECT * FROM auto_id
+	</select>
+	
+	
+	
+
+	<!-- 录入自动化主键信息 -->
+	<insert id="insertAutoIdDetail" parameterClass="AutoIdDetail">
+		INSERT INTO auto_id (
+		<isNotEmpty prepend="" property="tableName">
+			TABLENAME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">KEYNAME</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			KEYVALUE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATETIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="tableName">
+			#tableName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">
+			#keyName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			#keyValue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+
+	<!-- 更新自动化主键信息 -->
+	<update id="updateAutoIdDetail" parameterClass="AutoIdDetail">
+		UPDATE auto_id SET
+		<isNotEmpty prepend="" property="tableName">
+			TABLENAME = #tableName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">
+			KEYNAME = #keyName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			KEYVALUE = #keyValue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATETIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	
+	<!-- 获得信息 -->
+	<select id="getAutoIdDetail" resultMap="listResult"
+		parameterClass="java.util.Map">
+		SELECT ID, TABLENAME, KEYNAME, KEYVALUE, CREATETIME, FLAG FROM
+		auto_id WHERE FLAG = 1
+		<isNotEmpty property="id" prepend="AND">ID = #id#</isNotEmpty>
+		<isNotEmpty property="tableName" prepend="AND">
+			TABLE_NAME = #tableName#
+		</isNotEmpty>
+	</select>
+
+	<!-- 根据表名查询该表当前的主键值 -->
+	<select id="fingKeyValueByTableName"
+		parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		SELECT KEYVALUE FROM auto_id WHERE TABLENAME = #tableName#
+	</select>
+
+	<!-- 根据表名更新主键值(自动加1) -->
+	<update id="updateKeyValueAddOneByTableName"
+		parameterClass="java.util.Map">
+		UPDATE auto_id SET KEYVALUE = KEYVALUE + 1 WHERE TABLENAME =
+		#tableName#
+	</update>
+
+	<update id="updateKeyValueByTableName"
+		parameterClass="java.util.Map">
+		UPDATE auto_id SET KEYVALUE = #keyValue# WHERE TABLENAME =
+		#tableName#
+	</update>
+	
+	<update id="updateByTableName"
+		parameterClass="java.util.Map">
+		UPDATE auto_id SET KEYVALUE = KEYVALUE+55 WHERE TABLENAME =
+		#tableName#
+	</update>
+
+
+<update id="updateAutoIdGamechart" parameterClass="int">
+		UPDATE auto_id SET
+		KeyValue="0"
+		WHERE ID = #id#
+	</update>
+	
+	
+	
+	
+	<update id="updateAutoId" parameterClass="AutoIdDetail">
+		UPDATE auto_id SET
+		<isNotEmpty prepend="" property="tableName">
+			TABLENAME = #tableName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">
+			KEYNAME = #keyName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			KEYVALUE = #keyValue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATETIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<insert id="insertAutoId" parameterClass="AutoIdDetail">
+		INSERT INTO auto_id (
+		<isNotEmpty prepend="" property="tableName">
+			TABLENAME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">KEYNAME</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			KEYVALUE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATETIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="tableName">
+			#tableName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyName">
+			#keyName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyValue">
+			#keyValue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	
+</sqlMap>

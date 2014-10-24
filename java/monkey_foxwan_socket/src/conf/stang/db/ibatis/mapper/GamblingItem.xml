@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamblingItem">
+	<typeAlias alias="GamblingItemDetail"
+		type="com.stang.game.entity.detail.GamblingItemDetail" />
+	<cacheModel id="GamblingItemCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+	<resultMap class="GamblingItemDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="mId" column="MID" />
+		<result property="typeId" column="TYPEID" />
+		<result property="cost" column="COST" />
+		<result property="isRare" column="IS_RARE" />
+		<result property="rareNum" column="RARE_NUM" />
+		<result property="rareNumNow" column="RARE_NUM_NOW" />
+		<result property="flag" column="FLAG" />
+		<result property="isShow" column="IS_SHOW" />
+		<result property="type" column="TYPE" />
+	</resultMap>
+	
+	
+	<insert id="insertGamblingItem" parameterClass="GamblingItemDetail">
+		INSERT INTO member (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">mId</isNotEmpty>
+		<isNotEmpty prepend="," property="typeId">typeId</isNotEmpty>
+		<isNotEmpty prepend="," property="cost">cost</isNotEmpty>
+		<isNotEmpty prepend="," property="isRare">isRare</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNum">rareNum</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNumNow">rareNumNow</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="isShow">isShow</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">#mId#</isNotEmpty>
+		<isNotEmpty prepend="," property="typeId">#typeId#</isNotEmpty>
+		<isNotEmpty prepend="," property="cost">#cost#</isNotEmpty>
+		<isNotEmpty prepend="," property="isRare">#isRare#</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNum">#rareNum#</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNumNow">#rareNumNow#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="isShow">#isShow#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateGamblingItem" parameterClass="GamblingItemDetail">
+		UPDATE gambling_item SET
+		<isNotEmpty prepend="" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">MID = #mId#</isNotEmpty>
+		<isNotEmpty prepend="," property="typeId">TYPEID = #typeId#</isNotEmpty>
+		<isNotEmpty prepend="," property="cost">COST = #cost#</isNotEmpty>
+		<isNotEmpty prepend="," property="isRare">IS_RARE = #isRare#</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNum">RARE_NUM = #rareNum#</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNumNow">RARE_NUM_NOW = #rareNumNow#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG = #flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="isShow">IS_SHOW=#isShow#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">TYPE=#type#</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	
+	<update id="updateGamblingItemByParam" parameterClass="java.util.HashMap">
+		UPDATE gambling_item SET
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mId">
+			MID = #mId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="cost">
+			COST = #cost#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isRare">
+			IS_RARE = #isRare#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNum">
+			RARE_NUM = #rareNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rareNumNow">
+			RARE_NUM_NOW = #rareNumNow#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isShow">
+			IS_SHOW=#isShow#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<select id="findAllGamblingItem" resultMap="listResult">
+		SELECT * FROM gambling_item WHERE FLAG = 1
+	</select>
+	
+
+	<select id="getGamblingItem" parameterClass="java.util.Map"
+		resultMap="listResult" cacheModel="GamblingItemCache">
+		SELECT * FROM gambling_item WHERE FLAG = 1
+		<isNotEmpty prepend="AND" property="id">ID =#id#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mId">
+			MID = #mId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="typeId">
+			TYPEID = #typeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="cost">
+			COST = #cost#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isRare">
+			IS_RARE = #isRare#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="rareNum">
+			RARE_NUM = #rareNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="rareNumNow">
+			RARE_NUM_NOW = #rareNumNow#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isShow">
+			IS_SHOW=#isShow#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getGamblingItemBytype" 
+		resultMap="listResult" cacheModel="GamblingItemCache">
+		SELECT * FROM gambling_item WHERE FLAG = 1 and TYPE = #type#
+	</select>
+	
+	<select id="getGamblingItemBymid" 
+		resultMap="listResult" cacheModel="GamblingItemCache">
+		SELECT * FROM gambling_item WHERE FLAG = 1 and mId = #mId#
+	</select>
+	
+	<select id="getGamblingItemByparam" parameterClass="java.util.Map"
+		resultMap="listResult" >
+		SELECT * FROM gambling_item WHERE FLAG = 1
+		<isNotEmpty prepend="AND" property="mId">
+			mId=#mId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type=#type#
+		</isNotEmpty>
+	</select>
+
+
+</sqlMap>

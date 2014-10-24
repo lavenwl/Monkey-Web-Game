@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleIns">
+	<typeAlias alias="RoleInsDetail" type="com.stang.game.entity.detail.RoleInsDetail" />
+
+	<cacheModel id="roleRoleInsCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleIns" />
+	    <flushOnExecute statement="insertRoleInsRat" />
+		<flushOnExecute statement="updateIns" />
+	</cacheModel>
+
+	<resultMap class="RoleInsDetail" id="listResult">
+		<result property="roleId" column="roleId" />
+		<result property="intensifytime" column="intensifytime" />
+		<result property="intensify" column="intensify" />
+	    <result property="successtime" column="successtime" />
+	</resultMap>
+	
+	<select id="findAlloleIns" resultMap="listResult">
+		SELECT * FROM role_intensify
+	</select>  
+	
+	
+
+	<!-- 录入intensifytime信息 -->
+	<insert id="insertRoleIns" parameterClass="RoleInsDetail">
+		INSERT INTO role_intensify(
+		<isNotEmpty prepend="" property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="intensifytime">intensifytime</isNotEmpty>
+		<isNotEmpty prepend="," property="successtime">successtime</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="intensifytime">#intensifytime#</isNotEmpty>
+		<isNotEmpty prepend="," property="successtime">#successtime#</isNotEmpty>
+        )
+	</insert>
+	
+		<!-- 录入successtime信息 -->
+	<insert id="insertRoleInsRat" parameterClass="RoleInsDetail">
+		INSERT INTO role_intensify(
+		<isNotEmpty prepend="" property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="successtime">successtime</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="successtime">#successtime#</isNotEmpty>
+        )
+	</insert>
+
+	<!-- 更新信息 -->
+	<update id="updateIns" parameterClass="java.util.HashMap">
+		UPDATE role_intensify SET
+		<isNotEmpty prepend="" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="intensifytime">
+			intensifytime =
+			#intensifytime#
+		</isNotEmpty>
+		<!-- 强化时间 -->
+		<isNotEmpty prepend="," property="intensify">
+			intensify = #intensify#
+		</isNotEmpty>
+		WHERE roleId = #roleId#
+	</update>
+
+	<select id="getRoleInsDetail" parameterClass="int"
+		resultMap="listResult">
+		SELECT * FROM role_intensify WHERE
+		roleId = #roleId#
+		<isNotEmpty prepend="AND" property="intensifytime">
+			intensifytime =#intensifytime#
+		</isNotEmpty>
+   </select>
+
+	<select id="getRoleIns" resultMap="listResult">
+		SELECT * FROM
+		role_intensify WHERE roleId = #roleId#
+	</select>
+	
+	
+	
+	<update id="updateRoleIns" parameterClass="RoleInsDetail">
+		UPDATE role_intensify SET
+		<isNotEmpty prepend="" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="intensifytime">
+			intensifytime =
+			#intensifytime#
+		</isNotEmpty>
+		<!-- 强化时间 -->
+		<isNotEmpty prepend="," property="intensify">
+			intensify = #intensify#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="successtime">
+			successtime = #successtime#
+		</isNotEmpty>
+		WHERE roleId = #roleId#
+	</update>
+	
+</sqlMap>

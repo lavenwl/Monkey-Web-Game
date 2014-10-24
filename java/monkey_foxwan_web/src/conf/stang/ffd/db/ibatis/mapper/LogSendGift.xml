@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="LogSendGiftDetail">
+	<typeAlias alias="LogSendGiftDetail"
+		type="com.stang.game.ffd.entity.detail.LogSendGiftDetail" />
+	<cacheModel id="LogSendGiftCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="updateLogSendGiftDetail" />
+		<flushOnExecute statement="insertLogSendGiftDetail" />
+		<flushOnExecute statement="deleteLogSendGiftDetail" />
+	</cacheModel>
+	<resultMap class="LogSendGiftDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="attachsContent" column="ATTACHS_CONTENT" />
+		<result property="opTime" column="OP_TIME" />
+		<result property="names" column="NAMES" />
+		<result property="uid" column="UID" />
+		<result property="uname" column="UNAME" />
+		<result property="isSuccess" column="IS_SUCCESS" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	<select id="getLogSendGiftDetailCount" resultClass="int">
+		SELECT COUNT(ID)FROM LOG_SENDGIFT
+	</select>
+	<select id="getLogSendGiftDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="LogSendGiftCache">
+		SELECT 
+			ID,
+			TITLE,
+			CONTENT,
+			NAMES,
+			ATTACHS_CONTENT,
+			OP_TIME,
+			UID,
+			UNAME,
+			IS_SUCCESS,
+			FLAG
+			FROM LOG_SENDGIFT WHERE
+			FLAG = 1
+			ORDER BY OP_TIME DESC
+			<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+		</isNotEmpty>
+
+
+			
+	</select>
+
+	<update id="updateLogSendGiftDetail"
+		parameterClass="java.util.Map">
+		UPDATE LOG_SENDGIFT SET
+		<isNotEmpty prepend="" property="isSuccess">
+			IS_SUCCESS = #isSuccess#
+		</isNotEmpty>
+			WHERE
+		<isNotEmpty prepend="" property="title">
+			TITLE = #title#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="attachsContent">
+			ATTACHS_CONTENT = #attachsContent#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="opTime">
+			FROM_UNIXTIME(#opTime#)
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="names">
+			NAMES = #names#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uid">
+			UID = #uid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uname">
+			UNAME = #uname#
+		</isNotEmpty>
+	</update>
+
+	<insert id="insertLogSendGiftDetail"
+		parameterClass="java.util.Map">
+		INSERT INTO LOG_SENDGIFT (
+		<isNotEmpty prepend="" property="title">TITLE</isNotEmpty>
+		<isNotEmpty prepend="," property="content">CONTENT</isNotEmpty>
+		<isNotEmpty prepend="," property="attachsContent">
+			ATTACHS_CONTENT
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">OP_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="names">NAMES</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">UID</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">UNAME</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">
+			IS_SUCCESS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="title">#title#</isNotEmpty>
+		<isNotEmpty prepend="," property="content">
+			#content#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="attachsContent">
+			#attachsContent#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">
+			FROM_UNIXTIME(#opTime#)
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="names">#names#</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">#uid#</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">#uname#</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">
+			#isSuccess#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	<delete id="deleteLogSendGiftDetail"
+		parameterClass="java.util.Map">
+		DELETE FROM LOG_SENDGIFT WHERE
+		<isNotEmpty prepend="" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="title">
+			TITLE = #title#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="attachsContent">
+			ATTACHS_CONTENT = #attachsContent#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="opTime">
+			OP_TIME = #opTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="names">
+			NAMES = #names#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uid">
+			UID = #uid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uname">
+			UNAME = #uname#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isSuccess">
+			IS_SUCCESS = #isSuccess#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+	</delete>
+</sqlMap>

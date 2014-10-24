@@ -1,0 +1,45 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameVip">
+	<typeAlias alias="GameVipDetail"
+		type="com.stang.game.entity.detail.GameVipDetail" />
+
+	<cacheModel id="GameVipCache" type="OSCACHE">
+		<flushInterval hours="10" />
+	</cacheModel>
+
+	<resultMap class="GameVipDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="vipLevel" column="vipLevel" />
+		<result property="vipRmb" column="vipRmb" />
+		<result property="militaryTop" column="militaryTop" />
+		<result property="junlingTop" column="junlingTop" />
+		<result property="backTop" column="backTop" />
+		<result property="challengTop" column="challengTop" />
+		<result property="trainTop" column="trainTop" />
+		<result property="qiangzhengTop" column="qiangzhengTop" />
+		<result property="dhjlTop" column="dhjlTop" />
+		<result property="zjxxTop" column="zjxxTop" />
+		<result property="gjxxTop" column="gjxxTop" />
+		<result property="djzmTop" column="djzmTop" />
+		<result property="vipsli" column="vipsli" />
+		<result property="zjxlTop" column="zjxlTop" />
+		<result property="flag" column="flag" />
+		<result property="yptop" column="yptop"/>
+		<result property="zhuxianTop" column="zhuxianTop"/>
+		<result property="hour" column="hour"/>
+		<result property="missionTop" column="missionTop"/>
+	</resultMap>
+
+	<select id="allGameVips" resultClass="GameVipDetail">
+		SELECT * FROM game_vip WHERE FLAG =1
+	</select>
+	
+	<select id="getGameVipByLe" resultClass="GameVipDetail" cacheModel="GameVipCache">
+		SELECT * FROM game_vip WHERE FLAG =1 and vipLevel=#vipLevel#
+	</select>
+	
+	<select id="getGameVipByAllvipRmb" resultClass="GameVipDetail">
+		SELECT * FROM game_vip WHERE vipRmb>#vipRmb# order by vipRmb limit 1
+	</select>
+</sqlMap>

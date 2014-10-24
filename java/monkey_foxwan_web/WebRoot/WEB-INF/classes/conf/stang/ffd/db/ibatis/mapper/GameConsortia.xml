@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameConsortia">
+	<typeAlias alias="EntityGameConsortiaDetail" type="com.stang.game.ffd.entity.detail.EntityGameConsortiaDetail" />
+	
+	<cacheModel id="gameConsortiaCache" type="OSCACHE">
+		<!-- <flushInterval hours="24" /> -->
+		<flushOnExecute statement="insertGameConsortiaDetail"/>
+		<flushOnExecute statement="updateGameConsortiaDetail"/>
+		<flushOnExecute statement="setChairmanById"/>
+		<flushOnExecute statement="setViceChairman1IsNullById"/>
+		<flushOnExecute statement="setViceChairman2IsNullById"/>
+		<flushOnExecute statement="addCoinToGameConsortia"/>
+		<flushOnExecute statement="addExpToGameConsortia"/>
+		<flushOnExecute statement="deleteGameConsortiaDetailById"/>
+	</cacheModel>
+	
+	<cacheModel id="topGameConsortiaCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+	
+	<resultMap class="EntityGameConsortiaDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="consortiaName" column="CONSORTIA_NAME"/>
+		<result property="consortiaBulletin" column="CONSORTIA_BULLETIN"/>
+		<result property="consortiaDesc" column="CONSORTIA_DESC"/>
+		<result property="consortiaLevel" column="CONSORTIA_LEVEL"/>
+		<result property="consortiaExp" column="CONSORTIA_EXP"/>
+		<result property="consortiaCoin" column="CONSORTIA_COIN"/>
+		
+		<result property="roleMaxSize" column="ROLE_MAX_SIZE"/>
+		<result property="chairmanId" column="CHAIRMAN_ID"/>
+		<result property="viceChairman1Id" column="VICE_CHAIRMAN1_ID"/>
+		<result property="viceChairman2Id" column="VICE_CHAIRMAN2_ID"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="serverId" column="SERVER_ID"/>
+	</resultMap>
+	
+	<resultMap class="EntityGameConsortiaDetail" id="toplistResult">
+		<result property="id" column="ID"/>
+		<result property="consortiaName" column="CONSORTIA_NAME"/>
+		<result property="consortiaLevel" column="CONSORTIA_LEVEL"/>
+		<result property="consortiaCoin" column="CONSORTIA_COIN"/>
+		<result property="chairmanId" column="CHAIRMAN_ID"/>
+		<result property="consortiaExp" column="CONSORTIA_EXP"/>
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertGameConsortiaDetail" parameterClass="EntityGameConsortiaDetail">
+		INSERT INTO GAME_CONSORTIA (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaName">CONSORTIA_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaBulletin">CONSORTIA_BULLETIN</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaDesc">CONSORTIA_DESC</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaLevel">CONSORTIA_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaExp">CONSORTIA_EXP</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaCoin">CONSORTIA_COIN</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="roleMaxSize">ROLE_MAX_SIZE</isNotEmpty>
+			<isNotEmpty prepend="," property="chairmanId">CHAIRMAN_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="viceChairman1Id">VICE_CHAIRMAN1_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="viceChairman2Id">VICE_CHAIRMAN2_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">SERVER_ID</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaName">#consortiaName#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaBulletin">#consortiaBulletin#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaDesc">#consortiaDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaLevel">#consortiaLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaExp">#consortiaExp#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaCoin">#consortiaCoin#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="roleMaxSize">#roleMaxSize#</isNotEmpty>
+			<isNotEmpty prepend="," property="chairmanId">#chairmanId#</isNotEmpty>
+			<isNotEmpty prepend="," property="viceChairman1Id">#viceChairman1Id#</isNotEmpty>
+			<isNotEmpty prepend="," property="viceChairman2Id">#viceChairman2Id#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新公会信息 -->
+	<update id="updateGameConsortiaDetail" parameterClass="EntityGameConsortiaDetail">
+		UPDATE GAME_CONSORTIA SET 
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaName">
+			CONSORTIA_NAME = #consortiaName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaBulletin">
+			CONSORTIA_BULLETIN = #consortiaBulletin#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaDesc">
+			CONSORTIA_DESC = #consortiaDesc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaLevel">
+			CONSORTIA_LEVEL = #consortiaLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaExp">
+			CONSORTIA_EXP = #consortiaExp# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaCoin">
+			CONSORTIA_COIN = #consortiaCoin# 
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="roleMaxSize">
+			ROLE_MAX_SIZE = #roleMaxSize# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chairmanId">
+			CHAIRMAN_ID = #chairmanId# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="viceChairman1Id">
+			VICE_CHAIRMAN1_ID = #viceChairman1Id# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="viceChairman2Id">
+			VICE_CHAIRMAN2_ID = #viceChairman2Id# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			SERVER_ID = #serverId#  
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 设置会长职位 -->
+	<update id="setChairmanById" parameterClass="java.util.Map">
+		UPDATE GAME_CONSORTIA SET CHAIRMAN_ID = #chairmanId# WHERE ID = #id#
+	</update>
+	
+	<!-- 设置第一副会长职位为null -->
+	<update id="setViceChairman1IsNullById" parameterClass="java.util.Map">
+		UPDATE GAME_CONSORTIA SET VICE_CHAIRMAN1_ID = NULL WHERE ID = #id#
+	</update>
+	
+	<!-- 设置第二副会长职位为null -->
+	<update id="setViceChairman2IsNullById" parameterClass="java.util.Map">
+		UPDATE GAME_CONSORTIA SET VICE_CHAIRMAN2_ID = NULL WHERE ID = #id#
+	</update>
+	
+	<!-- 向公会捐赠金币 -->
+	<update id="addCoinToGameConsortia" parameterClass="java.util.Map">
+		UPDATE GAME_CONSORTIA SET CONSORTIA_COIN = CONSORTIA_COIN + #consortiaCoin# WHERE ID = #id#
+	</update>
+	
+	<!-- 增加公会经验值 -->
+	<update id="addExpToGameConsortia" parameterClass="java.util.Map">
+		UPDATE GAME_CONSORTIA SET CONSORTIA_EXP = CONSORTIA_EXP + #consortiaExp#  WHERE ID = #id#
+	</update>
+		
+	<!-- 得到公会详细信息 -->
+	<select id="getGameConsortiaDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="gameConsortiaCache">
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_BULLETIN,
+			CONSORTIA_DESC,
+			CONSORTIA_LEVEL,
+			CONSORTIA_EXP,
+			CONSORTIA_COIN,
+			ROLE_MAX_SIZE,
+			CHAIRMAN_ID,
+			VICE_CHAIRMAN1_ID,
+			VICE_CHAIRMAN2_ID,
+			CREATE_TIME,
+			FLAG,
+			SERVER_ID 
+		FROM 
+			GAME_CONSORTIA
+		
+		WHERE 
+			FLAG = 1 AND 
+			ID = #id#
+	</select>
+	
+	<!-- 列表显示公会信息 -->
+	<select id="listGameConsortiaDetail" parameterClass="java.util.Map" resultMap="listResult" >
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_BULLETIN,
+			CONSORTIA_DESC,
+			CONSORTIA_LEVEL,
+			CONSORTIA_EXP,
+			CONSORTIA_COIN,
+			ROLE_MAX_SIZE,
+			CHAIRMAN_ID,
+			VICE_CHAIRMAN1_ID,
+			VICE_CHAIRMAN2_ID,
+			CREATE_TIME,
+			FLAG,
+			SERVER_ID 
+		FROM 
+			GAME_CONSORTIA
+		
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaName" prepend="AND">
+    	   		CONSORTIA_NAME = #consortiaName# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaBulletin" prepend="AND">
+    	   		CONSORTIA_BULLETIN = #consortiaBulletin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaDesc" prepend="AND">
+    	   		CONSORTIA_DESC = #consortiaDesc# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaLevel" prepend="AND">
+    	   		CONSORTIA_LEVEL = #consortiaLevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaExp" prepend="AND">
+    	   		CONSORTIA_EXP = #consortiaExp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaCoin" prepend="AND">
+    	   		CONSORTIA_COIN = #consortiaCoin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="roleMaxSize" prepend="AND">
+    	   		ROLE_MAX_SIZE = #roleMaxSize# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="chairmanId" prepend="AND">
+    	   		CHAIRMAN_ID = #chairmanId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="viceChairman1Id" prepend="AND">
+    	   		VICE_CHAIRMAN1_ID = #viceChairman1Id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="viceChairman2Id" prepend="AND">
+    	   		VICE_CHAIRMAN2_ID = #viceChairman2Id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="serverId" prepend="AND">
+    	   		SERVER_ID = #serverId# 
+    	   	</isNotEmpty>
+    	   	 ORDER BY CONSORTIA_COIN DESC
+    	   	<isNotEmpty property="limit1" prepend="limit">
+    		  #limit1#,#limit2#
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 根据服务器序号查询所有游戏公会信息 -->
+	<select id="findGameConsortiaDetailByServerId" parameterClass="java.util.Map" resultMap="listResult" cacheModel="gameConsortiaCache">
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_BULLETIN,
+			CONSORTIA_DESC,
+			CONSORTIA_LEVEL,
+			CONSORTIA_EXP,
+			CONSORTIA_COIN,
+			ROLE_MAX_SIZE,
+			CHAIRMAN_ID,
+			VICE_CHAIRMAN1_ID,
+			VICE_CHAIRMAN2_ID,
+			CREATE_TIME,
+			FLAG,
+			SERVER_ID 
+		FROM 
+			GAME_CONSORTIA
+		WHERE 
+			FLAG = 1 AND SERVER_ID = #serverId# 
+	</select>
+	
+	<!-- 根据公会序号组获得公会信息列表 -->
+	<select id="findGameConsortiaDetailByIds" parameterClass="java.util.Map" resultMap="listResult" cacheModel="gameConsortiaCache">
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_BULLETIN,
+			CONSORTIA_DESC,
+			CONSORTIA_LEVEL,
+			CONSORTIA_EXP,
+			CONSORTIA_COIN,
+			ROLE_MAX_SIZE,
+			CHAIRMAN_ID,
+			VICE_CHAIRMAN1_ID,
+			VICE_CHAIRMAN2_ID,
+			CREATE_TIME,
+			FLAG,
+			SERVER_ID 
+		FROM 
+			GAME_CONSORTIA 
+		<dynamic prepend="WHERE"> 
+			<![CDATA[ FLAG = 1 AND  ]]>
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>
+	</select>
+	
+	<!-- 根据序列公会信息 -->
+	<delete id="deleteGameConsortiaDetailById" parameterClass="java.util.Map">
+		DELETE FROM GAME_CONSORTIA WHERE ID = #id# 
+	</delete>
+	
+	<!-- 根据等级排名 -->
+	<select id="topGameConsortiaByExp" parameterClass="java.util.Map" resultMap="toplistResult" cacheModel="topGameConsortiaCache">
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_LEVEL,
+			CONSORTIA_COIN,
+			CHAIRMAN_ID,
+			CONSORTIA_EXP
+		FROM  
+			GAME_CONSORTIA   
+		WHERE 
+			FLAG = 1 
+		AND  
+			SERVER_ID = #serverId#
+		ORDER BY 
+			CONSORTIA_EXP DESC,CONSORTIA_LEVEL DESC
+		LIMIT 0,#endNum#		
+	</select>
+	
+	<!-- 根据贡献排名 -->
+	<select id="topGameConsortiaByCoin" parameterClass="java.util.Map" resultMap="toplistResult" cacheModel="topGameConsortiaCache">
+		SELECT 
+			ID,
+			CONSORTIA_NAME,
+			CONSORTIA_LEVEL,
+			CONSORTIA_COIN,
+			CHAIRMAN_ID,
+			CONSORTIA_EXP
+		FROM  
+			GAME_CONSORTIA   
+		WHERE 
+			FLAG = 1 
+		AND  
+			SERVER_ID = #serverId#
+		ORDER BY 
+			CONSORTIA_COIN DESC
+		LIMIT 0,#endNum#		
+	</select>
+	
+	<!-- 查询有多少条公户消息 -->
+	<select id="searchCountConsortia" resultClass="int" parameterClass="java.util.HashMap">
+		SELECT 
+		  count(*)
+		FROM  
+			GAME_CONSORTIA 
+		WHERE 
+			FLAG = 1
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,89 @@
+Apr 18, 2014 9:19:30 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 18, 2014 9:19:31 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Apr 18, 2014 9:19:31 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1146 ms
+Apr 18, 2014 9:19:31 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 18, 2014 9:19:31 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 18, 2014 9:19:31 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 18, 2014 9:19:31 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 18, 2014 9:19:32 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory manager
+Apr 18, 2014 9:19:32 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory host-manager
+Apr 18, 2014 9:19:32 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 18, 2014 9:19:32 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Apr 18, 2014 9:19:32 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 18, 2014 9:19:32 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/27  config=null
+Apr 18, 2014 9:19:32 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 752 ms
+Apr 18, 2014 9:20:03 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Apr 18, 2014 9:20:04 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 18, 2014 9:20:04 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Apr 18, 2014 9:21:24 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 18, 2014 9:21:24 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 502 ms
+Apr 18, 2014 9:21:24 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 18, 2014 9:21:24 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 18, 2014 9:21:24 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 18, 2014 9:21:24 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 18, 2014 9:21:24 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/28  config=null
+Apr 18, 2014 9:21:24 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 649 ms
+Apr 18, 2014 4:16:54 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 18, 2014 4:16:54 PM org.apache.catalina.connector.Connector pause
+SEVERE: Protocol handler pause failed
+java.net.SocketException: Network is unreachable
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at org.apache.jk.common.ChannelSocket.unLockSocket(ChannelSocket.java:492)
+	at org.apache.jk.common.ChannelSocket.pause(ChannelSocket.java:288)
+	at org.apache.jk.server.JkMain.pause(JkMain.java:739)
+	at org.apache.jk.server.JkCoyoteHandler.pause(JkCoyoteHandler.java:153)
+	at org.apache.catalina.connector.Connector.pause(Connector.java:1138)
+	at org.apache.catalina.core.StandardService.stop(StandardService.java:578)
+	at org.apache.catalina.core.StandardServer.stop(StandardServer.java:788)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:662)
+	at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:706)
+Apr 18, 2014 4:16:55 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 18, 2014 4:16:56 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181

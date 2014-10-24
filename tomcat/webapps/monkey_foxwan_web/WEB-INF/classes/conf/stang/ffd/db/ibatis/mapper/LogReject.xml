@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="LogReject">
+	<typeAlias alias="LogRejectDetail"
+		type="com.stang.game.ffd.entity.detail.LogRejectDetail" />
+	<cacheModel id="LogRejectCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="updateLogRejectByParam" />
+		<flushOnExecute statement="insertLogReject" />
+	</cacheModel>
+	<resultMap class="LogRejectDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="roleName" column="ROLENAME" />
+		<result property="opTime" column="OP_TIME" />
+		<result property="startTime" column="START_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="uid" column="UID" />
+		<result property="uname" column="UNAME" />
+		<result property="isSuccess" column="IS_SUCCESS" />
+		<result property="type" column="TYPE" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+	
+	<select id="getLogRejectCount" resultClass="int" parameterClass="java.util.Map">
+		SELECT COUNT(ID) FROM LOG_REJECT WHERE FLAG = 1 
+		<isNotEmpty prepend="AND" property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="OR" property="type1">
+			TYPE = #type1#
+		</isNotEmpty>
+	</select>
+	<select id="getLogRejectByParam" parameterClass="java.util.Map" resultMap="listResult" cacheModel="LogRejectCache">
+		SELECT 
+			ID,
+			ROLENAME,
+			OP_TIME,
+			START_TIME,
+			END_TIME,
+			OP_TIME,
+			UID,
+			UNAME,
+			IS_SUCCESS,
+			TYPE,
+			FLAG
+			FROM LOG_REJECT WHERE
+			FLAG = 1	
+			<isNotEmpty prepend="AND" property="id">
+				ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleName">
+				ROLENAME = #roleName#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="opTime">
+				OP_TIME = #opTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startTime">
+				START_TIME = #startTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endTime">
+				END_TIME = #endTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uid">
+				UID = #uid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uname">
+				UNAME = #uname#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isSuccess">
+				IS_SUCCESS = #isSuccess#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				TYPE = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="OR" property="type1">
+				TYPE = #type1#
+			</isNotEmpty>
+			ORDER BY OP_TIME DESC
+			<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+			</isNotEmpty>
+	</select>
+
+	<update id="updateLogRejectByParam" parameterClass="java.util.Map">
+		UPDATE LOG_REJECT SET
+		<isNotEmpty prepend="" property="isSuccess">
+			IS_SUCCESS = #isSuccess#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName1">
+			ROLENAME = #roleName1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">
+			START_TIME = #startTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="endTime">
+			END_TIME = #endTime#
+		</isNotEmpty>
+			WHERE 
+		<isNotEmpty prepend="" property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleName">
+			ROLENAME = #roleName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="opTime">
+			OP_TIME = #opTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="flag">
+			FLAG=#flag# 
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="uid">
+			UID = #uid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uname">
+			UNAME = #uname#
+		</isNotEmpty>
+	</update>
+	<insert id="insertLogReject"
+		parameterClass="LogRejectDetail">
+		INSERT INTO LOG_REJECT (
+		<isNotEmpty prepend="" property="type">TYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">ROLENAME</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">OP_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">START_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="endTime">END_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">UID</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">UNAME</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">IS_SUCCESS</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">#roleName#</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">#opTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">#startTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="endTime">#endTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">#uid#</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">#uname#</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">#isSuccess#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+</sqlMap>

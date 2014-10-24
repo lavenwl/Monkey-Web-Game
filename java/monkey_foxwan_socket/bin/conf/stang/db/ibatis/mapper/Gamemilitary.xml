@@ -1,0 +1,624 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMilitary">
+	<typeAlias alias="GameMilitaryDetail"
+		type="com.stang.game.entity.detail.GameMilitaryDetail" />
+
+	<cacheModel id="GameMilitaryCache" type="OSCACHE">
+		<flushInterval seconds="40" />
+	</cacheModel>
+	<cacheModel id="GameMilitaryCachee" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+
+	<resultMap class="GameMilitaryDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="desc" column="desc" />
+		<result property="pingzhi" column="pingzhi" />
+		<result property="pztype" column="pztype" />
+		<result property="type" column="type" />
+		<result property="gongji" column="gongji" />
+		<result property="gjiacheng" column="gjiacheng" />
+		<result property="gongsu" column="gongsu" />
+		<result property="fanwei" column="fanwei" />
+		<result property="xueliang" column="xueliang" />
+		<result property="xljiacheng" column="xljiacheng" />
+		<result property="flag" column="flag" />
+		<result property="level" column="level" />
+		<result property="art" column="art" />
+		<result property="arts" column="arts" />
+		<result property="art1" column="art1" />
+		<result property="art2" column="art2" />
+		<result property="art3" column="art3" />
+		<result property="art4" column="art4" />
+		<result property="isshow" column="isshow" />
+		<result property="iscompose" column="iscompose" />
+		<result property="isaddcompose" column="isaddcompose" />
+		<result property="needcompose" column="needcompose" />
+		<result property="composeid" column="composeid" />
+		<result property="bagj" column="bagj" />
+		<result property="bags" column="bags" />
+		<result property="baxl" column="baxl" />
+		<result property="batype" column="batype" />
+		<result property="gjjc" column="gjjc" />
+		<result property="xljc" column="xljc" />
+		<result property="gmpz" column="gmpz" />
+		<result property="gmfw" column="gmfw" />
+		<result property="describe" column="describe" />
+		<result property="mohunprice" column="mohunprice" />
+		<result property="mohunchange" column="mohunchange" />
+		<result property="mohunboolean" column="mohunboolean" />
+		<result property="mjchance" column="mjchance" />
+		<result property="ismaterial" column="ismaterial" />
+		<result property="source" column="source" />
+		<result property="heti" column="heti" />
+	</resultMap>
+	
+
+	<resultMap class="GameMilitaryDetail" id="listResult2">
+		<result property="gongji" column="gongji" />
+		<result property="gjiacheng" column="gjiacheng" />
+		<result property="gongsu" column="gongsu" />
+		<result property="xueliang" column="xueliang" />
+		<result property="xljiacheng" column="xljiacheng" />
+		<result property="name" column="name" />
+	    <result property="type" column="type" />
+	    <result property="pingzhi" column="pingzhi" />
+		<result property="arts" column="arts" />
+		<result property="mohunprice" column="mohunprice" />
+		<result property="mohunchange" column="mohunchange" />
+		<result property="mohunboolean" column="mohunboolean" />
+		<result property="ismaterial" column="ismaterial" />
+		<result property="source" column="source" />
+		<result property="heti" column="heti" />
+	</resultMap>
+	
+	<resultMap class="GameMilitaryDetail" id="listResult3">
+		<result property="gongji" column="gongji" />
+		<result property="xueliang" column="xueliang" />
+		<result property="arts" column="arts" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="level" column="level" />
+		<result property="gongsu" column="gongsu" />
+		<result property="pztype" column="pztype" />
+		<result property="fanwei" column="fanwei" />
+		<result property="bagj" column="bagj" />
+		<result property="bags" column="bags" />
+		<result property="baxl" column="baxl" />
+		<result property="batype" column="batype" />
+		<result property="gjjc" column="gjjc" />
+		<result property="xljc" column="xljc" />
+		<result property="gmpz" column="gmpz" />
+		<result property="gmfw" column="gmfw" />
+		<result property="mohunprice" column="mohunprice" />
+		<result property="mohunchange" column="mohunchange" />
+		<result property="mohunboolean" column="mohunboolean" />
+		<result property="ismaterial" column="ismaterial" />
+		<result property="source" column="source" />
+		<result property="heti" column="heti" />
+	</resultMap>
+	
+	<resultMap class="GameMilitaryDetail" id="listResult4">
+		<result property="gongji" column="gongji" />
+		<result property="gongsu" column="gongsu" />
+	</resultMap>
+
+	<select id="getGameMilitary" resultClass="GameMilitaryDetail">
+		SELECT * FROM game_military WHERE FLAG =1
+	</select>
+	
+	<select id="getGameMilitaryByBz" resultClass="GameMilitaryDetail">
+		SELECT * FROM game_military WHERE FLAG =1 and isshow=1 and pingzhi=#pingzhi#
+	</select>
+	
+	<select id="getMilitaryPinzhi" parameterClass="int"  resultMap="listResult4">
+		select case when godnum is null then '0' else godnum end gongji, 
+		case when hongnum is null then '0' else hongnum end gongsu from (
+select rm.roleId, count(militaryid) total from role_military rm 
+where roleId = #roleid# group by roleId
+)as a left join (
+select roleId god_roleId, count(roleId) godnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 5
+) as hong group by roleId
+) as b on a.roleId = b.god_roleId left join (
+select roleId hong_roleId, count(roleId) hongnum from (
+select rm.roleId, rm.militaryid, gm.pingzhi from role_military rm 
+			left join game_military gm on rm.militaryid = gm.id where gm.pingzhi = 4
+) as hong group by roleId
+)as c on a.roleId = c.hong_roleId
+	</select>
+	
+	
+	<select id="getGameMilitaryBymid" parameterClass="int"  
+	resultMap="listResult" >
+		SELECT * FROM game_military WHERE FLAG =1 and id=#id#
+	</select>
+	<select id="getGameMilitaryBymid2" parameterClass="int"  resultMap="listResult2" cacheModel="GameMilitaryCache">
+		SELECT gongji,gjiacheng,gongsu,xueliang,xljiacheng,name,type,pingzhi,arts,source,heti FROM game_military WHERE FLAG =1 and id=#id#
+	</select>
+	
+	<select id="getGameMilitaryByparam" parameterClass="java.util.Map"  resultMap="listResult" >
+		select * from game_military where FLAG =1 and isshow=1 and pingzhi=#pingzhi#  and id not in(
+		select militaryid from role_military where roleId=#roleId# 
+		) 
+	</select>
+	
+	
+	<select id="getManyTableSelect" parameterClass="int"  resultMap="listResult3" cacheModel="GameMilitaryCache">
+		
+    select name, level, arts, type,pztype,fanwei,bagj,bags,baxl,batype,gjjc,xljc,gmpz,gmfw,
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as gongji,
+			 gongsu + case when speed is null then '0' else speed end 
+							+ case when speed1 is null then '0' else speed1 end 
+							+ case when speed2 is null then '0' else speed2 end 
+							+ case when speed3 is null then '0' else speed3 end 
+							+ case when speed4 is null then '0' else speed4 end 
+							+ case when speed5 is null then '0' else speed5 end as gongsu,
+			xueliang + xljiacheng*(level-1) 
+							+ case when hpMax is null then '0' else hpMax end 
+							+ case when hpMax1 is null then '0' else hpMax1 end 
+							+ case when hpMax2 is null then '0' else hpMax2 end 
+							+ case when hpMax3 is null then '0' else hpMax3 end 
+							+ case when hpMax4 is null then '0' else hpMax4 end 
+							+ case when hpMax5 is null then '0' else hpMax5 end as xueliang from (
+select rm.id, rm.name name, rm.roleId, rm.type, gm.arts, gr.name grname, gongji, gjiacheng, xueliang, xljiacheng, gongsu, rm.level,
+rm.militaryid pztype,rm.types fanwei,gm.gongji bagj,gm.gongsu bags,gm.xueliang baxl,gm.type batype,gm.gjiacheng gjjc,gm.xljiacheng xljc,gm.pingzhi gmpz,gm.fanwei gmfw, 
+			 case when re.starlevel=0 then re.attack*(0/100+1)
+						when re.starlevel=1 then re.attack*(5/100+1)
+						when re.starlevel=2 then re.attack*(10/100+1)
+						when re.starlevel=3 then re.attack*(15/100+1)
+						when re.starlevel=4 then re.attack*(20/100+1) 
+						when re.starlevel=5 then re.attack*(30/100+1)
+						when re.starlevel=6 then re.attack*(40/100+1)
+						when re.starlevel=7 then re.attack*(50/100+1)
+						when re.starlevel=8 then re.attack*(65/100+1)
+						when re.starlevel=9 then re.attack*(80/100+1)
+						when re.starlevel=10 then re.attack*(100/100+1) end attack,
+case when re1.starlevel=0 then re1.attack*(0/100+1)
+						when re1.starlevel=1 then re1.attack*(5/100+1)
+						when re1.starlevel=2 then re1.attack*(10/100+1)
+						when re1.starlevel=3 then re1.attack*(15/100+1)
+						when re1.starlevel=4 then re1.attack*(20/100+1) 
+						when re1.starlevel=5 then re1.attack*(30/100+1)
+						when re1.starlevel=6 then re1.attack*(40/100+1)
+						when re1.starlevel=7 then re1.attack*(50/100+1)
+						when re1.starlevel=8 then re1.attack*(65/100+1)
+						when re1.starlevel=9 then re1.attack*(80/100+1)
+						when re1.starlevel=10 then re1.attack*(100/100+1) end attack1,
+case when re2.starlevel=0 then re2.attack*(0/100+1)
+						when re2.starlevel=1 then re2.attack*(5/100+1)
+						when re2.starlevel=2 then re2.attack*(10/100+1)
+						when re2.starlevel=3 then re2.attack*(15/100+1)
+						when re2.starlevel=4 then re2.attack*(20/100+1) 
+						when re2.starlevel=5 then re2.attack*(30/100+1)
+						when re2.starlevel=6 then re2.attack*(40/100+1)
+						when re2.starlevel=7 then re2.attack*(50/100+1)
+						when re2.starlevel=8 then re2.attack*(65/100+1)
+						when re2.starlevel=9 then re2.attack*(80/100+1)
+						when re2.starlevel=10 then re2.attack*(100/100+1) end attack2,
+case when re3.starlevel=0 then re3.attack*(0/100+1)
+						when re3.starlevel=1 then re3.attack*(5/100+1)
+						when re3.starlevel=2 then re3.attack*(10/100+1)
+						when re3.starlevel=3 then re3.attack*(15/100+1)
+						when re3.starlevel=4 then re3.attack*(20/100+1) 
+						when re3.starlevel=5 then re3.attack*(30/100+1)
+						when re3.starlevel=6 then re3.attack*(40/100+1)
+						when re3.starlevel=7 then re3.attack*(50/100+1)
+						when re3.starlevel=8 then re3.attack*(65/100+1)
+						when re3.starlevel=9 then re3.attack*(80/100+1)
+						when re3.starlevel=10 then re3.attack*(100/100+1) end attack3,
+case when re4.starlevel=0 then re4.attack*(0/100+1)
+						when re4.starlevel=1 then re4.attack*(5/100+1)
+						when re4.starlevel=2 then re4.attack*(10/100+1)
+						when re4.starlevel=3 then re4.attack*(15/100+1)
+						when re4.starlevel=4 then re4.attack*(20/100+1) 
+						when re4.starlevel=5 then re4.attack*(30/100+1)
+						when re4.starlevel=6 then re4.attack*(40/100+1)
+						when re4.starlevel=7 then re4.attack*(50/100+1)
+						when re4.starlevel=8 then re4.attack*(65/100+1)
+						when re4.starlevel=9 then re4.attack*(80/100+1)
+						when re4.starlevel=10 then re4.attack*(100/100+1) end attack4,
+case when re5.starlevel=0 then re5.attack*(0/100+1)
+						when re5.starlevel=1 then re5.attack*(5/100+1)
+						when re5.starlevel=2 then re5.attack*(10/100+1)
+						when re5.starlevel=3 then re5.attack*(15/100+1)
+						when re5.starlevel=4 then re5.attack*(20/100+1) 
+						when re5.starlevel=5 then re5.attack*(30/100+1)
+						when re5.starlevel=6 then re5.attack*(40/100+1)
+						when re5.starlevel=7 then re5.attack*(50/100+1)
+						when re5.starlevel=8 then re5.attack*(65/100+1)
+						when re5.starlevel=9 then re5.attack*(80/100+1)
+						when re5.starlevel=10 then re5.attack*(100/100+1) end attack5,
+case when re.starlevel=0 then re.speed*(0/100+1)
+						when re.starlevel=1 then re.speed*(5/100+1)
+						when re.starlevel=2 then re.speed*(10/100+1)
+						when re.starlevel=3 then re.speed*(15/100+1)
+						when re.starlevel=4 then re.speed*(20/100+1) 
+						when re.starlevel=5 then re.speed*(30/100+1)
+						when re.starlevel=6 then re.speed*(40/100+1)
+						when re.starlevel=7 then re.speed*(50/100+1)
+						when re.starlevel=8 then re.speed*(65/100+1)
+						when re.starlevel=9 then re.speed*(80/100+1)
+						when re.starlevel=10 then re.speed*(100/100+1) end speed,
+case when re1.starlevel=0 then re1.speed*(0/100+1)
+						when re1.starlevel=1 then re1.speed*(5/100+1)
+						when re1.starlevel=2 then re1.speed*(10/100+1)
+						when re1.starlevel=3 then re1.speed*(15/100+1)
+						when re1.starlevel=4 then re1.speed*(20/100+1) 
+						when re1.starlevel=5 then re1.speed*(30/100+1)
+						when re1.starlevel=6 then re1.speed*(40/100+1)
+						when re1.starlevel=7 then re1.speed*(50/100+1)
+						when re1.starlevel=8 then re1.speed*(65/100+1)
+						when re1.starlevel=9 then re1.speed*(80/100+1)
+						when re1.starlevel=10 then re1.speed*(100/100+1) end speed1,
+case when re2.starlevel=0 then re2.speed*(0/100+1)
+						when re2.starlevel=1 then re2.speed*(5/100+1)
+						when re2.starlevel=2 then re2.speed*(10/100+1)
+						when re2.starlevel=3 then re2.speed*(15/100+1)
+						when re2.starlevel=4 then re2.speed*(20/100+1) 
+						when re2.starlevel=5 then re2.speed*(30/100+1)
+						when re2.starlevel=6 then re2.speed*(40/100+1)
+						when re2.starlevel=7 then re2.speed*(50/100+1)
+						when re2.starlevel=8 then re2.speed*(65/100+1)
+						when re2.starlevel=9 then re2.speed*(80/100+1)
+						when re2.starlevel=10 then re2.speed*(100/100+1) end speed2,
+case when re3.starlevel=0 then re3.speed*(0/100+1)
+						when re3.starlevel=1 then re3.speed*(5/100+1)
+						when re3.starlevel=2 then re3.speed*(10/100+1)
+						when re3.starlevel=3 then re3.speed*(15/100+1)
+						when re3.starlevel=4 then re3.speed*(20/100+1) 
+						when re3.starlevel=5 then re3.speed*(30/100+1)
+						when re3.starlevel=6 then re3.speed*(40/100+1)
+						when re3.starlevel=7 then re3.speed*(50/100+1)
+						when re3.starlevel=8 then re3.speed*(65/100+1)
+						when re3.starlevel=9 then re3.speed*(80/100+1)
+						when re3.starlevel=10 then re3.speed*(100/100+1) end speed3,
+case when re4.starlevel=0 then re4.speed*(0/100+1)
+						when re4.starlevel=1 then re4.speed*(5/100+1)
+						when re4.starlevel=2 then re4.speed*(10/100+1)
+						when re4.starlevel=3 then re4.speed*(15/100+1)
+						when re4.starlevel=4 then re4.speed*(20/100+1) 
+						when re4.starlevel=5 then re4.speed*(30/100+1)
+						when re4.starlevel=6 then re4.speed*(40/100+1)
+						when re4.starlevel=7 then re4.speed*(50/100+1)
+						when re4.starlevel=8 then re4.speed*(65/100+1)
+						when re4.starlevel=9 then re4.speed*(80/100+1)
+						when re4.starlevel=10 then re4.speed*(100/100+1) end speed4,
+case when re5.starlevel=0 then re5.speed*(0/100+1)
+						when re5.starlevel=1 then re5.speed*(5/100+1)
+						when re5.starlevel=2 then re5.speed*(10/100+1)
+						when re5.starlevel=3 then re5.speed*(15/100+1)
+						when re5.starlevel=4 then re5.speed*(20/100+1) 
+						when re5.starlevel=5 then re5.speed*(30/100+1)
+						when re5.starlevel=6 then re5.speed*(40/100+1)
+						when re5.starlevel=7 then re5.speed*(50/100+1)
+						when re5.starlevel=8 then re5.speed*(65/100+1)
+						when re5.starlevel=9 then re5.speed*(80/100+1)
+						when re5.starlevel=10 then re5.speed*(100/100+1) end speed5,
+case when re.starlevel=0 then re.hpMax*(0/100+1)
+						when re.starlevel=1 then re.hpMax*(5/100+1)
+						when re.starlevel=2 then re.hpMax*(10/100+1)
+						when re.starlevel=3 then re.hpMax*(15/100+1)
+						when re.starlevel=4 then re.hpMax*(20/100+1) 
+						when re.starlevel=5 then re.hpMax*(30/100+1)
+						when re.starlevel=6 then re.hpMax*(40/100+1)
+						when re.starlevel=7 then re.hpMax*(50/100+1)
+						when re.starlevel=8 then re.hpMax*(65/100+1)
+						when re.starlevel=9 then re.hpMax*(80/100+1)
+						when re.starlevel=10 then re.hpMax*(100/100+1) end hpMax,
+case when re1.starlevel=0 then re1.hpMax*(0/100+1)
+						when re1.starlevel=1 then re1.hpMax*(5/100+1)
+						when re1.starlevel=2 then re1.hpMax*(10/100+1)
+						when re1.starlevel=3 then re1.hpMax*(15/100+1)
+						when re1.starlevel=4 then re1.hpMax*(20/100+1) 
+						when re1.starlevel=5 then re1.hpMax*(30/100+1)
+						when re1.starlevel=6 then re1.hpMax*(40/100+1)
+						when re1.starlevel=7 then re1.hpMax*(50/100+1)
+						when re1.starlevel=8 then re1.hpMax*(65/100+1)
+						when re1.starlevel=9 then re1.hpMax*(80/100+1)
+						when re1.starlevel=10 then re1.hpMax*(100/100+1) end hpMax1,
+case when re2.starlevel=0 then re2.hpMax*(0/100+1)
+						when re2.starlevel=1 then re2.hpMax*(5/100+1)
+						when re2.starlevel=2 then re2.hpMax*(10/100+1)
+						when re2.starlevel=3 then re2.hpMax*(15/100+1)
+						when re2.starlevel=4 then re2.hpMax*(20/100+1) 
+						when re2.starlevel=5 then re2.hpMax*(30/100+1)
+						when re2.starlevel=6 then re2.hpMax*(40/100+1)
+						when re2.starlevel=7 then re2.hpMax*(50/100+1)
+						when re2.starlevel=8 then re2.hpMax*(65/100+1)
+						when re2.starlevel=9 then re2.hpMax*(80/100+1)
+						when re2.starlevel=10 then re2.hpMax*(100/100+1) end hpMax2,
+case when re3.starlevel=0 then re3.hpMax*(0/100+1)
+						when re3.starlevel=1 then re3.hpMax*(5/100+1)
+						when re3.starlevel=2 then re3.hpMax*(10/100+1)
+						when re3.starlevel=3 then re3.hpMax*(15/100+1)
+						when re3.starlevel=4 then re3.hpMax*(20/100+1) 
+						when re3.starlevel=5 then re3.hpMax*(30/100+1)
+						when re3.starlevel=6 then re3.hpMax*(40/100+1)
+						when re3.starlevel=7 then re3.hpMax*(50/100+1)
+						when re3.starlevel=8 then re3.hpMax*(65/100+1)
+						when re3.starlevel=9 then re3.hpMax*(80/100+1)
+						when re3.starlevel=10 then re3.hpMax*(100/100+1) end hpMax3,
+case when re4.starlevel=0 then re4.hpMax*(0/100+1)
+						when re4.starlevel=1 then re4.hpMax*(5/100+1)
+						when re4.starlevel=2 then re4.hpMax*(10/100+1)
+						when re4.starlevel=3 then re4.hpMax*(15/100+1)
+						when re4.starlevel=4 then re4.hpMax*(20/100+1) 
+						when re4.starlevel=5 then re4.hpMax*(30/100+1)
+						when re4.starlevel=6 then re4.hpMax*(40/100+1)
+						when re4.starlevel=7 then re4.hpMax*(50/100+1)
+						when re4.starlevel=8 then re4.hpMax*(65/100+1)
+						when re4.starlevel=9 then re4.hpMax*(80/100+1)
+						when re4.starlevel=10 then re4.hpMax*(100/100+1) end hpMax4,
+case when re5.starlevel=0 then re5.hpMax*(0/100+1)
+						when re5.starlevel=1 then re5.hpMax*(5/100+1)
+						when re5.starlevel=2 then re5.hpMax*(10/100+1)
+						when re5.starlevel=3 then re5.hpMax*(15/100+1)
+						when re5.starlevel=4 then re5.hpMax*(20/100+1) 
+						when re5.starlevel=5 then re5.hpMax*(30/100+1)
+						when re5.starlevel=6 then re5.hpMax*(40/100+1)
+						when re5.starlevel=7 then re5.hpMax*(50/100+1)
+						when re5.starlevel=8 then re5.hpMax*(65/100+1)
+						when re5.starlevel=9 then re5.hpMax*(80/100+1)
+						when re5.starlevel=10 then re5.hpMax*(100/100+1) end hpMax5 from (select * from role_military where id = #id#) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equips re on rm.wuqi = re.id
+left join role_equips re1 on rm.huwan = re1.id
+left join role_equips re2 on rm.yifu = re2.id
+left join role_equips re3 on rm.touguan = re3.id
+left join role_equips re4 on rm.xiezi = re4.id
+left join role_equips re5 on rm.shipin = re5.id
+)as a 
+
+    
+		
+	</select>
+	
+	<select id="getManyTableSelect2" parameterClass="int"  resultMap="listResult3" cacheModel="GameMilitaryCachee">
+		
+    select name, level, arts, type,pztype,fanwei,bagj,bags,baxl,batype,gjjc,xljc,gmpz,gmfw,
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as gongji,
+			 gongsu + case when speed is null then '0' else speed end 
+							+ case when speed1 is null then '0' else speed1 end 
+							+ case when speed2 is null then '0' else speed2 end 
+							+ case when speed3 is null then '0' else speed3 end 
+							+ case when speed4 is null then '0' else speed4 end 
+							+ case when speed5 is null then '0' else speed5 end as gongsu,
+			xueliang + xljiacheng*(level-1) 
+							+ case when hpMax is null then '0' else hpMax end 
+							+ case when hpMax1 is null then '0' else hpMax1 end 
+							+ case when hpMax2 is null then '0' else hpMax2 end 
+							+ case when hpMax3 is null then '0' else hpMax3 end 
+							+ case when hpMax4 is null then '0' else hpMax4 end 
+							+ case when hpMax5 is null then '0' else hpMax5 end as xueliang from (
+select rm.id, rm.name name, rm.roleId, rm.type, gm.arts, gr.name grname, gongji, gjiacheng, xueliang, xljiacheng, gongsu, rm.level,
+rm.militaryid pztype,rm.types fanwei,gm.gongji bagj,gm.gongsu bags,gm.xueliang baxl,gm.type batype,gm.gjiacheng gjjc,gm.xljiacheng xljc,gm.pingzhi gmpz,gm.fanwei gmfw, 
+			 case when re.starlevel=0 then re.attack*(0/100+1)
+						when re.starlevel=1 then re.attack*(5/100+1)
+						when re.starlevel=2 then re.attack*(10/100+1)
+						when re.starlevel=3 then re.attack*(15/100+1)
+						when re.starlevel=4 then re.attack*(20/100+1) 
+						when re.starlevel=5 then re.attack*(30/100+1)
+						when re.starlevel=6 then re.attack*(40/100+1)
+						when re.starlevel=7 then re.attack*(50/100+1)
+						when re.starlevel=8 then re.attack*(65/100+1)
+						when re.starlevel=9 then re.attack*(80/100+1)
+						when re.starlevel=10 then re.attack*(100/100+1) end attack,
+case when re1.starlevel=0 then re1.attack*(0/100+1)
+						when re1.starlevel=1 then re1.attack*(5/100+1)
+						when re1.starlevel=2 then re1.attack*(10/100+1)
+						when re1.starlevel=3 then re1.attack*(15/100+1)
+						when re1.starlevel=4 then re1.attack*(20/100+1) 
+						when re1.starlevel=5 then re1.attack*(30/100+1)
+						when re1.starlevel=6 then re1.attack*(40/100+1)
+						when re1.starlevel=7 then re1.attack*(50/100+1)
+						when re1.starlevel=8 then re1.attack*(65/100+1)
+						when re1.starlevel=9 then re1.attack*(80/100+1)
+						when re1.starlevel=10 then re1.attack*(100/100+1) end attack1,
+case when re2.starlevel=0 then re2.attack*(0/100+1)
+						when re2.starlevel=1 then re2.attack*(5/100+1)
+						when re2.starlevel=2 then re2.attack*(10/100+1)
+						when re2.starlevel=3 then re2.attack*(15/100+1)
+						when re2.starlevel=4 then re2.attack*(20/100+1) 
+						when re2.starlevel=5 then re2.attack*(30/100+1)
+						when re2.starlevel=6 then re2.attack*(40/100+1)
+						when re2.starlevel=7 then re2.attack*(50/100+1)
+						when re2.starlevel=8 then re2.attack*(65/100+1)
+						when re2.starlevel=9 then re2.attack*(80/100+1)
+						when re2.starlevel=10 then re2.attack*(100/100+1) end attack2,
+case when re3.starlevel=0 then re3.attack*(0/100+1)
+						when re3.starlevel=1 then re3.attack*(5/100+1)
+						when re3.starlevel=2 then re3.attack*(10/100+1)
+						when re3.starlevel=3 then re3.attack*(15/100+1)
+						when re3.starlevel=4 then re3.attack*(20/100+1) 
+						when re3.starlevel=5 then re3.attack*(30/100+1)
+						when re3.starlevel=6 then re3.attack*(40/100+1)
+						when re3.starlevel=7 then re3.attack*(50/100+1)
+						when re3.starlevel=8 then re3.attack*(65/100+1)
+						when re3.starlevel=9 then re3.attack*(80/100+1)
+						when re3.starlevel=10 then re3.attack*(100/100+1) end attack3,
+case when re4.starlevel=0 then re4.attack*(0/100+1)
+						when re4.starlevel=1 then re4.attack*(5/100+1)
+						when re4.starlevel=2 then re4.attack*(10/100+1)
+						when re4.starlevel=3 then re4.attack*(15/100+1)
+						when re4.starlevel=4 then re4.attack*(20/100+1) 
+						when re4.starlevel=5 then re4.attack*(30/100+1)
+						when re4.starlevel=6 then re4.attack*(40/100+1)
+						when re4.starlevel=7 then re4.attack*(50/100+1)
+						when re4.starlevel=8 then re4.attack*(65/100+1)
+						when re4.starlevel=9 then re4.attack*(80/100+1)
+						when re4.starlevel=10 then re4.attack*(100/100+1) end attack4,
+case when re5.starlevel=0 then re5.attack*(0/100+1)
+						when re5.starlevel=1 then re5.attack*(5/100+1)
+						when re5.starlevel=2 then re5.attack*(10/100+1)
+						when re5.starlevel=3 then re5.attack*(15/100+1)
+						when re5.starlevel=4 then re5.attack*(20/100+1) 
+						when re5.starlevel=5 then re5.attack*(30/100+1)
+						when re5.starlevel=6 then re5.attack*(40/100+1)
+						when re5.starlevel=7 then re5.attack*(50/100+1)
+						when re5.starlevel=8 then re5.attack*(65/100+1)
+						when re5.starlevel=9 then re5.attack*(80/100+1)
+						when re5.starlevel=10 then re5.attack*(100/100+1) end attack5,
+case when re.starlevel=0 then re.speed*(0/100+1)
+						when re.starlevel=1 then re.speed*(5/100+1)
+						when re.starlevel=2 then re.speed*(10/100+1)
+						when re.starlevel=3 then re.speed*(15/100+1)
+						when re.starlevel=4 then re.speed*(20/100+1) 
+						when re.starlevel=5 then re.speed*(30/100+1)
+						when re.starlevel=6 then re.speed*(40/100+1)
+						when re.starlevel=7 then re.speed*(50/100+1)
+						when re.starlevel=8 then re.speed*(65/100+1)
+						when re.starlevel=9 then re.speed*(80/100+1)
+						when re.starlevel=10 then re.speed*(100/100+1) end speed,
+case when re1.starlevel=0 then re1.speed*(0/100+1)
+						when re1.starlevel=1 then re1.speed*(5/100+1)
+						when re1.starlevel=2 then re1.speed*(10/100+1)
+						when re1.starlevel=3 then re1.speed*(15/100+1)
+						when re1.starlevel=4 then re1.speed*(20/100+1) 
+						when re1.starlevel=5 then re1.speed*(30/100+1)
+						when re1.starlevel=6 then re1.speed*(40/100+1)
+						when re1.starlevel=7 then re1.speed*(50/100+1)
+						when re1.starlevel=8 then re1.speed*(65/100+1)
+						when re1.starlevel=9 then re1.speed*(80/100+1)
+						when re1.starlevel=10 then re1.speed*(100/100+1) end speed1,
+case when re2.starlevel=0 then re2.speed*(0/100+1)
+						when re2.starlevel=1 then re2.speed*(5/100+1)
+						when re2.starlevel=2 then re2.speed*(10/100+1)
+						when re2.starlevel=3 then re2.speed*(15/100+1)
+						when re2.starlevel=4 then re2.speed*(20/100+1) 
+						when re2.starlevel=5 then re2.speed*(30/100+1)
+						when re2.starlevel=6 then re2.speed*(40/100+1)
+						when re2.starlevel=7 then re2.speed*(50/100+1)
+						when re2.starlevel=8 then re2.speed*(65/100+1)
+						when re2.starlevel=9 then re2.speed*(80/100+1)
+						when re2.starlevel=10 then re2.speed*(100/100+1) end speed2,
+case when re3.starlevel=0 then re3.speed*(0/100+1)
+						when re3.starlevel=1 then re3.speed*(5/100+1)
+						when re3.starlevel=2 then re3.speed*(10/100+1)
+						when re3.starlevel=3 then re3.speed*(15/100+1)
+						when re3.starlevel=4 then re3.speed*(20/100+1) 
+						when re3.starlevel=5 then re3.speed*(30/100+1)
+						when re3.starlevel=6 then re3.speed*(40/100+1)
+						when re3.starlevel=7 then re3.speed*(50/100+1)
+						when re3.starlevel=8 then re3.speed*(65/100+1)
+						when re3.starlevel=9 then re3.speed*(80/100+1)
+						when re3.starlevel=10 then re3.speed*(100/100+1) end speed3,
+case when re4.starlevel=0 then re4.speed*(0/100+1)
+						when re4.starlevel=1 then re4.speed*(5/100+1)
+						when re4.starlevel=2 then re4.speed*(10/100+1)
+						when re4.starlevel=3 then re4.speed*(15/100+1)
+						when re4.starlevel=4 then re4.speed*(20/100+1) 
+						when re4.starlevel=5 then re4.speed*(30/100+1)
+						when re4.starlevel=6 then re4.speed*(40/100+1)
+						when re4.starlevel=7 then re4.speed*(50/100+1)
+						when re4.starlevel=8 then re4.speed*(65/100+1)
+						when re4.starlevel=9 then re4.speed*(80/100+1)
+						when re4.starlevel=10 then re4.speed*(100/100+1) end speed4,
+case when re5.starlevel=0 then re5.speed*(0/100+1)
+						when re5.starlevel=1 then re5.speed*(5/100+1)
+						when re5.starlevel=2 then re5.speed*(10/100+1)
+						when re5.starlevel=3 then re5.speed*(15/100+1)
+						when re5.starlevel=4 then re5.speed*(20/100+1) 
+						when re5.starlevel=5 then re5.speed*(30/100+1)
+						when re5.starlevel=6 then re5.speed*(40/100+1)
+						when re5.starlevel=7 then re5.speed*(50/100+1)
+						when re5.starlevel=8 then re5.speed*(65/100+1)
+						when re5.starlevel=9 then re5.speed*(80/100+1)
+						when re5.starlevel=10 then re5.speed*(100/100+1) end speed5,
+case when re.starlevel=0 then re.hpMax*(0/100+1)
+						when re.starlevel=1 then re.hpMax*(5/100+1)
+						when re.starlevel=2 then re.hpMax*(10/100+1)
+						when re.starlevel=3 then re.hpMax*(15/100+1)
+						when re.starlevel=4 then re.hpMax*(20/100+1) 
+						when re.starlevel=5 then re.hpMax*(30/100+1)
+						when re.starlevel=6 then re.hpMax*(40/100+1)
+						when re.starlevel=7 then re.hpMax*(50/100+1)
+						when re.starlevel=8 then re.hpMax*(65/100+1)
+						when re.starlevel=9 then re.hpMax*(80/100+1)
+						when re.starlevel=10 then re.hpMax*(100/100+1) end hpMax,
+case when re1.starlevel=0 then re1.hpMax*(0/100+1)
+						when re1.starlevel=1 then re1.hpMax*(5/100+1)
+						when re1.starlevel=2 then re1.hpMax*(10/100+1)
+						when re1.starlevel=3 then re1.hpMax*(15/100+1)
+						when re1.starlevel=4 then re1.hpMax*(20/100+1) 
+						when re1.starlevel=5 then re1.hpMax*(30/100+1)
+						when re1.starlevel=6 then re1.hpMax*(40/100+1)
+						when re1.starlevel=7 then re1.hpMax*(50/100+1)
+						when re1.starlevel=8 then re1.hpMax*(65/100+1)
+						when re1.starlevel=9 then re1.hpMax*(80/100+1)
+						when re1.starlevel=10 then re1.hpMax*(100/100+1) end hpMax1,
+case when re2.starlevel=0 then re2.hpMax*(0/100+1)
+						when re2.starlevel=1 then re2.hpMax*(5/100+1)
+						when re2.starlevel=2 then re2.hpMax*(10/100+1)
+						when re2.starlevel=3 then re2.hpMax*(15/100+1)
+						when re2.starlevel=4 then re2.hpMax*(20/100+1) 
+						when re2.starlevel=5 then re2.hpMax*(30/100+1)
+						when re2.starlevel=6 then re2.hpMax*(40/100+1)
+						when re2.starlevel=7 then re2.hpMax*(50/100+1)
+						when re2.starlevel=8 then re2.hpMax*(65/100+1)
+						when re2.starlevel=9 then re2.hpMax*(80/100+1)
+						when re2.starlevel=10 then re2.hpMax*(100/100+1) end hpMax2,
+case when re3.starlevel=0 then re3.hpMax*(0/100+1)
+						when re3.starlevel=1 then re3.hpMax*(5/100+1)
+						when re3.starlevel=2 then re3.hpMax*(10/100+1)
+						when re3.starlevel=3 then re3.hpMax*(15/100+1)
+						when re3.starlevel=4 then re3.hpMax*(20/100+1) 
+						when re3.starlevel=5 then re3.hpMax*(30/100+1)
+						when re3.starlevel=6 then re3.hpMax*(40/100+1)
+						when re3.starlevel=7 then re3.hpMax*(50/100+1)
+						when re3.starlevel=8 then re3.hpMax*(65/100+1)
+						when re3.starlevel=9 then re3.hpMax*(80/100+1)
+						when re3.starlevel=10 then re3.hpMax*(100/100+1) end hpMax3,
+case when re4.starlevel=0 then re4.hpMax*(0/100+1)
+						when re4.starlevel=1 then re4.hpMax*(5/100+1)
+						when re4.starlevel=2 then re4.hpMax*(10/100+1)
+						when re4.starlevel=3 then re4.hpMax*(15/100+1)
+						when re4.starlevel=4 then re4.hpMax*(20/100+1) 
+						when re4.starlevel=5 then re4.hpMax*(30/100+1)
+						when re4.starlevel=6 then re4.hpMax*(40/100+1)
+						when re4.starlevel=7 then re4.hpMax*(50/100+1)
+						when re4.starlevel=8 then re4.hpMax*(65/100+1)
+						when re4.starlevel=9 then re4.hpMax*(80/100+1)
+						when re4.starlevel=10 then re4.hpMax*(100/100+1) end hpMax4,
+case when re5.starlevel=0 then re5.hpMax*(0/100+1)
+						when re5.starlevel=1 then re5.hpMax*(5/100+1)
+						when re5.starlevel=2 then re5.hpMax*(10/100+1)
+						when re5.starlevel=3 then re5.hpMax*(15/100+1)
+						when re5.starlevel=4 then re5.hpMax*(20/100+1) 
+						when re5.starlevel=5 then re5.hpMax*(30/100+1)
+						when re5.starlevel=6 then re5.hpMax*(40/100+1)
+						when re5.starlevel=7 then re5.hpMax*(50/100+1)
+						when re5.starlevel=8 then re5.hpMax*(65/100+1)
+						when re5.starlevel=9 then re5.hpMax*(80/100+1)
+						when re5.starlevel=10 then re5.hpMax*(100/100+1) end hpMax5 from (select * from role_military where id = #id#) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equips re on rm.wuqi = re.id
+left join role_equips re1 on rm.huwan = re1.id
+left join role_equips re2 on rm.yifu = re2.id
+left join role_equips re3 on rm.touguan = re3.id
+left join role_equips re4 on rm.xiezi = re4.id
+left join role_equips re5 on rm.shipin = re5.id
+)as a 
+
+    
+		
+	</select>
+
+</sqlMap>

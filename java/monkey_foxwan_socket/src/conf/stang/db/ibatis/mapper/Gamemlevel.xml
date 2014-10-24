@@ -1,0 +1,32 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMLevel">
+	<typeAlias alias="GameMLevelDetail"
+		type="com.stang.game.entity.detail.GameMLevelDetail" />
+
+	<cacheModel id="GameMLevelCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameMLevelDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="exp" column="exp" />
+		<result property="allexp" column="allexp" />
+		<result property="flag" column="flag" />
+		<result property="level" column="level" />
+		<result property="xyin" column="xyin" />
+	</resultMap>
+
+	<select id="getGameMLevel" resultClass="GameMLevelDetail" >
+		SELECT * FROM game_mlevel WHERE FLAG =1
+	</select>
+	
+	<select id="getGameMLevelBylevel" resultClass="GameMLevelDetail" >
+		SELECT * FROM game_mlevel WHERE FLAG =1 and level=#level#
+	</select>
+	
+	<select id="getGameMLevelByAllexp" resultClass="GameMLevelDetail">
+		SELECT * FROM game_mlevel WHERE allexp>#allexp# order by allexp limit 1
+	</select>
+
+</sqlMap>

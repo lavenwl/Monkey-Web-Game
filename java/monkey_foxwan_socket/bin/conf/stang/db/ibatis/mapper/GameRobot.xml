@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRobot">
+	<typeAlias alias="GameRobotDetail"
+		type="com.stang.game.entity.detail.GameRobotDetail" />
+
+	<cacheModel id="gameRobotCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameRobotDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="percent" column="percent" />
+		<result property="militarys" column="militarys" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	
+	<select id="findAllGameRobot" resultMap="listResult">
+		SELECT * FROM game_robot WHERE FLAG=1
+	</select>
+
+	<select id="findGameRobot" parameterClass="java.util.Map"
+		resultMap="listResult" >
+		SELECT * FROM game_robot WHERE FLAG=1
+		<isNotEmpty prepend="AND" property="level">
+			level BETWEEN #level#-5 AND #level#+3
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+	</select>
+	
+	<select id="findGameRobott" parameterClass="java.util.Map"
+		resultMap="listResult" >
+		SELECT * FROM game_robot WHERE FLAG=1 and level between 1 and 10
+		
+	</select>
+	
+</sqlMap>

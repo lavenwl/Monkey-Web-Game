@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Qunzhan">
+	<typeAlias alias="QunzhanDetail"
+		type="com.stang.game.entity.detail.QunzhanDetail" />
+
+	<cacheModel id="qunzhanCache" type="OSCACHE">
+		<flushInterval hours="23" />
+	</cacheModel>
+
+	<resultMap class="QunzhanDetail" id="listResult">
+		<result property="name" column="name" />
+		<result property="jjs" column="jjs" />
+		<result property="hjs" column="hjs" />
+		<result property="sum" column="sum" />
+		<result property="roleId" column="roleId" />
+	</resultMap>
+
+<select id="getallqunzhan" resultMap="listResult">
+		SELECT * FROM qunzhan
+	</select>
+	
+	
+	
+	
+</sqlMap>

@@ -1,0 +1,81 @@
+body {
+	background-image: url('img/background.png');
+	margin: 0px;
+	padding: 0px;
+}
+
+.wrapper {
+	width: 760px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.content {
+	background: url(img/child-login.jpg) no-repeat center top;
+	height: 580px;
+	position: relative
+}
+
+/*Œ¬‹∞Ã· æ*/
+.warmtips {
+	bottom: 0px;
+	height: 50px;
+	background-color: #5555FF;
+	position: relative
+}
+
+.warmtips p {
+	font-size: 12px;
+	line-height: 20px;
+	padding: 5px 20px;
+	color: #FFFFFF;
+}
+
+#memberUsername {
+	width: 180px;
+	height: 22px;
+	top: 219px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	font-family: Verdana, "ÀŒÃÂ";
+}
+
+#memberPassword {
+	width: 180px;
+	height: 22px;
+	top: 277px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+}
+
+#tijiao {
+	width: 120px;
+	height: 48px;
+	top: 330px;
+	left: 340px;
+	position: absolute;
+}
+
+.denglu,.denglu2 {
+	width: 120px;
+	height: 48px;
+	display: block;
+	border: 0;
+	text-indent: -9999999px;
+	overflow: hidden;
+	float: left
+}
+
+.denglu {
+	background: url(img/child-login-btn.png) no-repeat 0 0;
+}
+
+.denglu2 {
+	background: url(img/child-login-btn2.png) no-repeat 0 0;
+}

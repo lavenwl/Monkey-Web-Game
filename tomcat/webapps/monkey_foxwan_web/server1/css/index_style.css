@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, ul, li, h1, h2, h3, h4, h5, h6, p, fieldset, legend, div {padding:0; margin:0;}
+body {font-size:12px; font-family: Verdana, Arial, Helvetica, '宋体'; line-height:20px; text-align:center; background:#3399FF;}
+ul,li {list-style-type:none; text-transform:capitalize;}
+img {border:none;}
+a {color:#000; text-decoration:none;}
+.clear {clear:both; height:0px; line-height:0px;}
+/*page*/
+#page { width:1006px; margin:0px auto 0px; display: block; overflow:hidden; white-space:normal; text-align:left; background:#fff} 
+/*头部*/
+#inde_header{width:1006px; margin:0px auto 0px; background:url(../images/index_02.jpg) no-repeat 0px 0px; height:472px;}
+#header_flash{width:1006px; height:345px}
+/*主体*/
+#inde_main {width:1006px; margin:0px auto 0px; overflow:hidden; position: relative; clear:both;}
+/*上左*/
+#inde_main #i_left_top {width:782px; float:left;}
+#inde_login {width:178px; height:81px; background:url(../images/index_03.jpg) no-repeat 0px 0px; float:left; padding:0px 0px 0px 90px;}
+#inde_login_fl {width:128px; float:left; height:47px;}
+.fl_height {height:22px;}
+/*#inde_login #inde_login_left {width:40px; float:left; height:47px;}
+#inde_login #inde_login_cen {width:88px; float:left;height:47px;}*/
+#inde_login #inde_login_right{width:45px; float:left;height:47px;}
+/*#inde_login .input_text {width:78px; height:18px; background:url(../images/input_text.jpg) no-repeat 0px 0px; border: none;}*/
+#inde_login .input_text {width:78px; height:15px; line-height:15px; background:#CCC; border: none;}
+#inde_login .input_submit{width:45px; height:47px; border:0px; background:url(../images/input_sub.jpg) no-repeat 0px 0px;}
+#inde_login a {text-decoration:none; color:#727171;}
+#inde_login .zcwjmm{clear:both; display:block;}
+#inde_flash_t{width:513px; height:81px; background:url(../images/index_04.jpg) no-repeat 0px 0px; float:left;}
+/*中间左导航*/
+#inde_cen_left {width:217px; float:left; overflow:hidden; height:425px;}
+/*中间右*/
+#inde_cen_right {width:565px; float:left;}
+/*换图片*/
+#inde_cen_right #inde_flash_img{width:565px; height:255px;}
+/*新闻*/
+#inde_cen_right #inde_cen_news{width:115px; height:23px; background:url(../images/index_11.jpg) no-repeat 0px 0px; padding:63px 0px 0px 450px;}
+#inde_cen_right #inde_cen_news .inde_new_more{width:50px; height:10px;}
+#inde_cen_right .inde_new_list{overflow:hidden; padding:0px 0px 0px 90px; color:#595757; height:20px}
+#inde_cen_right .inde_new_list a {color:#595757;}
+#inde_cen_right .inde_new_list .inde_new_list_left{float:left; width:350px; overflow:hidden;}
+#inde_cen_right .inde_new_list .inde_new_list_date{float:left; width:100px; overflow:hidden;}
+/*上右*/
+#inde_main #i_right_top {width:224px; float:left;}
+#i_right_top #inde_yxjj {width:169px; background:url(../images/index_05.gif) no-repeat 0px 0px; padding:22px 35px 0px 20px; color:#727171; font-size:15px; text-indent:50px; overflow:hidden}
+/*index常见问题*/
+#i_right_top #inde_cjwt {width:169px; height:253px; background:url(../images/index_10.jpg) no-repeat 0px 0px; padding:75px 0px 0px 20px; color:#727171; font-size:15px; text-indent:30px; line-height:22px; overflow:hidden}
+#i_right_top #inde_cjwt a{color:#727171;}
+#i_right_top .inde_cjwt_more {display:block; width:169px; text-align:right;}
+/*下左联系*/
+#inde_main #inde_links {width:173px; height:182px; float:left; background:url(../images/index_11_12.jpg) no-repeat 0px 0px; color:#595757; line-height:18px; padding:55px 0px 0px 50px}
+/*下右飞机*/
+#inde_main #inde_plain {width:783px; height:237px; float:left;}
+/*飞机,道具,装备导航菜单750*49*/
+#inde_main #inde_plain .plain_menu1{width:550px; height:34px; background:url(../images/index_11_13.jpg) no-repeat 0px 0px; padding:15px 0px 0px 200px}
+#inde_main #inde_plain .plain_menu1 .fjdjzb {float:left; display:block; width:125px;}
+#inde_main #inde_plain .plain_bg{width:750px; height:187px; background:url(../images/index_11_15.jpg) no-repeat 0px 0px; overflow:hidden;}
+#inde_main #inde_plain .plain_bg #plain_top {width:750px; height:130px;}
+#plain_top #plain_left_button {width:68px; float:left; text-align:right; padding:55px 0px 0px 0px;}
+#plain_top #plain_right_button{width:28px; float:left; text-align:left; padding:55px 0px 0px 0px;}
+#plain_top #plain_cen_img {width:570px; float:left; height:105px; overflow:hidden; padding:25px 0px 0px 0px;}
+#plain_top #plain_cen_img li{float:left; width:142px;}
+#inde_main #inde_plain .plain_bg #plain_seek {width:700px; height:50px; padding:5px 0px 0px 50px;}
+/*搜索*/
+#plain_seek #inde_scroll {width:450px; float:left; height:20px; padding:5px 0px 0px 0px;}
+#plain_seek #inde_scroll a{color:#595757;}
+#plain_seek #inde_sou {width:200px; float:left; height:20px; padding:5px 0px 0px 0px;}
+#plain_seek #inde_sou .sou_text_key{width:100px; border:1px #FFF solid; height:15px; line-height:15px;}
+#plain_seek #inde_sou .sou_sub{width:69px; height:18px; border:0px; background:url(../images/ss.gif) no-repeat 0px 0px}
+/*玩家*/
+#inde_main #inde_players_left {width:234px; height:195px; background:url(../images/index_11_18.jpg) no-repeat 0px 0px; float:left;}
+#inde_main #inde_players_right{width:772px;float:left; height:195px; overflow:hidden;}
+#inde_main #inde_players_right .players_right_menu {width:709px; height:27px; padding:0px 0px 0px 30px; background:url(../images/index_11_17.jpg) no-repeat 0px 0px;}
+#inde_main #inde_players_right .players_right_menu .pl_me_su_on{width:147px; height:27px; float:left;}
+#inde_main #inde_players_right .players_right_menu .pl_me_su{width:100px; height:27px; float:left;}
+#inde_main #inde_players_right #play_left_button{width:25px; float:left; height:169px;}
+#inde_main #inde_players_right #play_cen_img {width:677px; float:left; height:169px; overflow:hidden; line-height:18px;}
+#inde_main #inde_players_right #play_cen_img ul {display: block;}
+#inde_main #inde_players_right #play_cen_img ul li{float:left; width:168px; text-align:left;}
+#inde_main #inde_players_right #play_right_button{width:37px; float:left; height:169px;}
+/*index footer*/
+#inde_footer {clear:both; width:1006px; height:238px; background:url(../images/index_11_22.jpg) no-repeat 0px 0px; overflow:hidden;}
+#inde_footer #index_footer_link {width:500px;  text-align:center; margin:170px auto 0px; color:#9f9fa0;}
+#inde_footer #index_footer_link a{color:#9f9fa0; font-size:14px;}

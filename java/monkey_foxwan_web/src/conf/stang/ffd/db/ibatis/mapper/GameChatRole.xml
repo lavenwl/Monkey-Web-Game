@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameChatRole">
+	<typeAlias alias="EntityGameChatRoleDetail" type="com.stang.game.ffd.entity.detail.EntityGameChatRoleDetail" />
+	
+	<cacheModel id="GameChatRoleCache" type="OSCACHE">
+	<flushInterval seconds="20" />
+	  <flushOnExecute statement="insertEntityGameChatRoleDetail"/>
+	  <flushOnExecute statement="updateEntityGameChatRoleDetail"/>
+	  <flushOnExecute statement="deleteEntityGameChatRoleDetail"/>
+	  <flushOnExecute statement="deleteEntityGameChatRoleDetailAll"/>
+	</cacheModel>
+	
+	<resultMap class="EntityGameChatRoleDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="roleSite" column="ROLE_SITE"/>
+		<result property="serverId" column="SERVER_ID"/>
+		<result property="roomNo" column="ROOM_NO"/>
+		<result property="battleTroop" column="BATTLE_TROOP"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="roomArea" column="ROOM_AREA"/>
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertEntityGameChatRoleDetail" parameterClass="EntityGameChatRoleDetail">
+		INSERT INTO GAME_CHAT_ROLE (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleSite">ROLE_SITE</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">SERVER_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roomNo">ROOM_NO</isNotEmpty>
+			<isNotEmpty prepend="," property="battleTroop">BATTLE_TROOP</isNotEmpty>
+			<isNotEmpty prepend="," property="roomArea">ROOM_AREA</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleSite">#roleSite#</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+			<isNotEmpty prepend="," property="roomNo">#roomNo#</isNotEmpty>
+			<isNotEmpty prepend="," property="battleTroop">#battleTroop#</isNotEmpty>
+			<isNotEmpty prepend="," property="roomArea">#roomArea#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 获得信息 -->
+	<select id="getEntityGameChatRoleDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="GameChatRoleCache">
+		SELECT 
+			ID,
+			ROLE_SITE,
+			SERVER_ID,
+			ROOM_NO,
+			BATTLE_TROOP,
+			ROOM_AREA,
+			CREATE_TIME,
+			FLAG  
+		FROM 
+			GAME_CHAT_ROLE    
+		WHERE FLAG = 1 	
+    	   <isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	 <isNotEmpty property="roleSite" prepend="AND">
+    	   		ROLE_SITE = #roleSite# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="roomNo" prepend="AND">
+    	   		ROOM_NO = #roomNo# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="battleTroop" prepend="AND">
+    	   		BATTLE_TROOP = #battleTroop# 
+    	   	</isNotEmpty>
+	</select>
+	
+	
+	<!-- gk获得信息 -->
+	<select id="getmember" resultMap="listResult" cacheModel="GameChatRoleCache">
+		SELECT 
+			ID,
+			ROLE_SITE,
+			SERVER_ID,
+			ROOM_NO,
+			BATTLE_TROOP,
+			ROOM_AREA,
+			CREATE_TIME,
+			FLAG  
+		FROM 
+			GAME_CHAT_ROLE
+	</select>
+	
+	<!-- gk获得信息 -->
+	<select id="getareainfo" resultMap="listResult" >
+		SELECT 
+			ID,
+			ROLE_SITE,
+			SERVER_ID,
+			ROOM_NO,
+			BATTLE_TROOP,
+			ROOM_AREA,
+			CREATE_TIME,
+			FLAG  
+		FROM 
+			GAME_CHAT_ROLE ORDER BY ROOM_AREA DESC
+	</select>
+	
+	<!-- 更新大区信息 -->
+	<update id="updateEntityGameChatRoleDetail" parameterClass="EntityGameChatRoleDetail">
+		UPDATE GAME_CHAT_ROLE SET 
+			SERVER_ID = 1
+		<isNotEmpty prepend="," property="roleSite">
+			ROLE_SITE = #roleSite# 
+		</isNotEmpty>		
+     	<isNotEmpty prepend="," property="roomNo">
+			ROOM_NO = #roomNo# 
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="battleTroop">
+			BATTLE_TROOP = #battleTroop# 
+		</isNotEmpty>	
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roomArea">
+			ROOM_AREA = #roomArea#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<delete id="deleteEntityGameChatRoleDetail" parameterClass="java.util.Map">
+		DELETE FROM GAME_CHAT_ROLE WHERE ID = #id# 
+	</delete>
+	
+	<delete id="deleteEntityGameChatRoleDetailAll">
+		DELETE FROM GAME_CHAT_ROLE
+	</delete>
+</sqlMap>

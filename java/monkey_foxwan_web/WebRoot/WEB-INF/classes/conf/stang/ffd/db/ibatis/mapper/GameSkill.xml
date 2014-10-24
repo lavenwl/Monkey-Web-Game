@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameSkill">
+	<typeAlias alias="EntityGameSkillDetail" type="com.stang.game.ffd.entity.detail.EntityGameSkillDetail" />
+	
+	<cacheModel id="gameSkillCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertEntityGameSkillDetaill"/>
+		<flushOnExecute statement="updateEntityGameSkillDetail"/>
+	</cacheModel>
+	
+	<resultMap class="EntityGameSkillDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="skillCode" column="SKILL_CODE"/>
+		<result property="skillName" column="SKILL_NAME"/>
+		<result property="skillDesc" column="SKILL_DESC"/>
+		<result property="skillIcon" column="SKILL_ICON"/>
+		<result property="skillMeclip" column="SKILL_MECLIP"/>
+		<result property="skillToclip" column="SKILL_TOCLIP"/>
+		<result property="skillEthnicity" column="SKILL_ETHNICITY"/>
+		<result property="skillDeparttype" column="SKILL_DEPARTTYPE"/>
+		<result property="skillActive" column="SKILL_ACTIVE"/>
+		<result property="skillMpcost" column="SKILL_MPCOST"/>
+		<result property="skillMppercost" column="SKILL_MPPERCOST"/>
+		<result property="skillMaxlevel" column="SKILL_MAXLEVEL"/>
+		<result property="skillNeedlv" column="SKILL_NEEDLV"/>
+		<result property="skillNeedrank" column="SKILL_NEEDRANK"/>
+		<result property="skillTargettype" column="SKILL_TARGETTYPE"/>
+		<result property="skillLv" column="SKILL_LV"/>
+		<result property="skillCd" column="SKILL_CD"/>
+		<result property="skillPoint" column="SKILL_POINT"/>
+		<result property="skillNeedmoney" column="SKILL_NEEDMONEY"/>
+		<result property="skillNeedcoin" column="SKILL_NEEDCOIN"/>
+		<result property="skillNeedskills" column="SKILL_NEEDSKILLS"/>
+		<result property="skillCleartypestate" column="SKILL_CLEARTYPESTATE"/>
+		<result property="skillClearstate" column="SKILL_CLEARSTATE"/>
+		<result property="skillMestate" column="SKILL_MESTATE"/>
+		<result property="skillFdstate" column="SKILL_FDSTATE"/>
+		<result property="skillEnstate" column="SKILL_ENSTATE"/>
+		<result property="skillEnallstate" column="SKILL_ENALLSTATE"/>
+		<result property="skillPower" column="SKILL_POWER"/>
+		<result property="skillAgility" column="SKILL_AGILITY"/>
+		<result property="skillStamina" column="SKILL_STAMINA"/>
+		<result property="skillSpirit" column="SKILL_SPIRIT"/>
+		<result property="skillNeedbuffkey" column="SKILL_NEEDBUFFKEY"/>
+		<result property="skillNeedtype" column="SKILL_NEEDTYPE"/>
+		<result property="skillFireaction" column="SKILL_FIREACTION"/>
+		<result property="skillFireactionparam" column="SKILL_FIREACTIONPARAM"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="skillBeacon" column="SKILL_BEACON"/>
+		<result property="flag" column="FLAG"/>
+	</resultMap>
+
+	<!-- 录入信息 -->
+	<insert id="insertEntityGameSkillDetaill" parameterClass="EntityGameSkillDetail">
+		INSERT INTO GAME_SKILL (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCode">SKILL_CODE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillName">SKILL_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="skillDesc">SKILL_DESC</isNotEmpty>
+			<isNotEmpty prepend="," property="skillIcon">SKILL_ICON</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMeclip">SKILL_MECLIP</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEthnicity">SKILL_ETHNICITY</isNotEmpty>
+			<isNotEmpty prepend="," property="skillDeparttype">SKILL_DEPARTTYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillActive">SKILL_ACTIVE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMpcost">SKILL_MPCOST</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMppercost">SKILL_MPPERCOST</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMaxlevel">SKILL_MAXLEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedlv">SKILL_NEEDLV</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedrank">SKILL_NEEDRANK</isNotEmpty>
+			<isNotEmpty prepend="," property="skillTargettype">SKILL_TARGETTYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillLv">SKILL_LV</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCd">SKILL_CD</isNotEmpty>
+			<isNotEmpty prepend="," property="skillPoint">SKILL_POINT</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedmoney">SKILL_NEEDMONEY</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedcoin">SKILL_NEEDCOIN</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedskills">SKILL_NEEDSKILLS</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCleartypestate">SKILL_CLEARTYPESTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillClearstate">SKILL_CLEARSTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMestate">SKILL_MESTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillFdstate">SKILL_FDSTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEnstate">SKILL_ENSTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEnallstate">SKILL_ENALLSTATE</isNotEmpty>
+			<isNotEmpty prepend="," property="skillPower">SKILL_POWER</isNotEmpty>
+			<isNotEmpty prepend="," property="skillAgility">SKILL_AGILITY</isNotEmpty>
+			<isNotEmpty prepend="," property="skillStamina">SKILL_STAMINA</isNotEmpty>
+			<isNotEmpty prepend="," property="skillSpirit">SKILL_SPIRIT</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCode">#skillCode#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillName">#skillName#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillDesc">#skillDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillIcon">#skillIcon#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMeclip">#skillMeclip#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEthnicity">#skillEthnicity#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillDeparttype">#skillDeparttype#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillActive">#skillActive#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMpcost">#skillMpcost#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMppercost">#skillMppercost#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMaxlevel">#skillMaxlevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedlv">#skillNeedlv#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedrank">#skillNeedrank#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillTargettype">#skillTargettype#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillLv">#skillLv#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCd">#skillCd#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillPoint">#skillPoint#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedmoney">#skillNeedmoney#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedcoin">#skillNeedcoin#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillNeedskills">#skillNeedskills#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCleartypestate">#skillCleartypestate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillClearstate">#skillClearstate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillMestate">#skillMestate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillFdstate">#skillFdstate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEnstate">#skillEnstate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillEnallstate">#skillEnallstate#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillPower">#skillPower#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillAgility">#skillAgility#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillStamina">#skillStamina#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillSpirit">#skillSpirit#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateEntityGameSkillDetail" parameterClass="EntityGameSkillDetail">
+		UPDATE GAME_SKILL SET 
+		<isNotEmpty prepend="" property="skillCode">
+			SKILL_NAME = #skillCode# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillName">
+			SKILL_NAME = #skillName# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillDesc">
+			SKILL_DESC = #skillDesc# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillIcon">
+			SKILL_ICON = #skillIcon# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMeclip">
+			SKILL_MECLIP = #skillMeclip# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillEthnicity">
+			SKILL_ETHNICITY = #skillEthnicity# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillDeparttype">
+			SKILL_DEPARTTYPE = #skillDeparttype# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillActive">
+			SKILL_ACTIVE = #skillActive# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMpcost">
+			SKILL_MPCOST = #skillMpcost# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMppercost">
+			SKILL_MPPERCOST = #skillMppercost# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMaxlevel">
+			SKILL_MAXLEVEL = #skillMaxlevel# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillNeedlv">
+			SKILL_NEEDLV = #skillNeedlv# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillNeedrank">
+			SKILL_NEEDRANK = #skillNeedrank# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillTargettype">
+			SKILL_TARGETTYPE = #skillTargettype# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillLv">
+			SKILL_LV = #skillLv# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillCd">
+			SKILL_CD = #skillCd# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillPoint">
+			SKILL_POINT = #skillPoint# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillNeedmoney">
+			SKILL_NEEDMONEY = #skillNeedmoney# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillNeedcoin">
+			SKILL_NEEDCOIN = #skillNeedcoin# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillNeedskills">
+			SKILL_NEEDSKILLS = #skillNeedskills# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillCleartypestate">
+			SKILL_CLEARTYPESTATE = #skillCleartypestate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillClearstate">
+			SKILL_CLEARSTATE = #skillClearstate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMestate">
+			SKILL_MESTATE = #skillMestate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillFdstate">
+			SKILL_FDSTATE = #skillFdstate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillEnstate">
+			SKILL_ENSTATE = #skillEnstate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillEnallstate">
+			SKILL_ENALLSTATE = #skillEnallstate# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillPower">
+			SKILL_POWER = #skillPower# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillAgility">
+			SKILL_AGILITY = #skillAgility# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="skillStamina">
+			SKILL_STAMINA = #skillStamina# 
+		</isNotEmpty> 
+		<isNotEmpty prepend="," property="skillSpirit">
+			SKILL_SPIRIT = #skillSpirit# 
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据序列号得到信息  -->
+	<select id="getEntityGameSkillDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="gameSkillCache">
+		SELECT 
+			ID,
+			SKILL_CODE,
+			SKILL_NAME,
+			SKILL_DESC,
+			SKILL_ICON,
+			SKILL_MECLIP,
+			SKILL_ETHNICITY,
+			SKILL_DEPARTTYPE,
+			SKILL_ACTIVE,
+			SKILL_MPCOST,
+			SKILL_MPPERCOST,
+			SKILL_MAXLEVEL,
+			SKILL_NEEDLV,
+			SKILL_NEEDRANK,
+			SKILL_TARGETTYPE,
+			SKILL_LV,
+			SKILL_CD,
+			SKILL_POINT,
+			SKILL_TOCLIP,
+			SKILL_NEEDMONEY,
+			SKILL_NEEDCOIN,
+			SKILL_NEEDSKILLS,
+			SKILL_CLEARTYPESTATE,
+			SKILL_NEEDBUFFKEY,
+			SKILL_NEEDTYPE,
+			SKILL_CLEARSTATE,
+			SKILL_MESTATE,
+			SKILL_FDSTATE,
+			SKILL_ENSTATE,
+			SKILL_ENALLSTATE,
+			SKILL_FIREACTION,
+			SKILL_FIREACTIONPARAM,
+			SKILL_POWER,
+			SKILL_AGILITY,
+			SKILL_STAMINA,
+			SKILL_SPIRIT,
+			SKILL_BEACON,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			GAME_SKILL    
+		WHERE FLAG = 1 	
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCode" prepend="AND">
+    	   		SKILL_CODE = #skillCode# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillName" prepend="AND">
+    	   		SKILL_NAME = #skillName# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillDesc" prepend="AND">
+    	   		SKILL_DESC = #skillDesc# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillIcon" prepend="AND">
+    	   		SKILL_ICON = #skillIcon# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMeclip" prepend="AND">
+    	   		SKILL_MECLIP = #skillMeclip# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEthnicity" prepend="AND">
+    	   		SKILL_ETHNICITY = #skillEthnicity# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillDeparttype" prepend="AND">
+    	   		SKILL_DEPARTTYPE = #skillDeparttype# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillActive" prepend="AND">
+    	   		SKILL_ACTIVE = #skillActive# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMpcost" prepend="AND">
+    	   		SKILL_MPCOST = #skillMpcost# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMppercost" prepend="AND">
+    	   		SKILL_MPPERCOST = #skillMppercost# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMaxlevel" prepend="AND">
+    	   		SKILL_MAXLEVEL = #skillMaxlevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedlv" prepend="AND">
+    	   		SKILL_NEEDLV = #skillNeedlv# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedrank" prepend="AND">
+    	   		SKILL_NEEDRANK = #skillNeedrank# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillTargettype" prepend="AND">
+    	   		SKILL_TARGETTYPE = #skillTargettype# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillLv" prepend="AND">
+    	   		SKILL_LV = #skillLv# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCd" prepend="AND">
+    	   		SKILL_CD = #skillCd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillPoint" prepend="AND">
+    	   		SKILL_POINT = #skillPoint# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedmoney" prepend="AND">
+    	   		SKILL_NEEDMONEY = #skillNeedmoney# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedcoin" prepend="AND">
+    	   		SKILL_NEEDCOIN = #skillNeedcoin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedskills" prepend="AND">
+    	   		SKILL_NEEDSKILLS = #skillNeedskills# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCleartypestate" prepend="AND">
+    	   		SKILL_CLEARTYPESTATE = #skillCleartypestate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillClearstate" prepend="AND">
+    	   		SKILL_CLEARSTATE = #skillClearstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMestate" prepend="AND">
+    	   		SKILL_MESTATE = #skillMestate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillFdstate" prepend="AND">
+    	   		SKILL_FDSTATE = #skillFdstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEnstate" prepend="AND">
+    	   		SKILL_ENSTATE = #skillEnstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEnallstate" prepend="AND">
+    	   		SKILL_ENALLSTATE = #skillEnallstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillPower" prepend="AND">
+    	   		SKILL_POWER = #skillPower# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillAgility" prepend="AND">
+    	   		SKILL_AGILITY = #skillAgility# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillStamina" prepend="AND">
+    	   		SKILL_STAMINA = #skillStamina# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillSpirit" prepend="AND">
+    	   		SKILL_SPIRIT = #skillSpirit# 
+    	   	</isNotEmpty>
+
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime#
+    	   	</isNotEmpty>
+	</select>
+
+	<!-- 列表查询信息  -->
+	<select id="listEntityGameSkillDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="gameSkillCache">
+		SELECT 
+			ID,
+			SKILL_CODE,
+			SKILL_NAME,
+			SKILL_DESC,
+			SKILL_ICON,
+			SKILL_MECLIP,
+			SKILL_ETHNICITY,
+			SKILL_DEPARTTYPE,
+			SKILL_ACTIVE,
+			SKILL_MPCOST,
+			SKILL_MPPERCOST,
+			SKILL_MAXLEVEL,
+			SKILL_NEEDLV,
+			SKILL_NEEDRANK,
+			SKILL_TARGETTYPE,
+			SKILL_LV,
+			SKILL_CD,
+			SKILL_TOCLIP,
+			SKILL_POINT,
+			SKILL_NEEDMONEY,
+			SKILL_NEEDCOIN,
+			SKILL_NEEDSKILLS,
+			SKILL_CLEARTYPESTATE,
+			SKILL_CLEARSTATE,
+			SKILL_MESTATE,
+			SKILL_NEEDBUFFKEY,
+			SKILL_NEEDTYPE,
+			SKILL_FDSTATE,
+			SKILL_FIREACTION,
+			SKILL_FIREACTIONPARAM,
+			SKILL_ENSTATE,
+			SKILL_ENALLSTATE,
+			SKILL_POWER,
+			SKILL_BEACON,
+			SKILL_AGILITY,
+			SKILL_STAMINA,
+			SKILL_SPIRIT,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			GAME_SKILL    
+		WHERE FLAG = 1 	
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCode" prepend="AND">
+    	   		SKILL_CODE = #skillCode# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillName" prepend="AND">
+    	   		SKILL_NAME = #skillName# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillDesc" prepend="AND">
+    	   		SKILL_DESC = #skillDesc# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillIcon" prepend="AND">
+    	   		SKILL_ICON = #skillIcon# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMeclip" prepend="AND">
+    	   		SKILL_MECLIP = #skillMeclip# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEthnicity" prepend="AND">
+    	   		SKILL_ETHNICITY = #skillEthnicity# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillDeparttype" prepend="AND">
+    	   		SKILL_DEPARTTYPE = #skillDeparttype# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillActive" prepend="AND">
+    	   		SKILL_ACTIVE = #skillActive# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMpcost" prepend="AND">
+    	   		SKILL_MPCOST = #skillMpcost# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMppercost" prepend="AND">
+    	   		SKILL_MPPERCOST = #skillMppercost# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMaxlevel" prepend="AND">
+    	   		SKILL_MAXLEVEL = #skillMaxlevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedlv" prepend="AND">
+    	   		SKILL_NEEDLV = #skillNeedlv# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedrank" prepend="AND">
+    	   		SKILL_NEEDRANK = #skillNeedrank# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillTargettype" prepend="AND">
+    	   		SKILL_TARGETTYPE = #skillTargettype# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillLv" prepend="AND">
+    	   		SKILL_LV = #skillLv# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCd" prepend="AND">
+    	   		SKILL_CD = #skillCd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillPoint" prepend="AND">
+    	   		SKILL_POINT = #skillPoint# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedmoney" prepend="AND">
+    	   		SKILL_NEEDMONEY = #skillNeedmoney# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedcoin" prepend="AND">
+    	   		SKILL_NEEDCOIN = #skillNeedcoin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillNeedskills" prepend="AND">
+    	   		SKILL_NEEDSKILLS = #skillNeedskills# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillCleartypestate" prepend="AND">
+    	   		SKILL_CLEARTYPESTATE = #skillCleartypestate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillClearstate" prepend="AND">
+    	   		SKILL_CLEARSTATE = #skillClearstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillMestate" prepend="AND">
+    	   		SKILL_MESTATE = #skillMestate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillFdstate" prepend="AND">
+    	   		SKILL_FDSTATE = #skillFdstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEnstate" prepend="AND">
+    	   		SKILL_ENSTATE = #skillEnstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillEnallstate" prepend="AND">
+    	   		SKILL_ENALLSTATE = #skillEnallstate# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillPower" prepend="AND">
+    	   		SKILL_POWER = #skillPower# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillAgility" prepend="AND">
+    	   		SKILL_AGILITY = #skillAgility# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillStamina" prepend="AND">
+    	   		SKILL_STAMINA = #skillStamina# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="skillSpirit" prepend="AND">
+    	   		SKILL_SPIRIT = #skillSpirit# 
+    	   	</isNotEmpty>
+
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime#
+    	   	</isNotEmpty>
+    	   	
+    	   	<isNotEmpty property="likeTime" prepend="AND">
+    	   		CREATE_TIME LIKE  '%$likeTime$%'
+    	   	</isNotEmpty>
+    	   	
+    	   	<isNotEmpty property="ids" prepend="AND">
+    	   		<![CDATA[ID > #ids#]]>
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 根据ID组列表查询信息  -->
+	<select id="findEntityGameSkillDetailByIds" resultMap="listResult" parameterClass="java.util.Map" cacheModel="gameSkillCache">
+		SELECT 
+			ID,
+			SKILL_CODE,
+			SKILL_NAME,
+			SKILL_DESC,
+			SKILL_ICON,
+			SKILL_MECLIP,
+			SKILL_ETHNICITY,
+			SKILL_DEPARTTYPE,
+			SKILL_ACTIVE,
+			SKILL_MPCOST,
+			SKILL_FIREACTION,
+			SKILL_FIREACTIONPARAM,
+			SKILL_MPPERCOST,
+			SKILL_MAXLEVEL,
+			SKILL_NEEDLV,
+			SKILL_NEEDRANK,
+			SKILL_TARGETTYPE,
+			SKILL_LV,
+			SKILL_CD,
+			SKILL_TOCLIP,
+			SKILL_POINT,
+			SKILL_NEEDMONEY,
+			SKILL_NEEDCOIN,
+			SKILL_NEEDSKILLS,
+			SKILL_CLEARTYPESTATE,
+			SKILL_CLEARSTATE,
+			SKILL_MESTATE,
+			SKILL_FDSTATE,
+			SKILL_ENSTATE,
+			SKILL_ENALLSTATE,
+			SKILL_POWER,
+			SKILL_AGILITY,
+			SKILL_STAMINA,
+			SKILL_SPIRIT,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			GAME_SKILL    
+		WHERE FLAG = 1 	
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull> 
+	</select>
+	
+	<!-- 根据ID组列表查询信息  -->
+	<select id="getAllInfoSkill" resultMap="listResult">
+		SELECT 
+			ID,
+			SKILL_CODE,
+			SKILL_NAME,
+			SKILL_DESC,
+			SKILL_ICON,
+			SKILL_MECLIP,
+			SKILL_ETHNICITY,
+			SKILL_DEPARTTYPE,
+			SKILL_ACTIVE,
+			SKILL_MPCOST,
+			SKILL_MPPERCOST,
+			SKILL_MAXLEVEL,
+			SKILL_NEEDLV,
+			SKILL_NEEDRANK,
+			SKILL_TARGETTYPE,
+			SKILL_LV,
+			SKILL_CD,
+			SKILL_POINT,
+			SKILL_TOCLIP,
+			SKILL_NEEDMONEY,
+			SKILL_NEEDCOIN,
+			SKILL_NEEDSKILLS,
+			SKILL_CLEARTYPESTATE,
+			SKILL_NEEDBUFFKEY,
+			SKILL_NEEDTYPE,
+			SKILL_CLEARSTATE,
+			SKILL_MESTATE,
+			SKILL_FDSTATE,
+			SKILL_ENSTATE,
+			SKILL_ENALLSTATE,
+			SKILL_FIREACTION,
+			SKILL_FIREACTIONPARAM,
+			SKILL_POWER,
+			SKILL_AGILITY,
+			SKILL_STAMINA,
+			SKILL_SPIRIT,
+			SKILL_BEACON,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			GAME_SKILL    
+		WHERE ID>300
+	</select>
+</sqlMap>

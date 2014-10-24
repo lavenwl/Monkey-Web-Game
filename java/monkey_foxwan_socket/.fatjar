@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu May 29 19:46:10 CST 2014
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=monkey0529.jar
+manifest.mergeall=true
+manifest.mainclass=com.stang.game.server.ServerMain
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

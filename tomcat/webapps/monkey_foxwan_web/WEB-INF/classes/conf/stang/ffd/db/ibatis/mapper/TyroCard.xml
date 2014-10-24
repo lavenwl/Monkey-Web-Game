@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="TyroCard">
+	<typeAlias alias="TyroCardDetail" type="com.stang.game.ffd.entity.detail.TyroCardDetail" />
+	<resultMap class="TyroCardDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="card" column="CARD"/>
+		<result property="flag" column="FLAG"/>
+		<result property="serverId" column="SERVER_ID"/>
+		<result property="roleId" column="ROLE_ID"/>
+		<result property="md5card" column="MD5CARD" />
+	</resultMap>
+	<select id="findTryoCardDetailByParam" parameterClass="java.util.Map" resultMap="listResult">
+		SELECT 
+			ID,
+			CARD,
+			FLAG,
+			SERVER_ID,
+			ROLE_ID,
+			MD5CARD
+			FROM TYRO_CARD
+			WHERE
+			<isNotEmpty prepend="" property="flag">
+			FLAG = #flag#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="card">
+			CARD = #card#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="serverId">
+			SERVER_ID = #serverId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleId">
+			ROLE_ID = #roleId#
+			</isNotEmpty>
+			order by ID desc
+			<isNotEmpty prepend="" property="lim">
+			limit #lim#
+			</isNotEmpty>
+			  
+	</select>
+	
+	
+	<update id="updateTryoCardDetail" parameterClass="TyroCardDetail">
+		UPDATE TYRO_CARD SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="card">
+			CARD = #card#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>		
+			WHERE  ID = #id#
+	</update>
+	<insert id="insertTryoCardDetail" parameterClass="TyroCardDetail">
+		INSERT INTO TYRO_CARD (
+			<isNotEmpty prepend="" property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="card">CARD</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">SERVER_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="md5card">MD5CARD</isNotEmpty>
+			)
+			VALUES(
+			<isNotEmpty prepend="" property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="card">#card#</isNotEmpty>
+			<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="md5card">#md5card#</isNotEmpty>
+			)
+	</insert>
+</sqlMap>

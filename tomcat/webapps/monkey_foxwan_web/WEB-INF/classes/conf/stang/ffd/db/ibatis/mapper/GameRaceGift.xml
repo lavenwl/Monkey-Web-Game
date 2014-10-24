@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceGift">
+	<typeAlias alias="GameRaceGiftDetail" type="com.stang.game.ffd.entity.detail.GameRaceGiftDetail" />
+	
+	<resultMap class="GameRaceGiftDetail" id="listResult">
+		<result property="raceId" column="RACE_ID"/>
+		<result property="winNum" column="WIN_NUM"/>
+		<result property="winGiftParams" column="WIN_GIFT_PARAMS"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceGiftDetail" parameterClass="GameRaceGiftDetail">
+		INSERT INTO GAME_RACE_GIFT (
+			<isNotEmpty prepend="" property="raceId">RACE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="winNum">WIN_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="winGiftParams">WIN_GIFT_PARAMS</isNotEmpty>
+			<isNotEmpty prepend="," property="title">TITLE</isNotEmpty>
+			<isNotEmpty prepend="," property="content">CONTENT</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="raceId">#raceId#</isNotEmpty>
+			<isNotEmpty prepend="," property="winNum">#winNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="winGiftParams">#winGiftParams#</isNotEmpty>
+			<isNotEmpty prepend="," property="title">#title#</isNotEmpty>
+			<isNotEmpty prepend="," property="content">#content#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceGiftDetail" parameterClass="GameRaceGiftDetail">
+		UPDATE GAME_RACE_GIFT SET 
+		<isNotEmpty prepend="" property="raceId">
+			RACE_ID = #raceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="winNum">
+			WIN_NUM = #winNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="winGiftParams">
+			WIN_GIFT_PARAMS = #winGiftParams#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="title">
+			TITLE = #title#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="content">
+			CONTENT = #content#
+		</isNotEmpty>
+		WHERE RACE_ID = #raceId#
+	</update>
+	
+	
+	<select id="getGameRaceGiftDetail" resultMap="listResult" parameterClass="java.util.Map">
+		SELECT 
+			RACE_ID,
+			WIN_NUM,
+			WIN_GIFT_PARAMS,
+			TITLE,
+			CONTENT
+		FROM 
+			GAME_RACE_GIFT   
+		WHERE 
+			<isNotEmpty property="raceId" prepend="">
+    	   		RACE_ID = #raceId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="winNum" prepend="AND">
+    	   		WIN_NUM = #winNum# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="winGiftParams" prepend="AND">
+    	   		WIN_GIFT_PARAMS = #winGiftParams# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="content" prepend="AND">
+    	   		CONTENT = #content# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="title" prepend="AND">
+    	   		TITLE = #title# 
+    	   	</isNotEmpty>
+	</select>
+	<select id="getGameRaceGiftDetailOrderByWinNum" resultMap="listResult" parameterClass="int">
+		SELECT 
+			RACE_ID,
+			WIN_NUM,
+			WIN_GIFT_PARAMS,
+			TITLE,
+			CONTENT
+		FROM 
+			GAME_RACE_GIFT   
+		WHERE 
+    	   	RACE_ID = #raceId# 
+    	   	order by win_num
+	</select>
+	<select id="getGameRaceGiftHashMap" resultClass="java.util.HashMap" parameterClass="java.util.Map" >
+		SELECT 
+			race_id,
+			win_num,
+			win_gift_params,
+			title,
+			content
+		FROM 
+			GAME_RACE_GIFT   
+		WHERE 
+    	   	RACE_ID = #raceId#
+	</select>
+	
+</sqlMap>

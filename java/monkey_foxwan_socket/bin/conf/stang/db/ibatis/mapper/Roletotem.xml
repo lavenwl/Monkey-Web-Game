@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Roletotem">
+	<typeAlias alias="RoletotemDetail"
+		type="com.stang.game.entity.detail.RoletotemDetail" />
+
+	<cacheModel id="roletotemCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="RoletotemDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleid" column="roleid" />
+		<result property="type" column="type" />
+		<result property="level" column="level" />
+		<result property="flag" column="flag" />
+		<result property="num" column="num" />
+		<result property="quality" column="quality" />
+		<result property="totemid" column="totemid" />
+		<result property="equiptotem" column="equiptotem" />
+	</resultMap>
+	
+	<select id="getallroletotem" resultMap="listResult">
+		SELECT * FROM roletotem where flag=1
+	</select>
+	
+	
+
+	<!-- 录入信息 -->
+	<insert id="insertRoletotem" parameterClass="RoletotemDetail">
+		INSERT INTO roletotem (
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">quality</isNotEmpty>
+		<isNotEmpty prepend="," property="totemid">totemid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptotem">equiptotem</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">#quality#</isNotEmpty>
+		<isNotEmpty prepend="," property="totemid">#totemid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptotem">#equiptotem#</isNotEmpty>
+		)
+	</insert>
+	<!-- 更新信息 -->
+	<update id="sbRoletotemNum" parameterClass="java.util.HashMap">
+		UPDATE roletotem SET num = num - #num# 
+		<isNotEmpty prepend="," property="equiptotem">equiptotem = #equiptotem#</isNotEmpty>
+		WHERE
+		<isNotEmpty prepend="" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>   
+		<isNotEmpty prepend="AND" property="totemid">
+			totemid = #totemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="level">
+			level = #level#
+		</isNotEmpty>
+	</update>
+	
+	<!-- 更新信息 -->
+	<update id="addRoletotemNum" parameterClass="java.util.HashMap">
+	UPDATE roletotem SET num = num + #num# 
+	<isNotEmpty prepend="," property="equiptotem">equiptotem = #equiptotem#</isNotEmpty>
+	WHERE
+		<isNotEmpty prepend="" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>  
+		<isNotEmpty prepend="AND" property="totemid">
+			totemid = #totemid#
+		</isNotEmpty> 
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="level">
+			level = #level#
+		</isNotEmpty>
+	</update>
+	
+	
+	<delete id="delRoletotem" parameterClass="java.util.HashMap">
+		DELETE FROM roletotem WHERE 
+			roleid = #roleid# and type=#type# and level=#level#
+	
+	</delete>
+
+	<select id="getRoletotem" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM roletotem WHERE roleid = #roleid#
+		<isNotEmpty prepend="AND" property="totemid">
+			totemid = #totemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="level">
+			level = #level#
+		</isNotEmpty>
+
+	</select>
+	
+	
+	
+	<update id="updateRoletotem" parameterClass="RoletotemDetail">
+		UPDATE roletotem SET
+		<isNotEmpty prepend="" property="num">num = #num#</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptotem">equiptotem = #equiptotem#</isNotEmpty>
+		WHERE
+		<isNotEmpty prepend="" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>   
+		<isNotEmpty prepend="AND" property="totemid">
+			totemid = #totemid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="level">
+			level = #level#
+		</isNotEmpty>
+	</update>
+	
+	<delete id="deleteRoletotem" parameterClass="RoletotemDetail">
+		DELETE FROM roletotem WHERE 
+			roleid = #roleid# and type=#type# and level=#level#
+	
+	</delete>
+	
+
+</sqlMap>

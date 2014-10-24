@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameAvatar">
+	<typeAlias alias="EntityGameAvatarDetail" type="com.stang.game.ffd.entity.detail.EntityGameAvatarDetail" />
+	
+	<cacheModel id="gameAvatarCache" type="OSCACHE">
+		<!-- <flushInterval hours="24" /> -->
+		<flushOnExecute statement="insertEntityGameAvatarDetail"/>
+		<flushOnExecute statement="updateEntityGameAvatarDetail"/>
+	</cacheModel>
+	<cacheModel id="gameAvatarNameCache" type="OSCACHE">
+	<!--	<flushInterval hours="24" /> -->	
+		<flushOnExecute statement="insertEntityGameAvatarDetail"/>
+		<flushOnExecute statement="updateEntityGameAvatarDetail"/>
+	</cacheModel>
+		
+	<resultMap class="EntityGameAvatarDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="avatarName" column="AVATAR_NAME"/>
+		<result property="avatarRes" column="AVATAR_RES"/>
+		<result property="avatarType" column="AVATAR_TYPE"/>
+		
+		<result property="isWhole" column="IS_WHOLE"/>
+		<result property="isFashion" column="IS_FASHION"/>
+
+		<result property="avatarSex" column="AVATAR_SEX"/>
+		<result property="rmbBuy" column="RMB_BUY"/>
+		<result property="coinBuy" column="COIN_BUY"/>
+		<result property="storeTime" column="STORE_TIME"/>
+		<result property="avatarBind" column="AVATAR_BIND"/>
+		<result property="avatarForever" column="AVATAR_FOREVER"/>
+	
+		<result property="avatarLevel" column="AVATAR_LEVEL"/>
+		<result property="strengthenLevel" column="STRENGTHEN_LEVEL"/>
+
+		<result property="addPower" column="ADD_POWER"/>
+		<result property="addAgility" column="ADD_AGILITY"/>
+		<result property="addStamina" column="ADD_STAMINA"/>
+		<result property="addMana" column="ADD_MANA"/>
+
+		<result property="avatarPowerPropAdd" column="AVATAR_POWER_PROP_ADD"/>
+		<result property="avatarAgilityPropAdd" column="AVATAR_AGILITY_PROP_ADD"/>
+		<result property="avatarStaminaPropAdd" column="AVATAR_STAMINA_PROP_ADD"/>
+		<result property="avatarManaPropAdd" column="AVATAR_MANA_PROP_ADD"/>
+		<result property="strengthenPowerPropAdd" column="STRENGTHEN_POWER_PROP_ADD"/>
+		<result property="strengthenAgilityPropAdd" column="STRENGTHEN_AGILITY_PROP_ADD"/>
+		<result property="strengthenStaminaPropAdd" column="STRENGTHEN_STAMINA_PROP_ADD"/>
+		<result property="strengthenManaPropAdd" column="STRENGTHEN_MANA_PROP_ADD"/>
+
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+
+		<result property="grade" column="GRADE"/>
+		<result property="race" column="RACE"/>
+		<result property="isShow" column="IS_SHOW"/>
+		<result property="avatarRes2" column="AVATAR_RES2"/>
+		<result property="isMarket" column="IS_MARKET"/>
+		<result property="isGoodFree" column="IS_GOOD_FREE" />
+		<result property="isBase" column="IS_BASE" />
+		<result property="avatarDh" column="AVATAR_DH" />
+		<result property="isBattleGift" column="IS_BATTLE_GIFT" />
+		<result property="avatarSellGold" column="AVATAR_SELL_GOLD" />
+		
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertEntityGameAvatarDetail" parameterClass="EntityGameAvatarDetail">
+		INSERT INTO GAME_AVATAR (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarName">AVATAR_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarRes">AVATAR_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarType">AVATAR_TYPE</isNotEmpty>
+
+			<isNotEmpty prepend="," property="isWhole">IS_WHOLE</isNotEmpty>
+			<isNotEmpty prepend="," property="isFashion">IS_FASHION</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarSex">AVATAR_SEX</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">RMB_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">COIN_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">STORE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarBind">AVATAR_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarForever">AVATAR_FOREVER</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarLevel">AVATAR_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">STRENGTHEN_LEVEL</isNotEmpty>
+
+			<isNotEmpty prepend="," property="addPower">ADD_POWER</isNotEmpty>
+			<isNotEmpty prepend="," property="addAgility">ADD_AGILITY</isNotEmpty>
+			<isNotEmpty prepend="," property="addStamina">ADD_STAMINA</isNotEmpty>
+			<isNotEmpty prepend="," property="addMana">ADD_MANA</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarPowerPropAdd">AVATAR_POWER_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarAgilityPropAdd">AVATAR_AGILITY_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarStaminaPropAdd">AVATAR_STAMINA_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarManaPropAdd">AVATAR_MANA_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenPowerPropAdd">STRENGTHEN_POWER_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAgilityPropAdd">STRENGTHEN_AGILITY_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenStaminaPropAdd">STRENGTHEN_STAMINA_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenManaPropAdd">STRENGTHEN_MANA_PROP_ADD</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+
+			<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+			<isNotEmpty prepend="," property="race">RACE</isNotEmpty>
+			<isNotEmpty prepend="," property="isShow">IS_SHOW</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarRes2">AVATAR_RES2</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">IS_MARKET</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">IS_GOOD_FREE</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">IS_BASE</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarDh">AVATAR_DH</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">IS_BATTLE_GIFT</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarName">#avatarName#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarRes">#avatarRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarType">#avatarType#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="isWhole">#isWhole#</isNotEmpty>
+			<isNotEmpty prepend="," property="isFashion">#isFashion#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarSex">#avatarSex#</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">#rmbBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">#coinBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">#storeTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarBind">#avatarBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarForever">#avatarForever#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarLevel">avatarLevel</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">strengthenLevel</isNotEmpty>
+
+			<isNotEmpty prepend="," property="addPower">#addPower#</isNotEmpty>
+			<isNotEmpty prepend="," property="addAgility">#addAgility#</isNotEmpty>
+			<isNotEmpty prepend="," property="addStamina">#addStamina#</isNotEmpty>
+			<isNotEmpty prepend="," property="addMana">#addMana#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarPowerPropAdd">avatarPowerPropAdd</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarAgilityPropAdd">#avatarAgilityPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarStaminaPropAdd">#avatarStaminaPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarManaPropAdd">#avatarManaPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenPowerPropAdd">#strengthenPowerPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAgilityPropAdd">#strengthenAgilityPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenStaminaPropAdd">#strengthenStaminaPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenManaPropAdd">#strengthenManaPropAdd#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+			<isNotEmpty prepend="," property="race">#race#</isNotEmpty>
+			<isNotEmpty prepend="," property="isShow">#isShow#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarRes2">#avatarRes2#</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">#isMarket#</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">#isGoodFree#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">#isBase#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarDh">#avatarDh#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">#isBattleGift#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新大区信息 -->
+	<update id="updateEntityGameAvatarDetail" parameterClass="EntityGameAvatarDetail">
+		UPDATE GAME_AVATAR SET 
+		<isNotEmpty prepend="" property="avatarName">
+			AVATAR_NAME = #avatarName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarRes">
+			AVATAR_RES = #avatarRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarType">
+			AVATAR_TYPE = #avatarType#
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="," property="isWhole">
+			IS_WHOLE = #isWhole#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isFashion">
+			IS_FASHION = #isFashion#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarSex">
+			AVATAR_SEX = #avatarSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rmbBuy">
+			RMB_BUY = #rmbBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="coinBuy">
+			COIN_BUY = #coinBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storeTime">
+			STORE_TIME = #storeTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBind">
+			AVATAR_BIND = #avatarBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarForever">
+			AVATAR_FOREVER = #avatarForever#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarLevel">
+			AVATAR_LEVEL = #avatarLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarForever">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="addPower">
+			ADD_POWER = #addPower#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addAgility">
+			ADD_AGILITY = #addAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addStamina">
+			ADD_STAMINA = #addStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addMana">
+			ADD_MANA = #addMana#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarPowerPropAdd">
+			AVATAR_POWER_PROP_ADD = #avatarPowerPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarAgilityPropAdd">
+			AVATAR_AGILITY_PROP_ADD = #avatarAgilityPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarStaminaPropAdd">
+			AVATAR_STAMINA_PROP_ADD = #avatarStaminaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarManaPropAdd">
+			AVATAR_MANA_PROP_ADD = #avatarManaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenPowerPropAdd">
+			STRENGTHEN_POWER_PROP_ADD = #strengthenPowerPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenAgilityPropAdd">
+			STRENGTHEN_AGILITY_PROP_ADD = #strengthenAgilityPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenStaminaPropAdd">
+			STRENGTHEN_STAMINA_PROP_ADD = #strengthenStaminaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenManaPropAdd">
+			STRENGTHEN_MANA_PROP_ADD = #strengthenManaPropAdd#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="race">
+			RACE = #race# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isShow">
+			IS_SHOW = #isShow# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarRes2">
+			AVATAR_RES2 = #avatarRes2# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isMarket">
+			IS_MARKET = #isMarket# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isGoodFree">
+			IS_GOOD_FREE = #isGoodFree# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBase">
+			IS_BASE = #isBase# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarDh">
+			AVATAR_DH = #avatarDh# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBattleGift">
+			IS_BATTLE_GIFT = #isBattleGift# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 获得所有游戏装饰信息 -->
+	<select id="allGameAvatars" resultMap="listResult" cacheModel="gameAvatarCache">
+		SELECT 
+			ID,
+			AVATAR_NAME,
+			AVATAR_RES,
+			AVATAR_TYPE,
+			
+			IS_WHOLE,
+			IS_FASHION,
+
+			AVATAR_SEX,
+			RMB_BUY,
+			COIN_BUY,
+			STORE_TIME,
+			AVATAR_BIND,
+			AVATAR_FOREVER,
+			
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+
+			ADD_POWER,
+			ADD_AGILITY,
+			ADD_STAMINA,
+			ADD_MANA,
+			
+			AVATAR_POWER_PROP_ADD,
+			AVATAR_AGILITY_PROP_ADD,
+			AVATAR_STAMINA_PROP_ADD,
+			AVATAR_MANA_PROP_ADD,
+			STRENGTHEN_POWER_PROP_ADD,
+			STRENGTHEN_AGILITY_PROP_ADD,
+			STRENGTHEN_STAMINA_PROP_ADD,
+			STRENGTHEN_MANA_PROP_ADD,
+
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			RACE,
+			IS_SHOW,
+			AVATAR_RES2,
+			IS_MARKET,
+			IS_GOOD_FREE,
+			IS_BASE,
+			AVATAR_DH, 
+			AVATAR_SELL_GOLD,
+			IS_BATTLE_GIFT     
+		FROM 
+			GAME_AVATAR 
+		WHERE FLAG = 1	
+		ORDER BY ID ASC
+	</select>
+	
+	<!-- 根据序列组获得游戏装饰信息 -->
+	<select id="findGameAvatarsByIds" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameAvatarCache">
+		SELECT 
+			ID,
+			AVATAR_NAME,
+			AVATAR_RES,
+			AVATAR_TYPE,
+			
+			IS_WHOLE,
+			IS_FASHION,
+
+			AVATAR_SEX,
+			RMB_BUY,
+			COIN_BUY,
+			STORE_TIME,
+			AVATAR_BIND,
+			AVATAR_FOREVER,
+			
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+
+			ADD_POWER,
+			ADD_AGILITY,
+			ADD_STAMINA,
+			ADD_MANA,
+			
+			AVATAR_POWER_PROP_ADD,
+			AVATAR_AGILITY_PROP_ADD,
+			AVATAR_STAMINA_PROP_ADD,
+			AVATAR_MANA_PROP_ADD,
+			STRENGTHEN_POWER_PROP_ADD,
+			STRENGTHEN_AGILITY_PROP_ADD,
+			STRENGTHEN_STAMINA_PROP_ADD,
+			STRENGTHEN_MANA_PROP_ADD,
+
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			RACE,
+			IS_SHOW,
+			AVATAR_RES2,
+			AVATAR_SELL_GOLD,
+			IS_MARKET,
+			IS_GOOD_FREE,
+			IS_BASE,
+			AVATAR_DH, 
+			IS_BATTLE_GIFT     
+		FROM 
+			GAME_AVATAR 
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND 
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<select id="getEntityGameAvatarDetail" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameAvatarCache">
+		SELECT 
+			ID,
+			AVATAR_NAME,
+			AVATAR_RES,
+			AVATAR_TYPE,
+			
+			IS_WHOLE,
+			IS_FASHION,
+
+			AVATAR_SEX,
+			RMB_BUY,
+			COIN_BUY,
+			STORE_TIME,
+			AVATAR_BIND,
+			AVATAR_FOREVER,
+			
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+
+			ADD_POWER,
+			ADD_AGILITY,
+			ADD_STAMINA,
+			ADD_MANA,
+			
+			AVATAR_POWER_PROP_ADD,
+			AVATAR_AGILITY_PROP_ADD,
+			AVATAR_STAMINA_PROP_ADD,
+			AVATAR_MANA_PROP_ADD,
+			STRENGTHEN_POWER_PROP_ADD,
+			STRENGTHEN_AGILITY_PROP_ADD,
+			STRENGTHEN_STAMINA_PROP_ADD,
+			STRENGTHEN_MANA_PROP_ADD,
+
+            AVATAR_SELL_GOLD,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			RACE,
+			IS_SHOW,
+			AVATAR_RES2,
+			IS_MARKET,
+			IS_GOOD_FREE,
+			IS_BASE,
+			AVATAR_DH, 
+			IS_BATTLE_GIFT   
+		FROM 
+			GAME_AVATAR
+		WHERE 
+			FLAG = 1
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarName">
+			AVATAR_NAME = #avatarName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarRes">
+			AVATAR_RES = #avatarRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarType">
+			AVATAR_TYPE = #avatarType#
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="AND" property="isWhole">
+			IS_WHOLE = #isWhole#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isFashion">
+			IS_FASHION = #isFashion#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="avatarSex">
+			AVATAR_SEX = #avatarSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="rmbBuy">
+			RMB_BUY = #rmbBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="coinBuy">
+			COIN_BUY = #coinBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="storeTime">
+			STORE_TIME = #storeTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarBind">
+			AVATAR_BIND = #avatarBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarForever">
+			AVATAR_FOREVER = #avatarForever#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="avatarLevel">
+			AVATAR_LEVEL = #avatarLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarForever">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="addPower">
+			ADD_POWER = #addPower#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="addAgility">
+			ADD_AGILITY = #addAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="addStamina">
+			ADD_STAMINA = #addStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="addMana">
+			ADD_MANA = #addMana#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="avatarPowerPropAdd">
+			AVATAR_POWER_PROP_ADD = #avatarPowerPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarAgilityPropAdd">
+			AVATAR_AGILITY_PROP_ADD = #avatarAgilityPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarStaminaPropAdd">
+			AVATAR_STAMINA_PROP_ADD = #avatarStaminaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarManaPropAdd">
+			AVATAR_MANA_PROP_ADD = #avatarManaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenPowerPropAdd">
+			STRENGTHEN_POWER_PROP_ADD = #strengthenPowerPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenAgilityPropAdd">
+			STRENGTHEN_AGILITY_PROP_ADD = #strengthenAgilityPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenStaminaPropAdd">
+			STRENGTHEN_STAMINA_PROP_ADD = #strengthenStaminaPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenManaPropAdd">
+			STRENGTHEN_MANA_PROP_ADD = #strengthenManaPropAdd#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="race">
+			RACE = #race# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isShow">
+			IS_SHOW = #isShow# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarRes2">
+			AVATAR_RES2 = #avatarRes2# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isMarket">
+			IS_MARKET = #isMarket# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isGoodFree">
+			IS_GOOD_FREE = #isGoodFree# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isBase">
+			IS_BASE = #isBase# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="avatarDh">
+			AVATAR_DH = #avatarDh# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isBattleGift">
+			IS_BATTLE_GIFT = #isBattleGift# 
+		</isNotEmpty>
+	</select>
+	
+	<select id="getAvatarNameById" parameterClass="java.util.HashMap" resultClass="String" cacheModel="gameAvatarNameCache">
+		SELECT AVATAR_NAME FROM GAME_AVATAR WHERE ID = #id#
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,137 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleMap">
+	<typeAlias alias="RoleMapDetail"
+		type="com.stang.game.entity.detail.RoleMapDetail" />
+
+	<cacheModel id="RoleMapCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleMap" />
+		<flushOnExecute statement="updateRoleMap" />
+	</cacheModel>
+
+	<resultMap class="RoleMapDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleId" column="roleId" />
+		<result property="mapid" column="mapid" />
+		<result property="militaryid" column="militaryid" />
+		<result property="towerid" column="towerid" />
+		<result property="placeid" column="placeid" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	
+	<select id="findAllRoleMap" resultMap="listResult">
+		SELECT * FROM role_map
+	</select>  
+	
+	<insert id="insertRoleMap" parameterClass="java.util.Map">
+		INSERT INTO role_map (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">towerid</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">#towerid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateRoleMap" parameterClass="java.util.Map">
+		UPDATE role_map SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="militaryid">militaryid=#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid=#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">towerid=#towerid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid=#mapid#</isNotEmpty>
+		WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid=#mapid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="placeid">
+			placeid=#placeid#
+		</isNotEmpty>
+	</update>
+
+	<select id="getRoleMap" parameterClass="int" resultClass="RoleMapDetail">
+		SELECT * FROM role_map WHERE roleId =#roleId#
+	</select>
+	
+	<select id="getRoleMapByParam" parameterClass="java.util.Map"
+		resultClass="RoleMapDetail">
+		SELECT * FROM role_map WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid=#mapid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="placeid">
+			placeid=#placeid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="militaryid">
+			militaryid=#militaryid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="toweroid">
+			toweroid=#toweroid#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getRoleMapByMapPlace" parameterClass="java.util.Map"
+		resultClass="RoleMapDetail">
+		SELECT * FROM role_map WHERE roleId = #roleId# 
+			AND mapid=#mapid# AND placeid=#placeid#
+	</select>
+	
+	
+	
+	<insert id="insertRoleMaptwo" parameterClass="RoleMapDetail">
+		INSERT INTO role_map (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">towerid</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">#towerid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	
+	<update id="updateRoleMaptwo" parameterClass="RoleMapDetail">
+		UPDATE role_map SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="militaryid">militaryid=#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid=#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="towerid">towerid=#towerid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid=#mapid#</isNotEmpty>
+		WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid=#mapid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="placeid">
+			placeid=#placeid#
+		</isNotEmpty>
+	</update>
+	
+	
+</sqlMap>

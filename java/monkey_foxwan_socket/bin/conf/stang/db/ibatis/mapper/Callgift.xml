@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="CallGift">
+	<typeAlias alias="CallGiftDetail"
+		type="com.stang.game.entity.detail.CallGiftDetail" />
+
+	<cacheModel id="callGiftCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="CallGiftDetail" id="listResult">
+		<result property="id" column="id" />
+	    <result property="itemid" column="itemid" />
+	   <result property="type" column="type" />
+	   <result property="stype" column="stype" />
+	   <result property="num" column="num" />
+	
+		
+	</resultMap>
+	
+	<select id="findAllCallGift" resultMap="listResult">
+		SELECT * FROM callgift
+	</select>
+
+	
+	<select id="getcallgift" parameterClass="int" resultMap="listResult" >
+		SELECT * FROM callgift WHERE id=#id#
+	 </select>
+	
+</sqlMap>

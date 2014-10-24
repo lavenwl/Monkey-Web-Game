@@ -1,0 +1,192 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleTaskTask">
+	<typeAlias alias="RoleTaskTaskDetail"
+		type="com.stang.game.entity.detail.RoleTaskTaskDetail" />
+
+	<cacheModel id="RoleTaskTaskCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleTask0" />
+		<flushOnExecute statement="deleteRoleTaskByTaskId0" />
+		<flushOnExecute statement="updateRoleTaskState0" />
+		<flushOnExecute statement="updateRoleTaskProgress" />
+		<flushOnExecute statement="updateRoleTaskNum" />
+	</cacheModel>
+
+	<resultMap class="RoleTaskTaskDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleId" column="roleId" />
+		<result property="tasktype" column="tasktype" />
+		<result property="tasklevel" column="tasklevel" />
+		<result property="type" column="type" />
+		<result property="tasknum" column="tasknum" />
+		<result property="taskid" column="taskid" />
+		<result property="taskoldid" column="taskoldid" />
+		<result property="states" column="states" />
+		<result property="progress" column="progress" />
+		<result property="num" column="num" />	
+		<result property="flag" column="flag" />	
+		
+			
+	</resultMap>
+	
+	<select id="findAllRoleTaskTask" resultMap="listResult">
+		SELECT * FROM role_task_task where flag=1
+	</select>  
+	
+	
+	
+	<insert id="insertRoleTask0" parameterClass="java.util.Map">
+		INSERT INTO role_task_task (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">tasklevel</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">taskid</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">taskoldid</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">tasknum</isNotEmpty>
+		<isNotEmpty prepend="," property="states">states</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="progress">progress</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">#tasklevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">#taskid#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">#taskoldid#</isNotEmpty>
+	    <isNotEmpty prepend="," property="tasknum">#tasknum#</isNotEmpty>
+		<isNotEmpty prepend="," property="states">#states#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="progress">#progress#</isNotEmpty>
+		)
+	</insert>
+
+	<select id="findRoleTaskTask" parameterClass="int" resultClass="RoleTaskTaskDetail">
+		SELECT * FROM role_task_task WHERE roleId =#roleId#
+	</select>
+
+	<update id="updateRoleTaskState0" parameterClass="java.util.Map">
+		UPDATE role_task_task SET states = #states#
+	    WHERE roleid = #roleid#
+	         and
+			taskid = #taskid#
+		
+	</update>
+	<update id="updateRoleTaskProgress" parameterClass="java.util.Map">
+		UPDATE role_task_task SET progress =progress+ #progress#
+	    WHERE roleid = #roleid#
+	         and
+			taskid = #taskid#
+		
+	</update>
+	
+	<update id="updateRoleTaskNum" parameterClass="java.util.Map">
+		UPDATE role_task_task SET num = num + #num#
+	    WHERE tasktype = #tasktype#
+	    	AND
+	    	roleid = #roleid#
+		
+	</update>
+	
+	<select id="findRoleTaskBytype0" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM role_task_task WHERE  roleid = #roleid#
+		and
+		type = #type#
+		
+	</select>
+	
+	<delete id="deleteRoleTaskByTaskId0" parameterClass="java.util.HashMap">
+		DELETE FROM role_task_task WHERE 
+			roleid = #roleid#
+		    and
+			taskid = #taskid#
+		
+	</delete>
+	
+	
+	<select id="findRoleTask0" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM role_task_task WHERE  FLAG = 1
+		<isNotEmpty property="roleid" prepend="AND">
+			roleid = #roleid#
+		</isNotEmpty>
+		<isNotEmpty property="id" prepend="AND">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty property="tasktype" prepend="AND">
+			tasktype = #tasktype#
+		</isNotEmpty>
+		<isNotEmpty property="taskid" prepend="AND">
+			taskid = #taskid#
+		</isNotEmpty>
+		<isNotEmpty property="states" prepend="AND">
+			states = #states#
+		</isNotEmpty>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	<insert id="insertRoleTaskTask" parameterClass="RoleTaskTaskDetail">
+		INSERT INTO role_task_task (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">tasklevel</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">taskid</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">taskoldid</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">tasknum</isNotEmpty>
+		<isNotEmpty prepend="," property="states">states</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="progress">progress</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">#tasklevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskid">#taskid#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskoldid">#taskoldid#</isNotEmpty>
+	    <isNotEmpty prepend="," property="tasknum">#tasknum#</isNotEmpty>
+		<isNotEmpty prepend="," property="states">#states#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="progress">#progress#</isNotEmpty>
+		)
+	</insert>
+	
+	<delete id="deleteRoleTaskTask" parameterClass="RoleTaskTaskDetail">
+		DELETE FROM role_task_task WHERE 
+			roleid = #roleId#
+		    and
+			taskid = #taskid#
+		
+	</delete>
+	
+		<update id="updateRoleTaskTask" parameterClass="RoleTaskTaskDetail">
+		UPDATE role_task_task SET roleid = #roleId#
+		<isNotEmpty prepend="," property="states">states = #states#</isNotEmpty>
+		<isNotEmpty prepend="," property="progress">progress = #progress#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num = #num#</isNotEmpty>
+		 WHERE roleid = #roleId#
+      <isNotEmpty prepend=" AND " property="taskid">
+          taskid = #taskid#
+      </isNotEmpty>
+	  <isNotEmpty prepend=" AND " property="tasktype">
+	       tasktype = #tasktype#
+	   </isNotEmpty>
+		
+	</update>
+	
+	
+</sqlMap>

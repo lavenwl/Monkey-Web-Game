@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="FilterRole">
+	<typeAlias alias="FilterRoleDetail"
+		type="com.stang.game.ffd.entity.detail.EntityFilterRoleDetail" />
+	<resultMap class="FilterRoleDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="member_name" column="MEMBER_NAME" />
+		<result property="server_id" column="SERVER_ID" />
+		<result property="username" column="USERNAME" />
+		<result property="releaseall_time" column="RELEASEALL_TIME" />
+		<result property="type" column="TYPE" />
+		<result property="context" column="CONTEXT" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	<select id="findFilterRoleByMap" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ID, MEMBER_NAME, SERVER_ID, USERNAME, RELEASEALL_TIME, TYPE, CONTEXT,FLAG
+		FROM FILTER_ROLE WHERE FLAG = 1
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="member_name" prepend="AND">
+			MEMBER_NAME = #member_name#
+		</isNotEmpty>
+		<isNotEmpty property="server_id" prepend="AND">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty property="username" prepend="AND">
+			USERNAME = #username#
+		</isNotEmpty>
+		<isNotEmpty property="releaseall_time" prepend="AND">
+			RELEASEALL_TIEM = #releaseall_time#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty property="context" prepend="AND">
+			CONTEXT = #context#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			FLAG = #flag#
+		</isNotEmpty>
+	</select>
+
+	<update id="updateFilterRoleDetail" parameterClass="FilterRoleDetail">
+		UPDATE FILTER_ROLE SET 
+		<isNotEmpty prepend="" property="member_name">
+			MEMBER_NAME = #member_name#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="server_id">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="username">
+			USERNAME = #username#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="releaseall_time">
+			RELEASEALL_TIME = #releaseall_time#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="context">
+			CONTEXT = #context#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>	
+	<insert id="insertFilterRoleDetail" parameterClass="FilterRoleDetail">
+			INSERT INTO FILTER_ROLE (
+			<isNotEmpty prepend="" property="member_name">MEMBER_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="server_id">SERVER_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="username">USERNAME</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseall_time">RELEASEALL_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="context">CONTEXT</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="type">TYPE</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="member_name">#member_name#</isNotEmpty>
+			<isNotEmpty prepend="," property="server_id">#server_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="username">#username#</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseall_time">#releaseall_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="context">#context#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		)
+	</insert>
+
+
+</sqlMap>

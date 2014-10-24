@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="HostStatus">
+	<typeAlias alias="HostStatusDetail"
+		type="com.stang.game.entity.detail.HostStatusDetail" />
+
+	<cacheModel id="BuyCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="HostStatusDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="status" column="status" />
+		<result property="message" column="message" />
+		<result property="itemid" column="itemid" />
+		<result property="odds" column="odds" />
+		<result property="mid1" column="mid1" />
+		<result property="mid2" column="mid2" />
+		<result property="res1" column="res1" />
+		<result property="res2" column="res2" />
+		<result property="reses" column="reses" />
+		<result property="flag" column="flag" />
+		<result property="month" column="month" />
+		<result property="day" column="day" />
+		<result property="monthend" column="monthend" />
+			<result property="dayend" column="dayend" />
+	</resultMap>
+
+	<select id="getHostStatus"  resultMap="listResult" >
+		SELECT * FROM host_status
+	</select>
+	
+	
+	<update id="updateHostStatus" parameterClass="java.util.HashMap">
+		UPDATE host_status SET 
+			status = #status#,
+			message = #message#
+		WHERE id =#id#
+	</update>
+	<update id="updatehd" parameterClass="java.util.HashMap">
+		UPDATE host_status SET 
+			status = #status#,
+			itemid = #itemid#,
+			odds = #odds#,
+			mid1 = #mid1#,
+			mid2 = #mid2#,
+			res1 = #res1#,
+			res2 = #res2#,
+			reses = #reses#,
+			flag = #flag#,
+			month = #month#,
+			day = #day#,
+			monthend = #monthend#,
+			dayend = #dayend#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

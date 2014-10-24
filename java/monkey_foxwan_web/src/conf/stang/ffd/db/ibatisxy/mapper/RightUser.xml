@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RightUser">
+	<typeAlias alias="RightUserDetail"
+		type="com.stang.game.entity.detail.EntityRightUserDetail"/>
+	<resultMap class="RightUserDetail" id="listResult">
+		<result property="uid" column="uid" />
+		<result property="uname" column="uname" />
+		<result property="upassword" column="upassword" />
+		<result property="right_value" column="right_value" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	<delete id="deleteRightUserDetail" parameterClass="int">
+		DELETE FROM right_user WHERE uid=#uid#
+	</delete>
+	<select id="findRightUserByMap" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT * FROM right_user WHERE flag = 1
+		<isNotEmpty property="uid" prepend="AND">
+			uid = #uid#
+		</isNotEmpty>
+		
+	</select>
+	
+	<update id="updateRightUserDetail" parameterClass="RightUserDetail">
+		UPDATE right_user SET 
+		<isNotEmpty prepend="" property="uid">
+			uid = #uid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">
+			uname = #uname#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="upassword">
+			upassword = #upassword#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="right_value">
+			right_value = #right_value#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			flag = 1
+		</isNotEmpty>
+		WHERE uid = #uid#
+	</update>	
+	<insert id="insertRightUserDetail" parameterClass="RightUserDetail">
+			INSERT INTO right_user (
+			<isNotEmpty prepend="" property="uid">uid</isNotEmpty>
+			<isNotEmpty prepend="," property="uname">uname</isNotEmpty>
+			<isNotEmpty prepend="," property="upassword">upassword</isNotEmpty>
+			<isNotEmpty prepend="," property="right_value">right_value</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="uid">#uid#</isNotEmpty>
+			<isNotEmpty prepend="," property="uname">#uname#</isNotEmpty>
+			<isNotEmpty prepend="," property="upassword">#upassword#</isNotEmpty>
+			<isNotEmpty prepend="," property="right_value">#right_value#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+		)
+	</insert>
+	
+	<select id="findPasswordByRoleName" parameterClass="java.lang.String" resultClass="RightUserDetail">
+		SELECT * FROM right_user WHERE uname = #uname#
+	</select>
+
+</sqlMap>

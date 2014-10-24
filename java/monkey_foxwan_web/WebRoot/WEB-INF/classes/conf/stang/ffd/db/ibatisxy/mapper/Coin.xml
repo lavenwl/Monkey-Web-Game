@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Coin">
+	<typeAlias alias="CoinDetail"
+		type="com.stang.game.entity.detail.CoinDetail" />
+
+	<cacheModel id="coinCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertCoin" />
+	</cacheModel>
+
+	<resultMap class="CoinDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleid" column="roleid" />
+		<result property="num" column="num" />
+		<result property="coin" column="coin" />
+		<result property="time" column="time" />
+		
+	</resultMap>
+	
+	
+		<select id="getBuycoin" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM coin WHERE roleid=#roleid#
+	</select>
+	<select id="getAllBuycoin"  resultMap="listResult" >
+		SELECT * FROM coin
+	</select>
+	<select id="findAllcoin"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from coin limit #page#,#pageSize#
+	</select>
+
+	
+	<insert id="insertCoin" parameterClass="java.util.Map">
+		INSERT INTO coin(
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">#coin#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+	
+	
+	
+	<select id="findcoinbytime"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from coin where time between #time# and #timet#
+	</select>
+		<select id="findcoinbytimeandopenid"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from coin where time between #time# and #timet# and roleid=#roleid#
+	</select>
+	
+</sqlMap>

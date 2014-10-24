@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameFoeskill">
+	<typeAlias alias="GameFoeskillDetail"
+		type="com.stang.game.entity.detail.GameFoeskillDetail" />
+
+	<cacheModel id="GameFoeskillCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameFoeskillDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="summon" column="summon" />
+		<result property="type" column="type" />
+		<result property="number" column="number" />
+		<result property="desc" column="desc" />
+		<result property="bufftype" column="bufftype" />
+		<result property="fanwei" column="fanwei" />
+		<result property="effect" column="effect" />
+	</resultMap>
+
+	<select id="getGameFoeskill" resultClass="GameFoeskillDetail">
+		SELECT * FROM game_foeskill
+	</select>
+
+</sqlMap>

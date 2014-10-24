@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameYellowVip">
+	<typeAlias alias="GameYellowVipDetail"
+		type="com.stang.game.entity.detail.GameYellowVipDetail" />
+
+	<cacheModel id="gameYellowVipCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameYellowVipDetail" id="listResult">
+		<result property="id" column="id" />
+	    <result property="reward" column="reward" />
+	</resultMap>
+	
+	<select id="findAllYellowVip" resultMap="listResult">
+		SELECT * FROM game_yellowvip
+	</select>
+
+	<select id="findYellowVipById" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_yellowvip where id=#id#
+	</select>
+	
+</sqlMap>

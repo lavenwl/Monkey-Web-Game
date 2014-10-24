@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleImpose">
+	<typeAlias alias="RoleImposeDetail"
+		type="com.stang.game.entity.detail.RoleImposeDetail" />
+
+	<cacheModel id="roleRoleImposeCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleImpose" />
+		<flushOnExecute statement="updateImpose" />
+		<flushOnExecute statement="updateImposeNum" />
+		<flushOnExecute statement="updateImposeIsnew" />
+	</cacheModel>
+
+	<resultMap class="RoleImposeDetail" id="listResult">
+		<result property="roleid" column="roleid" />
+		<result property="imposenum" column="imposenum" />
+		<result property="imposenums" column="imposenums" />
+		<result property="imposetime" column="imposetime" />
+		<result property="imposetimes" column="imposetimes" />
+		<result property="impose" column="impose" />
+		<result property="isnew" column="isnew" />
+		<result property="day" column="day"/>
+	</resultMap>
+	
+	<select id="findAllRoleImpose" resultMap="listResult">
+		SELECT * FROM role_impose where FLAG =1
+	</select>  
+	
+
+	<!-- 录入信息 -->
+	<insert id="insertRoleImpose"
+		parameterClass="RoleImposeDetail">
+		INSERT INTO role_impose (
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">imposenum</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenums">imposenums</isNotEmpty>
+		<isNotEmpty prepend="," property="imposetime">imposetime</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">
+			#imposenum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenums">#imposenums#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposetime">#imposetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		)
+	</insert>
+
+	<!-- 更新信息 -->
+	<update id="updateImpose"
+		parameterClass="java.util.HashMap">
+		UPDATE role_impose SET
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposetime">
+			imposetime = #imposetime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="impose">
+			impose = #impose#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenums">
+			imposenums = #imposenums#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">
+			imposenum = #imposenum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">
+			isnew = #isnew#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="day">
+			day = #day#
+		</isNotEmpty>
+		WHERE roleid = #roleid#
+	</update>
+	
+	<update id="updateImposeNum" >
+		UPDATE role_impose SET imposetime = 0 ,imposetimes = 0,imposenums = 10,imposenum = 10,
+		WHERE roleid = #roleid#
+	</update>
+	
+	<update id="updateImposeIsnew" >
+		UPDATE role_impose SET isnew = #isnew#
+	</update>
+
+	<select id="getRoleImposeDetail" parameterClass="java.util.HashMap"
+		resultMap="listResult" >
+		SELECT * FROM role_impose WHERE FLAG =1
+			ROLEID = #roleid#
+		<isNotEmpty prepend="AND" property="imposetime">
+			imposetime = #imposetime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="imposenum">
+			imposenum = #imposenum#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="imposetimes">
+			imposetimes = #imposetimes#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="imposenums">
+			imposenums = #imposenums#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getRoleImpose" resultMap="listResult" >
+		SELECT * FROM role_impose WHERE FLAG =1 and ROLEID = #roleid#
+	</select>
+	
+	
+	
+		<update id="updateRoleImposetwo"
+		parameterClass="RoleImposeDetail">
+		UPDATE role_impose SET
+		<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposetime">
+			imposetime = #imposetime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposetimes">
+			imposetimes = #imposetimes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			flag = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="impose">
+			impose = #impose#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenums">
+			imposenums = #imposenums#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">
+			imposenum = #imposenum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">
+			isnew = #isnew#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="day">
+			day = #day#
+		</isNotEmpty>
+		WHERE 
+     <isNotEmpty prepend="" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty> 
+	</update>
+	
+	
+	
+</sqlMap>

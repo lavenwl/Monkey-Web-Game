@@ -1,0 +1,105 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameVip">
+	<typeAlias alias="GameVipDetail"
+		type="com.stang.game.entity.detail.GameVipDetail" />
+
+	<cacheModel id="GameVipCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameVipDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="vipLevel" column="vipLevel" />
+		<result property="vipRmb" column="vipRmb" />
+		<result property="militaryTop" column="militaryTop" />
+		<result property="junlingTop" column="junlingTop" />
+		<result property="backTop" column="backTop" />
+		<result property="challengTop" column="challengTop" />
+		<result property="trainTop" column="trainTop" />
+		<result property="qiangzhengTop" column="qiangzhengTop" />
+		<result property="dhjlTop" column="dhjlTop" />
+		<result property="zjxxTop" column="zjxxTop" />
+		<result property="gjxxTop" column="gjxxTop" />
+		<result property="djzmTop" column="djzmTop" />
+		<result property="vipsli" column="vipsli" />
+		<result property="zjxlTop" column="zjxlTop" />
+		<result property="flag" column="flag" />
+		<result property="yptop" column="yptop"/>
+	</resultMap>
+
+	<select id="allGameVips" resultClass="GameVipDetail" cacheModel="GameVipCache">
+		SELECT * FROM game_vip WHERE FLAG =1
+	</select>
+	
+	<select id="getGameVipByLe" resultClass="GameVipDetail">
+		SELECT * FROM game_vip WHERE FLAG =1 and vipLevel=#vipLevel#
+	</select>
+	
+	<select id="getGameVipByAllvipRmb" resultClass="GameVipDetail">
+		SELECT * FROM game_vip WHERE vipRmb>#vipRmb# order by vipRmb limit 1
+	</select>
+	
+	<insert id="insertGamevip" parameterClass="GameVipDetail">
+		INSERT INTO game_vip(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="vipLevel">vipLevel</isNotEmpty>
+		<isNotEmpty prepend="," property="vipRmb">vipRmb</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryTop">militaryTop</isNotEmpty>
+		<isNotEmpty prepend="," property="junlingTop">junlingTop</isNotEmpty>
+		<isNotEmpty prepend="," property="backTop">backTop</isNotEmpty>
+		<isNotEmpty prepend="," property="challengTop">challengTop</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangzhengTop">qiangzhengTop</isNotEmpty>
+		<isNotEmpty prepend="," property="trainTop">trainTop</isNotEmpty>
+		<isNotEmpty prepend="," property="dhjlTop">dhjlTop</isNotEmpty>
+		<isNotEmpty prepend="," property="zjxxTop">zjxxTop</isNotEmpty>
+		<isNotEmpty prepend="," property="djzmTop">djzmTop</isNotEmpty>
+		<isNotEmpty prepend="," property="zjxlTop">zjxlTop</isNotEmpty>
+		<isNotEmpty prepend="," property="gjxxTop">gjxxTop</isNotEmpty>
+		<isNotEmpty prepend="," property="vipsli">vipsli</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="yptop">yptop</isNotEmpty>
+		
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipLevel">#vipLevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipRmb">#vipRmb#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryTop">#militaryTop#</isNotEmpty>
+		<isNotEmpty prepend="," property="junlingTop">#junlingTop#</isNotEmpty>
+		<isNotEmpty prepend="," property="backTop">#backTop#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengTop">#challengTop#</isNotEmpty>
+		<isNotEmpty prepend="," property="qiangzhengTop">#qiangzhengTop#</isNotEmpty>
+		<isNotEmpty prepend="," property="trainTop">#trainTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="dhjlTop">#dhjlTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="zjxxTop">#zjxxTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="djzmTop">#djzmTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="zjxlTop">#zjxlTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="gjxxTop">#gjxxTop#</isNotEmpty>
+			<isNotEmpty prepend="," property="vipsli">#vipsli#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="yptop">#yptop#</isNotEmpty>
+		
+		)
+	</insert>
+	<update id="updateGamevip" parameterClass="java.util.HashMap">
+		UPDATE game_vip SET 
+			vipLevel = #vipLevel#,
+			vipRmb = #vipRmb#,
+			militaryTop = #militaryTop#,
+			junlingTop = #junlingTop#,
+			backTop = #backTop#,
+			challengTop = #challengTop#,
+			qiangzhengTop = #qiangzhengTop#,
+			trainTop = #trainTop#,
+			dhjlTop = #dhjlTop#,
+			zjxxTop = #zjxxTop#,
+			djzmTop = #djzmTop#,
+			zjxlTop = #zjxlTop#,
+			gjxxTop = #gjxxTop#,
+			vipsli = #vipsli#,
+			flag = #flag#,
+			yptop = #yptop#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

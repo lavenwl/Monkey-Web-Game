@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>		
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" 
+		maxRequests="16"
+		maxSessions="10" 
+		maxTransactions="5" 
+		useStatementNamespaces="false" />	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.14.214:1025/monkey?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+			<property name="JDBC.Username" value="root"/>
+			<property name="JDBC.Password" value="3tang!@ddxy"/>
+			<property name="Pool.MaximumActiveConnections" value="10"/>	<!-- 最大连接数 -->
+			<property name="Pool.MaximumIdleConnections"   value="5"/>	<!-- 允许挂机的最大连接数 -->
+			<property name="Pool.MaximumWait"    value="1000"/>			<!-- 最长等待时间 -->
+			<property name ="Pool.LogAbandoned"  value ="true" />
+			<property name ="Pool.RemoveAbandonedTimeout"  value ="1800000" />
+			<property name ="Pool.RemoveAbandoned"  value ="true" />
+			<property name="Pool.PingQuery"   value="select id from xml_store"/> 
+      		<property name="Pool.PingEnabled" value="false"/> 
+      		<property name="Pool.PingConnectionsOlderThan"  value="28000000"/> 
+    		<property name="Pool.PingConnectionsNotUsedFor" value="28000000"/> 
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/AutoId.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameChLevel.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameMap.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gamemilitary.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gamemlevel.xml" />
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gameplat.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameRole.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Gametower.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleMap.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameSkill.xml" />
+	
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameFoe.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleMilitary.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameItem.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GamePrice.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameLevel.xml" />
+	
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameAvatar.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleAvatar.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleImpose.xml" />
+    <sqlMap resource="conf/stang/db/ibatis/mapper/RoleIns.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleItem.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameEquip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameEProperty.xml" />
+    <sqlMap resource="conf/stang/db/ibatis/mapper/GameEIns.xml" />
+	
+    <sqlMap resource="conf/stang/db/ibatis/mapper/GamblingItem.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameVip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTavern.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/TempPackage.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleEquip.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameBuff.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleQuicktime.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleChallenge.xml"/>
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleTaskTask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/RoleDayask.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/GameRobot.xml" />
+	<sqlMap resource="conf/stang/db/ibatis/mapper/Member.xml" />
+</sqlMapConfig>

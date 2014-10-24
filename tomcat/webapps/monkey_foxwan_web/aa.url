@@ -1,0 +1,11 @@
+[default]
+BASEURL=http://app100679516.qzoneapp.com/crweb/faviapp.jsp
+[InternetShortcut]
+URL=http://qqapp.qq.com/app/100719210.html
+IDList=
+IconFile=http://app100679516.qzoneapp.com/crweb/favicon.ico
+IconIndex=1
+HotKey=0
+
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

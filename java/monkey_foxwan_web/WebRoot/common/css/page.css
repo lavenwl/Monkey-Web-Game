@@ -1,0 +1,111 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td { 
+    margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+    font-family: "Verdana","lucida sans",Sans-serif;
+	font-size: 12px; 
+}
+
+html, body { 
+    min-height: 100%;
+	color: #FFFFFF;
+	background-image: url(../images/body_back.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color: #161f2a;
+}
+ul.side_nav {
+width: 200px;
+float: left;
+margin: 0;
+padding: 0;
+}
+ul.side_nav li {
+position: relative; /*--Add a relative positioning--*/
+float: left;
+margin: 0;
+padding: 0;
+display: inline;
+}
+ul.side_nav li a {
+width: 165px;
+border-top: 1px solid #3373a9;
+border-bottom: 1px solid #003867;
+padding: 10px 10px 10px 25px;
+display: block;
+color: #fff;
+text-decoration: none;
+background: #005094 url(../image/sidenav_arrow.gif) no-repeat 5px 10px;
+position: relative;
+z-index: 2;
+}
+ul.side_nav li a:hover {
+background-color: #2d353f;
+}
+ul.side_nav li div {
+display: none;
+position: absolute;
+top: 2px;
+left: 0;
+width: 225px;
+background: url(../image/bubble_top.gif) no-repeat right top;
+}
+ul.side_nav li div p {
+margin: 7px 0;
+line-height: 1.3em;
+padding: 0 5px 10px 30px;
+color: #444;
+background: url(../image/bubble_btm.gif) no-repeat right bottom;
+}
+.content_txt {
+width: 480px;
+border-left: 1px dashed #2d353f;
+color: #EEE;
+float: left;
+margin-left: 20px;
+padding: 0 0 0 20px;
+display: inline;
+}
+.content_txt h4 {
+font-size: 140%;
+padding-bottom: 10px;
+}
+.content_txt p {
+font-size: 90%;
+padding: 0 0 5px 0;
+line-height: 130%;
+}
+
+ul.side_nav li a.sub_menu
+{
+	<!--background-color:#09F;-->
+	width: 165px;
+	border-top: 1px solid #3373a9;
+	border-bottom: 1px solid #003867;
+	padding: 10px 10px 10px 25px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	background: #09F  no-repeat 5px 10px;
+	position: relative;
+	z-index: 2;
+}
+
+#rightDiv
+{
+	width:600px;
+}
+table,td
+{
+	border:thin solid Gray;
+}

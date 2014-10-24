@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBskill">
+	<typeAlias alias="GameBskillDetail"
+		type="com.stang.game.entity.detail.GameBskillDetail" />
+
+	<cacheModel id="gameBskillCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBskillDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="artdesc" column="artdesc" />
+		<result property="buffid" column="buffid" />
+		<result property="target" column="target" />
+		<result property="jilv" column="jilv" />
+		<result property="chufa" column="chufa" />
+		<result property="fanwei" column="fanwei" />
+		<result property="shanghai" column="shanghai" />
+		<result property="cishu" column="cishu" />
+		<result property="time" column="time" />
+		<result property="bullet" column="bullet" />
+		<result property="cd" column="cd" />
+		<result property="flag" column="flag" />
+
+		
+	</resultMap>
+
+	<select id="getGameBskill" resultClass="GameBskillDetail">
+		SELECT * FROM game_bskill WHERE FLAG =1
+	</select>
+	
+</sqlMap>

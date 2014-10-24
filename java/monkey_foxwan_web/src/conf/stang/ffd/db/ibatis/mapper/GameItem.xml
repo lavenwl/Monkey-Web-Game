@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameItem">
+	<typeAlias alias="EntityGameItemsDetail" type="com.stang.game.ffd.entity.detail.EntityGameItemsDetail" />
+	
+	<cacheModel id="gameItemCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameItemDetail"/>
+		<flushOnExecute statement="updateGameItemDetail"/>
+	</cacheModel>
+	<cacheModel id="gameItemNameCache" type="OSCACHE">
+	<!--	<flushInterval hours="24" /> -->	
+		<flushOnExecute statement="insertGameItemDetail"/>
+		<flushOnExecute statement="updateGameItemDetail"/>
+	</cacheModel>
+	
+	<resultMap class="EntityGameItemsDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="itemType" column="ITEM_TYPE"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="itemRes" column="ITEM_RES"/>
+		<result property="itemProp" column="ITEM_PROP"/>
+		
+		<result property="coinBuy" column="COIN_BUY"/>
+		<result property="rmbBuy" column="RMB_BUY"/>
+		<result property="hpUp" column="HP_UP"/>
+		<result property="hpAllup" column="HP_ALLUP"/>
+		<result property="oilUp" column="OIL_UP"/>
+		<result property="oilDown" column="OIL_DOWN"/>
+		<result property="powerUp" column="POWER_UP"/>
+		<result property="dcuUp" column="DCU_UP"/>
+		<result property="cuUp" column="CU_UP"/>
+		<result property="agiUp" column="AGI_UP"/>
+		<result property="defUp" column="DEF_UP"/>
+		<result property="timeKeep" column="TIME_KEEP"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="grade" column="GRADE"/>
+		<result property="isBind" column="IS_BIND"/>
+		<result property="isOver" column="IS_OVER"/>
+		<result property="isUse" column="IS_USE"/>
+		<result property="isMarket" column="IS_MARKET"/>
+		<result property="itemUrl" column="ITEM_URL"/>
+		<result property="meState" column="ME_STATE"/>
+		<result property="fdState" column="FD_STATE"/>
+		<result property="isGoodFree" column="IS_GOOD_FREE"/>
+		<result property="itemLevel" column="ITEM_LEVEL"/>
+		<result property="isBattleGift" column="IS_BATTLE_GIFT"/>
+		<result property="equipIntensifyGold" column="EQUIP_INTENSIFY_GOLD"/>
+		<result property="equipIntensiftyOdds" column="EQUIP_INTENSIFY_ODDS"/>
+		<result property="equipWeight" column="EQUIP_WEIGHT"/>
+		<result property="itemSellGold" column="ITEM_SELL_GOLD"/>
+		<result property="snsMaxNum" column="SNS_MAX_NUM"/>
+		<result property="snsGainOdds" column="SNS_GAIN_ODDS"/>
+		<result property="snsConfParam" column="SNS_CONF_PARAM"/>
+		<result property="snsGainSortnum" column="SNS_GAIN_SORTNUM"/>
+		<result property="item_name_gk" column="ITEM_NAME_GK"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameItemDetail" parameterClass="EntityGameItemsDetail">
+		INSERT INTO GAME_ITEM (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="itemType">ITEM_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="itemName">ITEM_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="itemRes">ITEM_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="itemProp">ITEM_PROP</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="coinBuy">COIN_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">RMB_BUY</isNotEmpty>
+			<isNotEmpty prepend="," property="hpUp">HP_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="hpAllup">HP_ALLUP</isNotEmpty>
+			<isNotEmpty prepend="," property="oilUp">OIL_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="powerUp">POWER_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="dcuUp">DCU_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="cuUp">CU_UP</isNotEmpty>
+		
+			<isNotEmpty prepend="," property="agiUp">AGI_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="defUp">DEF_UP</isNotEmpty>
+			<isNotEmpty prepend="," property="timeKeep">TIME_KEEP</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">IS_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="isOver">IS_OVER</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">IS_MARKET</isNotEmpty>
+			<isNotEmpty prepend="," property="meState">ME_STATE</isNotEmpty>
+			<isNotEmpty prepend="," property="fdState">FD_STATE</isNotEmpty>
+			<isNotEmpty prepend="," property="itemUrl">ITEM_URL</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">IS_GOOD_FREE</isNotEmpty>
+			<isNotEmpty prepend="," property="itemLevel">ITEM_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">IS_BATTLE_GIFT</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipIntensifyGold">EQUIP_INTENSIFY_GOLD</isNotEmpty>
+			<isNotEmpty prepend="," property="equipIntensiftyOdds">EQUIP_INTENSIFY_ODDS</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeight">EQUIP_WEIGHT</isNotEmpty>
+			<isNotEmpty prepend="," property="snsConfParam">SNS_CONF_PARAM</isNotEmpty>
+			<isNotEmpty prepend="," property="item_name_gk">ITEM_NAME_GK</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemType">#itemType#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemName">#itemName#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemRes">#itemRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemProp">#itemProp#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="coinBuy">#coinBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="rmbBuy">#rmbBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="hpUp">#hpUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="hpAllup">#hpAllup#</isNotEmpty>
+			<isNotEmpty prepend="," property="oilUp">#oilUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="powerUp">#powerUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="dcuUp">#dcuUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="cuUp">#cuUp#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="agiUp">#agiUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="defUp">#defUp#</isNotEmpty>
+			<isNotEmpty prepend="," property="timeKeep">#timeKeep#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">#isBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="isOver">#isOver#</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">#isMarket#</isNotEmpty>
+			<isNotEmpty prepend="," property="meState">#meState#</isNotEmpty>
+			<isNotEmpty prepend="," property="fdState">#fdState#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemUrl">#itemUrl#</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">#isGoodFree#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemLevel">#itemLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">#isBattleGift#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipIntensifyGold">#equipIntensifyGold#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipIntensiftyOdds">#equipIntensiftyOdds#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeight">#equipWeight#</isNotEmpty>
+			<isNotEmpty prepend="," property="snsConfParam">#snsConfParam#</isNotEmpty>
+			<isNotEmpty prepend="," property="item_name_gk">#item_name_gk#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameItemDetail" parameterClass="EntityGameItemsDetail">
+		UPDATE GAME_ITEM SET 
+		<isNotEmpty prepend="" property="itemType">
+			ITEM_TYPE = #itemType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemName">
+			ITEM_NAME = #itemName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemRes">
+			ITEM_RES = #itemRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemProp">
+			ITEM_PROP = #itemProp#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="coinBuy">
+			COIN_BUY = #coinBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rmbBuy">
+			RMB_BUY = #rmbBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="hpUp">
+			HP_UP = #hpUp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="hpAllup">
+			HP_ALLUP = #hpAllup#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="oilUp">
+			OIL_UP = #oilUp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="powerUp">
+			POWER_UP = #powerUp#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="agiUp">
+			AGI_UP = #agiUp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="defUp">
+			DEF_UP = #defUp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="timeKeep">
+			TIME_KEEP = #timeKeep#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isOver">
+			IS_OVER = #isOver# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isMarket">
+			IS_MARKET = #isMarket# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemUrl">
+			ITEM_URL = #itemUrl# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="fdState">
+			FD_STATE = #fdState# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="meState">
+			ME_STATE = #meState# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isGoodFree">
+			IS_GOOD_FREE = #isGoodFree# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemLevel">
+			ITEM_LEVEL = #itemLevel# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBattleGift">
+			IS_BATTLE_GIFT = #isBattleGift# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipIntensifyGold">
+			EQUIP_INTENSIFY_GOLD = #equipIntensifyGold# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipIntensiftyOdds">
+			EQUIP_INTENSIFY_ODDS = #equipIntensiftyOdds# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipWeight">
+			EQUIP_WEIGHT = #equipWeight# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dcuUp">
+			DCU_UP = #dcuUp# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="cuUp">
+			CU_UP = #cuUp# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="item_name_gk">
+			ITEM_NAME_GK = #item_name_gk# 
+		</isNotEmpty>
+		
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据序列组获得战斗道具信息 -->
+	<select id="findGameItemsByIds" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameItemCache">
+		SELECT 
+			ID,
+			ITEM_TYPE,
+			ITEM_NAME,
+			ITEM_RES,
+			ITEM_PROP,
+			COIN_BUY,
+			RMB_BUY,
+			HP_UP,
+			HP_ALLUP,
+			OIL_UP,
+			POWER_UP,
+			AGI_UP,
+			DEF_UP,
+			TIME_KEEP,
+			DCU_UP,
+			CU_UP,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			IS_BIND,
+			IS_OVER,
+			IS_MARKET,
+			ME_STATE,
+			OIL_DOWN,
+			FD_STATE,
+			ITEM_URL,
+			IS_USE,
+			IS_GOOD_FREE,
+			ITEM_LEVEL,
+			SNS_MAX_NUM,
+			SNS_CONF_PARAM,
+			SNS_GAIN_SORTNUM,
+			SNS_GAIN_ODDS,
+			IS_BATTLE_GIFT,
+			EQUIP_INTENSIFY_GOLD,
+			EQUIP_INTENSIFY_ODDS,
+			EQUIP_WEIGHT,
+			ITEM_SELL_GOLD,
+			ITEM_NAME_GK
+		FROM 
+			GAME_ITEM  
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<!-- 根据条件查询战斗道具信息 -->
+	<select id="findGameItemsByParam" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameItemCache">
+		SELECT 
+			ID,
+			ITEM_TYPE,
+			ITEM_NAME,
+			ITEM_RES,
+			ITEM_PROP,
+			COIN_BUY,
+			RMB_BUY,
+			HP_UP,
+			HP_ALLUP,
+			OIL_UP,
+			POWER_UP,
+			AGI_UP,
+			DEF_UP,
+			CU_UP,
+			DCU_UP,
+			TIME_KEEP,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			OIL_DOWN,
+			IS_BIND,
+			ITEM_SELL_GOLD,
+			IS_OVER,
+			IS_MARKET,
+			IS_USE,
+			ME_STATE,
+			FD_STATE,
+			ITEM_URL,
+			SNS_MAX_NUM,
+			SNS_GAIN_ODDS,
+			IS_GOOD_FREE,
+			SNS_CONF_PARAM,
+		    SNS_GAIN_SORTNUM,
+			ITEM_LEVEL,
+			IS_BATTLE_GIFT,
+			EQUIP_INTENSIFY_GOLD,
+			EQUIP_INTENSIFY_ODDS,
+			EQUIP_WEIGHT,
+			ITEM_NAME_GK   
+		FROM 
+			GAME_ITEM  
+		WHERE FLAG = 1 
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="ids" prepend="AND">
+    	   		ID = #ids# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="itemType" prepend="AND">
+    	   		ITEM_TYPE = #itemType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="itemName" prepend="AND">
+    	   		ITEM_NAME = #itemName# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="itemRes" prepend="AND">
+    	   		ITEM_RES = #itemRes# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="itemProp" prepend="AND">
+    	   		ITEM_PROP = #itemProp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="coinBuy" prepend="AND">
+    	   		COIN_BUY = #coinBuy# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="rmbBuy" prepend="AND">
+    	   		RMB_BUY = #rmbBuy# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="hpUp" prepend="AND">
+    	   		HP_UP = #hpUp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="hpAllup" prepend="AND">
+    	   		HP_ALLUP = #hpAllup# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="oilUp" prepend="AND">
+    	   		OIL_UP = #oilUp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="powerUp" prepend="AND">
+    	   		POWER_UP = #powerUp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="agiUp" prepend="AND">
+    	   		AGI_UP = #agiUp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="defUp" prepend="AND">
+    	   		DEF_UP = #defUp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="timeKeep" prepend="AND">
+    	   		TIME_KEEP = #timeKeep# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty prepend="AND" property="grade">
+				GRADE = #grade# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isBind">
+				IS_BIND = #isBind# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isOver">
+				IS_OVER = #isOver# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isMarket">
+				IS_MARKET = #isMarket# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemUrl">
+				ITEM_URL = #itemUrl# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="fdState">
+				FD_STATE = #fdState# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="meState">
+				ME_STATE = #meState# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isGoodFree">
+				IS_GOOD_FREE = #isGoodFree# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemLevel">
+				ITEM_LEVEL = #itemLevel# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="equipWeight">
+				EQUIP_WEIGHT = #equipWeight# 
+			</isNotEmpty>
+			<isNotEmpty property="isBattleGift" prepend="AND">
+    	   		IS_BATTLE_GIFT = #isBattleGift#  
+    	   	</isNotEmpty>
+			<isNotEmpty property="dcuUp"  prepend="AND">
+				DCU_UP = #dcuUp# 
+			</isNotEmpty>
+			<isNotEmpty property="cuUp" prepend="AND">
+    	   		CU_UP = #cuUp#  
+    	   	</isNotEmpty> 
+    	   	<isNotEmpty property="cuUp" prepend="AND">
+    	   		CU_UP = #cuUp#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="likeid" prepend="AND">
+    	   		<![CDATA[ ID < #likeid#]]>  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="item_name_gk" prepend="AND">
+    	   		ITEM_NAME_GK = #item_name_gk#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="likeTime" prepend="AND">
+    	   		CREATE_TIME = #likeTime#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="orderBy" prepend="">
+    	   		ORDER BY #orderBy#  
+    	   	</isNotEmpty>
+    	   	
+    	   	<isNotEmpty property="pageSize" prepend="">
+    	   		LIMIT #start#,#pageSize# 
+    	   	</isNotEmpty>
+    	   	
+	</select>
+	<select id="findGiftBox" resultMap="listResult">
+		SELECT 
+			ID,
+			ITEM_TYPE,
+			ITEM_NAME,
+			ITEM_RES,
+			ITEM_PROP,
+			COIN_BUY,
+			RMB_BUY,
+			HP_UP,
+			HP_ALLUP,
+			OIL_UP,
+			POWER_UP,
+			AGI_UP,
+			DEF_UP,
+			CU_UP,
+			DCU_UP,
+			TIME_KEEP,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			OIL_DOWN,
+			IS_BIND,
+			ITEM_SELL_GOLD,
+			IS_OVER,
+			IS_MARKET,
+			IS_USE,
+			ME_STATE,
+			FD_STATE,
+			ITEM_URL,
+			SNS_MAX_NUM,
+			SNS_GAIN_ODDS,
+			IS_GOOD_FREE,
+			SNS_CONF_PARAM,
+		    SNS_GAIN_SORTNUM,
+			ITEM_LEVEL,
+			IS_BATTLE_GIFT,
+			EQUIP_INTENSIFY_GOLD,
+			EQUIP_INTENSIFY_ODDS,
+			EQUIP_WEIGHT,
+			ITEM_NAME_GK  
+		FROM 
+			GAME_ITEM  
+		WHERE FLAG = 1 AND ITEM_TYPE = 99 ORDER BY ID 
+
+	</select>	
+	<update id="updateGameItem"   parameterClass="java.util.HashMap">
+	UPDATE GAME_ITEM SET
+	    <isNotEmpty prepend=" " property="id"> ID=#id# </isNotEmpty>
+		<isNotEmpty prepend="," property="itemName"> ITEM_NAME=#itemName# </isNotEmpty>
+		<isNotEmpty prepend="," property="itemProp"> ITEM_PROP=#itemProp# </isNotEmpty>
+	WHERE 
+	  FLAG=1
+	  <isNotEmpty prepend="AND" property="id"> ID=#id# </isNotEmpty>
+	</update>
+	
+	<select id="findGameItemsById" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameItemCache">
+	SELECT 
+			ID,
+			ITEM_TYPE,
+			ITEM_NAME,
+			ITEM_RES,
+			ITEM_PROP,
+			COIN_BUY,
+			RMB_BUY,
+			HP_UP,
+			HP_ALLUP,
+			OIL_UP,
+			POWER_UP,
+			AGI_UP,
+			DEF_UP,
+			CU_UP,
+			DCU_UP,
+			TIME_KEEP,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			OIL_DOWN,
+			IS_BIND,
+			ITEM_SELL_GOLD,
+			IS_OVER,
+			IS_MARKET,
+			IS_USE,
+			ME_STATE,
+			FD_STATE,
+			ITEM_URL,
+			SNS_MAX_NUM,
+			SNS_GAIN_ODDS,
+			IS_GOOD_FREE,
+			SNS_CONF_PARAM,
+		    SNS_GAIN_SORTNUM,
+			ITEM_LEVEL,
+			IS_BATTLE_GIFT,
+			EQUIP_INTENSIFY_GOLD,
+			EQUIP_INTENSIFY_ODDS,
+			EQUIP_WEIGHT,
+			ITEM_NAME_GK   
+		FROM 
+			GAME_ITEM  
+		order by Id desc limit 1
+	</select>
+	<select id="findGameItemsGiftBag" parameterClass="java.util.HashMap" resultMap="listResult">
+	SELECT 
+			ID,
+			ITEM_TYPE,
+			ITEM_NAME,
+			ITEM_RES,
+			ITEM_PROP,
+			COIN_BUY,
+			RMB_BUY,
+			HP_UP,
+			HP_ALLUP,
+			OIL_UP,
+			POWER_UP,
+			AGI_UP,
+			DEF_UP,
+			CU_UP,
+			DCU_UP,
+			TIME_KEEP,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			OIL_DOWN,
+			IS_BIND,
+			ITEM_SELL_GOLD,
+			IS_OVER,
+			IS_MARKET,
+			IS_USE,
+			ME_STATE,
+			FD_STATE,
+			ITEM_URL,
+			SNS_MAX_NUM,
+			SNS_GAIN_ODDS,
+			IS_GOOD_FREE,
+			SNS_CONF_PARAM,
+		    SNS_GAIN_SORTNUM,
+			ITEM_LEVEL,
+			IS_BATTLE_GIFT,
+			EQUIP_INTENSIFY_GOLD,
+			EQUIP_INTENSIFY_ODDS,
+			EQUIP_WEIGHT,
+			ITEM_NAME_GK   
+		FROM 
+			GAME_ITEM WHERE <![CDATA[ITEM_TYPE > #item_type#]]>
+		order by Id desc
+	</select>
+	
+	<delete id="delGiftBag" parameterClass="java.util.Map">
+		DELETE FROM GAME_ITEM WHERE ID = #id# 
+	</delete>
+	<select id="getItemNameById" parameterClass="java.util.HashMap" resultClass="String" cacheModel="gameItemNameCache">
+		SELECT ITEM_NAME FROM GAME_ITEM WHERE ID = #id#
+	</select>
+</sqlMap>

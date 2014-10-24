@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleEquip">
+	<typeAlias alias="RoleEquipDetail"
+		type="com.stang.game.entity.detail.RoleEquipDetail" />
+
+	<cacheModel id="RoleEquipCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleEquip" />
+		<flushOnExecute statement="updateRoleEquip" />
+		<flushOnExecute statement="deleteRoleEquip" />
+		<flushOnExecute statement="updateRoleEquipById" />
+		<flushOnExecute statement="subRoleEquipById" />
+		<flushOnExecute statement="getRoleEquipDetail" />
+	</cacheModel>
+
+	<resultMap class="RoleEquipDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleId" column="roleId" />
+		<result property="equipId" column="equipId" />
+		<result property="dengji" column="dengji" />
+		<result property="type" column="type" />
+		<result property="equiptype" column="equiptype" />
+		<result property="flag" column="flag" />
+		<result property="attack" column="attack"/>
+		<result property="user" column="user"/>
+		<result property="speed" column="speed"/>
+		<result property="rectlength" column="rectlength"/>
+		<result property="hpMax" column="hpMax"/>
+		<result property="starlevel" column="starlevel"/>
+		<result property="levelexp" column="levelexp"/>
+	</resultMap>
+	
+	<select id="findAllRoleEquip" resultMap="listResult">
+		SELECT * FROM role_equips WHERE FLAG =1
+	</select>  
+	
+
+	<!-- 录入信息 -->
+	<insert id="insertRoleEquip"
+		parameterClass="RoleEquipDetail">
+		INSERT INTO role_equips (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="equipId">
+			equipId
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dengji">dengji</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptype">equiptype</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">attack</isNotEmpty>
+		<isNotEmpty prepend="," property="hpMax">hpMax</isNotEmpty>
+		<isNotEmpty prepend="," property="rectlength">rectlength</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">speed</isNotEmpty>
+		<isNotEmpty prepend="," property="user">user</isNotEmpty>
+		
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="equipId">
+			#equipId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dengji">#dengji#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptype">#equiptype#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			#flag#
+		</isNotEmpty>
+			<isNotEmpty prepend="," property="attack">#attack#</isNotEmpty>
+		<isNotEmpty prepend="," property="hpMax">#hpMax#</isNotEmpty>
+		<isNotEmpty prepend="," property="rectlength">#rectlength#</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">#speed#</isNotEmpty>
+		<isNotEmpty prepend="," property="user">#user#</isNotEmpty>
+		)
+	</insert>
+
+	<!-- 更新信息 -->
+	<update id="updateRoleEquip"
+		parameterClass="java.util.HashMap">
+		UPDATE role_equips SET
+		<isNotEmpty prepend="" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dengji">
+			dengji = #dengji#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>
+	
+	<update id="updateRoleEquipById"
+		parameterClass="java.util.HashMap">
+		UPDATE role_equips SET
+		<isNotEmpty prepend="" property="dengji">
+			dengji = dengji+#dengji#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">
+			attack = attack+#attack#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="hpMax">
+			hpMax = hpMax+#hpMax#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rectlength">
+			rectlength = rectlength+#rectlength#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">
+			speed = speed+#speed#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="user">
+			user = #user#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>
+	
+	<update id="updateRoleEquipByIdtwo"
+		parameterClass="java.util.HashMap">
+		UPDATE role_equips SET
+	starlevel=#starlevel#,levelexp =#levelexp#  where id=#id#
+	</update>
+	
+	<update id="subRoleEquipById"
+		parameterClass="java.util.HashMap">
+		UPDATE role_equips SET
+		<isNotEmpty prepend="" property="dengji">
+			dengji = dengji-#dengji#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">
+			attack = attack-#attack#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="hpMax">
+			hpMax = hpMax-#hpMax#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rectlength">
+			rectlength = rectlength-#rectlength#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="speed">
+			speed = speed-#speed#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>
+
+	<delete id="deleteRoleEquip" parameterClass="java.util.HashMap">
+		DELETE FROM role_equips WHERE 
+			roleId = #roleId#
+		<isNotEmpty property="id" prepend="AND">
+			id= #id#
+		</isNotEmpty>
+	</delete>
+	
+	<select id="getRoleEquipDetail" parameterClass="java.util.Map"
+		resultMap="listResult" cacheModel="RoleEquipCache">
+		SELECT * FROM role_equips WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+			<isNotEmpty prepend="AND" property="equipId">
+			equipId = #equipId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getRoleEquipUser" parameterClass="java.util.Map"
+		resultMap="listResult" >
+		SELECT * FROM role_equips WHERE FLAG =1 and user=0
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getRoleEquip" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT * FROM role_equips WHERE FLAG =1
+		<isNotEmpty prepend="AND " property="id">id = #id#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="user">
+			user = #user#
+		</isNotEmpty>
+	</select>
+	
+		<select id="getRoleEquipByEquipId" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM role_equips WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="equipid">equipId = #equipId#</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			roleId = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getRoleEquipById"  resultMap="listResult" >
+		SELECT * FROM role_equips WHERE FLAG =1 AND id = #bid#
+	</select>
+	<select id="getRoleEquipByDengji"  parameterClass="java.util.HashMap" resultClass="RoleEquipDetail" >
+		SELECT * FROM role_equips WHERE roleid = #roleid#
+		       and
+		dengji >= #dengji#
+		
+	</select>
+	
+	
+	
+	
+	
+	<update id="updateRoleEquiptwo" parameterClass="RoleEquipDetail">
+		UPDATE role_equips SET 
+		<isNotEmpty prepend="" property="dengji">dengji = #dengji#</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">attack = #attack#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId = #roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="equipId">equipId = #equipId#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type = #type#</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptype">equiptype = #equiptype#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag = #flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="starlevel">starlevel = #starlevel# </isNotEmpty>
+		<isNotEmpty prepend="," property="levelexp">levelexp = #levelexp# </isNotEmpty>
+		<isNotEmpty prepend="," property="hpMax">hpMax = #hpMax# </isNotEmpty>
+		<isNotEmpty prepend="," property="rectlength">rectlength = #rectlength# </isNotEmpty>
+		 <isNotEmpty prepend="," property="speed">speed=#speed# </isNotEmpty> 
+		<isNotEmpty prepend="," property="user">user = #user# </isNotEmpty>
+		WHERE id = #id#
+	</update>
+	
+	<delete id="deleteRoleEquiptwo" parameterClass="RoleEquipDetail">
+		DELETE FROM role_equips WHERE 
+			roleId = #roleId#
+		<isNotEmpty property="id" prepend="AND">
+			id= #id#
+		</isNotEmpty>
+		<isNotEmpty property="equipId" prepend="AND">
+			equipId= #equipId#
+		</isNotEmpty>
+		<isNotEmpty property="dengji" prepend="AND">
+			dengji= #dengji#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			type= #type#
+		</isNotEmpty>
+		<isNotEmpty property="equiptype" prepend="AND">
+			equiptype= #equiptype#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			flag= #flag#
+		</isNotEmpty>
+		<isNotEmpty property="user" prepend="AND">
+			user= #user#
+		</isNotEmpty>
+		<isNotEmpty property="attack" prepend="AND">
+			attack= #attack#
+		</isNotEmpty>
+		<isNotEmpty property="speed" prepend="AND">
+			speed= #speed#
+		</isNotEmpty>
+		<isNotEmpty property="rectlength" prepend="AND">
+			rectlength= #rectlength#
+		</isNotEmpty>
+		<isNotEmpty property="hpMax" prepend="AND">
+			hpMax= #hpMax#
+		</isNotEmpty>
+		<isNotEmpty property="starlevel" prepend="AND">
+			starlevel= #starlevel#
+		</isNotEmpty>
+		<isNotEmpty property="levelexp" prepend="AND">
+			levelexp= #levelexp#
+		</isNotEmpty>
+	</delete>
+	
+	
+</sqlMap>

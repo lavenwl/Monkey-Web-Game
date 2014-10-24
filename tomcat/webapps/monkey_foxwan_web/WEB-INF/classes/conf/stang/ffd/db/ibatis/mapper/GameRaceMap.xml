@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceMap">
+	<typeAlias alias="GameRaceMapDetail" type="com.stang.game.ffd.entity.detail.GameRaceMapDetail" />
+	
+	<resultMap class="GameRaceMapDetail" id="listResult">
+		<result property="raceId" column="RACE_ID"/>
+		<result property="mapId" column="MAP_ID"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceMapDetail" parameterClass="GameRaceMapDetail">
+		INSERT INTO GAME_RACE_MAP (
+			<isNotEmpty prepend="" property="raceId">RACE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="mapId">MAP_ID</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="raceId">#raceId#</isNotEmpty>
+			<isNotEmpty prepend="," property="mapId">#mapId#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceMapDetail" parameterClass="GameRaceMapDetail">
+		UPDATE GAME_RACE_MAP SET 
+		<isNotEmpty prepend="" property="raceId">
+			RACE_ID = #raceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mapId">
+			MAP_ID = #mapId#
+		</isNotEmpty>
+		WHERE RACE_ID = #raceId#
+	</update>
+	
+	
+	<select id="getGameRaceMapDetail" resultMap="listResult" parameterClass="java.util.Map" >
+		SELECT 
+			RACE_ID,
+			MAP_ID
+		FROM 
+			GAME_RACE_MAP   
+		WHERE 
+			<isNotEmpty property="raceId" prepend="">
+    	   		RACE_ID = #raceId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="mapId" prepend="AND">
+    	   		MAP_ID = #mapId# 
+    	   	</isNotEmpty>
+	</select>
+	
+</sqlMap>

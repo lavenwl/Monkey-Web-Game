@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameFoe">
+	<typeAlias alias="GameFoeDetail"
+		type="com.stang.game.entity.detail.GameFoeDetail" />
+
+	<cacheModel id="GameFoeCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameFoeDetail" id="listResult">
+		<result property="foeid" column="foeid" />
+		<result property="foename" column="foename" />
+		<result property="foedesc" column="foedesc" />
+		<result property="type" column="type" />
+		<result property="flag" column="flag" />
+		<result property="fangyu" column="fangyu" />
+		<result property="xueliang" column="xueliang" />
+		<result property="sudu" column="sudu" />
+		<result property="skill" column="skill" />
+	</resultMap>
+
+	<select id="getGameFoe" resultClass="GameFoeDetail">
+		SELECT * FROM game_foe WHERE FLAG =1
+	</select>
+
+</sqlMap>

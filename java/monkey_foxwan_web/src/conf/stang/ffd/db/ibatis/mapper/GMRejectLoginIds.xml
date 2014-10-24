@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GMRejectLoginIds">
+	<typeAlias alias="GMRejectLoginIdsDetail" type="com.stang.game.ffd.entity.detail.GMRejectLoginIdsDetail" />
+	
+	<cacheModel id="GMRejectLoginIdsCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGMRejectLoginIdsDetail"/>
+		<flushOnExecute statement="updateGMRejectLoginIdsDetail"/>
+		<flushOnExecute statement="deleteGMRejectLoginIdsDetailById"/>
+		
+	</cacheModel>
+	
+	<resultMap class="GMRejectLoginIdsDetail" id="listResult">
+		<result property="roleId" column="ROLE_ID"/>
+		<result property="roleName" column="ROLE_NAME"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="endTime" column="END_TIME"/>
+		<result property="flag" column="FLAG"/>
+	</resultMap>
+	
+	<select id="findGMRejectLoginIdsDetailByTime" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT 
+			ROLE_ID,
+			ROLE_NAME,	
+			START_TIME,
+			END_TIME,
+			FLAG
+			FROM GM_REJECT_LOGIN_IDS
+		WHERE <![CDATA[END_TIME < #endTime# AND END_TIME IS NOT NULL]]> AND FLAG = 1
+	</select>
+	<insert id="insertGMRejectLoginIdsDetail" parameterClass="GMRejectLoginIdsDetail">
+		INSERT INTO GM_REJECT_LOGIN_IDS (
+			<isNotEmpty prepend="" property="roleId">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleName">ROLE_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="endTime">END_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleName">#roleName#</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">#startTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="endTime">#endTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			)
+	</insert>
+	
+	<update id="updateGMRejectLoginIdsDetail" parameterClass="GMRejectLoginIdsDetail">
+		UPDATE GM_REJECT_LOGIN_IDS SET END_TIME = #endTime#
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">
+			ROLE_NAME = #roleName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startTime">
+			START_TIME = #startTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ROLE_ID = #roleId#
+	</update>	
+	
+	<select id="getGMRejectLoginIdsDetailByParam" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GMRejectLoginIdsCache">
+		SELECT 
+			ROLE_ID,
+			ROLE_NAME,	
+			START_TIME,
+			END_TIME,
+			FLAG
+		FROM 
+			GM_REJECT_LOGIN_IDS
+		WHERE 
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="roleId">
+				ROLE_ID = #roleId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleName">
+				ROLE_NAME = #roleName# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startTime">
+				START_TIME = #startTime#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="endTime">
+				END_TIME = #endTime#
+			</isNotEmpty>
+			ORDER BY START_TIME DESC
+			<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+			</isNotEmpty>
+	</select>	
+	
+	<delete id="deleteGMRejectLoginIdsDetailById" parameterClass="int">
+		DELETE FROM GM_REJECT_LOGIN_IDS 
+		WHERE 
+			ROLE_ID = #roleId#
+	</delete>
+	<select id="getGMRejectLoginIdsDetailByTimeAndRoleId" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GMRejectLoginIdsCache">
+		SELECT 
+			ROLE_ID,
+			ROLE_NAME,	
+			START_TIME,
+			END_TIME,
+			FLAG
+		FROM 
+			GM_REJECT_LOGIN_IDS
+		WHERE 
+			FLAG = 1 AND 
+			START_TIME <![CDATA[<]]> NOW() 
+			AND 
+			END_TIME <![CDATA[>]]> NOW()
+			<isNotEmpty prepend="AND" property="roleId">
+				ROLE_ID = #roleId#
+			</isNotEmpty>
+
+			<isNotEmpty prepend="AND" property="endTime">
+				END_TIME = #endTime#
+			</isNotEmpty>
+	</select>
+	<select id="getGMRejectLoginIdsDetailByRoleNames" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GMRejectLoginIdsCache">
+		SELECT 
+			ROLE_ID,
+			ROLE_NAME,	
+			START_TIME,
+			END_TIME,
+			FLAG
+		FROM 
+			GM_REJECT_LOGIN_IDS
+		WHERE 
+			FLAG = 1 AND ROLE_NAME IN 
+			<iterate property="names" open="(" close=")"
+				conjunction=",">
+				#names[]#
+			</iterate>
+
+	</select>
+	<select id="getGMRejectLoginIdsDetailCount" resultClass="int">
+		SELECT COUNT(ROLE_ID) FROM GM_REJECT_LOGIN_IDS
+	</select>
+	
+		
+	
+</sqlMap>
+	

@@ -1,0 +1,292 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleMilitary">
+	<typeAlias alias="RoleMilitaryDetail"
+		type="com.stang.game.entity.detail.RoleMilitaryDetail" />
+
+	<cacheModel id="RoleMilitaryCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleMilitary" />
+		<flushOnExecute statement="addMilitayExp" />
+		<flushOnExecute statement="updateRoleMilitary" />
+		<flushOnExecute statement="updateRoleMilitarytime" />
+		<flushOnExecute statement="deleteRoleMilitary" />
+		<flushOnExecute statement="getRoleMilitarylevel2" />
+	</cacheModel>
+
+	<resultMap class="RoleMilitaryDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="militaryid" column="militaryid" />
+		<result property="roleId" column="roleId" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="exp" column="exp" />
+		<result property="type" column="type" />
+		<result property="types" column="types" />
+		<result property="wuqi" column="wuqi" />
+		<result property="huwan" column="huwan" />
+		<result property="shipin" column="shipin" />
+		<result property="touguan" column="touguan" />
+		<result property="yifu" column="yifu" />
+		<result property="xiezi" column="xiezi" />
+		<result property="flag" column="flag" />
+		<result property="time" column="time" />
+		<result property="xltype" column="xltype" />
+		<result property="challenge" column="challenge" />
+		<result property="bingstatus" column="bingstatus" />
+		<result property="bing" column="bing" />
+		<result property="fuben" column="fuben" />
+		
+	</resultMap>
+	
+	<select id="findAllRoleMilitary" resultMap="listResult">
+		SELECT * FROM role_military
+	</select>  
+	
+	
+	<insert id="insertRoleMilitary" parameterClass="java.util.Map">
+		INSERT INTO role_military (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="types">types</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">wuqi</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">huwan</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">shipin</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">touguan</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">yifu</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">xiezi</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="types">#types#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">#xltype#</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">#wuqi#</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">#huwan#</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">#shipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">#touguan#</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">#yifu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">#xiezi#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateRoleMilitary" parameterClass="java.util.Map">
+		UPDATE role_military SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="level">level=#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp=#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type=#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="types">types=#types#</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">wuqi=#wuqi#</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">huwan=#huwan#</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">shipin=#shipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">touguan=#touguan#</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">yifu=#yifu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">xiezi=#xiezi#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time=#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype=#xltype#</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">challenge=#challenge#</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">fuben=#fuben#</isNotEmpty>
+		<isNotEmpty prepend="," property="bing">bing=#bing#</isNotEmpty>
+		<isNotEmpty prepend="," property="bingstatus">bingstatus=#bingstatus#</isNotEmpty>
+		WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="militaryid">
+			militaryid=#militaryid#
+		</isNotEmpty>
+	</update>
+	
+	
+	<update id="updateRoleMilitarytwo" parameterClass="java.util.Map">
+		UPDATE role_military SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="militaryid">militaryid=#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name=#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">wuqi=#wuqi#</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">huwan=#huwan#</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">shipin=#shipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">touguan=#touguan#</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">yifu=#yifu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">xiezi=#xiezi#</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">challenge=#challenge#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype=#xltype#</isNotEmpty>
+		WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+	
+	</update>
+	
+	
+	
+	<update id="updateRoleMilitarytime" parameterClass="java.util.Map">
+		UPDATE role_military SET time=#time# 
+		<isNotEmpty prepend="," property="xltype">xltype=#xltype#</isNotEmpty>
+	    WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="militaryid">
+			militaryid=#militaryid#
+		</isNotEmpty>
+	</update>
+	
+	<update id="addMilitayExp" parameterClass="java.util.Map">
+		UPDATE role_military SET exp=#exp# 
+		<isNotEmpty prepend="," property="level">level=#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype=#xltype#</isNotEmpty>
+	    WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="militaryid">
+			militaryid=#militaryid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+	</update>
+	
+	
+
+	<select id="getRoleMilitary" parameterClass="int" resultClass="RoleMilitaryDetail">
+		SELECT * FROM role_military WHERE roleId =#roleId# and flag=1
+	</select>
+	
+	<select id="getRoleMilitarytime" parameterClass="java.util.Map" resultClass="RoleMilitaryDetail">
+		SELECT * FROM role_military WHERE roleId =#roleId# and flag=1 and militaryid=#militaryid#
+	</select>
+	
+	
+	<select id="getRoleMilitaryByparam"  resultMap="listResult" parameterClass="java.util.Map">
+		SELECT * FROM role_military WHERE roleId =#roleId# 
+		<isNotEmpty property="militaryid" prepend="AND">
+			militaryid = #militaryid#
+		</isNotEmpty>
+		<isNotEmpty property="id" prepend="AND">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty property="fuben" prepend="AND">
+			fuben = #fuben#
+		</isNotEmpty>
+		ORDER BY level
+	</select>
+	
+	<select id="getRoleMilitaryBynotType" parameterClass="java.util.HashMap" resultClass="RoleMilitaryDetail">
+		SELECT * from role_military where xltype > 0 and roleId =#roleid# 
+	</select>
+	
+	<select id="getRoleMilitarylevel" parameterClass="int" resultClass="RoleMilitaryDetail">
+		SELECT * FROM role_military WHERE id =#id# and flag=1
+	</select>
+	
+	<select id="getRoleMilitarylevel2" parameterClass="java.util.HashMap" 
+	resultClass="RoleMilitaryDetail" cacheModel="RoleMilitaryCache">
+		SELECT * FROM role_military WHERE id =#id# and roleId=#roleid# and flag=1
+	</select>
+	
+	<select id="getRoleMilitaryByLevel"  resultMap="listResult" parameterClass="java.util.Map">
+		SELECT * FROM role_military WHERE roleId =#roleid# 
+		    and
+			level >= #level#
+		
+	</select>
+	
+	<delete id="deleteRoleMilitary" parameterClass="java.util.HashMap">
+		DELETE FROM role_military WHERE 
+			roleId = #roleId#
+		<isNotEmpty property="id" prepend="AND">
+			id = #id#
+		</isNotEmpty>
+	</delete>
+	
+	
+	
+	
+	<update id="updateRoleMilitary2" parameterClass="RoleMilitaryDetail">
+		UPDATE role_military SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="id">id=#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid=#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name=#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag=#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level=#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp=#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type=#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="types">types=#types#</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">wuqi=#wuqi#</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">huwan=#huwan#</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">shipin=#shipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">touguan=#touguan#</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">yifu=#yifu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">xiezi=#xiezi#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time=#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype=#xltype#</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">challenge=#challenge#</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">fuben=#fuben#</isNotEmpty>
+		<isNotEmpty prepend="," property="bing">bing=#bing#</isNotEmpty>
+		<isNotEmpty prepend="," property="bingstatus">bingstatus=#bingstatus#</isNotEmpty>
+		WHERE roleId = #roleId#
+		<isNotEmpty prepend="AND" property="id">
+			id=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="militaryid">
+			militaryid=#militaryid#
+		</isNotEmpty>
+	</update>
+	
+	<insert id="insertRoleMilitarytwo" parameterClass="RoleMilitaryDetail">
+		INSERT INTO role_military (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">militaryid</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="types">types</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">xltype</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">wuqi</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">huwan</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">shipin</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">touguan</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">yifu</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">xiezi</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="militaryid">#militaryid#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="types">#types#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="xltype">#xltype#</isNotEmpty>
+		<isNotEmpty prepend="," property="wuqi">#wuqi#</isNotEmpty>
+		<isNotEmpty prepend="," property="huwan">#huwan#</isNotEmpty>
+		<isNotEmpty prepend="," property="shipin">#shipin#</isNotEmpty>
+		<isNotEmpty prepend="," property="touguan">#touguan#</isNotEmpty>
+		<isNotEmpty prepend="," property="yifu">#yifu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xiezi">#xiezi#</isNotEmpty>
+		)
+	</insert>
+	
+	<delete id="deleteRoleMilitarytwo" parameterClass="RoleMilitaryDetail">
+		DELETE FROM role_military WHERE 
+			roleId = #roleId#
+		<isNotEmpty property="id" prepend="AND">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty property="militaryid" prepend="AND">
+			militaryid = #militaryid#
+		</isNotEmpty>
+	</delete>
+	
+</sqlMap>

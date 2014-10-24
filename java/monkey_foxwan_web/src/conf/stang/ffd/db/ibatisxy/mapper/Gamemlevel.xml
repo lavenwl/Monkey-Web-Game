@@ -1,0 +1,73 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMLevel">
+	<typeAlias alias="GameMLevelDetail"
+		type="com.stang.game.entity.detail.GameMLevelDetail" />
+
+	<cacheModel id="GameMLevelCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameMLevelDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="exp" column="exp" />
+		<result property="allexp" column="allexp" />
+		<result property="flag" column="flag" />
+		<result property="level" column="level" />
+		<result property="xyin" column="xyin" />
+	</resultMap>
+
+	
+	
+	<select id="getGameMLevelBylevel" resultClass="GameMLevelDetail" >
+		SELECT * FROM game_mlevel WHERE FLAG =1 and level=#level#
+	</select>
+	
+	<select id="getGameMLevelByAllexp" resultClass="GameMLevelDetail">
+		SELECT * FROM game_mlevel WHERE allexp>#allexp# order by allexp limit 1
+	</select>
+	
+	
+	<select id="getGameMLevel" resultMap="listResult"  >
+		SELECT * FROM game_mlevel
+	</select>
+	
+		<select id="findAllMLevel"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_mlevel  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameMLevelByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_mlevel WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameMLevel" parameterClass="GameMLevelDetail">
+		INSERT INTO game_mlevel(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="allexp">allexp</isNotEmpty>
+		<isNotEmpty prepend="," property="xyin">xyin</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+	) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="allexp">#allexp#</isNotEmpty>
+		<isNotEmpty prepend="," property="xyin">#xyin#</isNotEmpty>
+         <isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameMLevel" parameterClass="java.util.HashMap">
+		UPDATE game_mlevel SET 
+			level = #level#,
+			exp = #exp#,
+			allexp = #allexp#,
+			xyin = #xyin#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+
+</sqlMap>

@@ -1,0 +1,1639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRole">
+	<typeAlias alias="EntityGameRoleDetail"
+		type="com.stang.game.ffd.entity.detail.EntityGameRoleDetail" />
+	<typeAlias alias="EntityGameAreaDetail"
+		type="com.stang.game.ffd.entity.detail.EntityGameAreaDetail" />
+	<typeAlias alias="EntityGameServerDetail"
+		type="com.stang.game.ffd.entity.detail.EntityGameServerDetail" />
+
+	<cacheModel id="gameRoleCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameRoleDetail" />
+		<flushOnExecute statement="updateGameRoleDetail" />
+		<flushOnExecute statement="updateGameRoleDetailByMap" />
+		<flushOnExecute statement="updateGameRoleAreaIdById" />
+		<flushOnExecute statement="updateGameRoleStatusById" />
+		<flushOnExecute statement="updateGameRoleStatusByIds" />
+		<flushOnExecute
+			statement="updateGameRoleInAreaTimeAndRemoteAddress" />
+		<flushOnExecute statement="updateGameRoleDetailUseAvatar" />
+		<flushOnExecute statement="updateGameRoleDetailNotUseAvatar" />
+		<flushOnExecute statement="subtractRoleExp" />
+		<flushOnExecute statement="subtractRoleGold" />
+		<flushOnExecute statement="subtractRoleMoney" />
+		<flushOnExecute statement="addRoleExp" />
+		<flushOnExecute statement="addRoleGold" />
+		<flushOnExecute statement="addRoleMoney" />
+		<flushOnExecute statement="updateRoleStatusBySys" />
+		<flushOnExecute statement="updateBattleNum" />
+		<flushOnExecute statement="updateSalleInfo" />
+		<flushOnExecute statement="updateDoneTyroLead" />
+		<flushOnExecute statement="updateBonusStateAll" />
+
+	</cacheModel>
+
+	<cacheModel id="topGameRoleCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="EntityGameRoleDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="areaId" column="AREA_ID" />
+		<result property="serverId" column="SERVER_ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="roleName" column="ROLE_NAME" />
+		<result property="roleLevel" column="ROLE_LEVEL" />
+		<result property="roleRace" column="ROLE_RACE" />
+		<result property="roleExp" column="ROLE_EXP" />
+		<result property="roleSex" column="ROLE_SEX" />
+		<result property="chatSaveCycle" column="CHAT_SAVE_CYCLE" />
+		<result property="chatSaveCycleStartTime"
+			column="CHAT_SAVE_CYCLE_START_TIME" />
+
+		<result property="avatarHairId" column="AVATAR_HAIR_ID" />
+		<result property="avatarFaceId" column="AVATAR_FACE_ID" />
+		<result property="avatarMouthId" column="AVATAR_MOUTH_ID" />
+		<result property="avatarEarId" column="AVATAR_EAR_ID" />
+		<result property="avatarBodyId" column="AVATAR_BODY_ID" />
+		<result property="avatarHeadId" column="AVATAR_HEAD_ID" />
+		<result property="avatarClothesId" column="AVATAR_CLOTHES_ID" />
+
+		<result property="inAreaTime" column="IN_AREA_TIME" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="inAreaRemoteAddress"
+			column="IN_AREA_REMOTE_ADDRESS" />
+		<result property="roleStatus" column="ROLE_STATUS" />
+		<result property="victoryNumber" column="VICTORY_NUMBER" />
+		<result property="failureNumber" column="FAILURE_NUMBER" />
+
+		<result property="flag" column="FLAG" />
+		<result property="roleGold" column="ROLE_GOLD" />
+		<result property="roleMoney" column="ROLE_MONEY" />
+
+		<result property="rolePower" column="ROLE_POWER" />
+		<result property="roleAgility" column="ROLE_AGILITY" />
+		<result property="roleStamina" column="ROLE_STAMINA" />
+		<result property="roleSpirit" column="ROLE_SPIRIT" />
+
+		<result property="roleSkillPoints" column="ROLE_SKILL_POINTS" />
+		<result property="rolePropPoints" column="ROLE_PROP_POINTS" />
+		<result property="roleSkillPoint" column="ROLE_SKILL_POINT" />
+		<result property="rolePropPoint" column="ROLE_PROP_POINT" />
+		<result property="isVip" column="IS_VIP" />
+		<result property="vipStart" column="VIP_START" />
+		<result property="vipEnd" column="VIP_END" />
+
+		<result property="roleTyro" column="ROLE_TYRO" />
+		<result property="troopVictoryNumber"
+			column="TROOP_VICTORY_NUMBER" />
+		<result property="consortiaVictoryNumber"
+			column="CONSORTIA_VICTORY_NUMBER" />
+
+		<result property="dailyNumber" column="DAILY_NUMBER" />
+		<result property="battleVictoryNumber"
+			column="BATTLE_VICTORY_NUMBER" />
+
+		<result property="roleFatigue" column="ROLE_FATIGUE" />
+		<result property="roleFatigueFuntime"
+			column="ROLE_FATIGUE_FUNTIME" />
+		<result property="roleBattleBonus" column="ROLE_BATTLE_BONUS" />
+		<result property="roleSalle" column="ROLE_SALLE" />
+
+		<result property="isKick" column="IS_KICK" />
+		<result property="isAddExp" column="IS_ADD_EXP" />
+		<result property="addExpPer" column="ADD_EXPPER" />
+		<result property="rolePackageNum" column="ROLE_PACKAGE_NUM" />
+		<result property="dekickTimeStart" column="DEKICK_TIME_START" />
+		<result property="dekickTimeEnd" column="DEKICK_TIME_END" />
+		<result property="addExpTimeStart" column="ADD_EXP_TIME_START" />
+		<result property="addExpTimeEnd" column="ADD_EXP_TIME_END" />
+		<result property="gamblingExp" column="GAMBLINGEXP" />
+		<result property="gamblingMoney" column="GAMBLINGMONEY" />
+	</resultMap>
+
+	<resultMap class="EntityGameRoleDetail" id="battleResult">
+		<result property="id" column="ID" />
+		<result property="victoryNumber" column="VICTORY_NUMBER" />
+		<result property="failureNumber" column="FAILURE_NUMBER" />
+		<result property="troopVictoryNumber"
+			column="TROOP_VICTORY_NUMBER" />
+		<result property="consortiaVictoryNumber"
+			column="CONSORTIA_VICTORY_NUMBER" />
+		<result property="dailyNumber" column="DAILY_NUMBER" />
+		<result property="battleVictoryNumber"
+			column="BATTLE_VICTORY_NUMBER" />
+	</resultMap>
+
+	<resultMap class="EntityGameAreaDetail" id="listResultAreaRoleCount">
+		<result property="id" column="ID" />
+		<result property="serverId" column="SERVER_ID" />
+		<result property="areaName" column="AREA_NAME" />
+		<result property="areaType" column="AREA_TYPE" />
+		<result property="maxLevel" column="MAX_LEVEL" />
+		<result property="minLevel" column="MIN_LEVEL" />
+		<result property="statusWellPlayerNum"
+			column="STATUS_WELL_PLAYER_NUM" />
+		<result property="statusGeneralPlayerNum"
+			column="STATUS_GENERAL_PLAYER_NUM" />
+		<result property="statusCrowdPlayerNum"
+			column="STATUS_CROWD_PLAYER_NUM" />
+		<result property="maxPlayerNum" column="MAX_PLAYER_NUM" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="flag" column="FLAG" />
+		<!-- <result property="countRoles" column="COUNT_ROLES" /> -->
+	</resultMap>
+
+	<resultMap class="EntityGameServerDetail"
+		id="listResultServerRoleCount">
+		<result property="id" column="ID" />
+		<result property="serverType" column="SERVER_TYPE" />
+		<result property="serverName" column="SERVER_NAME" />
+		<result property="serverHost" column="SERVER_HOST" />
+		<result property="serverPort" column="SERVER_PORT" />
+		<result property="serverKey" column="SERVER_KEY" />
+		<result property="maxPlayerNum" column="MAX_PLAYER_NUM" />
+		<result property="maintainCycle" column="MAINTAIN_CYCLE" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="flag" column="FLAG" />
+		<!-- <result property="countRoles" column="COUNT_ROLES" /> -->
+	</resultMap>
+
+	<resultMap class="EntityGameRoleDetail" id="toplistResult">
+		<result property="id" column="ID" />
+		<result property="roleName" column="ROLE_NAME" />
+		<result property="roleLevel" column="ROLE_LEVEL" />
+		<result property="roleExp" column="ROLE_EXP" />
+		<result property="roleGold" column="ROLE_GOLD" />
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertGameRoleDetail" parameterClass="EntityGameRoleDetail">
+		INSERT INTO GAME_ROLE (
+		<isNotEmpty prepend="" property="id">
+			ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="areaId">
+			AREA_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			SERVER_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberId">
+			MEMBER_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">
+			ROLE_NAME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleLevel">
+			ROLE_LEVEL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleRace">
+			ROLE_RACE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleExp">
+			ROLE_EXP
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSex">
+			ROLE_SEX
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycle">
+			CHAT_SAVE_CYCLE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycleStartTime">
+			CHAT_SAVE_CYCLE_START_TIME
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarHairId">
+			AVATAR_HAIR_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			AVATAR_FACE_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			AVATAR_MOUTH_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			AVATAR_EAR_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			AVATAR_BODY_ID
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarClothesId">
+			AVATAR_CLOTHES_ID
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="," property="inAreaTime">
+			IN_AREA_TIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="inAreaRemoteAddress">
+			IN_AREA_REMOTE_ADDRESS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStatus">
+			ROLE_STATUS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			VICTORY_NUMBER
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			FAILURE_NUMBER
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleGold">
+			ROLE_GOLD
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleMoney">
+			ROLE_MONEY
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="rolePower">
+			ROLE_POWER
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleAgility">
+			ROLE_AGILITY
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStamina">
+			ROLE_STAMINA
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSpirit">
+			ROLE_SPIRIT
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="roleSkillPoints">
+			ROLE_SKILL_POINTS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoints">
+			ROLE_PROP_POINTS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSkillPoint">
+			ROLE_SKILL_POINT
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoint">
+			ROLE_PROP_POINT
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isVip">
+			IS_VIP
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipStart">
+			VIP_START
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipEnd">
+			VIP_END
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			AVATAR_HEAD_ID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleTyro">
+			ROLE_TYRO
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleFatigue">
+			ROLE_FATIGUE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleFatigueFuntime">
+			ROLE_FATIGUE_FUNTIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleBattleBonus">
+			ROLE_BATTLE_BONUS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isKick">
+			IS_KICK
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isAddExp">
+			IS_ADD_EXP
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpPer">
+			ADD_EXPPER
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePackageNum">
+			ROLE_PACKAGE_NUM
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeStart">
+			DEKICK_TIME_START
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeEnd">
+			DEKICK_TIME_END
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeStart">
+			ADD_EXP_TIME_START
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeEnd">
+			ADD_EXP_TIME_END
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingExp">
+			GAMBLINGEXP
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingMoney">
+			GAMBLINGMONEY
+		</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">
+			#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="areaId">
+			#areaId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			#serverId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberId">
+			#memberId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">
+			#roleName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleLevel">
+			#roleLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleRace">
+			#roleRace#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleExp">
+			#roleExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSex">
+			#roleSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycle">
+			#chatSaveCycle#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycleStartTime">
+			#CHAT_SAVE_CYCLE_START_TIME#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHairId">
+			#avatarHairId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			#avatarFaceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			#avatarMouthId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			#avatarEarId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			#avatarBodyId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarClothesId">
+			#avatarClothesId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="inAreaTime">
+			#inAreaTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="inAreaRemoteAddress">
+			#inAreaRemoteAddress#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStatus">
+			#roleStatus#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			#victoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			#failureNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			#flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleGold">
+			#roleGold#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleMoney">
+			#roleMoney#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePower">
+			#rolePower#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleAgility">
+			#roleAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStamina">
+			#roleStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSpirit">
+			#roleSpirit#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSkillPoints">
+			#roleSkillPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoints">
+			#rolePropPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSkillPoint">
+			#roleSkillPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoint">
+			#rolePropPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isVip">
+			#isVip#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipStart">
+			#vipStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipEnd">
+			#vipEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			#avatarHeadId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleTyro">
+			#roleTyro#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleFatigue">
+			#roleFatigue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleFatigueFuntime">
+			#roleFatigueFuntime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleBattleBonus">
+			#roleBattleBonus#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isKick">
+			#isKick#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isAddExp">
+			#isAddExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpPer">
+			#addExpPer#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePackageNum">
+			#rolePackageNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeStart">
+			#dekickTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeEnd">
+			#dekickTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeStart">
+			#addExpTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeEnd">
+			#addExpTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingExp">
+			#gamblingExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingMoney">
+			#gamblingMoney#
+		</isNotEmpty>
+
+		)
+	</insert>
+	<update id="updateGameRoleGamblingInfo" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+			<isNotEmpty prepend="gamblingExp">
+				GAMBLINGEXP	=#gamblingExp#
+			</isNotEmpty>
+			<isNotEmpty prepend="gamblingMoney">
+				GAMBLINGMONEY=#gamblingMoney#
+			</isNotEmpty>
+	</update>
+	<!-- 更新信息 -->
+	<update id="updateGameRoleDetail" parameterClass="EntityGameRoleDetail">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend="" property="areaId">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberId">
+			MEMBER_ID = #memberId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">
+			ROLE_NAME = #roleName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleLevel">
+			ROLE_LEVEL = #roleLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleRace">
+			ROLE_RACE = #roleRace#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleExp">
+			ROLE_EXP = #roleExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSex">
+			ROLE_SEX = #roleSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycle">
+			CHAT_SAVE_CYCLE = #chatSaveCycle#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycleStartTime">
+			CHAT_SAVE_CYCLE_START_TIME = #chatSaveCycleStartTime#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarHairId">
+			AVATAR_HAIR_ID = #avatarHairId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			AVATAR_FACE_ID = #avatarFaceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			AVATAR_MOUTH_ID = #avatarMouthId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			AVATAR_EAR_ID = #avatarEarId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			AVATAR_BODY_ID = #avatarBodyId#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="inAreaTime">
+			IN_AREA_TIME = #inAreaTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="inAreaRemoteAddress">
+			IN_AREA_REMOTE_ADDRESS = #inAreaRemoteAddress#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStatus">
+			ROLE_STATUS = #roleStatus#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			VICTORY_NUMBER = #victoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			FAILURE_NUMBER = #failureNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleGold">
+			ROLE_GOLD = #roleGold#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleMoney">
+			ROLE_MONEY = #roleMoney#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="rolePower">
+			ROLE_POWER = #rolePower#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleAgility">
+			ROLE_AGILITY = #roleAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStamina">
+			ROLE_STAMINA = #roleStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSpirit">
+			ROLE_SPIRIT = #roleSpirit#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="roleSkillPoints">
+			ROLE_SKILL_POINTS = #roleSkillPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoints">
+			ROLE_PROP_POINTS = #rolePropPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSkillPoint">
+			ROLE_SKILL_POINT = #roleSkillPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoint">
+			ROLE_PROP_POINT = #rolePropPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isVip">
+			IS_VIP = #isVip#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipStart">
+			VIP_START = #vipStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipEnd">
+			VIP_END = #vipEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			AVATAR_HEAD_ID = #avatarHeadId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isKick">
+			IS_KICK=#isKick#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isAddExp">
+			IS_ADD_EXP=#isAddExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpPer">
+			ADD_EXPPER=#addExpPer#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePackageNum">
+			ROLE_PACKAGE_NUM=#rolePackageNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeStart">
+			DEKICK_TIME_START=#dekickTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeEnd">
+			DEKICK_TIME_END=#dekickTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeStart">
+			ADD_EXP_TIME_START=#addExpTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeEnd">
+			ADD_EXP_TIME_END=#addExpTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingExp">
+			GAMBLINGEXP=#gamblingExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingMoney">
+			GAMBLINGMONEY=#gamblingMoney#
+		</isNotEmpty>
+
+
+		WHERE ID = #id#
+	</update>
+
+	<!-- 更新信息 -->
+	<update id="updateGameRoleDetailByMap"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="areaId">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberId">
+			MEMBER_ID = #memberId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleName">
+			ROLE_NAME = #roleName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleLevel">
+			ROLE_LEVEL = #roleLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleRace">
+			ROLE_RACE = #roleRace#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleExp">
+			ROLE_EXP = #roleExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSex">
+			ROLE_SEX = #roleSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycle">
+			CHAT_SAVE_CYCLE = #chatSaveCycle#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chatSaveCycleStartTime">
+			CHAT_SAVE_CYCLE_START_TIME = #chatSaveCycleStartTime#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarHairId">
+			AVATAR_HAIR_ID = #avatarHairId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			AVATAR_FACE_ID = #avatarFaceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			AVATAR_MOUTH_ID = #avatarMouthId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			AVATAR_EAR_ID = #avatarEarId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			AVATAR_BODY_ID = #avatarBodyId#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="inAreaTime">
+			IN_AREA_TIME = #inAreaTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="inAreaRemoteAddress">
+			IN_AREA_REMOTE_ADDRESS = #inAreaRemoteAddress#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStatus">
+			ROLE_STATUS = #roleStatus#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			VICTORY_NUMBER = #victoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			FAILURE_NUMBER = #failureNumber#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="roleGold">
+			ROLE_GOLD = #roleGold#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleMoney">
+			ROLE_MONEY = #roleMoney#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="rolePower">
+			ROLE_POWER = #rolePower#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleAgility">
+			ROLE_AGILITY = #roleAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleStamina">
+			ROLE_STAMINA = #roleStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSpirit">
+			ROLE_SPIRIT = #roleSpirit#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="roleSkillPoints">
+			ROLE_SKILL_POINTS = #roleSkillPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoints">
+			ROLE_PROP_POINTS = #rolePropPoints#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleSkillPoint">
+			ROLE_SKILL_POINT = #roleSkillPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePropPoint">
+			ROLE_PROP_POINT = #rolePropPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isVip">
+			IS_VIP = #isVip#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipStart">
+			VIP_START = #vipStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="vipEnd">
+			VIP_END = #vipEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			AVATAR_HEAD_ID = #avatarHeadId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isKick">
+			IS_KICK=#isKick#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isAddExp">
+			IS_ADD_EXP=#isAddExp#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="addExpPer">
+			ADD_EXPPER=#addExpPer#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rolePackageNum">
+			ROLE_PACKAGE_NUM=#rolePackageNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeStart">
+			DEKICK_TIME_START=#dekickTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dekickTimeEnd">
+			DEKICK_TIME_END=#dekickTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeStart">
+			ADD_EXP_TIME_START=#addExpTimeStart#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="addExpTimeEnd">
+			ADD_EXP_TIME_END=#addExpTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingExp">
+			GAMBLINGEXP=#gamblingExp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="gamblingMoney">
+			GAMBLINGMONEY=#gamblingMoney#
+		</isNotEmpty>
+
+		WHERE ID = #id#
+	</update>
+
+	<!-- 玩家取下装饰 -->
+	<update id="updateGameRoleDetailNotUseAvatar"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend="," property="avatarHairId">
+			AVATAR_HAIR_ID = NULL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			AVATAR_FACE_ID = NULL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			AVATAR_MOUTH_ID = NULL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			AVATAR_EAR_ID = NULL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			AVATAR_BODY_ID = NULL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			AVATAR_HEAD_ID = null
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+
+	<!-- 玩家换上装饰 -->
+	<update id="updateGameRoleDetailUseAvatar"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend="," property="avatarHairId">
+			AVATAR_HAIR_ID = #avatarHairId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarFaceId">
+			AVATAR_FACE_ID = #avatarFaceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMouthId">
+			AVATAR_MOUTH_ID = #avatarMouthId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarEarId">
+			AVATAR_EAR_ID = #avatarEarId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarBodyId">
+			AVATAR_BODY_ID = #avatarBodyId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHeadId">
+			AVATAR_HEAD_ID = #avatarHeadId#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+
+	<!-- 获得所有大区信息及在线玩家人数 -->
+	<select id="findAllGameAreaAndOnlineRole"
+		resultMap="listResultAreaRoleCount" cacheModel="gameRoleCache">
+		SELECT T.ID, T.SERVER_ID, T.AREA_NAME, T.AREA_TYPE, T.MAX_LEVEL,
+		T.MIN_LEVEL, T.STATUS_WELL_PLAYER_NUM,
+		T.STATUS_GENERAL_PLAYER_NUM, T.STATUS_CROWD_PLAYER_NUM,
+		T.MAX_PLAYER_NUM, T.CREATE_TIME,FLAG, A.COUNT_ROLES FROM
+		GAME_AREA T LEFT JOIN (SELECT COUNT(ID) COUNT_ROLES,AREA_ID FROM
+		GAME_ROLE WHERE FLAG = 1 GROUP BY AREA_ID) A ON T.ID = A.AREA_ID
+		WHERE T.FLAG = 1
+	</select>
+
+	<!-- 获得服务器所有大区信息及在线玩家人数 -->
+	<select id="findAllGameAreaAndOnlineRoleByServerId"
+		parameterClass="java.util.Map" resultMap="listResultAreaRoleCount"
+		cacheModel="gameRoleCache">
+		SELECT T.ID, T.SERVER_ID, T.AREA_NAME, T.AREA_TYPE, T.MAX_LEVEL,
+		T.MIN_LEVEL, T.STATUS_WELL_PLAYER_NUM,
+		T.STATUS_GENERAL_PLAYER_NUM, T.STATUS_CROWD_PLAYER_NUM,
+		T.MAX_PLAYER_NUM, T.CREATE_TIME,FLAG, A.COUNT_ROLES FROM
+		GAME_AREA T LEFT JOIN (SELECT COUNT(ID) COUNT_ROLES,AREA_ID FROM
+		GAME_ROLE WHERE FLAG = 1 GROUP BY AREA_ID) A ON T.ID = A.AREA_ID
+		WHERE T.FLAG = 1 AND T.SERVER_ID = #serverId#
+	</select>
+
+	<!-- 获得所有服务器信息及在线玩家人数 -->
+	<select id="findAllGameServerAndOnlineRole"
+		resultMap="listResultServerRoleCount" cacheModel="gameRoleCache">
+		SELECT T.ID, T.SERVER_TYPE, T.SERVER_NAME, T.SERVER_HOST,
+		T.SERVER_PORT, T.SERVER_KEY, T.MAX_PLAYER_NUM, T.MAINTAIN_CYCLE,
+		T.CREATE_TIME, T.FLAG, S.COUNT_ROLES FROM GAME_SERVER T LEFT
+		JOIN (SELECT COUNT(ID) AS COUNT_ROLES,SERVER_ID FROM GAME_ROLE
+		WHERE FLAG = 1 GROUP BY SERVER_ID) S ON T.ID = S.SERVER_ID WHERE
+		T.FLAG = 1
+	</select>
+
+	<!-- 根据角色序列号查询角色信息 -->
+	<select id="findRoleById" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, AVATAR_FACE_ID,
+		AVATAR_MOUTH_ID, AVATAR_EAR_ID, AVATAR_CLOTHES_ID,
+		AVATAR_BODY_ID, IN_AREA_TIME, CREATE_TIME,
+		IN_AREA_REMOTE_ADDRESS, ROLE_STATUS, VICTORY_NUMBER,
+		FAILURE_NUMBER, ROLE_SALLE, FLAG, ROLE_GOLD, ROLE_MONEY,
+		ROLE_POWER, ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER,
+
+		ROLE_SKILL_POINTS, ROLE_PROP_POINTS, ROLE_SKILL_POINT,
+		ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+
+		ROLE_TYRO, AVATAR_HEAD_ID ,
+
+		IS_KICK, IS_ADD_EXP, ADD_EXPPER, ROLE_PACKAGE_NUM,
+		DEKICK_TIME_START, DEKICK_TIME_END, ADD_EXP_TIME_START,
+		ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM GAME_ROLE WHERE FLAG = 1 AND ID = #id#
+
+	</select>
+
+	<!-- 根据大区序列号和结果集长度查询角色信息 -->
+	<select id="findRolesByAreaIdAndLength"
+		parameterClass="java.util.Map" resultMap="listResult"
+		cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, AVATAR_FACE_ID,
+		AVATAR_MOUTH_ID, ROLE_SALLE, AVATAR_EAR_ID, AVATAR_BODY_ID,
+		IN_AREA_TIME, CREATE_TIME, IN_AREA_REMOTE_ADDRESS, ROLE_STATUS,
+		VICTORY_NUMBER, FAILURE_NUMBER, FLAG, ROLE_GOLD, ROLE_MONEY,
+		ROLE_POWER, ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT,
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER,
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+		ROLE_SKILL_POINTS, ROLE_PROP_POINTS, ROLE_SKILL_POINT,
+		ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+		ROLE_TYRO, AVATAR_HEAD_ID,
+		IS_KICK, IS_ADD_EXP, ADD_EXPPER, ROLE_PACKAGE_NUM,
+		DEKICK_TIME_START, DEKICK_TIME_END, ADD_EXP_TIME_START,
+		ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM GAME_ROLE WHERE FLAG = 1
+		<isNotEmpty property="isNotCurrRoleId" prepend="AND">
+			ID
+			<![CDATA[<>]]>
+			#isNotCurrRoleId#
+		</isNotEmpty>
+		<isNotEmpty property="areaId" prepend="AND">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty property="roleStatus" prepend="AND">
+			ROLE_STATUS = #roleStatus#
+		</isNotEmpty>
+		<isNotEmpty property="orderByAsc" prepend="">
+			ORDER BY #orderByAsc# ASC
+		</isNotEmpty>
+		<isNotEmpty property="orderByDesc" prepend="">
+			ORDER BY #orderByDesc# DESC
+		</isNotEmpty>
+		<isNotEmpty property="maxSize" prepend="">
+			LIMIT 0,#maxSize#
+		</isNotEmpty>
+	</select>
+
+	<!-- 根据角色序列号组查询角色信息 -->
+	<select id="findRolesByIds" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, AVATAR_FACE_ID,
+		AVATAR_MOUTH_ID, AVATAR_EAR_ID, ROLE_SALLE, AVATAR_CLOTHES_ID,
+		AVATAR_BODY_ID, IN_AREA_TIME, CREATE_TIME,
+		IN_AREA_REMOTE_ADDRESS, ROLE_STATUS, VICTORY_NUMBER,
+		FAILURE_NUMBER, FLAG, ROLE_GOLD, ROLE_MONEY, ROLE_POWER,
+		ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT, ROLE_SKILL_POINTS,
+		ROLE_PROP_POINTS, ROLE_SKILL_POINT, ROLE_PROP_POINT, IS_VIP,
+		VIP_START, VIP_END,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER, ROLE_TYRO, AVATAR_HEAD_ID, IS_KICK,
+		IS_ADD_EXP,
+
+		ADD_EXPPER, ROLE_PACKAGE_NUM, DEKICK_TIME_START,
+		DEKICK_TIME_END, ADD_EXP_TIME_START, ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM
+		GAME_ROLE
+		<dynamic prepend="WHERE">
+			FLAG = 1 AND
+			<isNotNull prepend="AND">
+				ID IN
+				<iterate property="ids" open="(" close=")"
+					conjunction=",">
+					#ids[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+
+	<!-- 根据角色序列号组查询在线角色信息 -->
+	<select id="findOnlineRolesByIds" parameterClass="java.util.Map"
+		resultMap="listResult" cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, AVATAR_FACE_ID,
+		AVATAR_MOUTH_ID, AVATAR_EAR_ID, ROLE_SALLE, AVATAR_BODY_ID,
+		IN_AREA_TIME, CREATE_TIME, IN_AREA_REMOTE_ADDRESS, ROLE_STATUS,
+		VICTORY_NUMBER, FAILURE_NUMBER, FLAG, ROLE_GOLD, ROLE_MONEY,
+		ROLE_POWER, ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER, AVATAR_CLOTHES_ID,
+
+		ROLE_SKILL_POINTS, ROLE_PROP_POINTS, ROLE_SKILL_POINT,
+		ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+
+		ROLE_TYRO, AVATAR_HEAD_ID, IS_KICK, IS_ADD_EXP, ADD_EXPPER,
+		ROLE_PACKAGE_NUM, DEKICK_TIME_START, DEKICK_TIME_END,
+		ADD_EXP_TIME_START, ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+
+		FROM GAME_ROLE
+		<dynamic prepend="WHERE">
+			<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0 AND ]]>
+			<isNotNull prepend="AND">
+				ID IN
+				<iterate property="ids" open="(" close=")"
+					conjunction=",">
+					#ids[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 查询角色信息 -->
+	<select id="getGameRoleDetail" resultMap="listResult"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, ROLE_SALLE,
+		AVATAR_FACE_ID, AVATAR_MOUTH_ID, AVATAR_EAR_ID, AVATAR_BODY_ID,
+		AVATAR_CLOTHES_ID, IN_AREA_TIME, CREATE_TIME,
+		IN_AREA_REMOTE_ADDRESS, ROLE_STATUS, VICTORY_NUMBER,
+		FAILURE_NUMBER, FLAG, ROLE_GOLD, ROLE_MONEY, ROLE_POWER,
+		ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER,
+
+		ROLE_SKILL_POINTS, ROLE_PROP_POINTS, ROLE_SKILL_POINT,
+		ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+
+		ROLE_TYRO, AVATAR_HEAD_ID, IS_KICK, IS_ADD_EXP, ADD_EXPPER,
+		ROLE_PACKAGE_NUM, DEKICK_TIME_START, DEKICK_TIME_END,
+		ADD_EXP_TIME_START, ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM GAME_ROLE WHERE FLAG = 1
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="areaId" prepend="AND">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty property="serverId" prepend="AND">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty property="memberId" prepend="AND">
+			MEMBER_ID = #memberId#
+		</isNotEmpty>
+		<isNotEmpty property="roleName" prepend="AND">
+			ROLE_NAME = #roleName#
+		</isNotEmpty>
+		<isNotEmpty property="roleLevel" prepend="AND">
+			ROLE_LEVEL = #roleLevel#
+		</isNotEmpty>
+		<isNotEmpty property="roleRace" prepend="AND">
+			ROLE_RACE = #roleRace#
+		</isNotEmpty>
+		<isNotEmpty property="roleExp" prepend="AND">
+			ROLE_EXP = #roleExp#
+		</isNotEmpty>
+		<isNotEmpty property="roleSex" prepend="AND">
+			ROLE_SEX = #roleSex#
+		</isNotEmpty>
+		<isNotEmpty property="chatSaveCycle" prepend="AND">
+			CHAT_SAVE_CYCLE = #chatSaveCycle#
+		</isNotEmpty>
+		<isNotEmpty property="chatSaveCycleStartTime" prepend="AND">
+			CHAT_SAVE_CYCLE_START_TIME = #chatSaveCycleStartTime#
+		</isNotEmpty>
+
+		<isNotEmpty property="avatarHairId" prepend="AND">
+			AVATAR_HAIR_ID = #avatarHairId#
+		</isNotEmpty>
+		<isNotEmpty property="avatarFaceId" prepend="AND">
+			AVATAR_FACE_ID = #avatarFaceId#
+		</isNotEmpty>
+		<isNotEmpty property="avatarMouthId" prepend="AND">
+			AVATAR_MOUTH_ID = #avatarMouthId#
+		</isNotEmpty>
+		<isNotEmpty property="avatarEarId" prepend="AND">
+			AVATAR_EAR_ID = #avatarEarId#
+		</isNotEmpty>
+		<isNotEmpty property="avatarBodyId" prepend="AND">
+			AVATAR_BODY_ID = #avatarBodyId#
+		</isNotEmpty>
+
+		<isNotEmpty property="inAreaTime" prepend="AND">
+			IN_AREA_TIME = #inAreaTime#
+		</isNotEmpty>
+		<isNotEmpty property="inAreaRemoteAddress" prepend="AND">
+			IN_AREA_REMOTE_ADDRESS = #inAreaRemoteAddress#
+		</isNotEmpty>
+		<isNotEmpty property="createTime" prepend="AND">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty property="createTime1" prepend="AND">
+		<![CDATA[ CREATE_TIME >= ]]> #createTime1#
+		</isNotEmpty>
+		<isNotEmpty property="createTime2" prepend="AND">
+		<![CDATA[ CREATE_TIME <= ]]> #createTime2#
+		</isNotEmpty>
+		<isNotEmpty property="roleStatus" prepend="AND">
+			ROLE_STATUS = #roleStatus#
+		</isNotEmpty>
+		<isNotEmpty property="roleGold" prepend="AND">
+			ROLE_GOLD = #roleGold#
+		</isNotEmpty>
+		<isNotEmpty property="roleMoney" prepend="AND">
+			ROLE_MONEY = #roleMoney#
+		</isNotEmpty>
+		<isNotEmpty property="rolePower" prepend="AND">
+			ROLE_POWER = #rolePower#
+		</isNotEmpty>
+		<isNotEmpty property="roleAgility" prepend="AND">
+			ROLE_AGILITY = #roleAgility#
+		</isNotEmpty>
+		<isNotEmpty property="roleStamina" prepend="AND">
+			ROLE_STAMINA = #roleStamina#
+		</isNotEmpty>
+		<isNotEmpty property="roleSpirit" prepend="AND">
+			ROLE_SPIRIT = #roleSpirit#
+		</isNotEmpty>
+		<isNotEmpty property="isKick" prepend="AND">
+			IS_KICK=#isKick#
+		</isNotEmpty>
+		<isNotEmpty property="isAddExp" prepend="AND">
+			IS_ADD_EXP=#isAddExp#
+		</isNotEmpty>
+		<isNotEmpty property="addExpPer" prepend="AND">
+			ADD_EXPPER=#addExpPer#
+		</isNotEmpty>
+		<isNotEmpty property="rolePackageNum" prepend="AND">
+			ROLE_PACKAGE_NUM=#rolePackageNum#
+		</isNotEmpty>
+		<isNotEmpty property="dekickTimeStart" prepend="AND">
+			DEKICK_TIME_START=#dekickTimeStart#
+		</isNotEmpty>
+		<isNotEmpty property="dekickTimeEnd" prepend="AND">
+			DEKICK_TIME_END=#dekickTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty property="addExpTimeStart" prepend="AND">
+			ADD_EXP_TIME_START=#addExpTimeStart#
+		</isNotEmpty>
+		<isNotEmpty property="addExpTimeEnd" prepend="AND">
+			ADD_EXP_TIME_END=#addExpTimeEnd#
+		</isNotEmpty>
+		<isNotEmpty property="gamblingExp" prepend="AND">
+			GAMBLINGEXP=#gamblingExp#
+		</isNotEmpty>
+		<isNotEmpty property="gamblingMoney" prepend="AND">
+			GAMBLINGMONEY=#gamblingMoney#
+		</isNotEmpty>
+	</select>
+
+	<!-- 查询在线角色信息 -->
+	<select id="getOnlineRoles" resultMap="listResult"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE, ROLE_SALLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_HAIR_ID, AVATAR_FACE_ID,
+		AVATAR_MOUTH_ID, AVATAR_EAR_ID, AVATAR_BODY_ID, IN_AREA_TIME,
+		CREATE_TIME, IN_AREA_REMOTE_ADDRESS, ROLE_STATUS,
+		VICTORY_NUMBER, FAILURE_NUMBER, FLAG, ROLE_GOLD, ROLE_MONEY,
+		ROLE_POWER, ROLE_AGILITY, ROLE_STAMINA, ROLE_SPIRIT,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER, ROLE_SKILL_POINTS, ROLE_PROP_POINTS,
+		ROLE_SKILL_POINT, ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+		ROLE_TYRO, AVATAR_HEAD_ID,
+
+		IS_KICK, IS_ADD_EXP, ADD_EXPPER, ROLE_PACKAGE_NUM,
+		DEKICK_TIME_START, DEKICK_TIME_END, ADD_EXP_TIME_START,
+		ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM GAME_ROLE WHERE
+		<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0]]>
+		<isNotEmpty property="areaId" prepend="AND">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty property="serverId" prepend="AND">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+	</select>
+
+	<!-- 根据服务器序号、大区序号查询大厅内的玩家列表 -->
+	<select id="getOnlineRolesOfHall" resultMap="listResult"
+		parameterClass="java.util.Map">
+		SELECT ID, AREA_ID, SERVER_ID, MEMBER_ID, ROLE_NAME, ROLE_LEVEL,
+		ROLE_RACE, ROLE_EXP, ROLE_SEX, CHAT_SAVE_CYCLE,
+		CHAT_SAVE_CYCLE_START_TIME, AVATAR_CLOTHES_ID, AVATAR_HAIR_ID,
+		ROLE_SALLE, AVATAR_FACE_ID, AVATAR_MOUTH_ID, AVATAR_EAR_ID,
+		AVATAR_BODY_ID, IN_AREA_TIME, CREATE_TIME,
+		IN_AREA_REMOTE_ADDRESS, ROLE_STATUS, VICTORY_NUMBER,
+		FAILURE_NUMBER,
+
+		TROOP_VICTORY_NUMBER, CONSORTIA_VICTORY_NUMBER, DAILY_NUMBER,
+		BATTLE_VICTORY_NUMBER,
+
+		ROLE_FATIGUE, ROLE_FATIGUE_FUNTIME, ROLE_BATTLE_BONUS,
+
+		FLAG, ROLE_GOLD, ROLE_MONEY, ROLE_POWER, ROLE_AGILITY,
+		ROLE_STAMINA, ROLE_SPIRIT,
+
+		ROLE_SKILL_POINTS, ROLE_PROP_POINTS, ROLE_SKILL_POINT,
+		ROLE_PROP_POINT, IS_VIP, VIP_START, VIP_END,
+
+		ROLE_TYRO, AVATAR_HEAD_ID,
+
+		IS_KICK, IS_ADD_EXP, ADD_EXPPER, ROLE_PACKAGE_NUM,
+		DEKICK_TIME_START, DEKICK_TIME_END, ADD_EXP_TIME_START,
+		ADD_EXP_TIME_END,GAMBLINGEXP,GAMBLINGMONEY
+
+		FROM GAME_ROLE WHERE FLAG = 1 AND ROLE_STATUS = 1
+		<isNotEmpty property="areaId" prepend="AND">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty property="serverId" prepend="AND">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+		<isNotEmpty property="roleSalle" prepend="AND">
+			ROLE_SALLE = #roleSalle#
+		</isNotEmpty>
+	</select>
+
+	<!-- 查询在线角色总数 -->
+	<select id="getCountOnlineRoles" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE
+		<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0]]>
+		<isNotEmpty property="areaId" prepend="AND">
+			AREA_ID = #areaId#
+		</isNotEmpty>
+		<isNotEmpty property="serverId" prepend="AND">
+			SERVER_ID = #serverId#
+		</isNotEmpty>
+	</select>
+
+	<!-- 根据服务器序号查询在线玩家序号组 -->
+	<select id="getOnlineRoleIdsByServerId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID FROM GAME_ROLE WHERE SERVER_ID = #serverId# AND
+		<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0]]>
+	</select>
+
+	<!-- 根据大区序号查询大厅内玩家序号组 -->
+	<select id="getOnlineRoleIdsOfHallByAreaId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID FROM GAME_ROLE WHERE SERVER_ID = #serverId# AND
+		AREA_ID = #areaId# AND FLAG = 1 AND ROLE_STATUS = 1
+	</select>
+
+	<!-- 根据大区序号查询在线玩家序号组 -->
+	<select id="getOnlineRoleIdsByAreaId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID FROM GAME_ROLE WHERE SERVER_ID = #serverId# AND
+		AREA_ID = #areaId# AND
+		<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0]]>
+	</select>
+
+	<!-- 根据玩家序号查询同一会员的在线角色序号组(同一服务器内) -->
+	<select id="getOnlineRoleIdsOfSameMemberByServerId"
+		resultClass="int" parameterClass="java.util.Map"
+		cacheModel="gameRoleCache">
+		SELECT ID FROM GAME_ROLE WHERE SERVER_ID = #serverId# AND
+		ROLE_STATUS
+		<![CDATA[>= 0]]>
+		AND MEMBER_ID = (SELECT MEMBER_ID FROM GAME_ROLE WHERE ID =
+		#roleId#)
+	</select>
+
+	<!-- 根据玩家序号统计同一会员的在线角色序号组(同一服务器内) -->
+	<select id="countOnlineRoleIdsOfSameMemberByServerId"
+		resultClass="int" parameterClass="java.util.Map"
+		cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE SERVER_ID = #serverId# AND
+		ROLE_STATUS
+		<![CDATA[>= 0]]>
+		AND MEMBER_ID = (SELECT MEMBER_ID FROM GAME_ROLE WHERE ID =
+		#roleId#)
+	</select>
+
+	<!-- 根据玩家序号组查询表在线玩家序号组 -->
+	<select id="getOnlineRoleIdsByRoleIds" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ID FROM GAME_ROLE
+		<dynamic prepend="WHERE">
+			<![CDATA[ FLAG = 1 AND ROLE_STATUS <> 0 AND ]]>
+			<isNotNull prepend="AND">
+				ID IN
+				<iterate property="ids" open="(" close=")"
+					conjunction=",">
+					#ids[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+	<!-- 根据玩家序列号更新其所在大区序列号 -->
+	<update id="updateGameRoleAreaIdById"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET AREA_ID = #areaId# WHERE ID = #roleId#
+	</update>
+
+	<!-- 根据玩家序列号更新其当前状态 -->
+	<update id="updateGameRoleStatusById"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_STATUS = #roleStatus# WHERE ID =
+		#roleId#
+	</update>
+
+	<!-- 根据玩家序列号组更新当前状态 -->
+	<update id="updateGameRoleStatusByIds"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_STATUS = #roleStatus# WHERE
+		<isNotNull prepend="">
+			ID IN
+			<iterate property="ids" open="(" close=")"
+				conjunction=",">
+				#ids[]#
+			</iterate>
+		</isNotNull>
+	</update>
+
+	<!-- 根据玩家序号更新玩家进入大区时间、相应的远程IP地址及状态 -->
+	<update id="updateGameRoleInAreaTimeAndRemoteAddress"
+		parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET IN_AREA_TIME =
+		#inAreaTime#,IN_AREA_REMOTE_ADDRESS =
+		#inAreaRemoteAddress#,ROLE_STATUS =
+		#roleStatus#,ROLE_FATIGUE_FUNTIME =#roleFatigueFuntime# WHERE ID
+		= #roleId#
+	</update>
+
+
+	<!-- 根据会员序列号获得其创建游戏角色个数 -->
+	<select id="getMemberPlayersCount" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE FLAG = 1 AND MEMBER_ID =
+		#memberId#
+	</select>
+
+	<!-- 根据角色名称统计游戏角色个数 -->
+	<select id="getPlayersCountByRoleName" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE FLAG = 1 AND ROLE_NAME =
+		#roleName#
+	</select>
+
+	<!-- 根据大区序列号统计在线玩家人数 -->
+	<select id="getOnlineRoleCountByAreaId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE FLAG = 1 AND AREA_ID =
+		#areaId#
+	</select>
+
+	<!-- 根据服务器序列号统计在线玩家人数 -->
+	<select id="getOnlineRoleCountByServerId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT COUNT(ID) FROM GAME_ROLE WHERE FLAG = 1 AND SERVER_ID =
+		#serverId#
+	</select>
+
+	<!-- 减去玩家经验值 -->
+	<update id="subtractRoleExp" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_EXP = ROLE_EXP - #roleExp# WHERE ID =
+		#roleId#
+	</update>
+	<!-- 减去玩家金币 -->
+	<update id="subtractRoleGold" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_GOLD = ROLE_GOLD - #roleGold# WHERE ID
+		= #roleId#
+	</update>
+	<!-- 减去玩家金钱 -->
+	<update id="subtractRoleMoney" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_MONEY = ROLE_MONEY - #roleMoney# WHERE
+		ID = #roleId#
+	</update>
+	<!-- 增加玩家经验值 -->
+	<update id="addRoleExp" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_EXP = ROLE_EXP + #roleExp# WHERE ID =
+		#roleId#
+	</update>
+	<!-- 增加玩家金币 -->
+	<update id="addRoleGold" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_GOLD = ROLE_GOLD + #roleGold# WHERE ID
+		= #roleId#
+	</update>
+	<!-- 增加玩家金钱 -->
+	<update id="addRoleMoney" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_MONEY = ROLE_MONEY + #roleMoney# WHERE
+		ID = #roleId#
+	</update>
+
+	<!-- 更新种族 -->
+	<update id="updataGameRoleRace" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_RACE = #roleRace# WHERE ID = #roleId#
+	</update>
+
+	<!-- 更新获奖状态 -->
+	<update id="updateBonusState" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_BATTLE_BONUS = #roleBattleBonus# WHERE
+		ID = #roleId#
+	</update>
+
+	<!-- 根据玩家序号获得玩家经验值 -->
+	<select id="getRoleExp" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ROLE_EXP FROM GAME_ROLE WHERE ID = #roleId#
+	</select>
+
+	<!-- 根据玩家序号获得玩家金币数 -->
+	<select id="getRoleGold" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ROLE_GOLD FROM GAME_ROLE WHERE ID = #roleId#
+	</select>
+	<!-- 根据玩家序号获得玩家金钱数 -->
+	<select id="getRoleMoney" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ROLE_MONEY FROM GAME_ROLE WHERE ID = #roleId#
+	</select>
+	<!-- 根据玩家序号获得玩家等级 -->
+	<select id="getRoleLevelByRoleId" resultClass="int"
+		parameterClass="java.util.Map" cacheModel="gameRoleCache">
+		SELECT ROLE_LEVEL FROM GAME_ROLE WHERE ID = #roleId#
+	</select>
+
+	<!-- 根据服务器获得玩家等级(经验)排名 -->
+	<select id="topGameRoles" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,ROLE_GOLD FROM GAME_ROLE
+		WHERE FLAG = 1 AND SERVER_ID = #serverId# ORDER BY ROLE_LEVEL
+		DESC,ROLE_EXP DESC LIMIT 0,#endNum#
+	</select>
+
+	<!-- 根据服务器获得玩家（金币）排名 -->
+	<select id="topGameRolesByGold" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,ROLE_GOLD FROM GAME_ROLE
+		WHERE FLAG = 1 AND SERVER_ID = #serverId# ORDER BY ROLE_GOLD
+		DESC LIMIT 0,#endNum#
+	</select>
+
+	<!-- 根据服务器获得玩家战斗总次数排名 -->
+	<select id="topGameRolesBySumBattle" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,SUM(VICTORY_NUMBER +
+		FAILURE_NUMBER) AS ROLE_GOLD FROM GAME_ROLE WHERE FLAG = 1 AND
+		SERVER_ID = #serverId# GROUP BY ID ORDER BY SUM(VICTORY_NUMBER +
+		FAILURE_NUMBER) DESC LIMIT 0,#endNum#
+	</select>
+
+	<!-- 根据服务器获得玩家战斗胜利次数排名 -->
+	<select id="topGameRolesByWBattle" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,VICTORY_NUMBER AS
+		ROLE_GOLD FROM GAME_ROLE WHERE FLAG = 1 AND SERVER_ID =
+		#serverId# ORDER BY VICTORY_NUMBER DESC LIMIT 0,#endNum#
+	</select>
+
+	<!-- 根据服务器获得玩家战斗失败次数排名 -->
+	<select id="topGameRolesByFBattle" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,FAILURE_NUMBER AS
+		ROLE_GOLD FROM GAME_ROLE WHERE FLAG = 1 AND SERVER_ID =
+		#serverId# ORDER BY FAILURE_NUMBER DESC LIMIT 0,#endNum#
+	</select>
+
+	<!-- 根据roleId查找基本信息 -->
+	<select id="getRoleBasicInfo" resultMap="toplistResult"
+		parameterClass="java.util.Map" cacheModel="topGameRoleCache">
+		SELECT ID,ROLE_NAME,ROLE_LEVEL,ROLE_EXP,FAILURE_NUMBER FROM
+		GAME_ROLE WHERE FLAG = 1 AND ID=#roleId#
+	</select>
+
+	<update id="updateRoleStatusBySys">
+		UPDATE GAME_ROLE SET ROLE_STATUS = 0
+	</update>
+
+	<update id="updateBonusStateAll">
+		UPDATE GAME_ROLE SET ROLE_BATTLE_BONUS = 0,ROLE_FATIGUE_FUNTIME
+		= 0
+	</update>
+
+
+	<!-- 根据玩家序号获得玩家所在服务器 -->
+	<select id="getServerIdByRoleId" resultClass="int"
+		parameterClass="java.util.Map">
+		SELECT SERVER_ID FROM GAME_ROLE WHERE ID = #roleId#
+	</select>
+	
+	<select id="getSum" resultClass="long">
+		SELECT sum(role_gold) FROM game_role;
+	</select>
+
+	<!-- 增加玩家金币 -->
+	<update id="updateDoneTyroLead" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_TYRO = #roleTyro# WHERE ID = #roleId#
+	</update>
+
+	<!-- 更改大厅信息 -->
+	<update id="updateSalleInfo" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET ROLE_SALLE = #roleSalle# WHERE ID = #id#
+	</update>
+
+
+	<update id="updateBattleNum" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend=" " property="id">
+			ID=#id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="troopVictoryNumber">
+			TROOP_VICTORY_NUMBER=#troopVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaVictoryNumber">
+			CONSORTIA_VICTORY_NUMBER=#consortiaVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			VICTORY_NUMBER=#victoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			FAILURE_NUMBER=#failureNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="battleVictoryNumber">
+			BATTLE_VICTORY_NUMBER=#battleVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dailyNumber">
+			DAILY_NUMBER=#dailyNumber#
+		</isNotEmpty>
+		WHERE FLAG=1
+		<isNotEmpty prepend="AND" property="id">
+			ID=#id#
+		</isNotEmpty>
+	</update>
+
+	<update id="updateBattleAllNum" parameterClass="java.util.Map">
+		UPDATE GAME_ROLE SET
+		<isNotEmpty prepend=" " property="troopVictoryNumber">
+			TROOP_VICTORY_NUMBER=#troopVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaVictoryNumber">
+			CONSORTIA_VICTORY_NUMBER=#consortiaVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="victoryNumber">
+			VICTORY_NUMBER=#victoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="failureNumber">
+			FAILURE_NUMBER=#failureNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="battleVictoryNumber">
+			BATTLE_VICTORY_NUMBER=#battleVictoryNumber#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dailyNumber">
+			DAILY_NUMBER=#dailyNumber#
+		</isNotEmpty>
+		WHERE FLAG=1
+		<isNotNull prepend="AND">
+			ID IN
+			<iterate property="ids" open="(" close=")"
+				conjunction=",">
+				#ids[]#
+			</iterate>
+		</isNotNull>
+	</update>
+
+	<select id="getGameRoleBattleNum" resultMap="battleResult"
+		parameterClass="java.lang.Integer">
+		SELECT
+		ID,VICTORY_NUMBER,FAILURE_NUMBER,TROOP_VICTORY_NUMBER,CONSORTIA_VICTORY_NUMBER,DAILY_NUMBER,BATTLE_VICTORY_NUMBER
+		FROM GAME_ROLE WHERE FLAG = 1 AND ID = #roleId#
+	</select>
+
+	<select id="getRoleNameByIllegibleName" resultClass="String" parameterClass="String">
+		SELECT ROLE_NAME FROM GAME_ROLE WHERE ROLE_NAME LIKE '%$roleName$%' LIMIT 0,20
+	</select>
+	<select id="getRoleIdByRoeName" parameterClass="String" resultClass="int">
+		SELECT ID FROM GAME_ROLE WHERE ROLE_NAME =#roleName#
+	</select>
+	<select id="getRoleNameByRoleId" parameterClass="int" resultClass="String">
+		SELECT ROLE_NAME FROM GAME_ROLE WHERE ID =#id#
+	</select>
+	
+	<select id="selectIdAndCreateTime" parameterClass="java.util.Map" resultClass="int" >
+	SELECT ID FROM GAME_ROLE WHERE 	<![CDATA[ create_time < #create_time#]]> 
+	</select>
+	
+	<select id="getRoleNameByPpsNum" parameterClass="java.util.Map" resultClass="String">
+	select a.role_Name from game_role as a inner join member as b on a.id = b.id and member_username like '%$ppsName$%'
+	<!-- SELECT ROLE_NAME FROM GAME_ROLE WHERE MEMBER_ID=#member_id#; -->
+	</select>
+	
+	<select id="getRoleIdByPpsNum" parameterClass="java.util.Map" resultClass="String">
+	select a.id from game_role as a inner join member as b on a.id = b.id and member_username like '%$ppsName$%'
+	<!--  SELECT ID FROM GAME_ROLE WHERE MEMBER_ID=#member_id#;  -->
+	</select>
+	
+	<select id="getRoleIdByLevel" parameterClass="java.util.Map" resultClass="HashMap">
+	select role_level,count(role_level) from game_role group by role_level
+	</select>
+	
+	<select id="getMemberCount" resultClass="int" parameterClass="java.util.Map">
+	select count(*) from game_role where create_time like '%$likeTime$%'
+	</select>
+</sqlMap>

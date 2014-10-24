@@ -1,0 +1,121 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMilitary">
+	<typeAlias alias="GameMilitaryDetail"
+		type="com.stang.game.entity.detail.GameMilitaryDetail" />
+
+	<cacheModel id="GameMilitaryCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameMilitaryDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="desc" column="desc" />
+		<result property="pingzhi" column="pingzhi" />
+		<result property="pztype" column="pztype" />
+		<result property="type" column="type" />
+		<result property="gongji" column="gongji" />
+		<result property="gjiacheng" column="gjiacheng" />
+		<result property="gongsu" column="gongsu" />
+		<result property="fanwei" column="fanwei" />
+		<result property="xueliang" column="xueliang" />
+		<result property="xljiacheng" column="xljiacheng" />
+		<result property="flag" column="flag" />
+		<result property="level" column="level" />
+		<result property="art" column="art" />
+		<result property="arts" column="arts" />
+		
+		<result property="isshow" column="isshow" />
+		<result property="iscompose" column="iscompose" />
+		<result property="isaddcompose" column="isaddcompose" />
+		<result property="needcompose" column="needcompose" />
+		<result property="composeid" column="composeid" />
+	</resultMap>
+
+<select id="getGameMilitary" resultMap="listResult"  >
+		SELECT * FROM game_military
+	</select>
+	
+		<select id="findAllMilitary"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_military  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameMilitaryByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_military WHERE id=#id#
+	</select>
+
+<insert id="insertGameMilitary" parameterClass="GameMilitaryDetail">
+		INSERT INTO game_military(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="pingzhi">pingzhi</isNotEmpty>
+		<isNotEmpty prepend="," property="pztype">pztype</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">gongji</isNotEmpty>
+		<isNotEmpty prepend="," property="gongsu">gongsu</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">fanwei</isNotEmpty>
+		<isNotEmpty prepend="," property="gjiacheng">gjiacheng</isNotEmpty>
+		<isNotEmpty prepend="," property="xljiacheng">xljiacheng</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">xueliang</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="art">art</isNotEmpty>
+	<isNotEmpty prepend="," property="arts">arts</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+			<isNotEmpty prepend="," property="isshow">isshow</isNotEmpty>
+		<isNotEmpty prepend="," property="iscompose">iscompose</isNotEmpty>
+		<isNotEmpty prepend="," property="isaddcompose">isaddcompose</isNotEmpty>
+	<isNotEmpty prepend="," property="needcompose">needcompose</isNotEmpty>
+		<isNotEmpty prepend="," property="composeid">composeid</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="pingzhi">#pingzhi#</isNotEmpty>
+		<isNotEmpty prepend="," property="pztype">#pztype#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">#gongji#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongsu">#gongsu#</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">#fanwei#</isNotEmpty>
+			<isNotEmpty prepend="," property="gjiacheng">#gjiacheng#</isNotEmpty>
+			<isNotEmpty prepend="," property="xljiacheng">#xljiacheng#</isNotEmpty>
+			<isNotEmpty prepend="," property="xueliang">#xueliang#</isNotEmpty>
+			<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+			<isNotEmpty prepend="," property="art">#art#</isNotEmpty>
+			<isNotEmpty prepend="," property="arts">#arts#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+			<isNotEmpty prepend="," property="isshow">#isshow#</isNotEmpty>
+			<isNotEmpty prepend="," property="iscompose">#iscompose#</isNotEmpty>
+			<isNotEmpty prepend="," property="isaddcompose">#isaddcompose#</isNotEmpty>
+			<isNotEmpty prepend="," property="needcompose">#needcompose#</isNotEmpty>
+			<isNotEmpty prepend="," property="composeid">#composeid#</isNotEmpty>
+		
+		)
+	</insert>
+	<update id="updateGameMilitary" parameterClass="java.util.HashMap">
+		UPDATE game_military SET 
+			name = #name#,
+			pingzhi = #pingzhi#,
+			pztype = #pztype#,
+			type = #type#,
+			gongji = #gongji#,
+			gongsu = #gongsu#,
+			fanwei = #fanwei#,
+			gjiacheng = #gjiacheng#,
+			xljiacheng = #xljiacheng#,
+			xueliang = #xueliang#,
+			level = #level#,
+			art = #art#,
+			arts = #arts#,
+			flag = #flag#,
+			isshow = #isshow#,
+			iscompose = #iscompose#,
+			isaddcompose = #isaddcompose#,
+			needcompose = #needcompose#,
+			composeid = #composeid#
+		WHERE id =#id#
+	</update>
+
+</sqlMap>

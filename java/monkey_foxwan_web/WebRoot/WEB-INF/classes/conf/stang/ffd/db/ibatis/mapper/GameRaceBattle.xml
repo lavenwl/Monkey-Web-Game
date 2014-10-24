@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceBattle">
+	<typeAlias alias="GameRaceBattleDetail" type="com.stang.game.ffd.entity.detail.GameRaceBattleDetail" />
+	
+	<cacheModel id="GameRaceBattleCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameRaceBattleDetail"/>
+		<flushOnExecute statement="updateGameRaceBattleDetail"/>
+	</cacheModel>
+	
+	<resultMap class="GameRaceBattleDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="raceId" column="RACE_ID"/>
+		<result property="teams1" column="TEAMS1"/>
+		<result property="teams2" column="TEAMS2"/>
+		<result property="win" column="WIN"/>
+		<result property="num" column="NUM"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceBattleDetail" parameterClass="GameRaceBattleDetail">
+		INSERT INTO GAME_RACE_BATTLE (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="raceId">RACE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="teams1">TEAMS1</isNotEmpty>
+			<isNotEmpty prepend="," property="teams2">TEAMS2</isNotEmpty>
+			<isNotEmpty prepend="," property="win">WIN</isNotEmpty>
+			<isNotEmpty prepend="," property="num">NUM</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="raceId">#raceId#</isNotEmpty>
+			<isNotEmpty prepend="," property="teams1">#teams1#</isNotEmpty>
+			<isNotEmpty prepend="," property="teams2">#teams2#</isNotEmpty>
+			<isNotEmpty prepend="," property="win">#win#</isNotEmpty>
+			<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceBattleDetail" parameterClass="GameRaceBattleDetail">
+		UPDATE GAME_RACE_BATTLE SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="raceId">
+			RACE_ID = #raceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="teams1">
+			TEAMS1 = #teams1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="teams2">
+			TEAMS2 = #teams2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="win">
+			WIN = #win#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="num">
+			NUM = #num#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	
+	<select id="getGameRaceBattleDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="GameRaceBattleCache">
+		SELECT 
+			ID,
+			RACE_ID,
+			TEAMS1,
+			TEAMS2,
+			WIN,
+			NUM
+		FROM 
+			GAME_RACE_BATTLE   
+		WHERE 
+			<isNotEmpty property="id" prepend="">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="raceId" prepend="AND">
+    	   		RACE_ID = #raceId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="teams1" prepend="AND">
+    	   		TEAMS1 = #teams1# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="teams2" prepend="AND">
+    	   		TEAMS2 = #teams2# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="win" prepend="AND">
+    	   		WIN = #win# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="num" prepend="AND">
+    	   		NUM = #num# 
+    	   	</isNotEmpty>
+	</select>
+	
+</sqlMap>

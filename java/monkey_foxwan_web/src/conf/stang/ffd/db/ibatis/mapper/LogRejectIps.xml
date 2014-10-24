@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="LogRejectIps">
+	<typeAlias alias="LogRejectIpsDetail"
+		type="com.stang.game.ffd.entity.detail.LogRejectIpsDetail" />
+	<cacheModel id="LogRejectIpsDetailCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="updateLogRejectIpsByParam" />
+		<flushOnExecute statement="insertLogRejectIpsDetail" />
+	</cacheModel>
+	<resultMap class="LogRejectIpsDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="startIp" column="START_IP" />
+		<result property="endIp" column="END_IP" />
+		<result property="uid" column="UID" />
+		<result property="uname" column="UNAME" />
+		<result property="overTime" column="OVER_TIME" />
+		<result property="isSuccess" column="IS_SUCCESS" />
+		<result property="flag" column="FLAG" />
+		<result property="opTime" column="OP_TIME" />
+		<result property="type" column="TYPE" />
+	</resultMap>
+	
+	<select id="getLogRejectIpsDetailCount" resultClass="int">
+		SELECT COUNT(ID) FROM LOG_REJECT_IPS WHERE FLAG = 1 
+	</select>
+	<select id="getLogRejectIpsDetailByParam" parameterClass="java.util.Map" resultMap="listResult" cacheModel="LogRejectIpsDetailCache">
+		SELECT 
+			ID,
+			START_IP,
+			END_IP,
+			UID,
+			UNAME,
+			OVER_TIME,
+			IS_SUCCESS,
+			FLAG,
+			OP_TIME,
+			TYPE
+			FROM LOG_REJECT_IPS WHERE
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+				ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startIp">
+				START_IP = #startIp#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endIp">
+				END_IP = #endIp#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uid">
+				UID = #uid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="uname">
+				UNAME = #uname#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="overTime">
+				OVER_TIME = #overTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isSuccess">
+				IS_SUCCESS = #isSuccess#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="flag">
+				FLAG = #flag#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				TYPE = #type#
+			</isNotEmpty>
+			ORDER BY OP_TIME DESC
+			<isNotEmpty prepend="" property="count">
+			limit #startR#,#count#
+			</isNotEmpty>
+	</select>
+
+	<update id="updateLogRejectIpsByParam" parameterClass="java.util.Map">
+		UPDATE LOG_REJECT_IPS SET
+		<isNotEmpty prepend="" property="isSuccess">
+			IS_SUCCESS = #isSuccess#
+		</isNotEmpty>
+			WHERE 
+		<isNotEmpty prepend="" property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="startIp">
+			START_IP = #startIp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="endIp">
+			END_IP = #endIp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="uid">
+			UID=#uid# 
+		</isNotEmpty>
+
+		<isNotEmpty prepend="AND" property="uname">
+			UNAME = #uname#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="opTime">
+			OP_TIME = #opTime#
+		</isNotEmpty>
+	</update>
+	<insert id="insertLogRejectIpsDetail"
+		parameterClass="LogRejectIpsDetail">
+		INSERT INTO LOG_REJECT_IPS (
+		<isNotEmpty prepend="" property="type">TYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="startIp">START_IP</isNotEmpty>
+		<isNotEmpty prepend="," property="endIp">END_IP</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">UID</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">UNAME</isNotEmpty>
+		<isNotEmpty prepend="," property="overTime">OVER_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">IS_SUCCESS</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">OP_TIME</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="startIp">#startIp#</isNotEmpty>
+		<isNotEmpty prepend="," property="endIp">#endIp#</isNotEmpty>
+		<isNotEmpty prepend="," property="uid">#uid#</isNotEmpty>
+		<isNotEmpty prepend="," property="uname">#uname#</isNotEmpty>
+		<isNotEmpty prepend="," property="overTime">#overTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="isSuccess">#isSuccess#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="opTime">#opTime#</isNotEmpty>
+		)
+	</insert>
+</sqlMap>

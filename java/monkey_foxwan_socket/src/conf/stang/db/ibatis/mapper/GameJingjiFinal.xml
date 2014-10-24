@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameJingjiFinal">
+	<typeAlias alias="GameJingjiFinalDetail"
+		type="com.stang.game.entity.detail.GameJingjiFinalDetail" />
+
+	<cacheModel id="gameJingjiFinalCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRole" />
+		
+	</cacheModel>
+
+	<resultMap class="GameJingjiFinalDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="indexes" column="indexes" />
+		<result property="roleid" column="roleid" />
+		<result property="name" column="name" />
+		<result property="mapid" column="mapid" />
+		<result property="vip" column="vip" />
+		<result property="serverid" column="serverid"/>
+		<result property="sum" column="sum" />
+		<result property="mapreg" column="mapreg" />
+		<result property="num" column="num" />
+		<result property="level" column="level" />
+		<result property="zxueliang" column="zxueliang"/>
+	</resultMap>
+	
+	
+	<select id="findAllGameJingji" resultMap="listResult">
+		SELECT * FROM game_jingji_final
+	</select>
+	
+	 <procedure id="createGameJingjiFinalb" parameterClass="java.util.HashMap">    
+      <![CDATA[  
+      { call proc_createGameJingjiFinalb()}  
+   	  ]]> 
+    </procedure> 
+	
+	
+	
+	
+	
+	
+	<delete id="dropGameJingjiFinal" >
+		drop table if exists game_jingji_final;	
+	</delete>
+	<delete id="dropzhugong1" >
+		drop table if exists zhugong;	
+	</delete>
+	<update id="alterzhugong" >
+alter table zhugong add index roleId_index(roleId);
+	</update>
+	<select id="createzhugong">
+	create table zhugong(
+select roleId, case when godnum is null then '0' else godnum end jjs, case when hongnum is null then '0' else hongnum end hjs, case when total is null then '0' else total end zjs from (
+select rm.roleId, gr.name, gr.mapid, gr.vip, gr.serverid, count(militaryid) total from role_military rm left join game_role gr on rm.roleId = gr.id group by roleId
+)as a left join b on a.roleId = b.god_roleId left join c on a.roleId = c.hong_roleId);
+	</select>
+	<select id="createGameJingjiFinal"  >
+	create table game_jingji_final as (
+select gjs.id, gjs.indexes, gjs.roleId, gjs.name, gjs.mapid, gjs.vip, gjs.serverid, gjs.num, ns.level, ns.sum, gjs.mapreg, ns.zxueliang from game_jingji_static gjs LEFT JOIN(
+select (@mycnt := @mycnt + 1) as indexes, roleId, name, level, mapid, vip, serverid, CAST(sum AS signed) sum, 3 as mapreg, zxueliang from (select *, sum(zgongji) sum from (
+select jjs, hjs, zgongji, jsb.name, level1 level, mapid, vip, serverid, id, gjb.roleId, zxueliang from(
+select id, roleId, 
+			 gongji + gjiacheng*(level-1) 
+							+ case when attack is null then '0' else attack end 
+							+ case when attack1 is null then '0' else attack1 end 
+							+ case when attack2 is null then '0' else attack2 end 
+							+ case when attack3 is null then '0' else attack3 end 
+							+ case when attack4 is null then '0' else attack4 end 
+							+ case when attack5 is null then '0' else attack5 end as zgongji, 
+	xueliang + xljiacheng*(level-1) 
+							+ case when hpMax is null then '0' else hpMax end 
+							+ case when hpMax1 is null then '0' else hpMax1 end 
+							+ case when hpMax2 is null then '0' else hpMax2 end 
+							+ case when hpMax3 is null then '0' else hpMax3 end 
+							+ case when hpMax4 is null then '0' else hpMax4 end 
+							+ case when hpMax5 is null then '0' else hpMax5 end as zxueliang, name, level1, mapid, vip, serverid from (
+select rm.id, rm.roleId, gongji, gjiacheng, xueliang, xljiacheng, rm.level, 
+			 re.attackz attack, re1.attackz attack1, re2.attackz attack2, re3.attackz attack3, re4.attackz attack4, re5.attackz attack5,
+			 re.hpMax, re1.hpMax hpMax1, re2.hpMax hpMax2, re3.hpMax hpMax3, re4.hpMax hpMax4, re5.hpMax hpMax5, gr.level level1, gr.name, gr.mapid, gr.vip, gr.serverid from (
+			 select * from role_military 
+														where roleId in(select id from game_role where level > 8 and isoffical = 0)
+																	) as rm
+left join game_role gr on rm.roleId = gr.id 
+left join game_military gm on rm.militaryid = gm.id
+left join role_equipsz re on rm.wuqi = re.id
+left join role_equipsz re1 on rm.huwan = re1.id
+left join role_equipsz re2 on rm.yifu = re2.id
+left join role_equipsz re3 on rm.touguan = re3.id
+left join role_equipsz re4 on rm.xiezi = re4.id
+left join role_equipsz re5 on rm.shipin = re5.id
+)as a ) as gjb left join zhugong as jsb on gjb.roleId = jsb.roleId 
+)as b group by roleId)as a order by sum desc) as ns on gjs.roleId = ns.roleId)
+	</select>
+	<select id="getGameJingjiByLimit1" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_final WHERE serverid = #serverid#
+		<isNotEmpty prepend="AND" property="mapreg">
+			mapreg = #mapreg#
+		</isNotEmpty>
+		ORDER BY indexes,level desc
+		LIMIT #page#,#size#
+	</select>
+	<select id="getGameJingjiByServerid1" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_final WHERE serverid = #serverid# 
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="indexes">
+			indexes in(#nums#)
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mapreg">
+			mapreg = #mapreg#
+		</isNotEmpty>
+	</select>
+</sqlMap>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="roleBing">
+	<typeAlias alias="RoleBingDetail"
+		type="com.stang.game.entity.detail.RoleBingDetail" />
+
+	<cacheModel id="roleBingCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="RoleBingDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="roleid" column="roleid" />
+		<result property="nandu" column="nandu" />
+		<result property="stars" column="stars" />
+		<result property="flag" column="flag" />
+		<result property="mapid" column="mapid" />
+		<result property="nandu2" column="nandu2" />
+		<result property="status" column="status" />
+		
+	</resultMap>
+	<insert id="insertRoleBingtwo" parameterClass="RoleBingDetail">
+		INSERT INTO role_bing(
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">nandu</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">stars</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu2">nandu2</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status</isNotEmpty>
+		
+		)VALUES(
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">#nandu#</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">#stars#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu2">#nandu2#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">#status#</isNotEmpty>
+		)
+	</insert>
+	<insert id="insertRoleBing" parameterClass="java.util.Map">
+		INSERT INTO role_bing(
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">nandu</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">stars</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		
+		)VALUES(
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">#nandu#</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">#stars#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		
+		)
+	</insert>
+	<update id="updateRoleBingtwo" parameterClass="RoleBingDetail">
+		UPDATE role_bing SET  flag = 1 
+		<isNotEmpty prepend="," property="nandu2">nandu2 = #nandu2#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">nandu = #nandu#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status = #status#</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">stars = #stars#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu2">#nandu2#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">#status#</isNotEmpty>
+		WHERE roleid =#roleid#
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid = #mapid#
+		</isNotEmpty>
+	</update>
+	<update id="updateRoleBing" parameterClass="java.util.Map">
+		UPDATE role_bing SET  flag = 1 
+		<isNotEmpty prepend="," property="nandu2">nandu2 = #nandu2#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">nandu = #nandu#</isNotEmpty>
+		<isNotEmpty prepend="," property="status">status = #status#</isNotEmpty>
+		<isNotEmpty prepend="," property="stars">stars = #stars#</isNotEmpty>
+		WHERE roleid =#roleid#
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid = #mapid#
+		</isNotEmpty>
+	</update>	
+	<select id="findRoleBingByParams" parameterClass="java.util.HashMap" resultMap="listResult" >
+		SELECT * FROM role_bing where flag=1
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mapid">
+			mapid = #mapid#
+		</isNotEmpty>
+	</select>
+	<select id="findAllRoleBing" resultMap="listResult">
+		SELECT * FROM role_bing
+	</select> 
+</sqlMap>

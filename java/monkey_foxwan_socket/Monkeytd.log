@@ -1,0 +1,110 @@
+[INFO ]_2014-10-24 16:33:54 :OSCache: Getting properties from URL file:/F:/%e8%bd%af%e4%bb%b6%e6%96%87%e4%bb%b6/%e9%a2%a0%e5%80%92%e8%a5%bf%e6%b8%b81/%e9%a2%a0%e5%80%92%e8%a5%bf%e6%b8%b8/java/monkey_foxwan_socket/bin/oscache.properties for the default configuration
+ [INFO ]_2014-10-24 16:33:54 :OSCache: Properties read {cache.blocking=true, cache.algorithm=com.opensymphony.oscache.base.algorithm.LRUCache, cache.capacity=2000, cache.memory=true}
+ [INFO ]_2014-10-24 16:33:54 :Constructed GeneralCacheAdministrator()
+ [INFO ]_2014-10-24 16:33:54 :Creating new cache
+ [WARN ]_2014-10-24 16:33:56 :roleChallengeList:	2436
+ [WARN ]_2014-10-24 16:33:56 :activityList:		26
+ [WARN ]_2014-10-24 16:33:57 :gameRoleList:		2457
+ [WARN ]_2014-10-24 16:33:57 :autoIdList:		10
+ [WARN ]_2014-10-24 16:33:57 :callGiftList:		9
+ [WARN ]_2014-10-24 16:34:01 :challengeRecordList:	9790
+ [WARN ]_2014-10-24 16:34:06 :coinList:		30000
+ [WARN ]_2014-10-24 16:34:06 :deliveryList:		18
+ [WARN ]_2014-10-24 16:34:09 :gamblingItemList:	122
+ [WARN ]_2014-10-24 16:34:11 :gameAvatarList:	0
+ [WARN ]_2014-10-24 16:34:13 :gameBbuffList:		15
+ [WARN ]_2014-10-24 16:34:13 :gameBingList:		47
+ [WARN ]_2014-10-24 16:34:13 :gameBmapList:		196
+ [WARN ]_2014-10-24 16:34:13 :gameBskillList:	82
+ [WARN ]_2014-10-24 16:34:13 :gameBuffList:		85
+ [WARN ]_2014-10-24 16:34:13 :gameCharsList:		2839
+ [WARN ]_2014-10-24 16:34:13 :gameChLevelList:	21
+ [WARN ]_2014-10-24 16:34:13 :gameEInsList:		100
+ [WARN ]_2014-10-24 16:34:13 :gameEPropertyList:	30
+ [WARN ]_2014-10-24 16:34:13 :gameEquipList:		90
+ [WARN ]_2014-10-24 16:34:14 :gameFoeList:		780
+ [WARN ]_2014-10-24 16:34:14 :gameItemList:		462
+ [WARN ]_2014-10-24 16:34:14 :gamJingjiFinalList:	49
+ [WARN ]_2014-10-24 16:34:14 :gameJingjiStaticList:	49
+ [WARN ]_2014-10-24 16:34:14 :gameLevelList:		165
+ [WARN ]_2014-10-24 16:34:14 :gameMapList:		60
+ [WARN ]_2014-10-24 16:34:14 :gameMilitaryList:	257
+ [WARN ]_2014-10-24 16:34:14 :gameMissionList:	49
+ [WARN ]_2014-10-24 16:34:14 :gameMLevelList:	100
+ [WARN ]_2014-10-24 16:34:14 :gamePlatsList:		1200
+ [WARN ]_2014-10-24 16:34:14 :gamePriceList:		485
+ [WARN ]_2014-10-24 16:34:14 :gameRobotList:		420
+ [WARN ]_2014-10-24 16:34:14 :gameSkillList:		77
+ [WARN ]_2014-10-24 16:34:14 :gameStarList:		11
+ [WARN ]_2014-10-24 16:34:14 :gameTaskList:		767
+ [WARN ]_2014-10-24 16:34:14 :gametotemList:		96
+ [WARN ]_2014-10-24 16:34:14 :gameTowerList:		21
+ [WARN ]_2014-10-24 16:34:14 :gameVipList:		11
+ [WARN ]_2014-10-24 16:34:14 :hostList:		2
+ [WARN ]_2014-10-24 16:34:15 :memberList:		2560
+ [WARN ]_2014-10-24 16:34:15 :roleAvatarList:		0
+ [WARN ]_2014-10-24 16:34:15 :roleBingList:		1044
+ [WARN ]_2014-10-24 16:34:15 :roleDaytaskList:	2436
+ [WARN ]_2014-10-24 16:34:15 :roleEquipList:		18453
+ [WARN ]_2014-10-24 16:34:15 :cacheForRoleEquip:	1668
+ [WARN ]_2014-10-24 16:34:15 :roleImposeList:		50
+ [WARN ]_2014-10-24 16:34:15 :roleInsList:		889
+ [WARN ]_2014-10-24 16:34:16 :roleItemList:		28938
+ [WARN ]_2014-10-24 16:34:16 :cacheForRoleItem:	2436
+ [WARN ]_2014-10-24 16:34:16 :roleMapList:		17364
+ [WARN ]_2014-10-24 16:34:16 :cacheForRoleMap:	2207
+ [WARN ]_2014-10-24 16:34:16 :roleMilitaryList:	10737
+ [WARN ]_2014-10-24 16:34:16 :cacheForRoleMilitary:	2436
+ [WARN ]_2014-10-24 16:34:16 :statetostateList1:	1
+ [WARN ]_2014-10-24 16:34:16 :cacheForStatetostate1:	1
+ [WARN ]_2014-10-24 16:34:16 :statetostateList2:	0
+ [WARN ]_2014-10-24 16:34:16 :cacheForStatetostate2:	0
+ [WARN ]_2014-10-24 16:34:17 :roleQuicktimeList:	180
+ [WARN ]_2014-10-24 16:34:17 :roleTaskList:		2436
+ [WARN ]_2014-10-24 16:34:17 :roleTaskTaskList:	8066
+ [WARN ]_2014-10-24 16:34:17 :cacheForRoleTaskTask:2436
+ [WARN ]_2014-10-24 16:34:17 :roleTavernList:		1824
+ [WARN ]_2014-10-24 16:34:17 :roletotemList:		865
+ [WARN ]_2014-10-24 16:34:17 :serverList:		3
+ [WARN ]_2014-10-24 16:34:18 :The system is self-test------
+ [WARN ]_2014-10-24 16:34:18 :The system's self-test is complete!
+ [WARN ]_2014-10-24 16:34:18 :CacheGameRole:last jingji update or share update flag(1:jingji; 2:share):3 list:12409068
+ [WARN ]_2014-10-24 16:34:18 :CacheGameRole:last jingji update or share update flag(1:jingji; 2:share):3 list:12408962
+ [WARN ]_2014-10-24 16:34:18 :BEFOR updatedeskcheck:2
+ [WARN ]_2014-10-24 16:34:18 :AFTER updatedeskcheck:0
+ [WARN ]_2014-10-24 16:34:18 :得到的server数量：3
+ [WARN ]_2014-10-24 16:34:29 :服务器1:狐玩一区排行榜信息更新：true
+ [WARN ]_2014-10-24 16:34:38 :服务器2:狐玩二区排行榜信息更新：true
+ [WARN ]_2014-10-24 16:34:45 :服务器3:狐玩三区排行榜信息更新：true
+ [INFO ]_2014-10-24 16:34:45 :------------------------------------------
+ [WARN ]_2014-10-24 16:34:45 :GlobalDatat.newServerActivityDataMap don't has data
+ [WARN ]_2014-10-24 16:34:45 :TimerTask(600000ms)
+ [INFO ]_2014-10-24 16:34:45 :Server is startting...
+ [WARN ]_2014-10-24 16:34:45 :-------------------------------------------------------------------------
+ [WARN ]_2014-10-24 16:34:45 :online user number:0
+ [WARN ]_2014-10-24 16:34:45 :CacheActivity.Queue:0
+ [WARN ]_2014-10-24 16:34:45 :CacheCoin.Queue:0
+ [WARN ]_2014-10-24 16:34:45 :CacheGameRole.Queue:0 indexMap:0
+ [WARN ]_2014-10-24 16:34:45 :CacheGameRole.Queue:0
+ [WARN ]_2014-10-24 16:34:45 :CacheRoleChallenge.Queue:0
+ [WARN ]_2014-10-24 16:34:45 :-------------------------------------------------------------------------queueMax:0
+ [INFO ]_2014-10-24 16:34:45 :Server is listing on = 8008
+ [WARN ]_2014-10-24 16:44:45 :TimerTask(600000ms)
+ [WARN ]_2014-10-24 16:44:45 :-------------------------------------------------------------------------
+ [WARN ]_2014-10-24 16:44:45 :online user number:0
+ [WARN ]_2014-10-24 16:44:45 :CacheActivity.Queue:0
+ [WARN ]_2014-10-24 16:44:45 :CacheCoin.Queue:0
+ [WARN ]_2014-10-24 16:44:45 :CacheGameRole.Queue:0 indexMap:0
+ [WARN ]_2014-10-24 16:44:45 :CacheGameRole.Queue:0
+ [WARN ]_2014-10-24 16:44:45 :CacheRoleChallenge.Queue:0
+ [WARN ]_2014-10-24 16:44:45 :-------------------------------------------------------------------------queueMax:0
+ [WARN ]_2014-10-24 16:54:45 :TimerTask(600000ms)
+ [WARN ]_2014-10-24 16:54:45 :-------------------------------------------------------------------------
+ [WARN ]_2014-10-24 16:54:45 :online user number:0
+ [WARN ]_2014-10-24 16:54:45 :CacheActivity.Queue:0
+ [WARN ]_2014-10-24 16:54:45 :CacheCoin.Queue:0
+ [WARN ]_2014-10-24 16:54:45 :CacheGameRole.Queue:0 indexMap:0
+ [WARN ]_2014-10-24 16:54:45 :CacheGameRole.Queue:0
+ [WARN ]_2014-10-24 16:54:45 :CacheRoleChallenge.Queue:0
+ [WARN ]_2014-10-24 16:54:45 :-------------------------------------------------------------------------queueMax:0
+ 

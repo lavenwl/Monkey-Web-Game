@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameLevel">
+	<typeAlias alias="GameLevelDetail"
+		type="com.stang.game.entity.detail.GameLevelDetail" />
+
+	<cacheModel id="gameLevelCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameLevelDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="level" column="level" />
+		<result property="needexp" column="needexp" />
+		<result property="getcoin" column="getcoin" />
+		<result property="getexp" column="getexp" />
+		<result property="getgongxun" column="getgongxun" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	<!-- 得到所有等级信息  -->
+	<select id="allGameLevelDetail" resultMap="listResult">
+		SELECT * FROM game_level WHERE FLAG = 1
+	</select>
+
+	<!-- 根据序列号得到等级信息  -->
+	<select id="getGameLevelByRoleLevel" resultMap="listResult"
+		parameterClass="int" cacheModel="gameLevelCache">
+		SELECT * FROM game_level WHERE FLAG = 1 and level = #level#
+	</select>
+	
+	<select id="getGaemLevelByParams" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_level WHERE FLAG = 1 and level = #level# and needexp = #needexp#
+	</select>
+</sqlMap>

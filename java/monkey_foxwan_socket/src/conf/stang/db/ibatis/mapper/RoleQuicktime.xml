@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleQuicktime">
+	<typeAlias alias="RoleQuicktimeDetail"
+		type="com.stang.game.entity.detail.RoleQuicktimeDetail" />
+
+	<cacheModel id="roleRoleQuicktimeCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="updateQuicktime" />
+		<flushOnExecute statement="insertRolequicktime" />
+	</cacheModel>
+
+	<resultMap class="RoleQuicktimeDetail" id="listResult">
+		<result property="roleid" column="roleid" />
+		<result property="quicktime" column="quicktime" />
+	</resultMap>
+	
+	<select id="findAllRolequicktime" resultMap="listResult">
+		SELECT * FROM role_quicktime
+	</select>  
+
+	<!-- 录入信息 -->
+	<insert id="insertRolequicktime"
+		parameterClass="RoleQuicktimeDetail">
+		INSERT INTO role_quicktime (
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="quicktime">quicktime</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="quicktime">#quicktime#</isNotEmpty>
+		
+		)
+	</insert>
+
+	<!-- 更新信息 -->
+	
+	<update id="updateQuicktime" parameterClass="java.util.HashMap">
+		UPDATE role_quicktime SET quicktime = #quicktime#  WHERE 
+	<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+	</isNotEmpty>
+	</update>
+
+	
+	<select id="getQuicktime" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM role_quicktime WHERE  ROLEID = #roleid#
+	</select>
+	
+	
+	
+	
+	<insert id="insertRoleQuicktime"
+		parameterClass="RoleQuicktimeDetail">
+		INSERT INTO role_quicktime (
+		<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+		<isNotEmpty prepend="," property="quicktime">quicktime</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+		<isNotEmpty prepend="," property="quicktime">#quicktime#</isNotEmpty>
+		
+		)
+	</insert>
+	<update id="updateRoleQuicktime" parameterClass="RoleQuicktimeDetail">
+		UPDATE role_quicktime SET quicktime = #quicktime#  WHERE 
+	<isNotEmpty prepend="" property="roleid">
+			ROLEID = #roleid#
+	</isNotEmpty>
+	</update>
+	
+	
+	
+</sqlMap>

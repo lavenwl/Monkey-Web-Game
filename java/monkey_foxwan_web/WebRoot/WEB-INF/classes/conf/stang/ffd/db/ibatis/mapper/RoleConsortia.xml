@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleConsortia">
+	<typeAlias alias="EntityRoleConsortiaDetail" type="com.stang.game.ffd.entity.detail.EntityRoleConsortiaDetail" />
+	
+	<cacheModel id="roleConsortiaCache" type="OSCACHE">
+		<!-- <flushInterval hours="24" /> -->
+		<flushOnExecute statement="insertRoleConsortiaDetail"/>
+		<flushOnExecute statement="updateRoleConsortiaDetail"/>
+		<flushOnExecute statement="acceptRoleToConsortia"/>
+		<flushOnExecute statement="addCoinToConsortiaOfRoleConsortia"/>
+		<flushOnExecute statement="addPointToConsortiaOfRoleConsortia"/>
+		<flushOnExecute statement="deleteRoleConsortiaDetailByConsortiaId"/>
+		<flushOnExecute statement="deleteRoleConsortiaDetailByRoleId"/>
+		<flushOnExecute statement="deleteRoleConsortiaDetailById"/>
+		<flushOnExecute statement="batchDeleteRoleConsortiaDetails"/>
+		<flushOnExecute statement="delAtherApplyInfo"/>
+	</cacheModel>
+	
+	<resultMap class="EntityRoleConsortiaDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="roleId" column="ROLE_ID"/>
+		<result property="consortiaId" column="CONSORTIA_ID"/>
+		<result property="donateCoinAll" column="DONATE_COIN_ALL"/>
+		<result property="donateCoinLately" column="DONATE_COIN_LATELY"/>
+		<result property="donateCoinLatelyTime" column="DONATE_COIN_LATELY_TIME"/>
+		<result property="consortiaPoint" column="CONSORTIA_POINT"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertRoleConsortiaDetail" parameterClass="EntityRoleConsortiaDetail">
+		INSERT INTO ROLE_CONSORTIA (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaId">CONSORTIA_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinAll">DONATE_COIN_ALL</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinLately">DONATE_COIN_LATELY</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinLatelyTime">DONATE_COIN_LATELY_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaPoint">CONSORTIA_POINT</isNotEmpty>
+			<isNotEmpty prepend="," property="nickname">NICKNAME</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaId">#consortiaId#</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinAll">#donateCoinAll#</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinLately">#donateCoinLately#</isNotEmpty>
+			<isNotEmpty prepend="," property="donateCoinLatelyTime">#donateCoinLatelyTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="consortiaPoint">#consortiaPoint#</isNotEmpty>
+			<isNotEmpty prepend="," property="nickname">#nickname#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateRoleConsortiaDetail" parameterClass="EntityRoleConsortiaDetail">
+		UPDATE ROLE_CONSORTIA SET 
+		<isNotEmpty prepend="" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaId">
+			CONSORTIA_ID = #consortiaId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="donateCoinAll">
+			DONATE_COIN_ALL = #donateCoinAll#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="donateCoinLately">
+			DONATE_COIN_LATELY = #donateCoinLately#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="donateCoinLatelyTime">
+			DONATE_COIN_LATELY_TIME = #donateCoinLatelyTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="consortiaPoint">
+			CONSORTIA_POINT = #consortiaPoint#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="nickname">
+			NICKNAME = #nickname#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 批准玩家加入公会 -->
+	<update id="acceptRoleToConsortia" parameterClass="java.util.Map">
+		UPDATE ROLE_CONSORTIA SET FLAG = 1 WHERE ROLE_ID = #roleId# AND CONSORTIA_ID = #consortiaId#
+	</update>
+	
+	<!-- 玩家捐赠金币 -->
+	<update id="addCoinToConsortiaOfRoleConsortia" parameterClass="java.util.Map">
+		UPDATE ROLE_CONSORTIA SET DONATE_COIN_LATELY = #donateCoinLately#,DONATE_COIN_LATELY_TIME = #donateCoinLatelyTime#,DONATE_COIN_ALL = DONATE_COIN_ALL + #donateCoinAll# WHERE FLAG = 1 AND CONSORTIA_ID = #consortiaId# AND ROLE_ID = #roleId#
+	</update>
+	
+	<!-- 增加玩家贡献度 -->
+	<update id="addPointToConsortiaOfRoleConsortia" parameterClass="java.util.Map">
+		UPDATE ROLE_CONSORTIA SET CONSORTIA_POINT = CONSORTIA_POINT + #consortiaPoint# WHERE FLAG = 1 AND CONSORTIA_ID = #consortiaId# AND ROLE_ID = #roleId#
+	</update>
+	
+	<!-- 查询玩家是否已加入任一公会 -->
+	<select id="hasRoleToAnyConsortia" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA
+		WHERE 
+			ROLE_ID = #roleId# AND FLAG = 1 
+	</select>
+	
+	<!-- 查询是否有此玩家-公会关系信息 -->
+	<select id="hasRoleConsortiaDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA
+		WHERE 
+			ROLE_ID = #roleId# AND CONSORTIA_ID = #consortiaId# 
+	</select>
+	
+	<!-- 根据角色序列号查询公会所有此玩家-公会关系信息 -->
+	<select id="findConsortiaAllRoleConsortiaByRoleId" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA
+		WHERE FLAG = 1 AND
+			CONSORTIA_ID = (
+			SELECT CONSORTIA_ID FROM ROLE_CONSORTIA WHERE ROLE_ID = #roleId# AND FLAG = 1
+			) 
+	</select>
+	
+	<!-- 根据公会序列号查询公会所有成员序列号 -->
+	<select id="findRoleIdByConsortiaId" parameterClass="java.lang.Integer" resultClass="int" cacheModel="roleConsortiaCache">
+		SELECT ROLE_ID FROM ROLE_CONSORTIA WHERE FLAG = 1 AND CONSORTIA_ID = #consortiaId#
+	</select>
+	
+	<!-- 根据玩家序号查询其所在公会序号 -->
+	<select id="findConsortiaIdByRoleId" parameterClass="java.lang.Integer" resultClass="int" cacheModel="roleConsortiaCache">
+		SELECT CONSORTIA_ID FROM ROLE_CONSORTIA WHERE ROLE_ID = #roleId# AND FLAG = 1
+	</select>
+	
+	<!-- 根据玩家序号查询其所在公会的玩家序号组 -->
+	<select id="findRoleIdOfConsortiaIdByRoleId" parameterClass="java.lang.Integer" resultClass="int" cacheModel="roleConsortiaCache">
+		SELECT ROLE_ID FROM ROLE_CONSORTIA WHERE FLAG = 1 AND CONSORTIA_ID = (SELECT CONSORTIA_ID FROM ROLE_CONSORTIA WHERE ROLE_ID = #roleId# AND FLAG = 1)
+	</select>
+	
+	<!-- 查询公会会员列表信息 -->
+	<select id="listRoleConsortiaDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA
+		
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="roleId" prepend="AND">
+    	   		ROLE_ID = #roleId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaId" prepend="AND">
+    	   		CONSORTIA_ID = #consortiaId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="donateCoinAll" prepend="AND">
+    	   		DONATE_COIN_ALL = #donateCoinAll# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="donateCoinLately" prepend="AND">
+    	   		DONATE_COIN_LATELY = #donateCoinLately# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="donateCoinLatelyTime" prepend="AND">
+    	   		DONATE_COIN_LATELY_TIME = #donateCoinLatelyTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="consortiaPoint" prepend="AND">
+    	   		CONSORTIA_POINT = #consortiaPoint# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="nickname" prepend="AND">
+    	   		NICKNAME = #nickname# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 查询待批准公会会员列表信息 -->
+	<select id="listApprovalRoleConsortiaDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA
+		WHERE 
+			FLAG = 0 AND CONSORTIA_ID = #consortiaId# 
+	</select>
+	
+	<!-- 查询(玩家)被公会招募列表信息 -->
+	<select id="beRecruitListOfConsortia" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleConsortiaCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			CONSORTIA_ID,
+			DONATE_COIN_ALL,
+			DONATE_COIN_LATELY,
+			DONATE_COIN_LATELY_TIME,
+			CONSORTIA_POINT,
+			NICKNAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			ROLE_CONSORTIA 
+		WHERE 
+			FLAG = 2 AND ROLE_ID = #roleId# 
+	</select>
+	
+	<!-- 根据公会序列号删除玩家-公会关系信息 -->
+	<delete id="deleteRoleConsortiaDetailByConsortiaId" parameterClass="java.util.Map">
+		DELETE FROM ROLE_CONSORTIA WHERE CONSORTIA_ID = #consortiaId# 
+	</delete>
+	
+	<!-- 根据玩家序列号、公会序列号删除玩家-公会关系信息 -->
+	<delete id="deleteRoleConsortiaDetailByRoleId" parameterClass="java.util.Map">
+		DELETE FROM ROLE_CONSORTIA WHERE ROLE_ID = #roleId# AND CONSORTIA_ID = #consortiaId# 
+	</delete>
+	
+	<!-- 根据关系序列号删除玩家-公会关系信息 -->
+	<delete id="deleteRoleConsortiaDetailById" parameterClass="java.util.Map">
+		DELETE FROM ROLE_CONSORTIA WHERE ID = #id# 
+	</delete>
+	
+	<!-- 用于同意加入工会后删除别的申请 -->
+	<delete id="delAtherApplyInfo" parameterClass="java.util.Map">
+		DELETE FROM ROLE_CONSORTIA WHERE ROLE_ID = #roleId# AND <![CDATA[ CONSORTIA_ID <>  #consortiaId# ]]>
+	</delete>
+	
+	<!-- 批量删除玩家-公会信息 -->
+	<delete id="batchDeleteRoleConsortiaDetails" parameterClass="java.util.Map">
+		DELETE FROM ROLE_CONSORTIA WHERE CONSORTIA_ID = #consortiaId# 
+        	ROLE_ID IN    
+	        <iterate property="ids" open="(" close=")" conjunction=",">   
+	                   #roleIds[]#   
+	        </iterate>   
+	</delete>
+</sqlMap>

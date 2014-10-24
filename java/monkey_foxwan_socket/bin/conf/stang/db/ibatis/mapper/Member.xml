@@ -1,0 +1,65 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Member">
+	<typeAlias alias="MemberDetail"
+		type="com.stang.game.entity.detail.MemberDetail" />
+
+	<!-- <cacheModel id="MemberCache" type="OSCACHE"> -->
+	<!-- 	<flushInterval hours="24" /> -->
+	<!-- </cacheModel> -->
+
+	<resultMap class="MemberDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="username" column="member_username" />
+		<result property="password" column="member_password" />
+		<result property="flag" column="flag" />
+		<result property="allfriends" column="allfriends" />
+		<result property="allgroupfriends" column="allgroupfriends" />
+		<result property="invite" column="invite" />
+		<result property="serverId" column="serverid" />
+	</resultMap>
+
+	<insert id="insertMember" parameterClass="MemberDetail">
+		INSERT INTO member (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="username">member_username</isNotEmpty>
+		<isNotEmpty prepend="," property="password">member_password</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="allfriends">allfriends</isNotEmpty>
+		<isNotEmpty prepend="," property="allgroupfriends">allgroupfriends</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">invite</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">serverId</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="username">#username#</isNotEmpty>
+		<isNotEmpty prepend="," property="password">#password#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="allfriends">#allfriends#</isNotEmpty>
+		<isNotEmpty prepend="," property="allgroupfriends">#allgroupfriends#</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">#invite#</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+		)
+	</insert>
+	<!-- 缓存使用更新信息 -->
+	<update id="updateMember" parameterClass="MemberDetail">
+		UPDATE member SET
+		<isNotEmpty prepend="" property="id">ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="," property="username">MEMBER_USERNAME = #username#</isNotEmpty>
+		<isNotEmpty prepend="," property="password">MEMBER_PASSWORD = #password#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG = #flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="allfriends">ALLFRIENDS = #allfriends#</isNotEmpty>
+		<isNotEmpty prepend="," property="allgroupfriends">ALLGROUPFRIENDS = #allgroupfriends#</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">INVITE = #invite#</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">SERVERID = #serverId#</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	<select id="findMemberByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM member WHERE FLAG =1 and id=#id#
+	</select>
+	<select id="findAllMember" resultMap="listResult">
+		SELECT * FROM member
+	</select> 
+	<select id="findMemberByOpenid" parameterClass="string"  resultMap="listResult" >
+		SELECT * FROM member WHERE FLAG =1 and member_username=#openid#
+	</select>
+</sqlMap>

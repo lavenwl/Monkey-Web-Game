@@ -1,0 +1,116 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameEquip">
+	<typeAlias alias="GameEquipDetail"
+		type="com.stang.game.entity.detail.GameEquipDetail" />
+
+	<cacheModel id="GameEquipCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameEquipDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="equipname" column="equipname" />
+		<result property="equipurl" column="equipurl" />
+		<result property="equiptype" column="equiptype" />
+		<result property="type" column="type" />
+		<result property="gongji" column="gongji" />
+		<result property="fanwei" column="fanwei" />
+		<result property="sudu" column="sudu" />
+		<result property="xueliang" column="xueliang" />
+		<result property="extra" column="extra" />
+		<result property="level" column="level" />
+		<result property="flag" column="flag" />
+		<result property="coin" column="coin" />
+		<result property="isshop" column="isshop" />
+		<result property="desc" column="desc" />
+		<result property="cointype" column="cointype" />
+		<result property="quality" column="quality" />
+	</resultMap>
+
+	<select id="getGameEquip" resultMap="listResult">
+		SELECT * FROM game_equips WHERE FLAG =1
+	</select>
+	
+	<select id="getGameEquipById"  parameterClass="int" resultMap="listResult"
+	resultClass="GameEquipDetail">
+		SELECT * from game_equips where flag =1 and id=#id#
+	</select>
+	
+	<select id="getGameEquipByEid" parameterClass="int"  resultClass="GameEquipDetail">
+		SELECT * FROM game_equips WHERE id =#id#
+	</select>
+
+
+
+	
+		<select id="findAllEquip"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_equips  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameEquipByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_equips WHERE id=#id#
+	</select>
+
+<insert id="insertGameEquip" parameterClass="GameEquipDetail">
+		INSERT INTO game_equips(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="equipname">equipname</isNotEmpty>
+		<isNotEmpty prepend="," property="equipurl">equipurl</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptype">equiptype</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">gongji</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">fanwei</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">sudu</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">xueliang</isNotEmpty>
+				<isNotEmpty prepend="," property="extra">extra</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin</isNotEmpty>
+		<isNotEmpty prepend="," property="cointype">cointype</isNotEmpty>
+		<isNotEmpty prepend="," property="isshop">isshop</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">quality</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="equipname">#equipname#</isNotEmpty>
+		<isNotEmpty prepend="," property="equipurl">#equipurl#</isNotEmpty>
+		<isNotEmpty prepend="," property="equiptype">#equiptype#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">#gongji#</isNotEmpty>
+		<isNotEmpty prepend="," property="fanwei">#fanwei#</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">#sudu#</isNotEmpty>
+			<isNotEmpty prepend="," property="xueliang">#xueliang#</isNotEmpty>
+		 <isNotEmpty prepend="," property="extra">#extra#</isNotEmpty>
+			<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="coin">#coin#</isNotEmpty>
+			<isNotEmpty prepend="," property="cointype">#cointype#</isNotEmpty>
+			<isNotEmpty prepend="," property="isshop">#isshop#</isNotEmpty>
+			<isNotEmpty prepend="," property="quality">#quality#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	
+	<update id="updateGameEquip" parameterClass="java.util.HashMap">
+		UPDATE game_equips SET 
+			equipname = #equipname#,
+			equipurl = #equipurl#,
+			equiptype = #equiptype#,
+			type = #type#,
+			gongji = #gongji#,
+			fanwei = #fanwei#,
+			sudu = #sudu#,
+			xueliang = #xueliang#,
+			extra = #extra#,
+			level = #level#,
+			flag = #flag#,
+			coin = #coin#,
+			cointype = #cointype#,
+			isshop = #isshop#,
+			quality = #quality#
+		WHERE id =#id#
+	</update>
+
+</sqlMap>

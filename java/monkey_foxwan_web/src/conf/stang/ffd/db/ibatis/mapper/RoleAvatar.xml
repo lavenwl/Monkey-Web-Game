@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleAvatar">
+	<typeAlias alias="RoleAvatarDetail" type="com.stang.game.ffd.entity.detail.RoleAvatarDetail" />
+	
+	<cacheModel id="roleAvatarCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertRoleAvatarDetail"/>
+		<flushOnExecute statement="updateRoleAvatarDetail"/>
+		<flushOnExecute statement="updateRoleAvatarNotusedStatusByRoleId"/>
+		<flushOnExecute statement="updateRoleAvatarUsedStatusById"/>
+		<flushOnExecute statement="updateRoleAvatarNotusedStatusById"/>
+		<flushOnExecute statement="updateRoleAvatarUsedStatusByRoleIdAndIds"/>
+		<flushOnExecute statement="deleteRoleAvatar"/>
+		<flushOnExecute statement="updateRoleAvatarIsNotUsedByAddress"/>
+		<!--flushOnExecute statement="batchDeleteRoleAvatars"/-->
+	</cacheModel>
+	
+	<resultMap class="RoleAvatarDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="roleId" column="ROLE_ID"/>
+
+		<result property="storageType" column="STORAGE_TYPE"/>
+
+		<result property="avatarId" column="AVATAR_ID"/>
+
+		<result property="avatarLevel" column="AVATAR_LEVEL"/>
+		<result property="strengthenLevel" column="STRENGTHEN_LEVEL"/>
+		<result property="avatarPower" column="AVATAR_POWER"/>
+		<result property="avatarAgility" column="AVATAR_AGILITY"/>
+		<result property="avatarStamina" column="AVATAR_STAMINA"/>
+		<result property="avatarMana" column="AVATAR_MANA"/>
+		<result property="sourceType" column="SOURCE_TYPE"/>
+
+		<result property="isUsed" column="IS_USED"/>
+		<result property="isBind" column="IS_BIND"/>
+		
+		<result property="isIdentify" column="IS_IDENTIFY"/>
+
+		<result property="createTime" column="CREATE_TIME"/>
+
+		<result property="useTime" column="USE_TIME"/>
+
+		<result property="flag" column="FLAG"/>
+		<result property="grade" column="GRADE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="storeTime" column="STORE_TIME"/>
+		<result property="avatarHpMax" column="AVATAR_HP_MAX"/>
+		<result property="avatarDef" column="AVATAR_DEF"/>
+
+	</resultMap>
+	
+	
+	<!-- 录入信息 -->
+	<insert id="insertRoleAvatarDetail" parameterClass="RoleAvatarDetail">
+		INSERT INTO ROLE_AVATAR (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">ROLE_ID</isNotEmpty>
+
+			<isNotEmpty prepend="," property="storageType">STORAGE_TYPE</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarId">AVATAR_ID</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarLevel">AVATAR_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">STRENGTHEN_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarPower">AVATAR_POWER</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarAgility">AVATAR_AGILITY</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarStamina">AVATAR_STAMINA</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarMana">AVATAR_MANA</isNotEmpty>
+			<isNotEmpty prepend="," property="sourceType">SOURCE_TYPE</isNotEmpty>
+
+			<isNotEmpty prepend="," property="isUsed">IS_USED</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">IS_BIND</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="isIdentify">IS_IDENTIFY</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="useTime">USE_TIME</isNotEmpty>
+
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+			<isNotEmpty prepend="," property="address">ADDRESS</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">STORE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarHpMax">AVATAR_HP_MAX</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarDef">AVATAR_DEF</isNotEmpty>
+
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="storageType">#storageType#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarId">#avatarId#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="avatarLevel">#avatarLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">#strengthenLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarPower">#avatarPower#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarAgility">#avatarAgility#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarStamina">#avatarStamina#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarMana">#avatarMana#</isNotEmpty>
+			<isNotEmpty prepend="," property="sourceType">#sourceType#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="isUsed">#isUsed#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">#isBind#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="isIdentify">#isIdentify#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="useTime">#useTime#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+			<isNotEmpty prepend="," property="address">#address#</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">#storeTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarHpMax">#avatarHpMax#</isNotEmpty>
+			<isNotEmpty prepend="," property="avatarDef">#avatarDef#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateRoleAvatarDetail" parameterClass="RoleAvatarDetail">
+		UPDATE ROLE_AVATAR SET 
+		<isNotEmpty prepend="" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarId">
+			AVATAR_ID = #avatarId#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="avatarLevel">
+			AVATAR_LEVEL = #avatarLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarPower">
+			AVATAR_POWER = #avatarPower#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarAgility">
+			AVATAR_AGILITY = #avatarAgility#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarStamina">
+			AVATAR_STAMINA = #avatarStamina#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarMana">
+			AVATAR_MANA = #avatarMana#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sourceType">
+			SOURCE_TYPE = #sourceType#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="useTime">
+			USE_TIME = #useTime#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade# 
+		</isNotEmpty>
+			
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="address">
+			ADDRESS = #address# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storeTime">
+			STORE_TIME = #storeTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarHpMax">
+			AVATAR_HP_MAX = #avatarHpMax# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="avatarDef">
+			AVATAR_DEF = #avatarDef# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据角色序列号查询角色所拥有的所有角色-装饰关系信息 -->
+	<select id="findRoleAvatarsByRoleId" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="roleAvatarCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+
+			STORAGE_TYPE,
+
+			AVATAR_ID,
+
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+			AVATAR_POWER,
+			AVATAR_AGILITY,
+			AVATAR_STAMINA,
+			AVATAR_MANA,
+			SOURCE_TYPE,
+
+			IS_USED,
+			IS_BIND,
+
+			IS_IDENTIFY,
+
+			CREATE_TIME,
+
+			USE_TIME,
+			GRADE,
+			ADDRESS,
+			STORE_TIME,
+			FLAG,
+			AVATAR_HP_MAX,
+			AVATAR_DEF
+	
+		FROM 
+			ROLE_AVATAR 
+		WHERE FLAG = 1 AND ROLE_ID = #roleId#
+	</select>
+	
+	<!-- 根据角色序列号查询角色正使用的(角色-装饰关系信息) -->
+	<select id="findUsingRoleAvatarsByRoleId" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="roleAvatarCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+
+			STORAGE_TYPE,
+
+			AVATAR_ID,
+
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+			AVATAR_POWER,
+			AVATAR_AGILITY,
+			AVATAR_STAMINA,
+			AVATAR_MANA,
+			SOURCE_TYPE,
+
+			IS_USED,
+			IS_BIND,
+
+			IS_IDENTIFY,
+
+			CREATE_TIME,
+
+			USE_TIME,
+			GRADE,
+			ADDRESS,
+			STORE_TIME,
+			FLAG,
+			AVATAR_HP_MAX,
+			AVATAR_DEF
+		FROM 
+			ROLE_AVATAR 
+		WHERE FLAG = 1 AND IS_USED = 1 AND ROLE_ID = #roleId#
+	</select>
+	
+	<!-- 根据位置更新为不使用 -->
+	<update id="updateRoleAvatarIsNotUsedByAddress" parameterClass="java.util.Map">
+		UPDATE ROLE_AVATAR SET IS_USED = 0 WHERE ROLE_ID = #roleId# AND ADDRESS = #address# AND FLAG = 1
+	</update>
+	
+	<!-- 根据角色序列号更新该角色所有的装饰信息为非使用状态 -->
+	<update id="updateRoleAvatarNotusedStatusByRoleId" parameterClass="java.util.Map">
+		UPDATE ROLE_AVATAR SET IS_USED = 0 WHERE ROLE_ID = #roleId# AND FLAG = 1
+	</update>
+	
+	<!-- 根据序号更新该角色装饰信息为使用状态 -->
+	<update id="updateRoleAvatarUsedStatusById" parameterClass="java.util.Map">
+		UPDATE ROLE_AVATAR SET IS_USED = 1,ID = #id# WHERE ROLE_ID = #roleId# AND FLAG = 1
+	</update>
+	
+	<!-- 根据序号更新该角色装饰信息为非使用状态 -->
+	<update id="updateRoleAvatarNotusedStatusById" parameterClass="java.util.Map">
+		UPDATE ROLE_AVATAR SET IS_USED = 0,ID = #id# WHERE ROLE_ID = #roleId# AND FLAG = 1
+	</update>
+	
+	<!-- 根据装饰序列号组设置角色使用的装饰信息 -->
+	<update id="updateRoleAvatarUsedStatusByRoleIdAndIds" parameterClass="java.util.Map">
+		UPDATE ROLE_AVATAR SET IS_USED = 0 WHERE ROLE_ID = #roleId# AND FLAG = 1 AND ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>
+	</update>
+	
+	<select id="getRoleAvatarDetail" parameterClass="java.util.Map" resultMap="listResult" cacheModel="roleAvatarCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+
+			STORAGE_TYPE,
+
+			AVATAR_ID,
+
+			AVATAR_LEVEL,
+			STRENGTHEN_LEVEL,
+			AVATAR_POWER,
+			AVATAR_AGILITY,
+			AVATAR_STAMINA,
+			AVATAR_MANA,
+			SOURCE_TYPE,
+
+			IS_USED,
+			IS_BIND,
+
+			IS_IDENTIFY,
+
+			CREATE_TIME,
+
+			USE_TIME,
+			GRADE,
+			ADDRESS,
+			STORE_TIME,
+			FLAG,
+			AVATAR_HP_MAX,
+			AVATAR_DEF 
+		FROM ROLE_AVATAR  
+		WHERE 
+			<isNotEmpty property="flag" prepend="">
+			FLAG = #flag# 
+			</isNotEmpty>
+			<isNotEmpty property="flag1" prepend="">
+			FLAG <![CDATA[ <> ]]> #flag1# 
+			</isNotEmpty>
+			<isNotEmpty property="id" prepend="AND">
+			ID = #id# 
+			</isNotEmpty>
+			<isNotEmpty property="roleId" prepend="AND">
+    	   		ROLE_ID = #roleId# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="storageType" prepend="AND">
+    	   		STORAGE_TYPE = #storageType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="avatarId" prepend="AND">
+    	   		AVATAR_ID = #avatarId# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="avatarLevel" prepend="AND">
+    	   		AVATAR_LEVEL = #avatarLevel# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenLevel" prepend="AND">
+    	   		STRENGTHEN_LEVEL = #strengthenLevel# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarPower" prepend="AND">
+    	   		AVATAR_POWER = #avatarPower# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarAgility" prepend="AND">
+    	   		AVATAR_AGILITY = #avatarAgility# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarStamina" prepend="AND">
+    	   		AVATAR_STAMINA = #avatarStamina# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarMana" prepend="AND">
+    	   		AVATAR_MANA = #avatarMana# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="sourceType" prepend="AND">
+    	   		SOURCE_TYPE = #sourceType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isUsed" prepend="AND">
+    	   		IS_USED = #isUsed# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isBind" prepend="AND">
+    	   		IS_BIND = #isBind# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="isIdentify" prepend="AND">
+    	   		IS_IDENTIFY = #isIdentify# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="useTime" prepend="AND">
+    	   		USE_TIME = #useTime# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="grade" prepend="AND">
+    	   		GRADE = #grade# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="address" prepend="AND">
+    	   		ADDRESS = #address# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="storeTime" prepend="AND">
+    	   		STORE_TIME = #storeTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="avatarHpMax" prepend="AND">
+    	   		AVATAR_HP_MAX = #avatarHpMax# 
+    	   	</isNotEmpty>    	   	
+    	   	<isNotEmpty property="avatarDef" prepend="AND">
+    	   		AVATAR_DEF = #avatarDef# 
+    	   	</isNotEmpty>
+    	
+	</select>
+	
+	<delete id="deleteRoleAvatar" parameterClass="java.util.HashMap">
+		DELETE FROM ROLE_AVATAR WHERE 
+		FLAG = 1
+			<isNotEmpty property="id" prepend="AND">
+				ID = #id# 
+			</isNotEmpty>
+			<isNotEmpty property="roleId" prepend="AND">
+    	   		ROLE_ID = #roleId# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="storageType" prepend="AND">
+    	   		STORAGE_TYPE = #storageType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="avatarId" prepend="AND">
+    	   		AVATAR_ID = #avatarId# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="avatarLevel" prepend="AND">
+    	   		AVATAR_LEVEL = #avatarLevel# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenLevel" prepend="AND">
+    	   		STRENGTHEN_LEVEL = #strengthenLevel# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarPower" prepend="AND">
+    	   		AVATAR_POWER = #avatarPower# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarAgility" prepend="AND">
+    	   		AVATAR_AGILITY = #avatarAgility# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarStamina" prepend="AND">
+    	   		AVATAR_STAMINA = #avatarStamina# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="avatarMana" prepend="AND">
+    	   		AVATAR_MANA = #avatarMana# 
+    	   	</isNotEmpty>
+				<isNotEmpty property="sourceType" prepend="AND">
+    	   		SOURCE_TYPE = #sourceType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isUsed" prepend="AND">
+    	   		IS_USED = #isUsed# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isBind" prepend="AND">
+    	   		IS_BIND = #isBind# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="isIdentify" prepend="AND">
+    	   		IS_IDENTIFY = #isIdentify# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="useTime" prepend="AND">
+    	   		USE_TIME = #useTime# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="grade" prepend="AND">
+    	   		GRADE = #grade# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="address" prepend="AND">
+    	   		ADDRESS = #address# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="avatarHpMax" prepend="AND">
+    	   		AVATAR_HP_MAX = #avatarHpMax# 
+    	   	</isNotEmpty>    	   	
+    	   	<isNotEmpty property="avatarDef" prepend="AND">
+    	   		AVATAR_DEF = #avatarDef# 
+    	   	</isNotEmpty>    	   	
+	</delete>
+	
+	<!-- 根据角色序列号查询角色所拥有的所有装饰完全信息 -->
+	<!--
+	<select id="findFullRoleAvatarsByRoleId" parameterClass="java.util.HashMap" resultMap="listResultFull" cacheModel="roleAvatarCache">
+		SELECT 
+			RA.ID,
+			RA.AVATAR_ID,
+			RA.ROLE_ID,
+			RA.IS_USED,
+			RA.IS_BIND,
+			RA.CREATE_TIME,
+			GA.AVATAR_NAME,
+			GA.AVATAR_RES,
+			GA.AVATAR_TYPE,
+			GA.AVATAR_SEX,
+			GA.RMB_BUY,
+			GA.COIN_BUY,
+			GA.STORE_TIME,
+			GA.AVATAR_BIND,
+			GA.AVATAR_FOREVER,
+			GA.ADD_POWER,
+			GA.ADD_AGILITY,
+			GA.ADD_STAMINA,
+			GA.ADD_MANA 
+		FROM GAME_AVATAR GA,ROLE_AVATAR RA 
+		WHERE 
+			GA.FLAG = 1 AND 
+			GA.ID = RA.AVATAR_ID AND 
+			GA.ID IN (SELECT AVATAR_ID FROM ROLE_AVATAR WHERE FLAG = 1 AND ROLE_ID = #roleId#) 
+	</select>
+	-->
+	<select id="findAvatarIdById" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT AVATAR_ID FROM ROLE_AVATAR WHERE ID = #id#
+	</select>
+	
+	
+</sqlMap>

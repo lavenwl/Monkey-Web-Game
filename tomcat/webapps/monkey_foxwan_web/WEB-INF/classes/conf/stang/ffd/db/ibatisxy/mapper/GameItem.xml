@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameItem">
+	<typeAlias alias="GameItemDetail"
+		type="com.stang.game.entity.detail.GameItemDetail" />
+
+	<cacheModel id="gameItemCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameItem" />
+	</cacheModel>
+
+	<resultMap class="GameItemDetail" id="listResult">
+	<result property="id" column="id" />
+		<result property="itemtype" column="itemtype" />
+		<result property="itemname" column="itemname" />
+		<result property="itemres" column="itemres" />
+		<result property="itemprop" column="itemprop" />
+		<result property="reward" column="reward" />
+		
+		<result property="itemurl" column="itemurl" />
+		<result property="itemlevel" column="itemlevel" />
+		<result property="isuse" column="isuse" />
+		<result property="isover" column="isover" />
+		<result property="isshop" column="isshop" />
+		
+		<result property="flag" column="flag" />		
+		<result property="coin" column="coin" />
+		<result property="cointype" column="cointype" />
+		<result property="quality" column="quality"/>
+		<result property="itemvip" column="itemvip"/>
+		<result property="yuanbao" column="yuanbao"/>
+	</resultMap>
+
+	<select id="getGameItem" resultMap="listResult">
+		SELECT * FROM game_item
+	</select>
+	<select id="getGameItemId"  parameterClass="String" resultClass="GameItemDetail">
+		SELECT * FROM game_item WHERE FLAG = 1 and itemname=#itemname#
+	</select>
+	<select id="getGameItemById" parameterClass="int" resultMap="listResult" >
+		SELECT * FROM game_item WHERE FLAG = 1 and id=#id#
+	</select>
+	
+	
+	<select id="findAllItem"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_item WHERE FLAG = 1 limit #page#,#pageSize# 
+	</select>
+	
+	
+	<insert id="insertGameItem" parameterClass="GameItemDetail">
+		INSERT INTO game_item(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="itemname">itemname</isNotEmpty>
+		<isNotEmpty prepend="," property="itemres">itemres</isNotEmpty>
+		<isNotEmpty prepend="," property="itemprop">itemprop</isNotEmpty>
+		<isNotEmpty prepend="," property="itemtype">itemtype</isNotEmpty>
+		<isNotEmpty prepend="," property="itemurl">itemurl</isNotEmpty>
+		<isNotEmpty prepend="," property="itemlevel">itemlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="isover">isover</isNotEmpty>
+		<isNotEmpty prepend="," property="isuse">isuse</isNotEmpty>
+		<isNotEmpty prepend="," property="isshop">isshop</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin</isNotEmpty>
+		<isNotEmpty prepend="," property="cointype">cointype</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="reward">reward</isNotEmpty>
+		<isNotEmpty prepend="," property="quality">quality</isNotEmpty>
+		<isNotEmpty prepend="," property="itemvip">itemvip</isNotEmpty>
+		<isNotEmpty prepend="," property="yuanbao">yuanbao</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemname">#itemname#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemres">#itemres#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemprop">#itemprop#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemtype">#itemtype#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemurl">#itemurl#</isNotEmpty>
+		<isNotEmpty prepend="," property="itemlevel">#itemlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="isover">#isover#</isNotEmpty>
+		<isNotEmpty prepend="," property="isuse">#isuse#</isNotEmpty>
+		<isNotEmpty prepend="," property="isshop">#isshop#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">#coin#</isNotEmpty>
+			<isNotEmpty prepend="," property="cointype">#cointype#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="reward">#reward#</isNotEmpty>
+			<isNotEmpty prepend="," property="quality">#quality#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemvip">#itemvip#</isNotEmpty>
+			<isNotEmpty prepend="," property="yuanbao">#yuanbao#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameItem" parameterClass="java.util.HashMap">
+		UPDATE game_item SET 
+			itemname = #itemname#,
+			itemres = #itemres#,
+			itemprop = #itemprop#,
+			itemtype = #itemtype#,
+			itemlevel = #itemlevel#,
+			isover = #isover#,
+			isuse = #isuse#,
+			isshop = #isshop#,
+			coin = #coin#,
+			cointype = #cointype#,
+			flag = #flag#,
+			reward = #reward#,
+			quality = #quality#,
+			itemvip = #itemvip#,
+			yuanbao = #yuanbao#
+		WHERE id =#id#
+	</update>
+</sqlMap>

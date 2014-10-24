@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBing">
+	<typeAlias alias="GameBingDetail"
+		type="com.stang.game.entity.detail.GameBingDetail" />
+
+	<cacheModel id="gameBingCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBingDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="icon" column="icon" />
+		<result property="type" column="type" />
+		<result property="artdesc" column="artdesc" />
+		<result property="isenemy" column="isenemy" />
+		<result property="gongji" column="gongji" />
+		<result property="xishu1" column="xishu1" />
+		<result property="xueliang" column="xueliang" />
+		<result property="xishu2" column="xishu2" />
+		<result property="fangyu" column="fangyu" />
+		<result property="gongsu" column="gongsu" />
+		<result property="gongfan" column="gongfan" />
+		<result property="shangfan" column="shangfan" />
+		<result property="sudu" column="sudu" />
+		<result property="renkou" column="renkou" />
+		<result property="jiage" column="jiage" />
+		<result property="lengque" column="lengque" />
+		<result property="bullet" column="bullet" />
+		<result property="bulletfly" column="bulletfly" />
+		<result property="bullethit" column="bullethit" />
+		<result property="flag" column="flag" />
+		<result property="skill" column="skill" />
+		<result property="gongjun" column="gongjun" />
+		<result property="bingfu" column="bingfu" />
+		<result property="xtype" column="xtype" />
+		
+	</resultMap>
+
+
+	
+	
+	<select id="getGameBing" resultMap="listResult"  >
+		SELECT * FROM game_bing
+	</select>
+	
+		<select id="findAllBing"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_bing  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameBingByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_bing WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameBing" parameterClass="GameBingDetail">
+		INSERT INTO game_bing(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="icon">icon</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">artdesc</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="isenemy">isenemy</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">gongji</isNotEmpty>
+		<isNotEmpty prepend="," property="xishu1">xishu1</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">xueliang</isNotEmpty>
+		<isNotEmpty prepend="," property="xishu2">xishu2</isNotEmpty>
+		<isNotEmpty prepend="," property="fangyu">fangyu</isNotEmpty>
+		<isNotEmpty prepend="," property="gongsu">gongsu</isNotEmpty>
+		<isNotEmpty prepend="," property="gongfan">gongfan</isNotEmpty>
+		<isNotEmpty prepend="," property="shangfan">shangfan</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">sudu</isNotEmpty>
+		<isNotEmpty prepend="," property="renkou">renkou</isNotEmpty>
+		<isNotEmpty prepend="," property="jiage">jiage</isNotEmpty>
+		<isNotEmpty prepend="," property="lengque">lengque</isNotEmpty>
+		<isNotEmpty prepend="," property="bullet">bullet</isNotEmpty>
+		<isNotEmpty prepend="," property="bulletfly">bulletfly</isNotEmpty>
+		<isNotEmpty prepend="," property="bullethit">bullethit</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="skill">skill</isNotEmpty>
+		<isNotEmpty prepend="," property="gongjun">gongjun</isNotEmpty>
+		<isNotEmpty prepend="," property="bingfu">bingfu</isNotEmpty>
+		<isNotEmpty prepend="," property="xtype">xtype</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="icon">#icon#</isNotEmpty>
+		<isNotEmpty prepend="," property="artdesc">#artdesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="isenemy">#isenemy#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongji">#gongji#</isNotEmpty>
+		<isNotEmpty prepend="," property="xishu1">#xishu1#</isNotEmpty>
+		<isNotEmpty prepend="," property="xueliang">#xueliang#</isNotEmpty>
+			<isNotEmpty prepend="," property="xishu2">#xishu2#</isNotEmpty>
+			<isNotEmpty prepend="," property="fangyu">#fangyu#</isNotEmpty>
+			<isNotEmpty prepend="," property="gongsu">#gongsu#</isNotEmpty>
+			<isNotEmpty prepend="," property="gongfan">#gongfan#</isNotEmpty>
+			<isNotEmpty prepend="," property="shangfan">#shangfan#</isNotEmpty>
+		<isNotEmpty prepend="," property="sudu">#sudu#</isNotEmpty>
+			<isNotEmpty prepend="," property="renkou">#renkou#</isNotEmpty>
+			<isNotEmpty prepend="," property="jiage">#jiage#</isNotEmpty>
+			<isNotEmpty prepend="," property="lengque">#lengque#</isNotEmpty>
+			<isNotEmpty prepend="," property="bullet">#bullet#</isNotEmpty>
+			<isNotEmpty prepend="," property="bulletfly">#bulletfly#</isNotEmpty>
+			<isNotEmpty prepend="," property="bullethit">#bullethit#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="skill">#skill#</isNotEmpty>
+			<isNotEmpty prepend="," property="gongjun">#gongjun#</isNotEmpty>
+			<isNotEmpty prepend="," property="bingfu">#bingfu#</isNotEmpty>
+		<isNotEmpty prepend="," property="xtype">#xtype#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGamebing" parameterClass="java.util.HashMap">
+		UPDATE game_bing SET 
+			name = #name#,
+			icon = #icon#,
+			artdesc = #artdesc#,
+			type = #type#,
+			isenemy = #isenemy#,
+			gongji = #gongji#,
+			xishu1 = #xishu1#,
+			xueliang = #xueliang#,
+			xishu2 = #xishu2#,
+			fangyu = #fangyu#,
+			gongsu = #gongsu#,
+			gongfan = #gongfan#,
+			shangfan = #shangfan#,
+			sudu = #sudu#,
+			renkou = #renkou#,
+			jiage = #jiage#,
+			lengque = #lengque#,
+			bullet = #bullet#,
+			bulletfly = #bulletfly#,
+			bullethit = #bullethit#,
+			flag = #flag#,
+			skill = #skill#,
+			gongjun = #gongjun#,
+			bingfu = #bingfu#,
+			xtype = #xtype#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

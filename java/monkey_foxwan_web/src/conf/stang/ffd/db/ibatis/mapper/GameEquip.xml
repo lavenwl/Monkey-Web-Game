@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameEquip">
+	<typeAlias alias="EntityGameEquipDetail" type="com.stang.game.ffd.entity.detail.EntityGameEquipDetail" />
+	
+	<cacheModel id="gameEquipCache" type="OSCACHE">
+	<!--	<flushInterval hours="24" /> -->	
+	<flushOnExecute statement="insertEntityGameEquipDetail"/>
+		<flushOnExecute statement="updateEntityGameEquipDetail"/>
+	</cacheModel>
+	<cacheModel id="gameEquipNameCache" type="OSCACHE">
+	<!--	<flushInterval hours="24" /> -->	
+	<flushOnExecute statement="insertEntityGameEquipDetail"/>
+		<flushOnExecute statement="updateEntityGameEquipDetail"/>
+	</cacheModel>
+	
+	<resultMap class="EntityGameEquipDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="equipName" column="EQUIP_NAME"/>
+		<result property="equipDesc" column="EQUIP_DESC"/>
+		<result property="starLevel" column="STAR_LEVEL"/>
+		<result property="equipType" column="EQUIP_TYPE"/>
+		
+		<result property="equipRes" column="EQUIP_RES"/>
+		<result property="equipLevel" column="EQUIP_LEVEL"/>
+		<result property="strengthenLevel" column="STRENGTHEN_LEVEL"/>
+		<result property="boomRes" column="BOOM_RES"/>
+		<result property="boomSize" column="BOOM_SIZE"/>
+		<result property="rangeY" column="RANGE_Y"/>
+		
+		<result property="rangeX" column="RANGE_X"/>
+		<result property="equipWeight" column="EQUIP_WEIGHT"/>
+		<result property="equipAtk" column="EQUIP_ATK"/>
+		<result property="equipAgi" column="EQUIP_AGI"/>
+		<result property="equipDef" column="EQUIP_DEF"/>
+		
+		<result property="equipHp" column="EQUIP_HP"/>
+		<result property="equipDur" column="EQUIP_DUR"/>
+		<result property="equipBind" column="EQUIP_BIND"/>
+		<result property="equipConsume" column="EQUIP_CONSUME"/>
+		<result property="coinBuy" column="COIN_BUY"/>
+		
+		<result property="rmbBuy" column="RMB_BUY"/>
+		<result property="storeTime" column="STORE_TIME"/>
+		<result property="equipForever" column="EQUIP_FOREVER"/>
+		<result property="equipWeightPropAdd" column="EQUIP_WEIGHT_PROP_ADD"/>
+		<result property="equipAtkPropAdd" column="EQUIP_ATK_PROP_ADD"/>
+		
+		<result property="equipAgiPropAdd" column="EQUIP_AGI_PROP_ADD"/>
+		<result property="equipDefPropAdd" column="EQUIP_DEF_PROP_ADD"/>
+		<result property="equipDurPropAdd" column="EQUIP_DUR_PROP_ADD"/>
+		<result property="equipHpPropAdd" column="EQUIP_HP_PROP_ADD"/>
+
+		<result property="strengthenWeightPropAdd" column="STRENGTHEN_WEIGHT_PROP_ADD"/>
+		<result property="strengthenAtkPropAdd" column="STRENGTHEN_ATK_PROP_ADD"/>
+		<result property="strengthenAgiPropAdd" column="STRENGTHEN_AGI_PROP_ADD"/>
+		<result property="strengthenDefPropAdd" column="STRENGTHEN_DEF_PROP_ADD"/>
+		<result property="strengthenDurPropAdd" column="STRENGTHEN_DUR_PROP_ADD"/>
+		<result property="strengthenHpPropAdd" column="STRENGTHEN_HP_PROP_ADD"/>
+ 
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="grade" column="GRADE"/>
+		<result property="equipRes2" column="EQUIP_RES2"/>
+		<result property="isMarket" column="IS_MARKET"/>
+		<result property="isGoodFree" column="IS_GOOD_FREE"/>
+		<result property="isBattleGift" column="IS_BATTLE_GIFT"/>
+		
+		<result property="equipArmType" column="EQUIP_ARM_TYPE"/>
+		<result property="equipArmPrecision" column="EQUIP_ARM_PRECISION"/>
+		<result property="equipSellGold" column="EQUIP_SELL_GOLD"/>
+
+		
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertEntityGameEquipDetail" parameterClass="EntityGameEquipDetail">
+		INSERT INTO GAME_EQUIP (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="equipName">EQUIP_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDesc">EQUIP_DESC</isNotEmpty>
+			<isNotEmpty prepend="," property="starLevel">STAR_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="equipType">EQUIP_TYPE</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipRes">EQUIP_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="equipLevel">EQUIP_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">STRENGTHEN_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="boomRes">BOOM_RES</isNotEmpty>
+			<isNotEmpty prepend="," property="boomSize">BOOM_SIZE</isNotEmpty>
+			<isNotEmpty prepend="," property="rangeY">RANGE_Y</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="rangeX">RANGE_X</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeight">EQUIP_WEIGHT</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAtk">EQUIP_ATK</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAgi">EQUIP_AGI</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDef">EQUIP_DEF</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipHp">EQUIP_HP</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDur">EQUIP_DUR</isNotEmpty>
+			<isNotEmpty prepend="," property="equipBind">EQUIP_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="equipConsume">EQUIP_CONSUME</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">COIN_BUY</isNotEmpty>
+	
+			<isNotEmpty prepend="," property="rmbBuy">LEVEL_ALL</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">STORE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="equipForever">EQUIP_FOREVER</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeightPropAdd">EQUIP_WEIGHT_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAtkPropAdd">EQUIP_ATK_PROP_ADD</isNotEmpty>
+
+			<isNotEmpty prepend="," property="equipAgiPropAdd">EQUIP_AGI_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDefPropAdd">EQUIP_DEF_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDurPropAdd">EQUIP_DUR_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="equipHpPropAdd">EQUIP_HP_PROP_ADD</isNotEmpty>
+
+			<isNotEmpty prepend="," property="strengthenWeightPropAdd">STRENGTHEN_WEIGHT_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAtkPropAdd">STRENGTHEN_ATK_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAgiPropAdd">STRENGTHEN_AGI_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenDefPropAdd">STRENGTHEN_DEF_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenDurPropAdd">STRENGTHEN_DUR_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenHpPropAdd">STRENGTHEN_HP_PROP_ADD</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="equipHpPropAdd">EQUIP_HP_PROP_ADD</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+			<isNotEmpty prepend="," property="equipRes2">EQUIP_RES2</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">IS_MARKET</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">IS_GOOD_FREE</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">IS_BATTLE_GIFT</isNotEmpty>
+
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipName">#equipName#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDesc">#equipDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="starLevel">#starLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipType">#equipType#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipRes">#equipRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipLevel">equipLevel</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenLevel">#strengthenLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="boomRes">#boomRes#</isNotEmpty>
+			<isNotEmpty prepend="," property="boomSize">#boomSize#</isNotEmpty>
+			<isNotEmpty prepend="," property="rangeY">#rangeY#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="rangeX">#rangeX#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeight">#equipWeight#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAtk">#equipAtk#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAgi">#equipAgi#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDef">#equipDef#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipHp">#equipHp#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDur">#equipDur#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipBind">#equipBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipConsume">#equipConsume#</isNotEmpty>
+			<isNotEmpty prepend="," property="coinBuy">#coinBuy#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="rmbBuy">#rmbBuy#</isNotEmpty>
+			<isNotEmpty prepend="," property="storeTime">#storeTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipForever">#equipForever#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipWeightPropAdd">#equipWeightPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipAtkPropAdd">#equipAtkPropAdd#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="equipAgiPropAdd">#equipAgiPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDefPropAdd">#equipDefPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipDurPropAdd">#equipDurPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipHpPropAdd">#equipHpPropAdd#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="strengthenWeightPropAdd">#strengthenWeightPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAtkPropAdd">#strengthenAtkPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenAgiPropAdd">#strengthenAgiPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenDefPropAdd">#strengthenDefPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenDurPropAdd">#strengthenDurPropAdd#</isNotEmpty>
+			<isNotEmpty prepend="," property="strengthenHpPropAdd">#strengthenHpPropAdd#</isNotEmpty>
+
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+			<isNotEmpty prepend="," property="equipRes2">#equipRes2#</isNotEmpty>
+			<isNotEmpty prepend="," property="isMarket">#isMarket#</isNotEmpty>
+			<isNotEmpty prepend="," property="isGoodFree">#isGoodFree#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBattleGift">#isBattleGift#</isNotEmpty>
+
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateEntityGameEquipDetail" parameterClass="EntityGameEquipDetail">
+		UPDATE GAME_EQUIP SET 
+		<isNotEmpty prepend="" property="equipName">
+			EQUIP_NAME = #equipName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipDesc">
+			EQUIP_DESC = #equipDesc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="starLevel">
+			STAR_LEVEL = #starLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipType">
+			EQUIP_TYPE = #equipType#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="equipRes">
+			EQUIP_RES = #equipRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipLevel">
+			EQUIP_LEVEL = #equipLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="boomRes">
+			BOOM_RES = #boomRes#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="boomSize">
+			BOOM_SIZE = #boomSize#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rangeY">
+			RANGE_Y = #rangeY#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="rangeX">
+			RANG_X = #rangeX#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipWeight">
+			EQUIP_WEIGHT = #equipWeight#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipAtk">
+			EQUIP_ATK = #equipAtk#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipAgi">
+			EQUIP_AGI = #equipAgi#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipDef">
+			EQUIP_DEF = #equipDef#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="equipHp">
+			EQUIP_HP = #equipHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipDur">
+			EQUIP_DUR = #equipDur#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipBind">
+			EQUIP_BIND = #equipBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipConsume">
+			EQUIP_CONSUME = #equipConsume#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="coinBuy">
+			COIN_BUY = #coinBuy#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="rmbBuy">
+			RMB_BUY = #rmbBuy#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storeTime">
+			STORE_TIME = #storeTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipForever">
+			EQUIP_FOREVER = #equipForever#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipWeightPropAdd">
+			EQUIP_WEIGHT_PROP_ADD = #equipWeightPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipAtkPropAdd">
+			EQUIP_ATK_PROP_ADD = #equipAtkPropAdd#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="equipAgiPropAdd">
+			EQUIP_AGI_PROP_ADD = #equipAgiPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipDefPropAdd">
+			EQUIP_DEF_PROP_ADD = #equipDefPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipDurPropAdd">
+			EQUIP_DUR_PROP_ADD = #equipDurPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipHpPropAdd">
+			EQUIP_HP_PROP_ADD = #equipHpPropAdd#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="," property="strengthenWeightPropAdd">
+			STRENGTHEN_WEIGHT_PROP_ADD = #strengthenWeightPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenAtkPropAdd">
+			STRENGTHEN_ATK_PROP_ADD = #strengthenAtkPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenAgiPropAdd">
+			STRENGTHEN_AGI_PROP_ADD = #strengthenAgiPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenDefPropAdd">
+			STRENGTHEN_DEF_PROP_ADD = #strengthenDefPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenDurPropAdd">
+			STRENGTHEN_DUR_PROP_ADD = #strengthenDurPropAdd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenHpPropAdd">
+			STRENGTHEN_HP_PROP_ADD = #strengthenHpPropAdd#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="equipRes2">
+			EQUIP_RES2 = #equipRes2# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isMarket">
+			IS_MARKET = #isMarket#  
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isGoodFree">
+			IS_GOOD_FREE = #isGoodFree# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBattleGift">
+			IS_BATTLE_GIFT = #isBattleGift# 
+		</isNotEmpty>
+
+
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据序列组获得(飞机)装备信息 -->
+	<select id="findGameEquipsByIds" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameEquipCache">
+		SELECT 
+			ID,
+			EQUIP_NAME,
+			EQUIP_DESC,
+			STAR_LEVEL,
+			EQUIP_TYPE,
+			EQUIP_RES,
+			EQUIP_LEVEL,
+			STRENGTHEN_LEVEL,
+			BOOM_RES,
+			BOOM_SIZE,
+			RANGE_Y,
+			RANGE_X,
+			EQUIP_WEIGHT,
+			EQUIP_ATK,
+			EQUIP_AGI,
+			EQUIP_DEF,
+			EQUIP_HP,
+			EQUIP_DUR,
+			EQUIP_BIND,
+			EQUIP_CONSUME,
+			COIN_BUY,
+			RMB_BUY,
+			STORE_TIME,
+			EQUIP_FOREVER,
+			EQUIP_WEIGHT_PROP_ADD,
+			EQUIP_ATK_PROP_ADD,
+			EQUIP_AGI_PROP_ADD,
+			EQUIP_DEF_PROP_ADD,
+			EQUIP_DUR_PROP_ADD,
+			EQUIP_HP_PROP_ADD,
+			STRENGTHEN_WEIGHT_PROP_ADD,
+			STRENGTHEN_ATK_PROP_ADD,
+			STRENGTHEN_AGI_PROP_ADD,
+			STRENGTHEN_DEF_PROP_ADD,
+			STRENGTHEN_DUR_PROP_ADD,
+			STRENGTHEN_HP_PROP_ADD,
+			EQUIP_ARM_TYPE,
+			EQUIP_ARM_PRECISION,
+			
+			EQUIP_SELL_GOLD,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			EQUIP_RES2,
+			IS_MARKET, 
+			IS_GOOD_FREE,
+			IS_BATTLE_GIFT
+
+		FROM 
+			GAME_EQUIP  
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<!-- 根据条件查询装备信息 -->
+	<select id="findGameEquipsByParam" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameEquipCache">
+		SELECT 
+			ID,
+			EQUIP_NAME,
+			EQUIP_DESC,
+			STAR_LEVEL,
+			EQUIP_TYPE,
+			EQUIP_RES,
+			EQUIP_LEVEL,
+			STRENGTHEN_LEVEL,
+			BOOM_RES,
+			BOOM_SIZE,
+			RANGE_Y,
+			RANGE_X,
+			EQUIP_WEIGHT,
+			EQUIP_ATK,
+			EQUIP_AGI,
+			EQUIP_DEF,
+			EQUIP_HP,
+			EQUIP_DUR,
+			EQUIP_BIND,
+			EQUIP_CONSUME,
+			COIN_BUY,
+			RMB_BUY,
+			STORE_TIME,
+			EQUIP_FOREVER,
+			EQUIP_WEIGHT_PROP_ADD,
+			EQUIP_ATK_PROP_ADD,
+			EQUIP_AGI_PROP_ADD,
+			EQUIP_DEF_PROP_ADD,
+			EQUIP_DUR_PROP_ADD,
+			EQUIP_HP_PROP_ADD,
+			STRENGTHEN_WEIGHT_PROP_ADD,
+			STRENGTHEN_ATK_PROP_ADD,
+			STRENGTHEN_AGI_PROP_ADD,
+			STRENGTHEN_DEF_PROP_ADD,
+			STRENGTHEN_DUR_PROP_ADD,
+			STRENGTHEN_HP_PROP_ADD,
+			EQUIP_ARM_TYPE,
+			EQUIP_ARM_PRECISION,
+			CREATE_TIME,
+			FLAG,
+			GRADE,
+			EQUIP_SELL_GOLD,
+			EQUIP_RES2,
+			IS_MARKET,
+			IS_GOOD_FREE,
+			IS_BATTLE_GIFT
+
+		FROM 
+			GAME_EQUIP  
+		WHERE FLAG = 1
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipName" prepend="AND">
+    	   		EQUIP_NAME = #equipName# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipDesc" prepend="AND">
+    	   		EQUIP_DESC = #equipDesc# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="starLevel" prepend="AND">
+    	   		STAR_LEVEL = #starLevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipType" prepend="AND">
+    	   		EQUIP_TYPE = #equipType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipRes" prepend="AND">
+    	   		EQUIP_RES = #equipRes# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="equipLevel" prepend="AND">
+    	   		EQUIP_LEVEL = #equipLevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="strengthenLevel" prepend="AND">
+    	   		STRENGTHEN_LEVEL = #strengthenLevel# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="boomRes" prepend="AND">
+    	   		BOOM_RES = #boomRes# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="boomSize" prepend="AND">
+    	   		BOOM_SIZE = #boomSize# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="rangeY" prepend="AND">
+    	   		RANGE_Y = #rangeY# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="rangeX" prepend="AND">
+    	   		RANGE_X = #rangeX# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipWeight" prepend="AND">
+    	   		EQUIP_WEIGHT = #equipWeight# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipAtk" prepend="AND">
+    	   		EQUIP_ATK = #equipAtk# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipAgi" prepend="AND">
+    	   		EQUIP_AGI = #equipAgi# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipDef" prepend="AND">
+    	   		EQUIP_DEF = #equipDef# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipHp" prepend="AND">
+    	   		EQUIP_HP = #equipHp# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipDur" prepend="AND">
+    	   		EQUIP_DUR = #equipDur# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipBind" prepend="AND">
+    	   		EQUIP_BIND = #equipBind# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipConsume" prepend="AND">
+    	   		EQUIP_CONSUME = #equipConsume# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="coinBuy" prepend="AND">
+    	   		COIN_BUY = #coinBuy# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="rmbBuy" prepend="AND">
+    	   		RMB_BUY = #rmbBuy# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="storeTime" prepend="AND">
+    	   		STORE_TIME = #storeTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipForever" prepend="AND">
+    	   		EQUIP_FOREVER = #equipForever# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipWeightPropAdd" prepend="AND">
+    	   		EQUIP_WEIGHT_PROP_ADD = #equipWeightPropAdd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipAtkPropAdd" prepend="AND">
+    	   		EQUIP_ATK_PROP_ADD = #equipAtkPropAdd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipAgiPropAdd" prepend="AND">
+    	   		EQUIP_AGI_PROP_ADD = #equipAgiPropAdd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipDefPropAdd" prepend="AND">
+    	   		EQUIP_DEF_PROP_ADD = #equipDefPropAdd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipDurPropAdd" prepend="AND">
+    	   		EQUIP_DUR_PROP_ADD = #equipDurPropAdd# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipHpPropAdd" prepend="AND">
+    	   		EQUIP_HP_PROP_ADD = #equipHpPropAdd# 
+    	   	</isNotEmpty>
+			
+			<isNotEmpty property="strengthenWeightPropAdd" prepend="AND">
+    	   		STRENGTHEN_WEIGHT_PROP_ADD = #strengthenWeightPropAdd# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenAtkPropAdd" prepend="AND">
+    	   		STRENGTHEN_ATK_PROP_ADD = #strengthenAtkPropAdd# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenAgiPropAdd" prepend="AND">
+    	   		STRENGTHEN_AGI_PROP_ADD = #strengthenAgiPropAdd# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenDefPropAdd" prepend="AND">
+    	   		STRENGTHEN_DEF_PROP_ADD = #strengthenDefPropAdd# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenDurPropAdd" prepend="AND">
+    	   		STRENGTHEN_DUR_PROP_ADD = #strengthenDurPropAdd# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="strengthenHpPropAdd" prepend="AND">
+    	   		STRENGTHEN_HP_PROP_ADD = #strengthenHpPropAdd# 
+    	   	</isNotEmpty>
+
+    	   	<isNotEmpty property="createTime" prepend="AND">
+    	   		CREATE_TIME = #createTime# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="grade" prepend="AND">
+    	   		GRADE = #grade# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="equipRes2" prepend="AND">
+    	   		EQUIP_RES2 = #equipRes2# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isMarket" prepend="AND">
+    	   		IS_MARKET = #isMarket# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isGoodFree" prepend="AND">
+    	   		IS_GOOD_FREE = #isGoodFree#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isBattleGift" prepend="AND">
+    	   		IS_BATTLE_GIFT = #isBattleGift#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="orderBy" prepend="">
+    	   		ORDER BY #orderBy#  
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="pageSize" prepend="">
+    	   		LIMIT #start#,#pageSize# 
+    	   	</isNotEmpty>
+	</select>
+	<select id="getEquipNameById" parameterClass="java.util.HashMap" resultClass="String" cacheModel="gameEquipNameCache">
+		SELECT EQUIP_NAME FROM GAME_EQUIP WHERE ID = #id#
+	</select>
+</sqlMap>

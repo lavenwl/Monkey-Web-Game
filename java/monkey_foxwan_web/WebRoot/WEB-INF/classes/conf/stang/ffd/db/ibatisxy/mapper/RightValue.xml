@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RightValue">
+	<typeAlias alias="RightValueDetail"
+		type="com.stang.game.entity.detail.EntityRightValueDetail"/>
+	<resultMap class="RightValueDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="right_context" column="right_context" />
+		<result property="right_value" column="right_value" />
+		<result property="flag" column="flag" />
+	</resultMap>
+	<select id="findRightValueByMap" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT * FROM right_value WHERE flag = 1
+		<isNotEmpty property="uid" prepend="AND">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty property="right_context" prepend="AND">
+			right_context = #right_context#
+		</isNotEmpty>
+		<isNotEmpty property="right_value" prepend="AND">
+			right_value = #right_value#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			flag = #flag#
+		</isNotEmpty>
+	</select>
+	
+	<update id="updateRightValueDetail" parameterClass="RightValueDetail">
+		UPDATE right_value SET 
+		<isNotEmpty prepend="" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="right_context">
+			right_context = #right_context#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="right_value">
+			right_value = #right_value#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			flag = #flag#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>	
+	<insert id="insertRightValueDetail" parameterClass="RightValueDetail">
+			INSERT INTO right_value (
+			
+			<isNotEmpty prepend="" property="right_context">right_context</isNotEmpty>
+			<isNotEmpty prepend="," property="right_value">right_value</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+			)
+		VALUES 
+			(
+			
+			<isNotEmpty prepend="" property="right_context">#right_context#</isNotEmpty>
+			<isNotEmpty prepend="," property="right_value">#right_value#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+		)
+	</insert>
+
+</sqlMap>

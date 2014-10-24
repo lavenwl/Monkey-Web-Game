@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>  
+ <constant name="struts.i18n.encoding" value="UTF-8"/><!-- 指定默认编码 -->
+    <constant name="struts.configuration.xml.reload" value="true"/><!-- 改变常量后不许重启服务器 -->
+    <constant name="struts.devMode" value="false" /><!-- 便于排错,打印出更详细的错误信息 -->
+	<constant name="struts.ui.theme" value="simple" /><!-- 默认的视图主题 -->
+	
+    <package name="com.stang.game.ffd.controller" extends="struts-default">
+   		<!--定义全局结果映射 -->
+    	<global-results>
+    	<!-- 定义要报的错误类型 -->
+    		<result name="sql">/ex/exception.jsp</result>
+    		<result name="user">/ex/exception.jsp</result>
+    	</global-results>
+    
+	<action name="choose" class="apiinterface.Choose">
+    	<result name="linshi">/linshi.jsp</result>
+    </action>
+      
+         <!-- 创建新的礼包类别 -->
+        <action name="createGiftBagType" class="com.stang.game.ffd.controller.AdminDataCollect" method="createGiftBagType">
+        	<result name="succ">/admin/giftBagTypeList.jsp?typeid=2</result>
+        	<result name="err">/admin/giftBagTypeList.jsp</result> <!-- 保留，做些别的区别操作  -->
+        </action>
+     
+        
+        <!-- 查询所有的礼包类别 -->
+        <action name="findGiftBagTypeInfoAll" class="com.stang.game.ffd.controller.AdminDataCollect" method="findGiftBagTypeInfoAll">
+        	<result name="succ">/admin/giftBagTypeList.jsp?typeid=2</result>
+        </action>
+        
+        <!-- 更新礼包类别操作 -->
+        <action name="editGiftBagTypeInfoAll" class="com.stang.game.ffd.controller.AdminDataCollect" method="editGiftBagTypeInfoAll">
+        	<result name="succ">/admin/giftBagTypeList.jsp?typeid=2</result>
+        	<result name="err">/admin/giftBagTypeList.jsp?typeid=2</result>
+        </action>
+        
+        <!-- 删除已有的礼包类别 -->
+        <action name="delGiftBagTypeInfo" class="com.stang.game.ffd.controller.AdminDataCollect" method="delGiftBagTypeInfo">
+        	<result name="succ">/admin/giftBagTypeList.jsp?typeid=2</result>
+        	<result name="err">/admin/giftBagTypeList.jsp?typeid=2</result>
+        </action>
+        
+        <!-- 获取当前礼包数据 -->
+        <action name="addGiftBag" class="com.stang.game.ffd.controller.AdminDataCollect" method="addGiftBag">
+        	<result name="err">/admin/crateGift.jsp?typeid=2</result>
+        	<result name="err">/admin/crateGift.jsp?typeid=2</result>
+        </action>
+        
+        
+        
+       
+        <!-- 查询所有的礼包 -->
+        <action name="findGiftBagList" class="com.stang.game.ffd.controller.AdminDataCollect" method="findGiftBagList">
+        	<result name="err">/admin/giftBagList.jsp?typeid=2</result>
+        	<result name="succ">/admin/giftBagList.jsp?typeid=2</result>
+        </action>
+        
+        <!-- 删除礼包 -->
+         <action name="delGiftBagList" class="com.stang.game.ffd.controller.AdminDataCollect" method="delGiftBagList">
+        	<result name="err">/admin/giftBagList.jsp?typeid=2</result>
+        	<result name="succ">/admin/giftBagList.jsp?typeid=2</result>
+        </action>
+       
+        
+                     
+    
+        <action name="loginn" class="com.stang.game.ffd.controller.LoginActionn">
+        	<result name="success">/WEB-INF/menu.jsp</result>
+        	<result name="error">/login.jsp</result>
+		</action>
+		  <action name="addserver" class="com.stang.game.ffd.controller.AddServer">
+        	<result name="success">/WEB-INF/addServer.jsp</result>
+        	<result name="error">/login.jsp</result>
+		</action>
+		  <action name="addserver2" class="com.stang.game.ffd.controller.AddServer2">
+        	<result name="success">/admin/addteserversuccess.html</result>
+        	<result name="error">/login.jsp</result>
+		</action>
+		<action name="right" class="com.stang.game.ffd.controller.RightAction">
+        	<result name="success">/WEB-INF/right_manager.jsp</result>
+        	<result name="error">/admin/error.html</result>
+        	<result name="edit">/WEB-INF/right_value_manager.jsp</result>
+		</action>
+		<action name="message" class="com.stang.game.ffd.controller.MessageAction">
+        	<result name="success">/WEB-INF/message.jsp</result>
+        	<result name="succ">/admin/messagesuccess.html</result>
+        	<result name="error">/admin/messageerror.html</result>
+        	<result name="succt">/admin/messagesuccesst.html</result>
+        	<result name="errort">/admin/messageerrort.html</result>
+		</action>
+		
+		<action name="rolecache" class="com.stang.game.ffd.controller.ProjectActionRole">
+        	<result name="success">/admin/rolesuccess.html</result>
+        	<result name="error">/admin/roleerror.html</result>
+		</action>
+		
+		
+		<action name="messagetwo" class="com.stang.game.ffd.controller.MessageActiongeijsp">
+        	<result name="success">/WEB-INF/messagetwo.jsp</result>
+		</action>
+		<action name="roletwo" class="com.stang.game.ffd.controller.RoleActiongeijsp">
+        	<result name="success">/WEB-INF/roletwo.jsp</result>
+		</action>
+		
+			<action name="messagethree" class="com.stang.game.ffd.controller.MessageActiontwo">
+        	
+        	<result name="succt">/WEB-INF/messagesuccesst.html</result>
+        	<result name="errort">/WEB-INF/messageerrort.html</result>
+		</action>
+		
+		<action name="geitwojspcache" class="com.stang.game.ffd.controller.Geitwojspcache">
+        	<result name="success">/WEB-INF/messagetwo.jsp</result>
+		</action>
+		
+		<action name="deleMessage" class="com.stang.game.ffd.controller.MessageAction" method="deleMessage">
+        	<result name="success">/admin/message.jsp</result>
+		</action>
+		<action name="getRoleName" class="com.stang.game.ffd.controller.SendGiftAction" method="getRoleNames">
+			<result name="success"></result>
+		</action>
+		<action name="sendGift" class="com.stang.game.ffd.controller.SendGiftAction">
+			<result name="success">/admin/sendsuccess.html</result>
+			<result name="error">/admin/sendgifterror.html</result>
+		</action>
+		<action name="createRace" class="com.stang.game.ffd.controller.CreateRaceAction">
+			<result name="success">/admin/raceSetting.jsp</result>
+		</action>
+		<action name="updateRace" class="com.stang.game.ffd.controller.CreateRaceAction" method="updateRace">
+			<result name="success">/admin/raceSetting.jsp</result>
+		</action>
+		<action name="delRace" class="com.stang.game.ffd.controller.CreateRaceAction" method="delRace">
+			<result name="success">/admin/checkRaceing.jsp</result>
+		</action>
+		<action name="chatLog" class="com.stang.game.ffd.controller.ChatLogAction">
+			<result name="success"></result>
+		</action>
+		<action name="chatLogRejectChat" class="com.stang.game.ffd.controller.ChatLogAction" method="rejectChat">
+			<result name="success"></result>
+		</action>
+		<action name="chatLogRejectLogin" class="com.stang.game.ffd.controller.ChatLogAction" method="rejectLogin">
+			<result name="1">/admin/rejectInfo.jsp?type=1</result>
+			<result name="2">/admin/rejectInfo.jsp?type=2</result>
+		</action>
+		<action name="addRejectIp" class="com.stang.game.ffd.controller.RejectIpAction" method="addRejectIps">
+			<result name="success">/admin/rejectIp.jsp</result>
+		</action>
+		<action name="delRejectIp" class="com.stang.game.ffd.controller.RejectIpAction" method="delRejectIp">
+			<result name="success">/admin/rejectIpInfo.jsp</result>
+		</action>
+		<action name="SearchCheckDay" class="com.stang.game.ffd.controller.AdminCheckCase" method="SearchCheckDay">
+			<result name="succ">/admin/checkday_1.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>
+		
+		<action name="checkDayOne" class="com.stang.game.ffd.controller.AdminCheckCase" method="checkDayOne">
+			<result name="succ">/admin/checkday_1.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>
+		<action name="checkQh" class="com.stang.game.ffd.controller.AdminCheckCase" method="checkQh">
+			<result name="succ">/admin/checkQh.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>
+		
+		<action name="addDubiousDataInfo" class="com.stang.game.ffd.controller.AdminCheckCase" method="addDubiousDataInfo">
+			<result name="succ">/admin/dubiousDataInfo.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>		
+		
+		<action name="getDoubiousInfo" class="com.stang.game.ffd.controller.AdminCheckCase" method="getDoubiousInfo">
+			<result name="succ">/admin/dubiousDataInfo.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>	
+
+		<action name="getViolationDataInfo" class="com.stang.game.ffd.controller.AdminCheckCase" method="getViolationDataInfo">
+			<result name="succ">/admin/violation.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>		
+		
+		<action name="checkForDay" class="com.stang.game.ffd.controller.AdminCheckCase" method="checkForDay">
+			<result name="succ">/admin/checkday_1.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>	
+		
+		<action name="checkMail" class="com.stang.game.ffd.controller.CheckMailAction" method="checkMail">
+			<result name="succ">/admin/mailLog.jsp</result>
+		</action>
+		
+		<action name="start" class="com.stang.game.ffd.controller.AdminCheckCase" method="start">
+		<result name="succ">/admin/checkOnline.jsp</result>
+		<result name="error">/admin/error.html</result>
+		</action>
+		
+		<action name="sendGiftBag" class="com.stang.game.ffd.controller.SendGiftAction" method="sendGiftBag">
+			<result name="success">/admin/sendGift.jsp</result>
+		</action>
+		
+	   <action name="getCheckMap"  class="com.stang.game.ffd.controller.AdminCheckCase" method="getCheckMap">
+			<result name="succ">/admin/checkMap.jsp?typeid=2</result>
+			<result name="error">/admin/error.html</result>
+		</action>	
+		
+		<action name="addTask"  class="com.stang.game.ffd.controller.AdminDataCollect" method="addTask">
+			<result name="succ">/admin/giftBagList.jsp?typeid=2</result>
+		</action>
+			
+		<action name="checkBattleForDay"  class="com.stang.game.ffd.controller.AdminCheckCase" method="checkBattleForDay">
+		<result name="succ">/admin/checkBattle.jsp?typeid=2</result>
+		<result name="error">/admin/error.html</result>
+		</action>
+		
+		
+		<!-- 充值记录查询 -->
+			<action name="searchPay" class="com.stang.game.ffd.controller.SearchPayAction" >
+        	<result name="succ">/WEB-INF/searchPay.jsp</result>
+       <result name="error">/WEB-INF/payerror.html</result>
+       <result name="success">/admin/searchPay.jsp</result>
+       <result name="listys" type="redirectAction">
+				list
+			</result>
+        </action>
+        
+        
+        		<!-- 充值记录查询 -->
+			<action name="searchPaycoin" class="com.stang.game.ffd.controller.SearchPayActioncoin" >
+        	<result name="succ">/WEB-INF/searchPaycoin.jsp</result>
+       <result name="error">/WEB-INF/payerrorcoin.html</result>
+        <result name="listci" type="redirectAction">
+				listcoin
+			</result>
+        </action>
+		
+		
+	
+        
+   
+	
+		 	
+		
+		<action name="geigiftjsp" class="com.stang.game.ffd.controller.GeiGiftjsp">
+        	<result name="success">/WEB-INF/sendGift.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="serverlistjsp" class="com.stang.game.ffd.controller.Serverlistjsp">
+        	<result name="success">/WEB-INF/serverlist.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="geitwojsp" class="com.stang.game.ffd.controller.Geitwojsp">
+        	<result name="success">/WEB-INF/add.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+			<action name="geitwojspmap" class="com.stang.game.ffd.controller.Geitwojspmap">
+        	<result name="success">/WEB-INF/addmap.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+			<action name="geitwojsptask" class="com.stang.game.ffd.controller.Geitwojsptask">
+        	<result name="success">/WEB-INF/addtask.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		<action name="fuwustatus" class="com.stang.game.ffd.controller.Geifuwu">
+        	<result name="success">/WEB-INF/geifuwu.jsp</result>
+		</action>
+		<action name="updatefuwu" class="com.stang.game.ffd.controller.UpdateFuwu">
+        	<result name="success">/WEB-INF/updatefuwuOk.html</result>
+		</action>
+		
+			<action name="updatehuodong" class="com.stang.game.ffd.controller.Updatehuodong">
+        	<result name="success">/WEB-INF/updatehuodongOK.html</result>
+        	<result name="error">/WEB-INF/updatehuodongerror.html</result>
+		</action>
+		
+		<action name="updateshop" class="com.stang.game.ffd.controller.Updateshop">
+        	<result name="success">/WEB-INF/updateshopOK.html</result>
+        	<result name="error">/WEB-INF/updateshoperror.html</result>
+		</action>
+		
+		<action name="list" class="com.stang.game.ffd.controller.ProjectListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/projectlist.jsp</result>
+			<result name="error">/WEB-INF/payerror.html</result>
+			<result name="listt" type="redirectAction">
+				list
+			</result>
+		</action>
+		
+			<action name="listcoin" class="com.stang.game.ffd.controller.ProjectListActionCoin">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/projectlistcoin.jsp</result>
+			<result name="error">/WEB-INF/payerrorcoin.html</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- 道具列表 -->
+		<action name="itemlist" class="com.stang.game.ffd.controller.ItemListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/itemlist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+			<!-- 处理删除，添加，更新等 -->
+		<action name="project" 
+			class="com.stang.game.ffd.controller.ProjectAction">
+			<result name="update">/WEB-INF/update.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listitem" type="redirectAction">
+				itemlist
+			</result>
+		</action>
+		
+		
+			<action name="maplist" class="com.stang.game.ffd.controller.MapListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/maplist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectmap" 
+			class="com.stang.game.ffd.controller.ProjectActionMap">
+			<result name="update">/WEB-INF/updatemap.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listmap" type="redirectAction">
+				maplist
+			</result>
+		</action>
+		
+		
+			<action name="tasklist" class="com.stang.game.ffd.controller.TaskListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/tasklist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projecttask" 
+			class="com.stang.game.ffd.controller.ProjectActionTask">
+			<result name="update">/WEB-INF/updatetask.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listtask" type="redirectAction">
+				tasklist
+			</result>
+		</action>
+		
+		
+		<action name="equiplist" class="com.stang.game.ffd.controller.EquipListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/equiplist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspequip" class="com.stang.game.ffd.controller.Geitwojspequip">
+        	<result name="success">/WEB-INF/addequip.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectequip" 
+			class="com.stang.game.ffd.controller.ProjectActionEquip">
+			<result name="update">/WEB-INF/updateequip.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listequip" type="redirectAction">
+				equiplist
+			</result>
+		</action>
+		
+		
+		
+		<action name="skilllist" class="com.stang.game.ffd.controller.SkillListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/skilllist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspskill" class="com.stang.game.ffd.controller.Geitwojspskill">
+        	<result name="success">/WEB-INF/addskill.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectskill" 
+			class="com.stang.game.ffd.controller.ProjectActionSkill">
+			<result name="update">/WEB-INF/updateskill.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listskill" type="redirectAction">
+				skilllist
+			</result>
+		</action>
+		
+		
+		<action name="chlevellist" class="com.stang.game.ffd.controller.ChlevelListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/chlevellist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspchlevel" class="com.stang.game.ffd.controller.Geitwojspchlevel">
+        	<result name="success">/WEB-INF/addchlevel.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectchlevel" 
+			class="com.stang.game.ffd.controller.ProjectActionChlevel">
+			<result name="update">/WEB-INF/updatechlevel.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listchlevel" type="redirectAction">
+				chlevellist
+			</result>
+		</action>
+		
+		
+			<action name="foelist" class="com.stang.game.ffd.controller.FoeListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/foelist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspfoe" class="com.stang.game.ffd.controller.Geitwojspfoe">
+        	<result name="success">/WEB-INF/addfoe.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectfoe" 
+			class="com.stang.game.ffd.controller.ProjectActionfoe">
+			<result name="update">/WEB-INF/updatefoe.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listfoe" type="redirectAction">
+				foelist
+			</result>
+		</action>
+		
+		
+		<action name="equippropertylist" class="com.stang.game.ffd.controller.EquippropertyListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/equippropertylist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspequipproperty" class="com.stang.game.ffd.controller.Geitwojspequipproperty">
+        	<result name="success">/WEB-INF/addequipproperty.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectequipproperty" 
+			class="com.stang.game.ffd.controller.ProjectActionEquipproperty">
+			<result name="update">/WEB-INF/updateequipproperty.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listequipproperty" type="redirectAction">
+				equippropertylist
+			</result>
+		</action>
+		
+		
+			<action name="bufflist" class="com.stang.game.ffd.controller.BuffListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/bufflist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspbuff" class="com.stang.game.ffd.controller.Geitwojspbuff">
+        	<result name="success">/WEB-INF/addbuff.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbuff" 
+			class="com.stang.game.ffd.controller.ProjectActionbuff">
+			<result name="update">/WEB-INF/updatebuff.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listbuff" type="redirectAction">
+				bufflist
+			</result>
+		</action>
+		
+			<action name="platlist" class="com.stang.game.ffd.controller.PlatListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/platlist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspplat" class="com.stang.game.ffd.controller.Geitwojspplat">
+        	<result name="success">/WEB-INF/addplat.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectplat" 
+			class="com.stang.game.ffd.controller.ProjectActionplat">
+			<result name="update">/WEB-INF/updateplat.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listplat" type="redirectAction">
+				platlist
+			</result>
+		</action>
+		
+		
+		<action name="levellist" class="com.stang.game.ffd.controller.LevelListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/levellist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojsplevel" class="com.stang.game.ffd.controller.Geitwojsplevel">
+        	<result name="success">/WEB-INF/addlevel.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectlevel" 
+			class="com.stang.game.ffd.controller.ProjectActionlevel">
+			<result name="update">/WEB-INF/updatelevel.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listlevel" type="redirectAction">
+				levellist
+			</result>
+		</action>
+		
+		
+			<action name="mlevellist" class="com.stang.game.ffd.controller.MLevelListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/mlevellist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspmlevel" class="com.stang.game.ffd.controller.Geitwojspmlevel">
+        	<result name="success">/WEB-INF/addmlevel.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectmlevel" 
+			class="com.stang.game.ffd.controller.ProjectActionmlevel">
+			<result name="update">/WEB-INF/updatemlevel.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listmlevel" type="redirectAction">
+				mlevellist
+			</result>
+		</action>
+		
+		
+		<action name="militarylist" class="com.stang.game.ffd.controller.MilitaryListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/militarylist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspmilitary" class="com.stang.game.ffd.controller.Geitwojspmilitary">
+        	<result name="success">/WEB-INF/addmilitary.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectmilitary" 
+			class="com.stang.game.ffd.controller.ProjectActionmilitary">
+			<result name="update">/WEB-INF/updatemilitary.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listmilitary" type="redirectAction">
+				militarylist
+			</result>
+		</action>
+		
+		
+			<action name="bbufflist" class="com.stang.game.ffd.controller.BbuffListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/bbufflist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspbbuff" class="com.stang.game.ffd.controller.Geitwojspbbuff">
+        	<result name="success">/WEB-INF/addbbuff.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbbuff" 
+			class="com.stang.game.ffd.controller.ProjectActionbbuff">
+			<result name="update">/WEB-INF/updatebbuff.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listbbuff" type="redirectAction">
+				bbufflist
+			</result>
+		</action>
+		
+		
+		<action name="bmaplist" class="com.stang.game.ffd.controller.BmapListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/bmaplist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspbmap" class="com.stang.game.ffd.controller.Geitwojspbmap">
+        	<result name="success">/WEB-INF/addbmap.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbmap" 
+			class="com.stang.game.ffd.controller.ProjectActionbmap">
+			<result name="update">/WEB-INF/updatebmap.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listbmap" type="redirectAction">
+				bmaplist
+			</result>
+		</action>
+		
+		
+		<action name="bskilllist" class="com.stang.game.ffd.controller.BskillListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/bskilllist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspbskill" class="com.stang.game.ffd.controller.Geitwojspbskill">
+        	<result name="success">/WEB-INF/addbskill.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbskill" 
+			class="com.stang.game.ffd.controller.ProjectActionbskill">
+			<result name="update">/WEB-INF/updatebskill.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listbskill" type="redirectAction">
+				bskilllist
+			</result>
+		</action>
+		
+	
+		<action name="missionlist" class="com.stang.game.ffd.controller.MissionListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/missionlist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspmission" class="com.stang.game.ffd.controller.Geitwojspmission">
+        	<result name="success">/WEB-INF/addmission.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectmission" 
+			class="com.stang.game.ffd.controller.ProjectActionmission">
+			<result name="update">/WEB-INF/updatemission.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listmission" type="redirectAction">
+				missionlist
+			</result>
+		</action>
+		
+		
+		<action name="binglist" class="com.stang.game.ffd.controller.BingListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/binglist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspbing" class="com.stang.game.ffd.controller.Geitwojspbing">
+        	<result name="success">/WEB-INF/addbing.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbing" 
+			class="com.stang.game.ffd.controller.ProjectActionbing">
+			<result name="update">/WEB-INF/updatebing.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listbing" type="redirectAction">
+				binglist
+			</result>
+		</action>
+		
+		
+		<action name="gamblinglist" class="com.stang.game.ffd.controller.gamblingListAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/gamblinglist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+			<action name="geitwojspgambling" class="com.stang.game.ffd.controller.Geitwojspgambling">
+        	<result name="success">/WEB-INF/addgambling.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+			<!-- 处理删除，添加，更新等 -->
+		<action name="projectbling" 
+			class="com.stang.game.ffd.controller.ProjectActiongambling">
+			<result name="update">/WEB-INF/updategambling.jsp</result>
+			<result name="error" type="redirect">
+				/error.jsp
+			</result>
+			<result name="listgambling" type="redirectAction">
+				gamblinglist
+			</result> 
+		</action>
+		
+		
+		
+		
+	
+		
+		<!-- gameEquip表 -->
+		<action name="gameequip" class="com.stang.game.ffd.controller.GameEquipAction">
+			<param name="pageSize">15</param>
+			<result name="success">/WEB-INF/gameEquiplist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+		
+			<action name="huodongmanager" class="com.stang.game.ffd.controller.Geihuodong">
+			
+			<result name="success">/WEB-INF/geihuodong.jsp</result>
+		</action>
+			<action name="fuwustatus" class="com.stang.game.ffd.controller.Geifuwu">
+        	<result name="success">/WEB-INF/geifuwu.jsp</result>
+		</action>
+		<action name="shop" class="com.stang.game.ffd.controller.ShopAction">
+        	<result name="success">/WEB-INF/geishop.jsp</result>
+		</action>
+		
+		<action name="logrecord" class="com.stang.game.ffd.controller.LogrecordAction">
+        	<result name="success">/WEB-INF/logrecord.jsp</result>
+		</action>
+		
+		<action name="activitylist" class="com.stang.game.ffd.controller.ActivityListAction">
+        	<result name="success">/WEB-INF/activity/activitylist.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="activitylist2" class="com.stang.game.ffd.controller.ActivityList2Action">
+        	<result name="success">/WEB-INF/activity/updateactivity.jsp</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="serverlist2" class="com.stang.game.ffd.controller.Serverlist2Action">
+        	<result name="success">/admin/updateserversuccess.html</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="updateactivity" class="com.stang.game.ffd.controller.ActivityUpAction">
+        	<result name="success">/WEB-INF/activity/ok.html</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		
+    </package>
+    <include file="struts2.xml"></include>
+    
+</struts>

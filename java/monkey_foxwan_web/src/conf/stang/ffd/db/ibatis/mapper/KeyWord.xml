@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="EntityKeyWord">
+	<typeAlias alias="EntityKeyWordDetail" type="com.stang.game.ffd.entity.detail.EntityKeyWordDetail" />
+	<cacheModel id="KeyWordCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="updateEntityKeyWordDetail" />
+		<flushOnExecute statement="insertEntityKeyWordDetaill" />
+		<flushOnExecute statement="deleteEntityKeyWordDetaill" />
+	</cacheModel>
+	<resultMap class="EntityKeyWordDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="type" column ="TYPE"/>
+		<result property="keyWord" column ="KEY_WORD"/>
+		<result property="flag" column ="FLAG"/>
+	</resultMap>
+	<select id="findEntityKeyWordDetailByParam" parameterClass="java.util.Map" resultMap="listResult" cacheModel="KeyWordCache">
+		SELECT 
+			ID,
+			TYPE,
+			KEY_WORD,
+			FLAG
+			FROM KEY_WORD
+			WHERE
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+			TYPE = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="keyWord">
+			KEY_WORD = #keyWord#
+			</isNotEmpty>
+	</select>
+	<update id="updateEntityKeyWordDetail" parameterClass="EntityKeyWordDetail">
+		UPDATE KEY_WORD SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="type">
+			TYPE = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="keyWord">
+			KEY_WORD = #keyWord#
+		</isNotEmpty>
+			WHERE  ID = #id#
+	</update>
+	<insert id="insertEntityKeyWordDetaill" parameterClass="EntityKeyWordDetail">
+		INSERT INTO KEY_WORD (
+			<isNotEmpty prepend="" property="type">TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="keyWord">KEY_WORD</isNotEmpty>
+			)
+			VALUES(
+			<isNotEmpty prepend="" property="type">#type#</isNotEmpty>
+			<isNotEmpty prepend="," property="keyWord">#keyWord#</isNotEmpty>
+			)
+	</insert>
+	<delete id="deleteEntityKeyWordDetaill" parameterClass="EntityKeyWordDetail">
+		DELETE FROM KEY_WORD WHERE ID = #id# 
+	</delete>
+</sqlMap>

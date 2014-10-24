@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="FilterIP">
+	<typeAlias alias="FilterIPDetail"
+		type="com.stang.game.ffd.entity.detail.EntityFilterIPDetail"/>
+	<resultMap class="FilterIPDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="ip" column="IP" />
+		<result property="server_id" column="SERVER_ID" />
+		<result property="mask" column="MASK" />
+		<result property="releaseall_time" column="RELEASEALL_TIME" />
+		<result property="context" column="CONTEXT" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+	<select id="findFilterIPByMap" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ID, IP, SERVER_ID, MASK, RELEASEALL_TIME, CONTEXT, FLAG
+		FROM FILTER_IP WHERE FLAG = 1
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="ip" prepend="AND">
+			IP = #ip#
+		</isNotEmpty>
+		<isNotEmpty property="server_id" prepend="AND">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty property="mask" prepend="AND">
+			MASK = #mask#
+		</isNotEmpty>
+		<isNotEmpty property="releaseall_time" prepend="AND">
+			RELEASEALL_TIME=#releaseall_time#
+		</isNotEmpty>
+		<isNotEmpty property="context" prepend="AND">
+			CONTEXT = #context#
+		</isNotEmpty>
+	</select>
+	
+	<update id="updateFilterIPDetail" parameterClass="FilterIPDetail">
+		UPDATE FILTER_IP SET 
+		<isNotEmpty prepend="" property="ip">
+			IP = #ip#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="server_id">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mask">
+			MASK = #mask#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="releaseall_time">
+			RELEASEALL_TIME = #releaseall_time#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="context">
+			CONTEXT = #context#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>	
+	<insert id="insertFilterIPDetail" parameterClass="FilterIPDetail">
+			INSERT INTO FILTER_IP (
+			<isNotEmpty prepend="" property="ip">IP</isNotEmpty>
+			<isNotEmpty prepend="," property="server_id">SERVER_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="mask">MASK</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseall_time">RELEASEALL_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="context">CONTEXT</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="ip">#ip#</isNotEmpty>
+			<isNotEmpty prepend="," property="server_id">#server_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="mask">#mask#</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseall_time">#releaseall_time#</isNotEmpty>
+			<isNotEmpty prepend="," property="context">#context#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+		)
+	</insert>
+
+</sqlMap>

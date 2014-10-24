@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMailAttachments">
+	<typeAlias alias="GameMailAttachmentsDetail" type="com.stang.game.ffd.entity.detail.GameMailAttachmentsDetail" />
+	
+	<cacheModel id="GameMailAttachmentsCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameMailAttachmentsDetail"/>
+		<flushOnExecute statement="updateGameMailAttachmentsDetail"/>
+		<flushOnExecute statement="updateGameMailAttIsOpen"/>
+		<flushOnExecute statement="deleteGameMailAttById"/>
+		<flushOnExecute statement="deleteGameMailAttsByMailId"/>
+		<flushOnExecute statement="batchDeleteGameMailAtts"/>
+		<flushOnExecute statement="batchDeleteGameMailAttsByMailIds"/>
+	</cacheModel>
+	
+	<resultMap class="GameMailAttachmentsDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="mailId" column="MAIL_ID"/>
+		<result property="attType" column="ATT_TYPE"/>
+		<result property="attResId" column="ATT_RES_ID"/>
+		<result property="attResNum" column="ATT_RES_NUM"/>
+		<result property="flag" column="FLAG"/>
+		<result property="isBase" column="IS_BASE"/>
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertGameMailAttachmentsDetail" parameterClass="GameMailAttachmentsDetail">
+		INSERT INTO GAME_MAIL_ATTACHMENTS (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="mailId">MAIL_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="attType">ATT_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="attResId">ATT_RES_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="attResNum">ATT_RES_NUM</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">IS_BASE</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="mailId">#mailId#</isNotEmpty>
+			<isNotEmpty prepend="," property="attType">#attType#</isNotEmpty>
+			<isNotEmpty prepend="," property="attResId">#attResId#</isNotEmpty>
+			<isNotEmpty prepend="," property="attResNum">#attResNum#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBase">#isBase#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新大区信息 -->
+	<update id="updateGameMailAttachmentsDetail" parameterClass="GameMailAttachmentsDetail">
+		UPDATE GAME_MAIL_ATTACHMENTS SET 
+		<isNotEmpty prepend="" property="mailId">
+			MAIL_ID = #mailId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="attType">
+			ATT_TYPE = #attType#
+		</isNotEmpty>		
+		<isNotEmpty prepend="," property="attResId">
+			ATT_RES_ID = #attResId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="attResNum">
+			ATT_RES_NUM = #attResNum#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBase">
+			IS_BASE = #isBase#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 获得信息 -->
+	<select id="getGameMailAttachmentsDetail" resultMap="listResult" parameterClass="java.util.Map" >
+		SELECT 
+			ID,
+			MAIL_ID,
+			ATT_TYPE,
+			ATT_RES_ID,
+			ATT_RES_NUM,
+			FLAG,
+			IS_BASE  
+		FROM 
+			GAME_MAIL_ATTACHMENTS    
+		WHERE FLAG >= 0 	
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="mailId" prepend="AND">
+    	   		MAIL_ID = #mailId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attType" prepend="AND">
+    	   		ATT_TYPE = #attType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attResId" prepend="AND">
+    	   		ATT_RES_ID = #attResId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attResNum" prepend="AND">
+    	   		ATT_RES_NUM = #attResNum# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isBase" prepend="AND">
+    	   		IS_BASE = #isBase# 
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 全条件获得信息 -->
+	<select id="getGameMailAttachmentsByParam" resultMap="listResult" parameterClass="java.util.Map" >
+		SELECT 
+			ID,
+			MAIL_ID,
+			ATT_TYPE,
+			ATT_RES_ID,
+			ATT_RES_NUM,
+			FLAG,
+			IS_BASE  
+		FROM 
+			GAME_MAIL_ATTACHMENTS    
+		WHERE  
+			<isNotEmpty property="flag" prepend="">
+    	   		FLAG = #flag# 
+    	   	</isNotEmpty>
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="mailId" prepend="AND">
+    	   		MAIL_ID = #mailId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attType" prepend="AND">
+    	   		ATT_TYPE = #attType# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attResId" prepend="AND">
+    	   		ATT_RES_ID = #attResId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="attResNum" prepend="AND">
+    	   		ATT_RES_NUM = #attResNum# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isBase" prepend="AND">
+    	   		IS_BASE = #isBase# 
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 根据邮件序号组获得邮件附件信息 -->
+	<select id="getGameMailAttsByMailIds" resultMap="listResult" parameterClass="java.util.Map" >
+		SELECT 
+			ID,
+			MAIL_ID,
+			ATT_TYPE,
+			ATT_RES_ID,
+			ATT_RES_NUM,
+			FLAG,
+			IS_BASE  
+		FROM 
+			GAME_MAIL_ATTACHMENTS    
+		<dynamic prepend="WHERE"> 
+			<![CDATA[ FLAG > -1 ]]> AND 
+			<isNotNull prepend="AND">   
+           	MAIL_ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>
+	</select>
+	
+	
+	<!-- 打开(游戏邮件)附件 -->
+	<update id="updateGameMailAttIsOpen" parameterClass="java.util.Map">
+		UPDATE GAME_MAIL_ATTACHMENTS SET FLAG = 1 WHERE ID = #id#
+	</update>
+	
+	<!-- 根据邮件附件序号删除邮件附件 -->
+	<delete id="deleteGameMailAttById" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL_ATTACHMENTS WHERE ID = #id# 
+	</delete>
+	
+	<!-- 根据邮件序号删除邮件附件 -->
+	<delete id="deleteGameMailAttsByMailId" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL_ATTACHMENTS WHERE MAIL_ID = #mailId# 
+	</delete>
+	
+	<!-- 批量删除邮件附件 -->
+	<delete id="batchDeleteGameMailAtts" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL_ATTACHMENTS  
+		<dynamic prepend="WHERE"> 
+			<isNotNull prepend="">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>  
+	</delete>
+	
+	<!-- 根据邮件序号组批量删除邮件附件 -->
+	<delete id="batchDeleteGameMailAttsByMailIds" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL_ATTACHMENTS  
+		<dynamic prepend="WHERE"> 
+			<isNotNull prepend="">   
+           	MAIL_ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>  
+	</delete>
+	
+</sqlMap>

@@ -1,0 +1,70 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameChLevel">
+	<typeAlias alias="GameChLevelDetail"
+		type="com.stang.game.entity.detail.GameChLevelDetail" />
+
+	<cacheModel id="GameChLevelCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameChLevelDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="gongxun" column="gongxun" />
+		<result property="ta" column="ta" />
+		<result property="type" column="type" />
+		<result property="flag" column="flag" />
+		<result property="time" column="time" />
+	</resultMap>
+
+	
+	<select id="getGameChlevel" resultMap="listResult"  >
+		SELECT * FROM game_chlevel
+	</select>
+	
+		<select id="findAllChlevel"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_chlevel  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameChlevelByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_chlevel WHERE id=#id#
+	</select>
+	
+	
+	<insert id="insertGameCHLevel" parameterClass="GameChLevelDetail">
+		INSERT INTO game_chlevel(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="ta">ta</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+			<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">#gongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="ta">#ta#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+
+<update id="updateGameGameCHLevel" parameterClass="java.util.HashMap">
+		UPDATE game_chlevel SET 
+			name = #name#,
+			level = #level#,
+			gongxun = #gongxun#,
+			ta = #ta#,
+			type = #type#,
+			flag = #flag#
+		WHERE id =#id#
+	</update>
+
+</sqlMap>

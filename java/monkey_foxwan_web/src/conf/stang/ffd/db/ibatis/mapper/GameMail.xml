@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameMail">
+	<typeAlias alias="GameMailDetail" type="com.stang.game.ffd.entity.detail.GameMailDetail" />
+	
+	<cacheModel id="GameMailCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameMailDetail"/>
+		<flushOnExecute statement="updateGameMailDetail"/>
+		<flushOnExecute statement="updateGameMailIsOpen"/>
+		<flushOnExecute statement="deleteGameMailById"/>
+		<flushOnExecute statement="batchDeleteGameMails"/>
+	</cacheModel>
+	
+	<resultMap class="GameMailDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="mailTitle" column="MAIL_TITLE"/>
+		<result property="mailContent" column="MAIL_CONTENT"/>
+		<result property="sender" column="SENDER"/>
+		<result property="receiver" column="RECEIVER"/>
+		<result property="fee" column="FEE"/>
+		<result property="sendTime" column="SEND_TIME"/>
+		<result property="openTime" column="OPEN_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="isGold" column="IS_GOLD"/>
+	</resultMap>
+	
+	<!-- 录入大区信息 -->
+	<insert id="insertGameMailDetail" parameterClass="GameMailDetail">
+		INSERT INTO GAME_MAIL (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="mailTitle">MAIL_TITLE</isNotEmpty>
+			<isNotEmpty prepend="," property="mailContent">MAIL_CONTENT</isNotEmpty>
+			<isNotEmpty prepend="," property="sender">SENDER</isNotEmpty>
+			<isNotEmpty prepend="," property="receiver">RECEIVER</isNotEmpty>
+			<isNotEmpty prepend="," property="fee">FEE</isNotEmpty>
+			<isNotEmpty prepend="," property="sendTime">SEND_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="openTime">OPEN_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="isGold">IS_GOLD</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="mailTitle">#mailTitle#</isNotEmpty>
+			<isNotEmpty prepend="," property="mailContent">#mailContent#</isNotEmpty>
+			<isNotEmpty prepend="," property="sender">#sender#</isNotEmpty>
+			<isNotEmpty prepend="," property="receiver">#receiver#</isNotEmpty>
+			<isNotEmpty prepend="," property="fee">#fee#</isNotEmpty>
+			<isNotEmpty prepend="," property="sendTime">#sendTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="openTime">#openTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="isGold">#isGold#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新大区信息 -->
+	<update id="updateGameMailDetail" parameterClass="GameMailDetail">
+		UPDATE GAME_MAIL SET 
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mailTitle">
+			MAIL_TITLE = #mailTitle#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="mailContent">
+			MAIL_CONTENT = #mailContent#
+		</isNotEmpty>		
+		<isNotEmpty prepend="," property="sender">
+			SENDER = #sender#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="receiver">
+			RECEIVER = #receiver#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="fee">
+			FEE = #fee#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sendTime">
+			SEND_TIME = #sendTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="openTime">
+			OPEN_TIME = #openTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isGold">
+			IS_GOLD = #isGold# 
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 邮件打开 -->
+	<update id="updateGameMailIsOpen" parameterClass="java.util.Map">
+		UPDATE GAME_MAIL SET FLAG = 1 WHERE ID = #id#
+	</update>
+	
+	<!-- 邮件已付费 -->
+	<update id="updateGameMailIsGold" parameterClass="java.util.Map">
+		UPDATE GAME_MAIL SET IS_GOLD = 3 WHERE ID = #id#
+	</update>
+	
+	<!-- 邮件删除 -->
+	<delete id="deleteGameMailById" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL WHERE ID = #id# 
+	</delete>
+	
+	<!-- 邮件批量删除 -->
+	<delete id="batchDeleteGameMails" parameterClass="java.util.Map">
+		DELETE FROM GAME_MAIL  
+		<dynamic prepend="WHERE"> 
+			<isNotNull prepend="">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>  
+	</delete>
+	
+	<!-- 获得信息 -->
+	<select id="getGameMailDetail" resultMap="listResult" parameterClass="java.util.Map">
+		SELECT 
+			ID,
+			MAIL_TITLE,
+			MAIL_CONTENT,
+			SENDER,
+			RECEIVER,
+			FEE,
+			SEND_TIME,
+			OPEN_TIME,
+			FLAG,
+			IS_GOLD   
+		FROM 
+			GAME_MAIL    
+		WHERE FLAG > -1 	
+			<isNotEmpty property="id" prepend="AND">
+    	   		ID = #id# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="mailTitle" prepend="AND">
+    	   		MAIL_TITLE = #mailTitle# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="mailContent" prepend="AND">
+    	   		MAIL_CONTENT = #mailContent# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sender" prepend="AND">
+    	   		SENDER = #sender# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="receiver" prepend="AND">
+    	   		RECEIVER = #receiver# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="fee" prepend="AND">
+    	   		FEE = #fee# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="isGold" prepend="AND">
+    	   		IS_GOLD = #isGold# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sendTime" prepend="AND">
+    	   		SEND_TIME = #sendTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="openTime" prepend="AND">
+    	   		OPEN_TIME = #openTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="timeBegin" prepend="AND">
+    	   		SEND_TIME <![CDATA[ > ]]> #timeBegin# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="timeEnd" prepend="AND">
+    	   		SEND_TIME <![CDATA[ < ]]> #timeEnd# 
+    	   	</isNotEmpty>
+    	   	ORDER BY SEND_TIME DESC
+	</select>
+	
+	<select id="getGameMailsByTime" resultMap="listResult" parameterClass="java.util.Map">
+		SELECT 
+			ID,
+			MAIL_TITLE,
+			MAIL_CONTENT,
+			SENDER,
+			RECEIVER,
+			FEE,
+			SEND_TIME,
+			OPEN_TIME,
+			FLAG,
+			IS_GOLD   
+		FROM 
+			GAME_MAIL    
+		WHERE FLAG > -1  AND  
+				FEE > 0  AND  
+				IS_GOLD <![CDATA[ <> ]]> 3
+    	   	<isNotEmpty property="sendTime" prepend="AND">
+    	   		SEND_TIME > #sendTime# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="sendTimeE" prepend="AND">
+    	   		SEND_TIME <![CDATA[ < ]]> #sendTimeE# 
+    	   	</isNotEmpty>
+	</select>
+	
+</sqlMap>

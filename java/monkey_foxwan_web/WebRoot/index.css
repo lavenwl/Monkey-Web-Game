@@ -1,0 +1,186 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+    font: 12px tahoma,'ËÎÌå',sans-serif;
+        font-family: tahoma,'ËÎÌå',sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: normal;
+        font-size-adjust: none;
+        font-stretch: normal;
+        -x-system-font: none;
+        -moz-font-feature-settings: normal;
+        -moz-font-language-override: normal;
+    color: rgb(239, 190, 105);
+}
+.my_select_zone {
+    background: none no-repeat scroll 0px 0px #402c26;
+        background-color: #402c26;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: 0px 0px;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-size: auto auto;
+    border-radius: 2px 2px 2px 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+    text-align: center;
+    padding: 5px 10px;
+        padding-top: 5px;
+        padding-right-value: 10px;
+        padding-bottom: 5px;
+        padding-left-value: 10px;
+        padding-left-ltr-source: physical;
+        padding-left-rtl-source: physical;
+        padding-right-ltr-source: physical;
+        padding-right-rtl-source: physical;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    top: 451px;
+	position: absolute;
+	left: 203px;
+}
+.my_select_server {
+    color: #ffa800;
+}
+.my_select_link {
+    color: #ffffff;
+}
+a{text-decoration:none;}
+
+.wrapper {
+	width: 950px;
+	margin: 0 auto;
+	overflow: hidden;
+	
+}
+
+.content {
+	#background: url(img/content.png) no-repeat center top;
+	height: 580px;
+	position: relative
+}
+
+/*ï¿½ï¿½Ü°ï¿½ï¿½Ê¾*/
+.warmtips {
+	bottom: 0px;
+	height: 50px;
+	background-color: #5555FF;
+	position: relative
+}
+
+.warmtips p {
+	font-size: 12px;
+	line-height: 20px;
+	padding: 5px 20px;
+	color: #FFFFFF;
+}
+
+#memberUsername {
+	width: 180px;
+	height: 22px;
+	top: 219px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	font-family: Verdana, "ï¿½ï¿½ï¿½ï¿½";
+}
+
+#memberPassword {
+	width: 180px;
+	height: 22px;
+	top: 277px;
+	left: 320px;
+	position: absolute;
+	background: transparent;
+	border: 0;
+	color: #fff;
+}
+#all_top {
+	background: url('img/top2.jpg');
+	width: 950px;
+	margin: 0 auto;
+}
+#all_foot {
+	background: url('');
+	width: 950px;
+	margin: 0 auto;
+}
+
+#tijiao {
+	width: 120px;
+	height: 48px;
+	top: 330px;
+	left: 340px;
+	position: absolute;
+}
+
+.denglu,.denglu2 {
+	width: 210px;
+	height: 84px;
+	top: 350px;
+	left: 200px;
+	position: absolute;
+	display: block;
+	border: 0;
+	text-indent: -9999999px;
+	overflow: hidden;
+}
+
+.denglu {
+	background: url(img/tower-login.png) no-repeat 0 0;
+	
+}
+
+.denglu2 {
+	background: url(img/tower-login2.png) no-repeat 0 0;
+}
+
+#foot{
+	background-color:#000000;
+	width: 950px;
+	margin: 0 auto;
+	font-size:12px;
+	float:left;
+	font-family:"ºÚÌå";
+	text-align: center;
+	line-height:0.5;
+	color: #fff664;
+	padding-top:10px;
+}
+
+#lixing{
+	background: url(img/lixing.jpg) no-repeat 0 0;
+	margin:0 auto;
+	width: 760px;
+	height:404px;
+}
+
+#linshi{
+	background: url(img/linshi.jpg) no-repeat 0 0;
+	margin:0 auto;
+	width: 760px;
+	height:404px;
+}
+
+#tishi{
+	margin-left:-290px;
+	width:370px;
+	height:145px;
+	/*background-color:red;*/
+	font-size:14px;
+	font-family:"ºÚÌå","ËÎÌå";
+	color:white;
+}

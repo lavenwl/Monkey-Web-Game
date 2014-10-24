@@ -1,0 +1,34 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameTower">
+	<typeAlias alias="GameTowerDetail"
+		type="com.stang.game.entity.detail.GameTowerDetail" />
+
+	<cacheModel id="GameTowerCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameTowerDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="desc" column="desc" />
+		<result property="type" column="type" />
+		<result property="shottype" column="shottype" />
+		<result property="bombtype" column="bombtype" />
+		<result property="gjextra" column="gjextra" />
+		<result property="gsextra" column="gsextra" />
+		<result property="fwextra" column="fwextra" />
+		<result property="fanwei" column="fanwei" />
+		<result property="description" column="description" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	<select id="getGameTower" resultClass="GameTowerDetail">
+		SELECT * FROM game_tower WHERE FLAG =1
+	</select>
+
+	<select id="getGameTowerLevel" resultClass="GameTowerDetail" cacheModel="GameTowerCache">
+		SELECT * FROM game_tower WHERE FLAG =1 and id=#towerid#
+	</select>
+</sqlMap>

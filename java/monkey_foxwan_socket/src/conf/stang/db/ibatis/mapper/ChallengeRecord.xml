@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="ChallengeRecord">
+	<typeAlias alias="ChallengeRecordDetail"
+		type="com.stang.game.entity.detail.ChallengeRecordDetail" />
+
+	<cacheModel id="challengeCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertChallengerecord" />
+		<flushOnExecute statement="updateChallenge" />
+	</cacheModel>
+
+	<resultMap class="ChallengeRecordDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="hitid" column="hitid" />
+		<result property="beihitid" column="beihitid" />
+		<result property="time" column="time" />
+		<result property="record" column="record" />
+		<result property="mids" column="mids" />
+		<result property="hitmids" column="hitmids" />
+		<result property="hitname" column="hitname" />
+		<result property="beihitname" column="beihitname" />
+		<result property="winid" column="winid" />
+		<result property="hitrate" column="hitrate" />
+		<result property="beihitrate" column="beihitrate" />
+		<result property="hittoux" column="hittoux" />
+		<result property="beihittoux" column="beihittoux" />
+		<result property="hitlevel" column="hitlevel" />
+		<result property="beihitlevel" column="beihitlevel" />
+		<result property="totem" column="totem" />
+		<result property="totemtwo" column="totemtwo" />
+	</resultMap>
+	<resultMap class="ChallengeRecordDetail" id="listResultId">
+		<result property="id" column="id" />
+		
+	</resultMap>
+	<insert id="insertChallengerecord" parameterClass="java.util.Map">
+		INSERT INTO challenge_record(
+		<isNotEmpty prepend="" property="hitid">hitid</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitid">beihitid</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="record">record</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">mids</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">hitmids</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">hitname</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">beihitname</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">winid</isNotEmpty>
+		<isNotEmpty prepend="," property="hitrate">hitrate</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">beihitrate</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">hittoux</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">beihittoux</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">hitlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">beihitlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">totemtwo</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="hitid">#hitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitid">#beihitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="record">#record:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">#mids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">#hitmids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">#hitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">#beihitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">#winid#</isNotEmpty>
+			<isNotEmpty prepend="," property="hitrate">#hitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">#beihitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">#hittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">#beihittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">#hitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">#beihitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">#totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">#totemtwo#</isNotEmpty>
+		)
+	</insert>
+	<insert id="insertChallengerecords" parameterClass="java.util.List" >
+	      <![CDATA[
+          insert into challenge_record(
+            hitid,
+			beihitid,
+			time,
+			record,
+			mids,
+			hitmids,
+			hitname,
+			beihitname,
+			winid,
+			hitrate,
+			beihitrate,
+			hittoux,
+			beihittoux,
+			hitlevel,
+			beihitlevel,
+			totem
+          ) values
+      ]]>
+      <iterate conjunction=",">
+      <![CDATA[
+          (
+        #list[].hitid#,
+		#list[].beihitid#,
+		#list[].time#,
+		#list[].record#,
+		#list[].mids#,
+		#list[].hitmids#,
+		#list[].hitname#,
+		#list[].beihitname#,
+		#list[].winid#,
+		#list[].hitrate#,
+		#list[].beihitrate#,
+		#list[].hittoux#,
+		#list[].beihittoux#,
+		#list[].hitlevel#,
+		#list[].beihitlevel#,
+		#list[].totem#
+          )
+      ]]>
+      </iterate>
+	</insert>
+	<insert id="insertChallengerecordtwo" parameterClass="ChallengeRecordDetail">
+		INSERT INTO challenge_record(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="hitid">hitid</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitid">beihitid</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="record">record</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">mids</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">hitmids</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">hitname</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">beihitname</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">winid</isNotEmpty>
+		<isNotEmpty prepend="," property="hitrate">hitrate</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">beihitrate</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">hittoux</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">beihittoux</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">hitlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">beihitlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">totemtwo</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitid">#hitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitid">#beihitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="record">#record:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">#mids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">#hitmids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">#hitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">#beihitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">#winid#</isNotEmpty>
+			<isNotEmpty prepend="," property="hitrate">#hitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">#beihitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">#hittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">#beihittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">#hitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">#beihitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">#totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">#totemtwo#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateChallengetwo" parameterClass="ChallengeRecordDetail">
+		UPDATE challenge_record SET  hitid = #hitid#  
+		<isNotEmpty prepend="," property="beihitid">beihitid = #beihitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time = #time#</isNotEmpty>
+		<isNotEmpty prepend="," property="record">record = #record:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">mids = #mids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">hitmids = #hitmids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">hitname = #hitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">beihitname = #beihitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">winid = #winid#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitrate">hitrate = #hitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">beihitrate = #beihitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">hittoux = #hittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">beihittoux = #beihittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">hitlevel = #hitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">beihitlevel = #beihitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem = #totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">totemtwo = #totemtwo#</isNotEmpty>
+		WHERE id =#id#
+	</update>
+	<update id="updateChallenge" parameterClass="java.util.Map">
+		UPDATE challenge_record SET  hitid = #hitid#  
+		<isNotEmpty prepend="," property="beihitid">beihitid = #beihitid#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time = #time#</isNotEmpty>
+		<isNotEmpty prepend="," property="record">record = #record:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="mids">mids = #mids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitmids">hitmids = #hitmids:text#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitname">hitname = #hitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitname">beihitname = #beihitname#</isNotEmpty>
+		<isNotEmpty prepend="," property="winid">winid = #winid#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitrate">hitrate = #hitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitrate">beihitrate = #beihitrate#</isNotEmpty>
+		<isNotEmpty prepend="," property="hittoux">hittoux = #hittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihittoux">beihittoux = #beihittoux#</isNotEmpty>
+		<isNotEmpty prepend="," property="hitlevel">hitlevel = #hitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="beihitlevel">beihitlevel = #beihitlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem = #totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="totemtwo">totemtwo = #totemtwo#</isNotEmpty>
+		WHERE id =#id#
+	</update>
+	<select id="findBychallengetime" parameterClass="java.util.HashMap" resultMap="listResult" >
+		SELECT * FROM challenge_record where beihitid=#beihitid#
+		
+		ORDER BY time desc
+		limit #page#,#size#
+	</select>
+	<select id="findallchallenge" parameterClass="java.util.HashMap" resultMap="listResult" >
+		SELECT id,hitid,beihitid,time,record,mids,hitmids,hitname,beihitname,winid,hitrate,beihitrate,hittoux,beihittoux,hitlevel,beihitlevel FROM challenge_record where beihitid=#beihitid#
+		ORDER BY time asc
+		
+	</select>
+	<select id="findallchallengeId" parameterClass="java.util.HashMap" resultMap="listResultId" >
+		SELECT id FROM challenge_record where beihitid=#beihitid#
+		ORDER BY time asc
+		
+	</select>
+	<select id="findallchallengetwo" parameterClass="java.util.HashMap" resultMap="listResult" >
+		SELECT * FROM challenge_record where beihitid=#beihitid#,hitid=#hitid#
+		ORDER BY time asc	
+	</select>
+	<select id="findAllChallengeRecord" resultMap="listResult">
+		SELECT * FROM challenge_record
+	</select>
+</sqlMap>

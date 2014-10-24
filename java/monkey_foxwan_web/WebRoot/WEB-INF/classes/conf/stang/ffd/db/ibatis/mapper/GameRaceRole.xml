@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRaceRole">
+	<typeAlias alias="GameRaceRoleDetail" type="com.stang.game.ffd.entity.detail.GameRaceRoleDetail" />
+	
+	<cacheModel id="GameRaceRoleCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameRaceRoleDetail"/>
+		<flushOnExecute statement="updateGameRaceRoleDetail"/>
+	</cacheModel>
+	
+	<resultMap class="GameRaceRoleDetail" id="listResult">
+		<result property="roleId" column="ROLE_ID"/>
+		<result property="raceId" column="RACE_ID"/>
+		<result property="rank" column="RANK"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertGameRaceRoleDetail" parameterClass="GameRaceRoleDetail">
+		INSERT INTO GAME_RACE_ROLE (
+			<isNotEmpty prepend="" property="roleId">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="raceId">RACE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="rank">RANK</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="raceId">#raceId#</isNotEmpty>
+			<isNotEmpty prepend="," property="rank">#rank#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateGameRaceRoleDetail" parameterClass="GameRaceRoleDetail">
+		UPDATE GAME_RACE_ROLE SET 
+		<isNotEmpty prepend="" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="raceId">
+			RACE_ID = #raceId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="rank">
+			RANK = #rank#
+		</isNotEmpty>
+		WHERE ROLE_ID = #roleId#
+	</update>
+	
+	
+	<select id="getGameRaceRoleDetail" resultMap="listResult" parameterClass="java.util.Map" cacheModel="GameRaceRoleCache">
+		SELECT 
+			ROLE_ID,
+			RACE_ID,
+			RANK
+		FROM 
+			GAME_RACE_ROLE   
+		WHERE 
+			<isNotEmpty property="roleId" prepend="">
+    	   		ROLE_ID = #roleId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="raceId" prepend="AND">
+    	   		RACE_ID = #raceId# 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="rank" prepend="AND">
+    	   		RANK = #rank# 
+    	   	</isNotEmpty>
+	</select>
+	
+</sqlMap>

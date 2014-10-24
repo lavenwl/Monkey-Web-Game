@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameSkill">
+	<typeAlias alias="GameSkillDetail"
+		type="com.stang.game.entity.detail.GameSkillDetail" />
+
+	<cacheModel id="gameSkillCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameSkillDetail" id="listResult">
+		<result column="id" property="id" />
+		<result column="skillname" property="skillName" />
+		<result column="skilldesc" property="skillDesc" />
+		<result column="skillicon" property="skillIcon" />
+		<result column="skillmc" property="skillMc" />
+		<result column="skillmcclip" property="skillMcclip" />
+		<result column="type" property="type" />
+		<result column="skilltype" property="skillType" />
+		<result column="mpcost" property="mpcost" />
+		<result column="skillcd" property="skillCd" />
+		<result column="skillarea" property="skillArea" />
+		<result column="skillbuffid" property="skillBuffId" />
+		<result column="nameurl" property="nameurl" />		
+		<result column="flag" property="flag" />
+	</resultMap>
+
+
+	
+	
+	<select id="getGameSkill" resultMap="listResult"  >
+		SELECT * FROM game_skill
+	</select>
+		<select id="findAllSkill"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_skill  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameSkillByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_skill WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameSkill" parameterClass="GameSkillDetail">
+		INSERT INTO game_skill(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="skillName">skillname</isNotEmpty>
+		<isNotEmpty prepend="," property="skillDesc">skilldesc</isNotEmpty>
+		<isNotEmpty prepend="," property="skillIcon">skillicon</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMc">skillmc</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMcclip">skillmcclip</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="skillType">skilltype</isNotEmpty>
+		<isNotEmpty prepend="," property="mpcost">mpcost</isNotEmpty>
+		<isNotEmpty prepend="," property="skillCd">skillcd</isNotEmpty>
+		<isNotEmpty prepend="," property="skillArea">skillarea</isNotEmpty>
+		<isNotEmpty prepend="," property="skillBuffId">skillbuffId</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="nameurl">nameurl</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillName">#skillName#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillDesc">#skillDesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillIcon">#skillIcon#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMc">#skillMc#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillMcclip">#skillMcclip#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="skillType">#skillType#</isNotEmpty>
+		<isNotEmpty prepend="," property="mpcost">#mpcost#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillCd">#skillCd#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillArea">#skillArea#</isNotEmpty>
+			<isNotEmpty prepend="," property="skillBuffId">#skillBuffId#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="nameurl">#nameurl#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameSkill" parameterClass="java.util.HashMap">
+		UPDATE game_skill SET 
+			skillname = #skillName#,
+			skilldesc = #skillDesc#,
+			skillicon = #skillIcon#,
+			skillmc = #skillMc#,
+			skillmcclip = #skillMcclip#,
+			type = #type#,
+			skilltype = #skillType#,
+			mpcost = #mpcost#,
+			skillcd = #skillCd#,
+			skillarea = #skillArea#,
+			skillbuffId = #skillBuffId#,
+			flag = #flag#,
+			nameurl = #nameurl#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

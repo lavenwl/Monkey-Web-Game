@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameJingjiStatic">
+	<typeAlias alias="GameJingjiStaticDetail"
+		type="com.stang.game.entity.detail.GameJingjiStaticDetail" />
+
+	<cacheModel id="gameJingjiStaticCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertGameJingji" />
+		<flushOnExecute statement="updateGameJingjiByParams" />
+		<flushOnExecute statement="addGameJingjiIndexes" />
+	</cacheModel>
+
+	<resultMap class="GameJingjiStaticDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="indexes" column="indexes" />
+		<result property="roleid" column="roleid" />
+		<result property="name" column="name" />
+		<result property="mapid" column="mapid" />
+		<result property="vip" column="vip" />
+		<result property="serverid" column="serverid"/>
+		<result property="sum" column="sum" />
+		<result property="mapreg" column="mapreg" />
+		<result property="num" column="num" />
+		<result property="level" column="level" />
+		<result property="zxueliang" column="zxueliang"/>
+		<result property="flag" column="flag"/>
+		<result property="success" column="success"/>
+		<result property="totals" column="totals"/>
+	</resultMap>
+	
+	<select id="findAllGameJingjiStatic" resultMap="listResult">
+		SELECT * FROM game_jingji_static
+	</select>
+	
+	
+
+	<insert id="insertGameJingji" parameterClass="java.util.HashMap">
+		INSERT INTO game_jingji_static(
+			<isNotEmpty prepend="" property="roleid">roleid</isNotEmpty>
+			<isNotEmpty prepend="," property="indexes">indexes</isNotEmpty>
+			<isNotEmpty prepend="," property="name">name</isNotEmpty>
+			<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+			<isNotEmpty prepend="," property="vip">vip</isNotEmpty>
+			<isNotEmpty prepend="," property="serverid">serverid</isNotEmpty>
+			<isNotEmpty prepend="," property="sum">sum</isNotEmpty>
+			<isNotEmpty prepend="," property="mapreg">mapreg</isNotEmpty>
+			<isNotEmpty prepend="," property="num">num</isNotEmpty>
+			<isNotEmpty prepend="," property="level">level</isNotEmpty>
+			<isNotEmpty prepend="," property="zxueliang">zxueliang</isNotEmpty>
+		)VALUES(
+			<isNotEmpty prepend="" property="roleid">#roleid#</isNotEmpty>
+			<isNotEmpty prepend="," property="indexes">#indexes#</isNotEmpty>
+			<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+			<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+			<isNotEmpty prepend="," property="vip">#vip#</isNotEmpty>
+			<isNotEmpty prepend="," property="serverid">#serverid#</isNotEmpty>
+			<isNotEmpty prepend="," property="sum">#sum#</isNotEmpty>
+			<isNotEmpty prepend="," property="mapreg">#mapreg#</isNotEmpty>
+			<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+			<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+			<isNotEmpty prepend="," property="zxueliang">#zxueliang#</isNotEmpty>
+		)
+	</insert>
+	
+	<select id="getGameJingjiByServerid" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE serverid = #serverid#
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="indexes">
+			indexes in ($indexes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mapreg">
+			mapreg = #mapreg#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getGameJingjiByServeridtwo" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE mapreg = #mapreg#
+		<isNotEmpty prepend="AND" property="roleid">
+			roleid = #roleid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="serverid">
+			serverid = #serverid#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="indexes">
+			indexes in ($indexes$)
+		</isNotEmpty>
+		
+	</select>
+	
+	<select id="getGameJingjiMax" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE serverid=#serverid#
+		<isNotEmpty prepend="AND" property="mapreg"> mapreg = #mapreg# </isNotEmpty>
+		ORDER BY indexes desc 
+		LIMIT 1
+	</select>
+	
+	<select id="getGameJingjiByLimit" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE serverid = #serverid#
+		<isNotEmpty prepend="AND" property="mapreg">
+			mapreg = #mapreg#
+		</isNotEmpty>
+		ORDER BY indexes,level desc
+		LIMIT #page#,#size#
+	</select>
+	
+	<select id="getGameJingjiByIndexes" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE serverid = #serverid#
+		<isNotEmpty prepend="AND" property="mapreg"> mapreg = #mapreg# </isNotEmpty>
+		<isNotEmpty prepend="AND" property="indexes"> indexes = #indexes# </isNotEmpty>
+	</select>
+	<select id="getGameJingjiByIndexestwo" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_jingji_static WHERE mapreg = #mapreg# and indexes = #indexes#
+	</select>
+	
+	<update id="updateGameJingjiByParams" parameterClass="java.util.HashMap">
+		UPDATE game_jingji_static SET indexes=#indexes#
+		<isNotEmpty prepend="," property="mapid"> mapid = #mapid# </isNotEmpty>
+		<isNotEmpty prepend="," property="name"> name = #name# </isNotEmpty>
+		<isNotEmpty prepend="," property="mapreg"> mapreg = #mapreg# </isNotEmpty>
+		<isNotEmpty prepend="," property="vip"> vip = #vip# </isNotEmpty>
+		<isNotEmpty prepend="," property="num"> num = #num# </isNotEmpty>
+		<isNotEmpty prepend="," property="level"> level = #level# </isNotEmpty>
+		<isNotEmpty prepend="," property="totals"> totals = #totals# </isNotEmpty>
+		<isNotEmpty prepend="," property="success"> success = #success# </isNotEmpty>
+		WHERE serverid = #serverid#
+		<isNotEmpty prepend="AND" property="roleid"> roleid = #roleid# </isNotEmpty>
+	</update>
+	
+	<update id="addGameJingjiIndexes" parameterClass="java.util.HashMap">
+		UPDATE game_jingji_static set indexes = indexes - 1
+		WHERE serverid = #serverid# AND mapreg = #mapreg# AND indexes &gt; #indexes#
+		
+	</update>
+</sqlMap>

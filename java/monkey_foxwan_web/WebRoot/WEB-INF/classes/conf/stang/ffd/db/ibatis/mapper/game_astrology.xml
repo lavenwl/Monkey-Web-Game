@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="game_astrology">
+	<typeAlias alias="EntityGameAstrologyDetail" type="com.stang.game.ffd.entity.detail.EntityGameAstrologyDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityGameAstrologyDetail" id="listResult">
+		<result property="astrology_id" column="ASTROLOGY_ID"/>
+		<result property="astrology_type" column="ASTROLOGY_TYPE"/>
+		<result property="astrology_quality" column="ASTROLOGY_QUALITY"/>
+		<result property="astrology_sellprice" column="ASTROLOGY_SELLPRICE"/>
+		<result property="astrology_initial" column="ASTROLOGY_INITIAL" />
+		<result property="astrology_name" column="ASTROLOGY_NAME" />
+		<result property="astrology_flag" column="ASTROLOGY_FLAG" />
+		<result property="astrology_src" column="ASTROLOGY_SRC" />
+		
+	</resultMap>
+		
+		<!-- 添加新的星魂模型数据 -->	
+		<insert id="addGameAstrology" parameterClass="EntityGameAstrologyDetail">
+		INSERT INTO GAME_ASTROLOGY(
+		<isNotEmpty prepend="" property="astrology_type">ASTROLOGY_TYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_quality">ASTROLOGY_QUALITY</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_flag">ASTROLOGY_FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_sellprice">ASTROLOGY_SELLPRICE</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_initial">ASTROLOGY_INITIAL</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_name">ASTROLOGY_NAME</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_src">ASTROLOGY_SRC</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="astrology_type">#astrology_type#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_quality">#astrology_quality#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_flag">#astrology_flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_sellprice">#astrology_sellprice#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_initial">#astrology_initial#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_name">#astrology_name#</isNotEmpty>
+		<isNotEmpty prepend="," property="astrology_src">#astrology_src#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 查询所有星魂的数据 -->
+	<select id="findGameAstrology" parameterClass="java.util.HashMap" resultMap="listResult">
+	SELECT 
+	ASTROLOGY_ID,
+	ASTROLOGY_TYPE,
+	ASTROLOGY_QUALITY,
+	ASTROLOGY_SELLPRICE,
+	ASTROLOGY_INITIAL,
+	ASTROLOGY_NAME,
+	ASTROLOGY_SRC,
+	ASTROLOGY_FLAG
+	FROM
+	GAME_ASTROLOGY
+		<dynamic prepend="WHERE"> 
+		 <isNotEmpty property="astrology_id" prepend="AND">
+    	   		ASTROLOGY_ID = #astrology_id#
+    	 </isNotEmpty>
+		 <isNotEmpty property="astrology_type" prepend="AND">
+    	   		ASTROLOGY_TYPE = #astrology_type#
+	     </isNotEmpty>
+    	 <isNotEmpty property="astrology_quality" prepend="AND">
+    	   		ASTROLOGY_QUALITY = #astrology_quality#
+    	 </isNotEmpty>
+    	 <isNotEmpty property="astrology_sellprice" prepend="AND">
+    	   		ASTROLOGY_SELLPRICE = #astrology_sellprice#
+    	 </isNotEmpty>
+    	  <isNotEmpty property="astrology_initial" prepend="AND">
+    	   		ASTROLOGY_INITIAL = #astrology_initial#
+    	 </isNotEmpty>
+    	  <isNotEmpty property="astrology_name" prepend="AND">
+    	   		ASTROLOGY_NAME = #astrology_name#
+    	 </isNotEmpty>
+    	   <isNotEmpty property="astrology_src" prepend="AND">
+    	   		ASTROLOGY_SRC = #astrology_src#
+    	 </isNotEmpty>
+    	  <isNotEmpty property="astrology_flag" prepend="AND">
+    	   		ASTROLOGY_FLAG = #astrology_flag#
+    	 </isNotEmpty>
+			<!--<isNotNull prepend="AND">   
+           	ID IN    
+	             <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>
+            </isNotNull> -->   
+		</dynamic>	
+	</select>
+	
+</sqlMap>
+		
+		

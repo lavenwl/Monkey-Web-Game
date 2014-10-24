@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBmap">
+	<typeAlias alias="GameBmapDetail"
+		type="com.stang.game.entity.detail.GameBmapDetail" />
+
+	<cacheModel id="gameBmapCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBmapDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="nandu" column="nandu" />
+		<result property="chubing" column="chubing" />
+		<result property="isagain" column="isagain" />
+		<result property="flag" column="flag" />
+		<result property="startlv" column="startlv" />
+		<result property="startnum" column="startnum" />
+		<result property="dengji" column="dengji" />
+		<result property="getexp" column="getexp" />
+		<result property="getyin" column="getyin" />
+		<result property="getgongxun" column="getgongxun" />
+		
+	</resultMap>
+
+	
+	<select id="getGameBmap" resultMap="listResult"  >
+		SELECT * FROM game_bmap
+	</select>
+	
+		<select id="findAllBmap"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_bmap  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameBmapByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_bmap WHERE id=#id#
+	</select>
+	
+	<insert id="insertGameBmap" parameterClass="GameBmapDetail">
+		INSERT INTO game_bmap(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="dengji">dengji</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">nandu</isNotEmpty>
+		<isNotEmpty prepend="," property="chubing">chubing</isNotEmpty>
+		<isNotEmpty prepend="," property="isagain">isagain</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="startlv">startlv</isNotEmpty>
+		<isNotEmpty prepend="," property="startnum">startnum</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">getexp</isNotEmpty>
+		<isNotEmpty prepend="," property="getyin">getyin</isNotEmpty>
+		<isNotEmpty prepend="," property="getgongxun">getgongxun</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="dengji">#dengji#</isNotEmpty>
+		<isNotEmpty prepend="," property="nandu">#nandu#</isNotEmpty>
+		<isNotEmpty prepend="," property="chubing">#chubing#</isNotEmpty>
+		<isNotEmpty prepend="," property="isagain">#isagain#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="startlv">#startlv#</isNotEmpty>
+		<isNotEmpty prepend="," property="startnum">#startnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="getexp">#getexp#</isNotEmpty>
+			<isNotEmpty prepend="," property="getyin">#getyin#</isNotEmpty>
+			<isNotEmpty prepend="," property="getgongxun">#getgongxun#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGameBmap" parameterClass="java.util.HashMap">
+		UPDATE game_bmap SET 
+			name = #name#,
+			dengji = #dengji#,
+			nandu = #nandu#,
+			chubing = #chubing#,
+			isagain = #isagain#,
+			flag = #flag#,
+			startlv = #startlv#,
+			startnum = #startnum#,
+			getexp = #getexp#,
+			getyin = #getyin#,
+			getgongxun = #getgongxun#
+		WHERE id =#id#
+	</update>
+</sqlMap>

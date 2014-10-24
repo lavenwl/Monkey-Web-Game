@@ -1,0 +1,46 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameEquip">
+	<typeAlias alias="GameEquipDetail"
+		type="com.stang.game.entity.detail.GameEquipDetail" />
+
+	<cacheModel id="GameEquipCache" type="OSCACHE">
+		<flushInterval hours="10" />
+	</cacheModel>
+
+	<resultMap class="GameEquipDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="equipname" column="equipname" />
+		<result property="equipurl" column="equipurl" />
+		<result property="equiptype" column="equiptype" />
+		<result property="type" column="type" />
+		<result property="gongji" column="gongji" />
+		<result property="fanwei" column="fanwei" />
+		<result property="sudu" column="sudu" />
+		<result property="xueliang" column="xueliang" />
+		<result property="extra" column="extra" />
+		<result property="level" column="level" />
+		<result property="flag" column="flag" />
+		<result property="coin" column="coin" />
+		<result property="isshop" column="isshop" />
+		<result property="desc" column="desc" />
+		<result property="cointype" column="cointype" />
+		<result property="quality" column="quality" />
+		<result property="isstar" column="isstar" />
+		<result property="eatequipid" column="eatequipid" />
+	</resultMap>
+
+	<select id="getGameEquip" resultClass="GameEquipDetail" >
+		SELECT * FROM game_equips WHERE FLAG =1
+	</select>
+	
+	<select id="getGameEquipById"  parameterClass="int" resultMap="listResult"
+	resultClass="GameEquipDetail" cacheModel="GameEquipCache">
+		SELECT * from game_equips where flag =1 and id=#id#
+	</select>
+	
+	<select id="getGameEquipByEid" parameterClass="int"  resultClass="GameEquipDetail" cacheModel="GameEquipCache">
+		SELECT * FROM game_equips WHERE id =#id#
+	</select>
+
+</sqlMap>

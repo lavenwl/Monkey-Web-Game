@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameTaskFormal">
+	<typeAlias alias="GameTaskFormalDetail" type="com.stang.game.ffd.entity.detail.GameTaskFormalDetail" />
+	
+	<cacheModel id="GameTaskFormalCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertGameTaskFormalDetail"/>
+		<flushOnExecute statement="updateGameTaskFormalDetail"/>
+		<flushOnExecute statement="deleteGameTaskFormals"/>
+		
+		<!--flushOnExecute statement="batchDeleteGameTasks"/-->
+	</cacheModel>
+	
+	<resultMap class="GameTaskFormalDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="taskName" column="TASK_NAME"/>
+		<result property="taskDesc" column="TASK_DESC"/>
+		<result property="taskType" column="TASK_TYPE"/>
+		<result property="taskStartTime" column="TASK_START_TIME"/>
+		<result property="taskEndTime" column="TASK_END_TIME"/>
+		<result property="taskCycle" column="TASK_CYCLE"/>
+		<result property="taskGiftIds" column="TASK_GIFT_IDS"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="taskLevel" column="TASK_LEVEL"/>
+		<result property="giftIsMore" column="GIFT_IS_MORE"/>
+		<result property="taskGold" column="TASK_GOLD"/>
+		<result property="taskExp" column="TASK_EXP"/>
+		<result property="taskRes" column="TASK_RES"/>
+		<result property="taskBind" column="TASK_BIND"/>
+		<result property="taskThingNum" column="TASK_THING_NUM"/>
+		<result property="hypoType" column="HYPO_TYPE"/>
+		<result property="detailDesc" column="DETAIL_DESC"/>
+		<result property="onlyFlag" column="ONLY_FLAG"/>
+		<result property="taskBind" column="TASK_BIND"/>
+		<result property="newTask" column="NEW_TASK"/>
+	</resultMap>
+	
+	<insert id="insertGameTaskFormalDetail" parameterClass="GameTaskFormalDetail">
+		INSERT INTO GAME_TASK_FORMAL (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="taskName">TASK_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="taskDesc">TASK_DESC</isNotEmpty>
+			<isNotEmpty prepend="," property="taskType">TASK_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="taskStartTime">TASK_START_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="taskEndTime">TASK_END_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="taskCycle">TASK_CYCLE</isNotEmpty>
+			<isNotEmpty prepend="," property="taskGiftIds">TASK_GIFT_IDS</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="taskLevel">TASK_LEVEL</isNotEmpty>
+			<isNotEmpty prepend="," property="giftIsMore">GIFT_IS_MORE</isNotEmpty>
+			<isNotEmpty prepend="," property="onlyFlag">ONLY_FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="taskBind">TASK_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="newTask">NEW_TASK</isNotEmpty>
+			<isNotEmpty prepend="," property="hypoType">HYPO_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="detailDesc">DETAIL_DESC</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskName">#taskName#</isNotEmpty>		
+			<isNotEmpty prepend="," property="taskDesc">#taskDesc#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskType">#taskType#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskStartTime">#taskStartTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskEndTime">#taskEndTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskCycle">#taskCycle#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskGiftIds">#taskGiftIds#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskLevel">#taskLevel#</isNotEmpty>
+			<isNotEmpty prepend="," property="giftIsMore">#giftIsMore#</isNotEmpty>
+			<isNotEmpty prepend="," property="onlyFlag">#onlyFlag#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskBind">#taskBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="newTask">#newTask#</isNotEmpty>
+			<isNotEmpty prepend="," property="hypoType">#hypoType#</isNotEmpty>
+			<isNotEmpty prepend="," property="detailDesc">#detailDesc#</isNotEmpty>
+			)
+	</insert>
+	
+	<update id="updateGameTaskFormalDetail" parameterClass="java.util.HashMap">
+		UPDATE GAME_TASK_FORMAL SET 
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskName">
+			TASK_NAME = #taskName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskDesc">
+			TASK_DESC = #taskDesc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskType">
+			TASK_TYPE = #taskType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskStartTime">
+			TASK_START_TIME = #taskStartTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskEndTime">
+			TASK_END_TIME = #taskEndTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskCycle">
+			TASK_CYCLE = #taskCycle#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskLevel">
+			TASK_LEVEL = #taskLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="giftIsMore">
+			GIFT_IS_MORE = #giftIsMore#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskGiftIds">
+			TASK_GIFT_IDS = #taskGiftIds#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="detailDesc">
+			DETAIL_DESC = #detailDesc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="onlyFlag">
+			ONLY_FLAG = #onlyFlag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="taskBind">
+			TASK_BIND = #taskBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="newTask">
+			NEW_TASK = #newTask#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>	
+	
+	<select id="getGameTaskFormals" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GameTaskFormalCache">
+		SELECT 
+			ID,
+			TASK_NAME,	
+			TASK_DESC,
+			TASK_TYPE,
+			TASK_START_TIME,
+			TASK_END_TIME,
+			TASK_CYCLE,
+			TASK_GIFT_IDS,
+			CREATE_TIME,
+			FLAG,
+			TASK_LEVEL,
+			GIFT_IS_MORE,
+			TASK_GOLD,
+			TASK_EXP,
+			TASK_THING_NUM,
+			HYPO_TYPE,
+			DETAIL_DESC,
+			TASK_RES,
+			ONLY_FLAG,
+			TASK_BIND,
+			NEW_TASK
+		FROM 
+			GAME_TASK_FORMAL
+		WHERE 
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+				ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskName">
+				TASK_NAME = #taskName# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskDesc">
+				TASK_DESC = #taskDesc#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="taskType">
+				TASK_TYPE = #taskType#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskStartTime">
+				TASK_START_TIME = #taskStartTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskEndTime">
+				TASK_END_TIME = #taskEndTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskCycle">
+				TASK_CYCLE = #taskCycle#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskGiftIds">
+				TASK_GIFT_IDS = #taskGiftIds#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="taskLevel">
+				TASK_LEVEL = #taskLevel#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskLevel2">
+				TASK_LEVEL <![CDATA[ <= ]]> #taskLevel2#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="giftIsMore">
+				GIFT_IS_MORE = #giftIsMore#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="onlyFlag">
+				ONLY_FLAG = #onlyFlag#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskBind">
+				TASK_BIND = #taskBind#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="newTask">
+				NEW_TASK = #newTask#
+			</isNotEmpty>			
+	</select>	
+	
+	<delete id="deleteGameTaskFormals" parameterClass="java.util.HashMap">
+		DELETE FROM GAME_TASK_FORMAL 
+		WHERE 
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskName">
+			TASK_NAME = #taskName# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskDesc">
+			TASK_DESC = #taskDesc#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskType">
+				TASK_TYPE = #taskType# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskStartTime">
+				TASK_START_TIME = #taskStartTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskEndTime">
+				TASK_END_TIME = #taskEndTime#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskCycle">
+				TASK_CYCLE = #taskCycle#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taskGiftIds">
+				TASK_GIFT_IDS = #taskGiftIds#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime#
+			</isNotEmpty>	
+			<isNotEmpty prepend="AND" property="taskLevel">
+				TASK_LEVEL = #taskLevel#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="giftIsMore">
+				GIFT_IS_MORE = #giftIsMore#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="onlyFlag">
+				ONLY_FLAG = #onlyFlag#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="newTask">
+				NEW_TASK = #newTask#
+			</isNotEmpty>			
+	</delete>
+	
+	<select id="getGameTaskFormalsId" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="GameTaskFormalCache">
+		SELECT 
+			ID,
+			TASK_NAME,	
+			TASK_DESC,
+			TASK_TYPE,
+			TASK_START_TIME,
+			TASK_END_TIME,
+			TASK_CYCLE,
+			TASK_GIFT_IDS,
+			CREATE_TIME,
+			FLAG,
+			TASK_LEVEL,
+			GIFT_IS_MORE,
+			TASK_GOLD,
+			TASK_EXP,
+			TASK_THING_NUM,
+			HYPO_TYPE,
+			DETAIL_DESC,
+			TASK_RES,
+			ONLY_FLAG,
+			TASK_BIND,
+			NEW_TASK
+		FROM 
+			GAME_TASK_FORMAL
+		WHERE 
+			FLAG = 1 AND id > 9999 order by id desc limit 1		
+	</select>	
+	
+</sqlMap>
+	

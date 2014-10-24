@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameRole">
+	<typeAlias alias="GameRoleDetail"
+		type="com.stang.game.entity.detail.GameRoleDetail" />
+
+	<cacheModel id="gameRoleCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRole" />
+		<flushOnExecute statement="updateRole" />
+		<flushOnExecute statement="updateMap" />
+		
+		<flushOnExecute statement="upRoleYin" />
+		<flushOnExecute statement="addRoleCoin" />
+		<flushOnExecute statement="subRoleCoin" />
+		<flushOnExecute statement="addRoleYin" />
+		<flushOnExecute statement="subRoleYin" />
+		<flushOnExecute statement="subRoleGongxun" />
+		<flushOnExecute statement="addRoleGongxun" />
+		
+		<flushOnExecute statement="addRoleLevel" />
+		<flushOnExecute statement="addRoleExp" />	
+		<flushOnExecute statement="subRolejunling" /><!-- 减少军令 -->
+		<flushOnExecute statement="addRolejunling" /><!-- 每小时增加军令1 -->
+		<flushOnExecute statement="addRolejunlingtime" /><!--军令时间 -->
+		<flushOnExecute statement="updateRolestate" />
+		<flushOnExecute statement="updateRolerefertime" />
+		<flushOnExecute statement="updateRolestateseven" />
+		<flushOnExecute statement="updateRoleSupsign" /><!--补签状态 -->
+		<flushOnExecute statement="updateRoleDaynumstate" /><!--领取礼包的状态 -->
+		<flushOnExecute statement="addRolecoinspend" /><!--领取礼包的状态 -->
+		<flushOnExecute statement="updateRoleVip" /><!--更新Vip等级 -->
+		<flushOnExecute statement="updateRoleline" />
+		<flushOnExecute statement="updateJingji" />
+		<flushOnExecute statement="findRoleById2" />
+	</cacheModel>
+
+	<resultMap class="GameRoleDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="level" column="level" />
+		<result property="mapid" column="mapid" />
+		<result property="placeid" column="placeid" />
+		<result property="exp" column="exp" />
+		<result property="coin" column="coin" />
+		<result property="yin" column="yin" />
+		<result property="gongxun" column="gongxun" />
+		<result property="flag" column="flag" />
+		<result property="vip" column="vip" />
+		<result property="junling" column="junling" /><!-- 增加军令配置 -->
+		<result property="jltime" column="jltime" /><!-- 军令增加1时间 -->
+		<result property="tasktime" column="tasktime" />
+		<result property="state" column="state" />
+		<result property="refertime" column="refertime" />
+		<result property="stateseven" column="stateseven" />
+		<result property="supsign" column="supsign" />
+		<result property="daynumstate" column="daynumstate" />
+		<result property="coinspend" column="coinspend" />
+		<result property="mapid2" column="mapid2" />
+		<result property="placeid2" column="placeid2" />
+		<result property="signjl" column="signjl" />
+		<result property="challengenum" column="challengenum"/>
+		<result property="challengetime" column="challengetime"/>
+		<result property="num" column="num"/>
+		<result property="nowtime" column="nowtime"/>
+		<result property="day" column="day"/>
+		<result property="integral" column="integral"/>
+		<result property="helpstep" column="helpstep"/>
+		<result property="roleline" column="roleline"/>
+		<result property="huangzuan" column="huangzuan"/>
+		<result property="huangzuaninfo" column="huangzuaninfo"/>
+		<result property="invite" column="invite"/>
+		<result property="ids" column="ids"/>
+		<result property="yesterday" column="yesterday"/>
+		<result property="today" column="today"/>
+		<result property="live" column="live"/>
+		<result property="huangzuangift" column="huangzuangift"/>
+		<result property="friends" column="friends"/>
+		<result property="vips" column="vips"/>
+		<result property="imposenum" column="imposenum"/>
+		<result property="share" column="share"/>
+		<result property="share" column="share"/>
+		<result property="onlinetime" column="onlinetime"/>
+		<result property="exist" column="exist"/>
+		<result property="three" column="three"/>
+		<result property="bylevel" column="bylevel"/>
+		<result property="vipTime" column="viptime"/>
+		<result property="vipGift" column="vipgift"/>
+		<result property="friendlevel" column="friendlevel"/>
+		<result property="friendcost" column="friendcost"/>
+		<result property="serverId" column="serverid"/>
+		<result property="zhuxianling" column="zhuxianling"/>
+		<result property="activitytype" column="activitytype"/>
+		<result property="isnew" column="isnew"/>
+		<result property="daycoin" column="daycoin"/>
+		<result property="bmap" column="bmap"/>
+		<result property="fuben" column="fuben"/>
+		<result property="btime" column="btime"/>
+		<result property="zxtime" column="zxtime"/>
+		<result property="jingji" column="jingji"/>
+		<result property="jjtime" column="jjtime"/>
+		<result property="jjnum" column="jjnum"/>
+		<result property="jjstatus" column="jjstatus"/>
+		<result property="flaunt" column="flaunt"/>
+		<result property="flauntgift" column="flauntgift"/>
+		<result property="challenge" column="challenge"/>
+		<result property="challengegift" column="challengegift"/>
+		<result property="sharedemo" column="sharedemo"/>
+		<result property="sharedemogift" column="sharedemogift"/>
+		<result property="fdshare" column="fdshare"/>
+		<result property="fdsharegift" column="fdsharegift"/>
+		<result property="allfdgift" column="allfdgift"/>
+		<result property="activitygift" column="activitygift"/>
+		<result property="oldfriend" column="oldfriend"/>
+		<result property="idsold" column="idsold"/>
+		<result property="oldfriendgift" column="oldfriendgift"/>
+		<result property="fubentwo" column="fubentwo"/>
+		<result property="totem" column="totem"/>
+		<result property="buyitem" column="buyitem"/>
+		<result property="fubenthree" column="fubenthree"/>
+		<result property="compensate" column="compensate"/>
+		<result property="qcost" column="qcost"/>
+		<result property="openmountain" column="openmountain"/>
+		<result property="flushmountain" column="flushmountain"/>
+		<result property="alchemygift" column="alchemygift"/>
+		<result property="temperature" column="temperature"/>
+		<result property="fundsgift" column="fundsgift"/>
+		<result property="fundslevel" column="fundslevel"/>
+		<result property="fundsstatu" column="fundsstatu"/>
+		<result property="seventotal" column="seventotal"/>
+		<result property="aimreward" column="aimreward"/>
+		<result property="getreward" column="getreward"/>
+		<result property="awakenstatu" column="awakenstatu"/>
+		<result property="mohun" column="mohun"/>
+		<result property="mohunboolean" column="mohunboolean"/>
+		<result property="deskcheck" column="deskcheck"/>
+		<result property="jiaqunlingjiang" column="jiaqunlingjiang"/>
+		<result property="getcdk" column="getcdk"/>
+		<result property="groupopenid" column="groupopenid"/>
+		<result property="groupactive" column="groupactive"/>
+		<result property="stsnum" column="stsnum"/>
+		<result property="stsdnum" column="stsdnum"/>
+		<result property="stsfriend" column="stsfriend"/>
+		<result property="milluck" column="milluck"/>
+		<result property="zillionaireplace" column="zillionaireplace"/>
+	</resultMap>
+
+<insert id="insertRole" parameterClass="GameRoleDetail">
+		INSERT INTO game_role (
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="vip">vip</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2</isNotEmpty>
+		<isNotEmpty prepend="," property="nowtime">nowtime</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">signjl</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling</isNotEmpty>
+		<isNotEmpty prepend="," property="jltime">jltime</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktime">tasktime</isNotEmpty>
+		<isNotEmpty prepend="," property="state">state</isNotEmpty>
+		<isNotEmpty prepend="," property="refertime">refertime</isNotEmpty>
+		<isNotEmpty prepend="," property="stateseven">stateseven</isNotEmpty>
+		<isNotEmpty prepend="," property="supsign">supsign</isNotEmpty>
+		<isNotEmpty prepend="," property="daynumstate">daynumstate</isNotEmpty>
+		<isNotEmpty prepend="," property="coinspend">coinspend</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">challengenum</isNotEmpty>
+		<isNotEmpty prepend="," property="challengetime">challengetime</isNotEmpty>
+		<isNotEmpty prepend="," property="integral">integral</isNotEmpty>
+		<isNotEmpty prepend="," property="helpstep">helpstep</isNotEmpty>
+		<isNotEmpty prepend="," property="roleline">roleline</isNotEmpty>
+		<isNotEmpty prepend="," property="today">today</isNotEmpty>
+		<isNotEmpty prepend="," property="live">live</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">yesterday</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">invite</isNotEmpty>
+		<isNotEmpty prepend="," property="ids">ids</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">vips</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">imposenum</isNotEmpty>
+		<isNotEmpty prepend="," property="share">share</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">huangzuangift</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuan">huangzuan</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuaninfo">huangzuaninfo</isNotEmpty>
+		<isNotEmpty prepend="," property="friends">friends</isNotEmpty>
+		<isNotEmpty prepend="," property="onlinetime">onlinetime</isNotEmpty>
+		<isNotEmpty prepend="," property="exist">exist</isNotEmpty>
+		<isNotEmpty prepend="," property="three">three</isNotEmpty>
+		<isNotEmpty prepend="," property="bylevel">bylevel</isNotEmpty>
+		<isNotEmpty prepend="," property="vipTime">viptime</isNotEmpty>
+		<isNotEmpty prepend="," property="vipGift">vipgift</isNotEmpty>
+		<isNotEmpty prepend="," property="friendlevel">friendlevel</isNotEmpty>
+		<isNotEmpty prepend="," property="friendcost">friendcost</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">serverid</isNotEmpty>
+		<isNotEmpty prepend="," property="zhuxianling">zhuxianling</isNotEmpty>
+		<isNotEmpty prepend="," property="daycoin">daycoin</isNotEmpty>
+		<isNotEmpty prepend="," property="bmap">bmap</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">fuben</isNotEmpty>
+		<isNotEmpty prepend="," property="btime">btime</isNotEmpty>
+		<isNotEmpty prepend="," property="zxtime">zxtime</isNotEmpty>
+		<isNotEmpty prepend="," property="activitytype">activitytype</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew</isNotEmpty>
+		<isNotEmpty prepend="," property="jingji">jingji</isNotEmpty>
+		<isNotEmpty prepend="," property="jjtime">jjtime</isNotEmpty>
+		<isNotEmpty prepend="," property="jjnum">jjnum</isNotEmpty>
+		<isNotEmpty prepend="," property="jjstatus">jjstatus</isNotEmpty>
+		<isNotEmpty prepend="," property="flaunt">flaunt</isNotEmpty>
+		<isNotEmpty prepend="," property="flauntgift">flauntgift</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">challenge</isNotEmpty>
+		<isNotEmpty prepend="," property="challengegift">challengegift</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemo">sharedemo</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemogift">sharedemogift</isNotEmpty>
+		<isNotEmpty prepend="," property="fdshare">fdshare</isNotEmpty>
+		<isNotEmpty prepend="," property="fdsharegift">fdsharegift</isNotEmpty>
+		<isNotEmpty prepend="," property="allfdgift">allfdgift</isNotEmpty>
+		<isNotEmpty prepend="," property="activitygift">activitygift</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriend">oldfriend</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriendgift">oldfriendgift</isNotEmpty>
+		<isNotEmpty prepend="," property="fubentwo">fubentwo</isNotEmpty>
+		<isNotEmpty prepend="," property="idsold">idsold</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem</isNotEmpty>
+		<isNotEmpty prepend="," property="fubenthree">fubenthree</isNotEmpty>
+		<isNotEmpty prepend="," property="compensate">compensate</isNotEmpty>
+		<isNotEmpty prepend="," property="qcost">qcost</isNotEmpty>
+		<isNotEmpty prepend="," property="openmountain">openmountain</isNotEmpty>
+		<isNotEmpty prepend="," property="alchemygift">alchemygift</isNotEmpty>
+		<isNotEmpty prepend="," property="temperature">temperature</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsgift">fundsgift</isNotEmpty>
+		<isNotEmpty prepend="," property="fundslevel">fundslevel</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsstatu">fundsstatu</isNotEmpty>
+		<isNotEmpty prepend="," property="seventotal">seventotal</isNotEmpty>
+		<isNotEmpty prepend="," property="aimreward">aimreward</isNotEmpty>
+		<isNotEmpty prepend="," property="getreward">getreward</isNotEmpty>
+		<isNotEmpty prepend="," property="awakenstatu">awakenstatu</isNotEmpty>
+		<isNotEmpty prepend="," property="mohun">mohun</isNotEmpty>
+		<isNotEmpty prepend="," property="mohunboolean">mohunboolean</isNotEmpty>
+		<isNotEmpty prepend="," property="deskcheck">deskcheck</isNotEmpty>
+		<isNotEmpty prepend="," property="stsnum">stsnum</isNotEmpty>
+		<isNotEmpty prepend="," property="stsdnum">stsdnum</isNotEmpty>
+		<isNotEmpty prepend="," property="stsfriend">stsfriend</isNotEmpty>
+		<isNotEmpty prepend="," property="milluck">milluck</isNotEmpty>
+		<isNotEmpty prepend="," property="zillionaireplace">zillionaireplace</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">#coin#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">#yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">#gongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="vip">#vip#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">#mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">#placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="nowtime">#nowtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">#signjl#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">#junling#</isNotEmpty>
+		<isNotEmpty prepend="," property="jltime">#jltime#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktime">#tasktime#</isNotEmpty>
+		<isNotEmpty prepend="," property="state">#state#</isNotEmpty>
+		<isNotEmpty prepend="," property="refertime">#refertime#</isNotEmpty>
+		<isNotEmpty prepend="," property="stateseven">#stateseven#</isNotEmpty>
+		<isNotEmpty prepend="," property="supsign">#supsign#</isNotEmpty>
+		<isNotEmpty prepend="," property="daynumstate">#daynumstate#</isNotEmpty>
+		<isNotEmpty prepend="," property="coinspend">#coinspend#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">#challengenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengetime">#challengetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="integral">#integral#</isNotEmpty>
+		<isNotEmpty prepend="," property="helpstep">#helpstep#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleline">#roleline#</isNotEmpty>
+		<isNotEmpty prepend="," property="today">#today#</isNotEmpty>
+		<isNotEmpty prepend="," property="live">#live#</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">#yesterday#</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">#invite#</isNotEmpty>
+		<isNotEmpty prepend="," property="ids">#ids#</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">#vips#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">#imposenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="share">#share#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">#huangzuangift#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuan">#huangzuan#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuaninfo">#huangzuaninfo#</isNotEmpty>
+		<isNotEmpty prepend="," property="friends">#friends#</isNotEmpty>
+		<isNotEmpty prepend="," property="onlinetime">#onlinetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="exist">#exist#</isNotEmpty>
+		<isNotEmpty prepend="," property="three">#three#</isNotEmpty>
+		<isNotEmpty prepend="," property="bylevel">#bylevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipTime">#vipTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipGift">#vipGift#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendlevel">#friendlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendcost">#friendcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhuxianling">#zhuxianling#</isNotEmpty>
+		<isNotEmpty prepend="," property="daycoin">#daycoin#</isNotEmpty>
+		<isNotEmpty prepend="," property="bmap">#bmap#</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">#fuben#</isNotEmpty>
+		<isNotEmpty prepend="," property="btime">#btime#</isNotEmpty>
+		<isNotEmpty prepend="," property="zxtime">#zxtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="activitytype">#activitytype#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">#isnew#</isNotEmpty>
+		<isNotEmpty prepend="," property="jingji">#jingji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjtime">#jjtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjnum">#jjnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjstatus">#jjstatus#</isNotEmpty>
+		<isNotEmpty prepend="," property="flaunt">#flaunt#</isNotEmpty>
+		<isNotEmpty prepend="," property="flauntgift">#flauntgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">#challenge#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengegift">#challengegift#</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemo">#sharedemo#</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemogift">#sharedemogift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fdshare">#fdshare#</isNotEmpty>
+		<isNotEmpty prepend="," property="fdsharegift">#fdsharegift#</isNotEmpty>
+		<isNotEmpty prepend="," property="allfdgift">#allfdgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="activitygift">#activitygift#</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriend">#oldfriend#</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriendgift">#oldfriendgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fubentwo">#fubentwo#</isNotEmpty>
+		<isNotEmpty prepend="," property="idsold">#idsold#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">#totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="fubenthree">#fubenthree#</isNotEmpty>
+		<isNotEmpty prepend="," property="compensate">#compensate#</isNotEmpty>
+		<isNotEmpty prepend="," property="qcost">#qcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="openmountain">#openmountain#</isNotEmpty>
+		<isNotEmpty prepend="," property="alchemygift">#alchemygift#</isNotEmpty>
+		<isNotEmpty prepend="," property="temperature">#temperature#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsgift">#fundsgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundslevel">#fundslevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsstatu">#fundsstatu#</isNotEmpty>
+		<isNotEmpty prepend="," property="seventotal">#seventotal#</isNotEmpty>
+		<isNotEmpty prepend="," property="aimreward">#aimreward#</isNotEmpty>
+		<isNotEmpty prepend="," property="getreward">#getreward#</isNotEmpty>
+		<isNotEmpty prepend="," property="awakenstatu">#awakenstatu#</isNotEmpty>
+		<isNotEmpty prepend="," property="mohun">#mohun#</isNotEmpty>
+		<isNotEmpty prepend="," property="mohunboolean">#mohunboolean#</isNotEmpty>
+		<isNotEmpty prepend="," property="deskcheck">#deskcheck#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsnum">#stsnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsdnum">#stsdnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsfriend">#stsfriend#</isNotEmpty>
+		<isNotEmpty prepend="," property="milluck">#milluck#</isNotEmpty>
+		<isNotEmpty prepend="," property="zillionaireplace">#zillionaireplace#</isNotEmpty>
+		)
+	</insert>
+
+	<update id="updateTotem" parameterClass="java.util.Map">
+		UPDATE game_role SET totem = #totem# WHERE id =#id#
+	</update>
+	
+	<update id="upactivitygift" parameterClass="java.util.Map">
+		UPDATE game_role SET activitygift = #activitygift# WHERE id =#id#
+	</update>
+	<update id="upoldfriendgift" parameterClass="java.util.Map">
+		UPDATE game_role SET oldfriendgift = #oldfriendgift# WHERE id =#id#
+	</update>
+	
+	<update id="updateRoleline" parameterClass="java.util.Map">
+		UPDATE game_role SET roleline=#roleline# 
+		WHERE FLAG =1 AND id =#id#
+	</update>
+	
+	<update id="updateMap" parameterClass="java.util.Map">
+		UPDATE game_role SET mapid=#mapid# , placeid=#placeid#
+		WHERE FLAG =1 AND id =#id#
+	</update>
+	<update id="addRoleCoin" parameterClass="java.util.Map">
+		UPDATE game_role SET coin = coin+#coin# WHERE id =#id#
+	</update>
+	<update id="addRoleYin" parameterClass="java.util.Map">
+		UPDATE game_role SET  yin =yin+#yin#  WHERE id =#id#
+	</update>
+	<update id="addRoleGongxun" parameterClass="java.util.Map">
+		UPDATE game_role SET gongxun = gongxun+#gongxun# WHERE id =#id#
+	</update>
+	<update id="subRoleCoin" parameterClass="java.util.Map">
+		UPDATE game_role SET coin = coin-#coin# WHERE id =#id#
+	</update>
+	<update id="subRoleYin" parameterClass="java.util.Map">
+		UPDATE game_role SET yin = yin-#yin# WHERE id =#id#
+	</update>
+	<update id="upRoleYin">
+		UPDATE game_role SET yin=#yin# WHERE id =#id#
+	</update>
+	<update id="subRoleGongxun" parameterClass="java.util.Map">
+		UPDATE game_role SET gongxun = gongxun-#gongxun# WHERE id =#id#
+	</update>
+	<update id="addRoleLevel" parameterClass="java.util.Map">
+		UPDATE game_role SET level =#level#,exp=#exp# WHERE id =#id#
+	</update>
+	<update id="addRoleExp" parameterClass="java.util.Map">
+		UPDATE game_role SET exp=#exp# WHERE id =#id#
+	</update>
+	
+	<!--  游戏开始，减少1个军令 -->
+	<update id="subRolejunling" parameterClass="java.util.Map">
+		UPDATE game_role SET junling = junling-#junling# WHERE id =#id#
+	</update>
+	
+	<!-- 军令小于15，每小时增加1 -->
+	<update id="addRolejunling" parameterClass="java.util.Map">
+		UPDATE game_role SET junling = #junling# 
+		WHERE id =#id#
+	</update>
+	
+	<!-- 每日签到的状态 -->
+	<update id="updateRolestate" parameterClass="java.util.Map">
+		UPDATE game_role SET state = #state# WHERE id =#id#
+	</update>
+		<!-- 领取签到按多天计算的礼包状态 -->
+	<update id="updateRoleDaynumstate" parameterClass="java.util.Map">
+		UPDATE game_role SET daynumstate = #daynumstate# WHERE id =#id#
+	</update>
+	
+	<!-- 更新七天在线礼包 -->
+	<update id="updateRolestateseven" parameterClass="java.util.Map">
+		UPDATE game_role SET stateseven = #stateseven# WHERE id =#id#
+	</update>
+	
+		<!--更新参照时间 -->
+	<update id="updateRolerefertime" parameterClass="java.util.Map">
+		UPDATE game_role SET refertime = #refertime# WHERE id =#id#
+	</update>
+		<!-- 更新每日活跃积分 -->
+	<update id="updateRoleintegral" parameterClass="java.util.Map">
+		UPDATE game_role SET integral = #integral# WHERE id =#id#
+	</update>
+	
+	<!-- 更新下山掠夺时间 -->
+	<update id="updateRolenowtime" parameterClass="java.util.Map">
+		UPDATE game_role SET nowtime = #nowtime# WHERE id =#id#
+	</update>
+	
+	<!-- 更新新手进度 -->
+	<update id="updateRolehelpstep" parameterClass="java.util.Map">
+		UPDATE game_role SET helpstep = #helpstep# WHERE id =#id#
+	</update>
+	
+	<!--更新补签状态数组 -->
+	<update id="updateRoleSupsign" parameterClass="java.util.Map">
+		UPDATE game_role SET supsign = #supsign# WHERE id =#id#
+	</update>
+	
+	<!-- 更改vip每日领取的时间和礼包 -->
+	<update id="updateRoleVipGiftTime" parameterClass="java.util.Map">
+		UPDATE game_role SET viptime = #viptime#,vipgift = #vipgift# where id = #id#
+	</update>
+	
+	<!--更新用户消耗的金币经验 -->
+	<update id="addRolecoinspend" parameterClass="java.util.Map">
+		UPDATE game_role SET  coinspend = coinspend + #coinspend#  WHERE id =#id#
+	</update>
+	
+	<!--更新用户Vip等级 -->
+	<update id="updateRoleVip" parameterClass="java.util.Map">
+		UPDATE game_role SET  id = #id#  
+		<isNotEmpty prepend="," property="vip">vip = #vip#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid = #mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2 = #mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid = #placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2 = #placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp = #exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level = #level#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin = #yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun = #gongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">signjl = #signjl#</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling = #junling#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num = #num#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day = #day#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">challengenum=#challengenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengetime">challengetime=#challengetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="today">today = #today#</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">yesterday = #yesterday#</isNotEmpty>
+		<isNotEmpty prepend="," property="live">live = #live#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">huangzuangift = #huangzuangift#</isNotEmpty>
+		<isNotEmpty prepend="," property="friends">friends = #friends#</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">vips = #vips#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">imposenum = #imposenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="share">share = #share#</isNotEmpty>
+		<isNotEmpty prepend="," property="onlinetime">onlinetime = #onlinetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="exist">exist = #exist#</isNotEmpty>
+		<isNotEmpty prepend="," property="three">three = #three#</isNotEmpty>
+		<isNotEmpty prepend="," property="bylevel">bylevel = #bylevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipTime">vip_time = #vipTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipGift">vip_gift = #vipGift#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendcost">friendcost = #friendcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhuxianling">zhuxianling = #zhuxianling#</isNotEmpty>
+	    <isNotEmpty prepend="," property="friendlevel">friendlevel = #friendlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendcost">friendcost = #friendcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="activitytype">activitytype = #activitytype#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew = #isnew#</isNotEmpty>
+		<isNotEmpty prepend="," property="daycoin">daycoin = #daycoin#</isNotEmpty>
+		<isNotEmpty prepend="," property="bmap">bmap = #bmap#</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">fuben = #fuben#</isNotEmpty>
+		<isNotEmpty prepend="," property="btime">btime = #btime#</isNotEmpty>
+		<isNotEmpty prepend="," property="zxtime">zxtime = #zxtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="jingji">jingji = #jingji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjnum">jjnum = #jjnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjstatus">jjstatus = #jjstatus#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjtime">jjtime = #jjtime#</isNotEmpty>
+	   <isNotEmpty prepend="," property="fubentwo">fubentwo = #fubentwo#</isNotEmpty>
+	   <isNotEmpty prepend="," property="alchemygift">alchemygift = #alchemygift#</isNotEmpty>
+	   <isNotEmpty prepend="," property="temperature">temperature = #temperature#</isNotEmpty>
+	   <isNotEmpty prepend="," property="fundsgift">fundsgift = #fundsgift#</isNotEmpty>
+	   <isNotEmpty prepend="," property="fundslevel">fundslevel = #fundslevel#</isNotEmpty>
+	   <isNotEmpty prepend="," property="fundsstatu">fundsstatu = #fundsstatu#</isNotEmpty>
+	   <isNotEmpty prepend="," property="mohun">mohun = #mohun#</isNotEmpty>
+	   <isNotEmpty prepend="," property="mohunboolean">mohunboolean = #mohunboolean#</isNotEmpty>
+	   <isNotEmpty prepend="," property="deskcheck">deskcheck = #deskcheck#</isNotEmpty>
+	   <isNotEmpty prepend="," property="stsnum">stsnum = #stsnum#</isNotEmpty>
+	   <isNotEmpty prepend="," property="stsdnum">stsdnum = #stsdnum#</isNotEmpty>
+	   <isNotEmpty prepend="," property="stsfriend">stsfriend = #stsfriend#</isNotEmpty>
+	   <isNotEmpty prepend="," property="milluck">milluck = #milluck#</isNotEmpty>
+	   <isNotEmpty prepend="," property="zillionaireplace">zillionaireplace = #zillionaireplace#</isNotEmpty>
+	   
+		WHERE id =#id#
+	</update>
+	
+	<!-- 增加军令时间1小时 -->
+	<update id="addRolejunlingtime" parameterClass="java.util.Map">
+		UPDATE game_role SET jltime = #jltime# WHERE id =#id#
+	</update>
+	<update id="updateRole" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		<isNotEmpty prepend="," property="name">name=#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="level">level=#level#</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp=#exp#</isNotEmpty>
+		<isNotEmpty prepend="," property="coin">coin=#coin#</isNotEmpty>
+		<isNotEmpty prepend="," property="yin">yin=#yin#</isNotEmpty>
+		<isNotEmpty prepend="," property="num">num=#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun=#gongxun#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag=#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="vip">vip=#vip#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid">mapid=#mapid#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid">placeid=#placeid#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapid2">mapid2=#mapid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="placeid2">placeid2=#placeid2#</isNotEmpty>
+		<isNotEmpty prepend="," property="nowtime">nowtime=#nowtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="signjl">signjl=#signjl#</isNotEmpty>
+		<isNotEmpty prepend="," property="day">day=#day#</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling=#junling#</isNotEmpty>
+		<isNotEmpty prepend="," property="jltime">jltime=#jltime#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktime">tasktime=#tasktime#</isNotEmpty>
+		<isNotEmpty prepend="," property="state">state=#state#</isNotEmpty>
+		<isNotEmpty prepend="," property="refertime">refertime=#refertime#</isNotEmpty>
+		<isNotEmpty prepend="," property="stateseven">stateseven=#stateseven#</isNotEmpty>
+		<isNotEmpty prepend="," property="supsign">supsign=#supsign#</isNotEmpty>
+		<isNotEmpty prepend="," property="daynumstate">daynumstate=#daynumstate#</isNotEmpty>
+		<isNotEmpty prepend="," property="coinspend">coinspend=#coinspend#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengenum">challengenum=#challengenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengetime">challengetime=#challengetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="integral">integral=#integral#</isNotEmpty>
+		<isNotEmpty prepend="," property="helpstep">helpstep=#helpstep#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleline">roleline=#roleline#</isNotEmpty>
+		<isNotEmpty prepend="," property="today">today=#today#</isNotEmpty>
+		<isNotEmpty prepend="," property="live">live=#live#</isNotEmpty>
+		<isNotEmpty prepend="," property="yesterday">yesterday=#yesterday#</isNotEmpty>
+		<isNotEmpty prepend="," property="invite">invite=#invite#</isNotEmpty>
+		<isNotEmpty prepend="," property="ids">ids=#ids#</isNotEmpty>
+		<isNotEmpty prepend="," property="vips">vips=#vips#</isNotEmpty>
+		<isNotEmpty prepend="," property="imposenum">imposenum=#imposenum#</isNotEmpty>
+		<isNotEmpty prepend="," property="share">share=#share#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuangift">huangzuangift=#huangzuangift#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuan">huangzuan=#huangzuan#</isNotEmpty>
+		<isNotEmpty prepend="," property="huangzuaninfo">huangzuaninfo=#huangzuaninfo#</isNotEmpty>
+		<isNotEmpty prepend="," property="friends">friends=#friends#</isNotEmpty>
+		<isNotEmpty prepend="," property="onlinetime">onlinetime=#onlinetime#</isNotEmpty>
+		<isNotEmpty prepend="," property="exist">exist=#exist#</isNotEmpty>
+		<isNotEmpty prepend="," property="three">three=#three#</isNotEmpty>
+		<isNotEmpty prepend="," property="bylevel">bylevel=#bylevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipTime">viptime=#vipTime#</isNotEmpty>
+		<isNotEmpty prepend="," property="vipGift">vipgift=#vipGift#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendlevel">friendlevel=#friendlevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="friendcost">friendcost=#friendcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">serverid=#serverId#</isNotEmpty>
+		<isNotEmpty prepend="," property="zhuxianling">zhuxianling=#zhuxianling#</isNotEmpty>
+		<isNotEmpty prepend="," property="daycoin">daycoin=#daycoin#</isNotEmpty>
+		<isNotEmpty prepend="," property="bmap">bmap=#bmap#</isNotEmpty>
+		<isNotEmpty prepend="," property="fuben">fuben=#fuben#</isNotEmpty>
+		<isNotEmpty prepend="," property="btime">btime=#btime#</isNotEmpty>
+		<isNotEmpty prepend="," property="zxtime">zxtime=#zxtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="activitytype">activitytype=#activitytype#</isNotEmpty>
+		<isNotEmpty prepend="," property="isnew">isnew=#isnew#</isNotEmpty>
+		<isNotEmpty prepend="," property="jingji">jingji=#jingji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjtime">jjtime=#jjtime#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjnum">jjnum=#jjnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="jjstatus">jjstatus=#jjstatus#</isNotEmpty>
+		<isNotEmpty prepend="," property="flaunt">flaunt=#flaunt#</isNotEmpty>
+		<isNotEmpty prepend="," property="flauntgift">flauntgift=#flauntgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="challenge">challenge=#challenge#</isNotEmpty>
+		<isNotEmpty prepend="," property="challengegift">challengegift=#challengegift#</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemo">sharedemo=#sharedemo#</isNotEmpty>
+		<isNotEmpty prepend="," property="sharedemogift">sharedemogift=#sharedemogift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fdshare">fdshare=#fdshare#</isNotEmpty>
+		<isNotEmpty prepend="," property="fdsharegift">fdsharegift=#fdsharegift#</isNotEmpty>
+		<isNotEmpty prepend="," property="allfdgift">allfdgift=#allfdgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="activitygift">activitygift=#activitygift#</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriend">oldfriend=#oldfriend#</isNotEmpty>
+		<isNotEmpty prepend="," property="oldfriendgift">oldfriendgift=#oldfriendgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fubentwo">fubentwo=#fubentwo#</isNotEmpty>
+		<isNotEmpty prepend="," property="idsold">idsold=#idsold#</isNotEmpty>
+		<isNotEmpty prepend="," property="totem">totem=#totem#</isNotEmpty>
+		<isNotEmpty prepend="," property="buyitem">buyitem=#buyitem#</isNotEmpty>
+		<isNotEmpty prepend="," property="fubenthree">fubenthree=#fubenthree#</isNotEmpty>
+		<isNotEmpty prepend="," property="compensate">compensate=#compensate#</isNotEmpty>
+		<isNotEmpty prepend="," property="qcost">qcost=#qcost#</isNotEmpty>
+		<isNotEmpty prepend="," property="openmountain">openmountain=#openmountain#</isNotEmpty>
+		<isNotEmpty prepend="," property="flushmountain">flushmountain=#flushmountain#</isNotEmpty>
+		<isNotEmpty prepend="," property="alchemygift">alchemygift=#alchemygift#</isNotEmpty>
+		<isNotEmpty prepend="," property="temperature">temperature=#temperature#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsgift">fundsgift=#fundsgift#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundslevel">fundslevel=#fundslevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="fundsstatu">fundsstatu=#fundsstatu#</isNotEmpty>
+		<isNotEmpty prepend="," property="seventotal">seventotal=#seventotal#</isNotEmpty>
+		<isNotEmpty prepend="," property="aimreward">aimreward=#aimreward#</isNotEmpty>
+		<isNotEmpty prepend="," property="getreward">getreward=#getreward#</isNotEmpty>
+		<isNotEmpty prepend="," property="awakenstatu">awakenstatu=#awakenstatu#</isNotEmpty>
+		<isNotEmpty prepend="," property="mohun">mohun=#mohun#</isNotEmpty>
+		<isNotEmpty prepend="," property="mohunboolean">mohunboolean=#mohunboolean#</isNotEmpty>
+		<isNotEmpty prepend="," property="deskcheck">deskcheck=#deskcheck#</isNotEmpty>
+		<isNotEmpty prepend="," property="jiaqunlingjiang">jiaqunlingjiang=#jiaqunlingjiang#</isNotEmpty>
+		<isNotEmpty prepend="," property="getcdk">getcdk=#getcdk#</isNotEmpty>
+		<isNotEmpty prepend="," property="groupactive">groupactive=#groupactive#</isNotEmpty>
+		<isNotEmpty prepend="," property="groupopenid">groupopenid=#groupopenid#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsnum">stsnum=#stsnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsdnum">stsdnum=#stsdnum#</isNotEmpty>
+		<isNotEmpty prepend="," property="stsfriend">stsfriend=#stsfriend#</isNotEmpty>
+		<isNotEmpty prepend="," property="milluck">milluck=#milluck#</isNotEmpty>
+		<isNotEmpty prepend="," property="zillionaireplace">zillionaireplace=#zillionaireplace#</isNotEmpty>
+		WHERE id = #id#
+	</update>
+	<update id="updateRoleGift" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+	    <isNotEmpty prepend="," property="flauntgift">flauntgift=#flauntgift#</isNotEmpty>
+	
+		
+		WHERE id = #id#
+	</update>
+	<update id="updateRoleGift2" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+	    <isNotEmpty prepend="," property="challengegift">challengegift=#challengegift#</isNotEmpty>
+		
+		
+		WHERE id = #id#
+	</update>
+	<update id="updateRoleGift3" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+	   <isNotEmpty prepend="," property="sharedemogift">sharedemogift=#sharedemogift#</isNotEmpty>
+		
+		
+		WHERE id = #id#
+	</update>
+	<update id="updateRoleGift4" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+	   <isNotEmpty prepend="," property="fdsharegift">fdsharegift=#fdsharegift#</isNotEmpty>
+		
+		
+		WHERE id = #id#
+	</update>
+	<update id="updateRoleGift5" parameterClass="GameRoleDetail">
+		UPDATE game_role SET id = #id#
+		
+	   <isNotEmpty prepend="," property="allfdgift">allfdgift=#allfdgift#</isNotEmpty>
+		
+		
+		WHERE id = #id#
+	</update>
+	<update id="updateJingji" parameterClass="int">
+		UPDATE game_role SET jjstatus= #jjstatus# WHERE flag = 1
+	</update>
+	<update id="updateDeskcheck" parameterClass="int">
+		UPDATE game_role SET mohunboolean = 1, deskcheck = 0, stsdnum = 0, stsfriend = "", groupactive = 0 WHERE flag = 1
+	</update>
+	<!--更新炫耀挑战状态 -->
+	<update id="updatefrinedchallenge">
+		update game_role set flaunt=0,flauntgift=0,challenge=0,challengegift=0,sharedemo=0,
+		sharedemogift=0,fdshare=0,fdsharegift=0,allfdgift=0,oldfriend=0,daycoin=0,qcost='[0,0,0]'
+	</update>
+		<update id="updatefrinedchallengetwo">
+		update game_role set flaunt=0,flauntgift=0,challenge=0,challengegift=0,sharedemo=0,
+		sharedemogift=0,fdshare=0,fdsharegift=0,allfdgift=0,oldfriend=0,daycoin=0,qcost='[0,0,0]',compensate='[0,0,0,0,0]'
+	</update>
+	<select id="findAllGameRole" resultMap="listResult">
+		SELECT * FROM game_role
+	</select>
+	<select id="getRoleByLevels1" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 10 and 25
+		limit 50
+	</select>
+	<select id="getRoleByLevels2"
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 15 and 35
+		limit 50
+	</select>
+	<select id="getRoleByLevels3" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 25 and 45
+		limit 50
+	</select>
+	<select id="getRoleByLevels4" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 35 and 55
+		limit 50
+	</select>
+	<select id="getRoleByLevels5" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 45 and 65
+		limit 50
+	</select>
+	<select id="getRoleByLevels6" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 55 and 75
+		limit 50
+	</select>
+	<select id="getRoleByLevels7" 
+	resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and level between 65 and 80
+		limit 50
+	</select>
+	<select id="getRoleByLevels01" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 10 and 25
+		limit 50
+	</select>
+	<select id="getRoleByLevels02"
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 15 and 35
+		limit 50
+	</select>
+	<select id="getRoleByLevels03" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 25 and 45
+		limit 50
+	</select>
+	<select id="getRoleByLevels04" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 35 and 55
+		limit 50
+	</select>
+	<select id="getRoleByLevels05" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 45 and 65
+		limit 50
+	</select>
+	<select id="getRoleByLevels06" 
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 55 and 75
+		limit 50
+	</select>
+	<select id="getRoleByLevels07" 
+	resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 and serverid=2 and level between 65 and 80
+		limit 50
+	</select>
+	<select id="findRoleById" parameterClass="int"
+		resultClass="GameRoleDetail"  >
+		SELECT * FROM game_role WHERE FLAG =1 AND id =#id#
+	</select>
+	<select id="findRoleById2" parameterClass="int"
+		resultClass="GameRoleDetail"  cacheModel="gameRoleCache">
+		SELECT * FROM game_role WHERE FLAG =1 AND id =#id#
+	</select>
+	<select id="findRoleById3" parameterClass="int"
+		resultClass="GameRoleDetail"  >
+		SELECT challengenum,vip,name,huangzuaninfo,level,yin,totem FROM game_role WHERE FLAG =1 AND id =#id#
+	</select>
+	<select id="findRoleById4" parameterClass="int"
+		resultClass="GameRoleDetail"  >
+		SELECT exp,gongxun,yin,level,junling FROM game_role WHERE FLAG =1 AND id =#id#
+	</select>
+	<select id="getRoleByLevel" parameterClass="java.util.HashMap"
+		resultMap="listResult">
+		SELECT * FROM game_role WHERE FLAG =1 
+		<isNotEmpty prepend="AND" property="level">
+			level BETWEEN #level#-5 AND #level#+3
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleline">
+			roleline = #roleline#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id != #id#
+		</isNotEmpty>
+	</select>
+	<select id="getRoleByLevels" parameterClass="java.util.HashMap"
+		resultMap="listResult" >
+		SELECT * FROM game_role WHERE FLAG =1 
+		<isNotEmpty prepend="AND" property="level">
+			level BETWEEN #level#-5 AND #level#+3
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			id != #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			serverid = #serverId#
+		</isNotEmpty>
+		limit 50
+	</select>
+	<select id="findRoleByName" parameterClass="String"
+		resultClass="GameRoleDetail">
+		SELECT * FROM game_role WHERE FLAG =1 AND name =#name#
+	</select>
+</sqlMap>

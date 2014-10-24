@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Server">
+	<typeAlias alias="ServerDetail" type="com.stang.game.ffd.entity.detail.ServerDetail" />
+	
+	<!-- cacheModel id="autoIdCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertAutoIdDetail"/>
+		<flushOnExecute statement="updateAutoIdDetail"/>
+		<flushOnExecute statement="updateKeyValueByTableName"/>
+		<flushOnExecute statement="updateKeyValueAddOneByTableName"/>
+	</cacheModel-->
+	
+	<resultMap class="ServerDetail" id="listResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="statue_mag" column="statue_mag"/>
+		<result property="statue_tui" column="statue_tui"/>
+		<result property="statue_xin" column="statue_xin"/>
+		<result property="statue_on" column="statue_on"/>
+	</resultMap>
+	
+	<select id="getAllServer" resultClass="ServerDetail">
+		SELECT * FROM Server
+	</select>
+	<!-- 更新服务器信息 -->
+	<update id="updateServerDetail" parameterClass="ServerDetail">
+		UPDATE SERVER_TABLE SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="name">
+			NAME = #name#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="statue_mag">
+			STATUE_MAG = #statue_mag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="statue_tui">
+			STATUE_TUI = #statue_tui#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="statue_xin">
+			STATUE_XIN = #statue_xin#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="statue_on">
+			STATUE_ON = #statue_on#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 录入自动化主键信息 -->
+	<!-- <insert id="insertAutoIdDetail" parameterClass="AutoIdDetail">
+		INSERT INTO AUTO_ID (
+			<isNotEmpty prepend="" property="tableName">TABLE_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="keyName">KEY_NAME</isNotEmpty>
+			<isNotEmpty prepend="," property="keyValue">KEY_VALUE</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="tableName">#tableName#</isNotEmpty>
+			<isNotEmpty prepend="," property="keyName">#keyName#</isNotEmpty>
+			<isNotEmpty prepend="," property="keyValue">#keyValue#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	 -->
+
+	
+	<!-- 根据表名查询该表当前的主键值 -->
+	
+</sqlMap>

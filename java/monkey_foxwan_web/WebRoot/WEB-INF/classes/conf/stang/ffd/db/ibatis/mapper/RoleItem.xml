@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleItem">
+	<typeAlias alias="RoleItemDetail" type="com.stang.game.ffd.entity.detail.RoleItemDetail" />
+	
+	<cacheModel id="roleItemCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertRoleItemDetail"/>
+		<flushOnExecute statement="updateRoleItemDetail"/>
+		<flushOnExecute statement="batchDeleteRoleItems"/>
+		<flushOnExecute statement="deleteRoleItem"/>
+		<flushOnExecute statement="updateRoleItemNum"/>
+		<flushOnExecute statement="updateRoleItemDetailNum"/>
+	</cacheModel>
+	
+	<resultMap class="RoleItemDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="roleId" column="ROLE_ID"/>
+		<result property="itemId" column="ITEM_ID"/>
+		<result property="isBind" column="IS_BIND"/>
+		<result property="useTime" column="USE_TIME"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="flag" column="FLAG"/>
+		<result property="storageType" column="STORAGE_TYPE"/>
+		<result property="isUsed" column="IS_USED"/>
+		<result property="startUseTime" column="START_USE_TIME"/>
+		<result property="num" column="NUM"/>
+	</resultMap>
+	
+	<!-- 录入信息 -->
+	<insert id="insertRoleItemDetail" parameterClass="RoleItemDetail">
+		INSERT INTO ROLE_ITEM (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">ROLE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">ITEM_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">IS_BIND</isNotEmpty>
+			<isNotEmpty prepend="," property="useTime">USE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">CREATE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="storageType">STORAGE_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="isUsed">IS_USED</isNotEmpty>
+			<isNotEmpty prepend="," property="startUseTime">START_USE_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="num">NUM</isNotEmpty>
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">#itemId#</isNotEmpty>
+			<isNotEmpty prepend="," property="isBind">#isBind#</isNotEmpty>
+			<isNotEmpty prepend="," property="useTime">#useTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">#createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="storageType">#storageType#</isNotEmpty>
+			<isNotEmpty prepend="," property="isUsed">#isUsed#</isNotEmpty>
+			<isNotEmpty prepend="," property="startUseTime">#startUseTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="num">#num#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新信息 -->
+	<update id="updateRoleItemDetail" parameterClass="RoleItemDetail">
+		UPDATE ROLE_ITEM SET 
+		ID=#id#
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemId">
+			ITEM_ID = #itemId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="useTime">
+			USE_TIME = #useTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startUseTime">
+			START_USE_TIME = #startUseTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="num">
+			NUM = #num# 
+		</isNotEmpty>
+		WHERE  
+ 			ID = #id#
+	</update>
+	
+	
+	<update id="updateRoleItemDetailNum" parameterClass="RoleItemDetail">
+		UPDATE ROLE_ITEM SET 
+		ID=#id#
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemId">
+			ITEM_ID = #itemId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="useTime">
+			USE_TIME = #useTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="startUseTime">
+			START_USE_TIME = #startUseTime# 
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="num">
+			NUM = NUM + #num# 
+		</isNotEmpty>
+		WHERE  
+ 			ID = #id#
+	</update>
+	<!-- 更新数组 -->
+	
+	
+	
+	<!-- 更新信息 -->
+	<update id="updateRoleItemNum"  parameterClass="java.util.HashMap">
+		UPDATE ROLE_ITEM SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="num">
+			NUM = #num# 
+		</isNotEmpty>
+		WHERE  
+ 			ID = #id#
+	</update>
+	
+	<!-- 根据角色序列号查询该角色所拥有的战斗性道具 -->
+	<select id="findRoleItemsByRoleId" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="roleItemCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			ITEM_ID,
+			IS_BIND,
+			USE_TIME,
+			CREATE_TIME,
+			FLAG,
+			STORAGE_TYPE,
+			IS_USED,
+			START_USE_TIME,
+			NUM  
+		FROM 
+			ROLE_ITEM 
+ 		WHERE 
+ 			<isNotEmpty prepend="" property="id">
+ 			ID = #id#
+ 			</isNotEmpty>
+ 			<isNotEmpty prepend="AND" property="flag">
+ 			FLAG = #flag#
+ 			</isNotEmpty>
+ 			<isNotEmpty prepend="AND" property="roleId">
+				ROLE_ID = #roleId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				ITEM_ID = #itemId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isBind">
+				IS_BIND = #isBind# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useTime">
+				USE_TIME = #useTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="storageType">
+				STORAGE_TYPE = #storageType#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isUsed">
+				IS_USED = #isUsed#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startUseTime">
+				START_USE_TIME = #startUseTime#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="num">
+				NUM = #num#  
+			</isNotEmpty>
+	</select>
+	
+	<select id="getRoleItems" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="roleItemCache">
+		SELECT 
+			ID,
+			ROLE_ID,
+			ITEM_ID,
+			IS_BIND,
+			USE_TIME,
+			CREATE_TIME,
+			FLAG,
+			STORAGE_TYPE,
+			IS_USED,
+			START_USE_TIME,
+			NUM  
+		FROM 
+			ROLE_ITEM 
+ 		WHERE 
+ 			<isNotEmpty prepend="" property="flag">
+ 				FLAG = #flag#
+ 			</isNotEmpty>
+ 			<isNotEmpty property="flag1" prepend="">
+			FLAG <![CDATA[ <> ]]> #flag1# 
+			</isNotEmpty>
+ 			<isNotEmpty prepend="AND" property="id">
+ 				ID = #id#
+ 			</isNotEmpty>
+ 			<isNotEmpty prepend="AND" property="roleId">
+				ROLE_ID = #roleId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				ITEM_ID = #itemId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isBind">
+				IS_BIND = #isBind# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useTime">
+				USE_TIME = #useTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="storageType">
+				STORAGE_TYPE = #storageType#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isUsed">
+				IS_USED = #isUsed#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startUseTime">
+				START_USE_TIME = #startUseTime#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="num">
+				NUM = #num#  
+			</isNotEmpty>
+	</select>
+	
+	<!-- 批量删除角色-战斗性道具关系信息 -->
+	<delete id="batchDeleteRoleItems" parameterClass="java.util.HashMap">
+		DELETE FROM ROLE_ITEM 
+			<dynamic prepend="WHERE"> 
+			<isNotNull prepend="">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>   
+	</delete>
+	
+	<delete id="deleteRoleItem" parameterClass="java.util.HashMap">
+		DELETE FROM ROLE_ITEM WHERE 
+			FLAG = 1
+			<isNotEmpty prepend="AND" property="id">
+ 				ID = #id#
+ 			</isNotEmpty>
+ 			<isNotEmpty prepend="AND" property="roleId">
+				ROLE_ID = #roleId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				ITEM_ID = #itemId# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isBind">
+				IS_BIND = #isBind# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useTime">
+				USE_TIME = #useTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime">
+				CREATE_TIME = #createTime# 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="storageType">
+				STORAGE_TYPE = #storageType#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isUsed">
+				IS_USED = #isUsed#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startUseTime">
+				START_USE_TIME = #startUseTime#  
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="num">
+				NUM = #num#  
+			</isNotEmpty>
+	</delete>
+	
+	
+	 <!-- 根据序列组获得物品信息 -->
+	<select id="findRoleItemsByIds" parameterClass="java.util.HashMap" resultMap="listResult">
+	       SELECT 
+			ID,
+			ROLE_ID,
+			ITEM_ID,
+			IS_BIND,
+			USE_TIME,
+			CREATE_TIME,
+			FLAG,
+			STORAGE_TYPE,
+			IS_USED,
+			START_USE_TIME,
+			NUM  
+		FROM 
+			ROLE_ITEM 
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	<select id="findRoleItemsByItemIds" parameterClass="java.util.HashMap" resultMap="listResult">
+	       SELECT 
+			ID,
+			ROLE_ID,
+			ITEM_ID,
+			IS_BIND,
+			USE_TIME,
+			CREATE_TIME,
+			FLAG,
+			STORAGE_TYPE,
+			IS_USED,
+			START_USE_TIME,
+			NUM  
+		FROM 
+			ROLE_ITEM 
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND ROLE_ID = #roleId# AND
+			<isNotNull prepend="AND">   
+           	ITEM_ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<select id="findItemIdById" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT ITEM_ID FROM ROLE_ITEM WHERE ID = #id#
+	</select>
+	
+</sqlMap>

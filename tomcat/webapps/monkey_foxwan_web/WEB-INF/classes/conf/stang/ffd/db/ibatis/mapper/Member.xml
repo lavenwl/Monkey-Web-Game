@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Member">
+	<typeAlias alias="MemberDetail" type="com.stang.game.ffd.entity.detail.MemberDetail" />
+	
+	<cacheModel id="memberCache" type="OSCACHE">
+		<flushInterval  minutes="10" />
+		<flushOnExecute statement="insertMemberDetail"/>
+		<flushOnExecute statement="updateMemberDetail"/>
+	</cacheModel>
+	
+	<resultMap class="MemberDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="memberName" column="MEMBER_USERNAME"/>
+		<result property="memberPassword" column="MEMBER_PASSWORD"/>
+		<result property="memberPasswordOrig" column="MEMBER_PASSWORD_ORIG"/>
+		<result property="memberSex" column="MEMBER_SEX"/>
+		<result property="memberEmail" column="MEMBER_EMAIL"/>
+		<result property="memberIdCard" column="MEMBER_ID_CARD"/>
+		<result property="fatigue" column="FATIGUE"/>
+		<result property="flag" column="FLAG"/>
+		<result property="memberTrueName" column="MEMBER_TRUE_NAME"/>
+		<result property="crateTime" column="CREATE_TIME"/>
+	</resultMap>
+	
+	<!-- 录入会员信息 -->
+	<insert id="insertMemberDetail" parameterClass="MemberDetail">
+		INSERT INTO MEMBER (
+			<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+			<isNotEmpty prepend="," property="memberName">MEMBER_USERNAME</isNotEmpty>
+			<isNotEmpty prepend="," property="memberPassword">MEMBER_PASSWORD</isNotEmpty>
+			<isNotEmpty prepend="," property="memberPasswordOrig">MEMBER_PASSWORD_ORIG</isNotEmpty>
+			<isNotEmpty prepend="," property="memberSex">MEMBER_SEX</isNotEmpty>
+			<isNotEmpty prepend="," property="memberEmail">MEMBER_EMAIL</isNotEmpty>
+			<isNotEmpty prepend="," property="memberIdCard">MEMBER_ID_CARD</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			<isNotEmpty prepend="," property="memberTrueName">MEMBER_TRUE_NAME</isNotEmpty>
+
+			)
+		VALUES 
+			(
+			<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberName">#memberName#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberPassword">#memberPassword#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberPasswordOrig">#memberPasswordOrig#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberSex">#memberSex#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberEmail">#memberEmail#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberIdCard">#memberIdCard#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="memberTrueName">#memberTrueName#</isNotEmpty>
+		)
+	</insert>
+	
+	<!-- 更新会员信息 -->
+	<update id="updateMemberDetail" parameterClass="MemberDetail">
+		UPDATE MEMBER SET 
+		<isNotEmpty prepend="" property="memberName">
+			MEMBER_USERNAME = #memberName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberPassword">
+			MEMBER_PASSWORD = #memberPassword#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberPasswordOrig">
+			MEMBER_PASSWORD_ORIG = #memberPasswordOrig#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberSex">
+			MEMBER_SEX = #memberSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberEmail">
+			MEMBER_EMAIL = #memberEmail#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberIdCard">
+			MEMBER_ID_CARD = #memberIdCard#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberTrueName">
+			MEMBER_TRUE_NAME = #memberTrueName#
+		</isNotEmpty>
+		
+		WHERE ID = #id#
+	</update>
+	<update id="updateMemberById" parameterClass="java.util.Map">
+		UPDATE MEMBER SET 
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberName">
+			MEMBER_USERNAME = #memberName#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberPassword">
+			MEMBER_PASSWORD = #memberPassword#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberPasswordOrig">
+			MEMBER_PASSWORD_ORIG = #memberPasswordOrig#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberSex">
+			MEMBER_SEX = #memberSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberEmail">
+			MEMBER_EMAIL = #memberEmail#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberIdCard">
+			MEMBER_ID_CARD = #memberIdCard#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="fatigue">
+			FATIGUE = #fatigue#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="memberTrueName">
+			MEMBER_TRUE_NAME = #memberTrueName#
+		</isNotEmpty>
+		
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 根据角色序列号组查询角色信息 -->
+	<select id="findMembersByIds" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="memberCache">
+		SELECT 
+			ID,
+			MEMBER_USERNAME,
+			MEMBER_PASSWORD,
+			MEMBER_PASSWORD_ORIG,
+			MEMBER_SEX,
+			MEMBER_EMAIL,
+			MEMBER_ID_CARD,
+			FATIGUE,
+			MEMBER_TRUE_NAME,
+			FLAG 
+		FROM 
+			MEMBER 
+		<dynamic prepend="WHERE"> 
+			FLAG = 1 AND
+			<isNotNull prepend="AND">   
+           	ID IN    
+	            <iterate property="ids" open="(" close=")" conjunction=",">   
+	                    #ids[]#   
+	            </iterate>   
+            </isNotNull>   
+		</dynamic>	
+	</select>
+	
+	<select id="findMembers" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="memberCache">
+		SELECT 
+			ID,
+			MEMBER_USERNAME,
+			MEMBER_PASSWORD,
+			MEMBER_PASSWORD_ORIG,
+			MEMBER_SEX,
+			MEMBER_EMAIL,
+			MEMBER_ID_CARD,
+			FATIGUE,
+			MEMBER_TRUE_NAME,
+			CREATE_TIME,
+			FLAG 
+		FROM 
+			MEMBER 
+			
+			WHERE FLAG=1 
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberName">
+			MEMBER_USERNAME = #memberName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="likeMemberName">
+			MEMBER_USERNAME LIKE '%$likeMemberName$%'
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberPassword">
+			MEMBER_PASSWORD = #memberPassword#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberPasswordOrig">
+			MEMBER_PASSWORD_ORIG = #memberPasswordOrig#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberSex">
+			MEMBER_SEX = #memberSex#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberEmail">
+			MEMBER_EMAIL = #memberEmail#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberIdCard">
+			MEMBER_ID_CARD = #memberIdCard#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="fatigue">
+			FATIGUE = #fatigue#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="memberTrueName">
+			MEMBER_TRUE_NAME = #memberTrueName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="likeTime">
+			CREATE_TIME LIKE '%$likeTime$%'
+		</isNotEmpty>
+	</select>
+</sqlMap>

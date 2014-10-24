@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="CdkStore">
+	<typeAlias alias="CdkStoreDetail"
+		type="com.stang.game.entity.detail.CdkStoreDetail" />
+
+<cacheModel id="cdkstoreCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="findCdkStoreBycdk" />
+		<flushOnExecute statement="Updatemploy" />
+	</cacheModel>
+
+	<resultMap class="CdkStoreDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="cdk" column="cdk" />
+		<result property="level" column="level" />
+		<result property="employ" column="employ" />
+	</resultMap>
+	
+	<select id="findCdkStoreBycdk" parameterClass="String"
+		resultClass="CdkStoreDetail">
+		SELECT * FROM cdk_store WHERE cdk =#cdk#
+	</select>
+	
+	 <update id="Updatemploy" parameterClass="java.util.HashMap">
+        update cdk_store set
+        employ=#employ# 
+        where cdk=#cdk#
+    </update>
+</sqlMap>

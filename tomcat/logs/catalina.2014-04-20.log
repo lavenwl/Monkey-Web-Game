@@ -1,0 +1,324 @@
+Apr 20, 2014 1:36:05 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 1:36:06 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 1:36:06 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1150 ms
+Apr 20, 2014 1:36:06 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 1:36:06 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 1:36:06 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 1:36:07 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 1:36:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 1:36:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 1:36:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 1:36:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 1:36:08 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 1:36:09 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 1:36:09 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/32  config=null
+Apr 20, 2014 1:36:09 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2430 ms
+Apr 20, 2014 3:53:03 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 3:53:04 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Loadingtohomejsp] but has failed to stop it. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@12cd927d]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@764c562f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@dae6456]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@343d511e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@12cd927d]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@2598a35d]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@dae6456]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@343d511e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@12cd927d]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@480d41f3]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@dae6456]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@343d511e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@12cd927d]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@5e64dd79]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@dae6456]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@343d511e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@12cd927d]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@30086359]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@dae6456]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@343d511e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 3:53:06 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 3:53:26 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 3:53:26 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 498 ms
+Apr 20, 2014 3:53:26 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 3:53:26 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 3:53:26 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 3:53:28 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 3:53:28 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 3:53:28 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/25  config=null
+Apr 20, 2014 3:53:28 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1986 ms
+Apr 20, 2014 6:24:35 PM org.apache.jk.common.MsgAjp processHeader
+SEVERE: BAD packet signature 18245
+Apr 20, 2014 6:24:35 PM org.apache.jk.common.ChannelSocket processConnection
+SEVERE: Error, processing connection
+java.lang.IndexOutOfBoundsException
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:310)
+	at org.apache.jk.common.ChannelSocket.read(ChannelSocket.java:628)
+	at org.apache.jk.common.ChannelSocket.receive(ChannelSocket.java:585)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:693)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:898)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:690)
+	at java.lang.Thread.run(Thread.java:662)
+Apr 20, 2014 8:20:05 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:20:06 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 8:20:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:20:06 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:20:06 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@4c9d22fc]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 8:20:06 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:36:12 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 8:36:12 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:36:12 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 525 ms
+Apr 20, 2014 8:36:12 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 8:36:12 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 8:36:12 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 8:36:13 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 8:36:13 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 8:36:13 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 8:36:13 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 8:36:13 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 8:36:14 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:36:14 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 8:36:14 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/34  config=null
+Apr 20, 2014 8:36:14 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2001 ms
+Apr 20, 2014 8:42:57 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:42:58 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 8:42:58 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:42:58 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:42:58 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@54dbb83a]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 8:42:58 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@54dbb83a]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 8:42:58 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:43:02 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 8:43:03 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 539 ms
+Apr 20, 2014 8:43:03 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 8:43:03 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 8:43:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 8:43:05 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:43:05 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 8:43:05 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/34  config=null
+Apr 20, 2014 8:43:05 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2052 ms
+Apr 20, 2014 8:53:56 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:53:57 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 8:53:57 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:53:57 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 8:53:57 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@786167d]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 8:53:58 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:55:03 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 8:55:03 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 545 ms
+Apr 20, 2014 8:55:03 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 8:55:03 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 8:55:03 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 8:55:05 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 8:55:05 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 8:55:05 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/37  config=null
+Apr 20, 2014 8:55:05 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2072 ms
+Apr 20, 2014 9:58:07 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 9:58:08 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 9:58:08 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 9:58:08 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 9:58:08 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@786167d]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 20, 2014 9:58:09 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 9:58:52 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 9:58:52 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 9:58:52 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 507 ms
+Apr 20, 2014 9:58:52 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 9:58:52 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 9:58:52 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 9:58:52 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 9:58:52 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 9:58:52 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 9:58:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 9:58:53 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 9:58:54 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 9:58:54 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 9:58:54 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/18  config=null
+Apr 20, 2014 9:58:54 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2107 ms
+Apr 20, 2014 10:03:04 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 10:03:05 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 20, 2014 10:03:05 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 10:03:05 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 20, 2014 10:03:05 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 10:03:32 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 20, 2014 10:03:32 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 10:03:32 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 510 ms
+Apr 20, 2014 10:03:32 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 20, 2014 10:03:32 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 20, 2014 10:03:32 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 20, 2014 10:03:33 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 20, 2014 10:03:33 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 20, 2014 10:03:33 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 20, 2014 10:03:33 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 20, 2014 10:03:33 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 20, 2014 10:03:34 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 20, 2014 10:03:34 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 20, 2014 10:03:34 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/29  config=null
+Apr 20, 2014 10:03:34 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2044 ms

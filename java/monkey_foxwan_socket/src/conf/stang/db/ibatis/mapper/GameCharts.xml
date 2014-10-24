@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameCharts">
+	<typeAlias alias="GameChartsDetail"
+		type="com.stang.game.entity.detail.GameChartsDetail" />
+
+	<cacheModel id="gameChartsCache" type="OSCACHE">
+		<flushInterval hours="23" />
+		<flushOnExecute statement="updateDelivery" />
+		
+	</cacheModel>
+
+	<resultMap class="GameChartsDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="num" column="num" />
+		<result property="top" column="top" />
+		<result property="hot" column="hot" />
+		<result property="nums" column="nums" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="flag" column="flag" />
+		<result property="role_name" column="role_name" />
+		<result property="blood" column="blood" />
+		<result property="attack" column="attack" />
+		<result property="oneattack" column="oneattack" />
+		<result property="roleId" column="roleId" />
+		<result property="serverId" column="serverid" />
+		<result property="mapd" column="mapd" />
+	</resultMap>
+	
+	<select id="findAllGameCharts" resultMap="listResult">
+		SELECT * FROM game_charts
+	</select>
+
+
+	<insert id="insertGameCharts" parameterClass="java.util.Map">
+		INSERT INTO game_charts(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="" property="num">num</isNotEmpty>
+		<isNotEmpty prepend="," property="top">top</isNotEmpty>
+		<isNotEmpty prepend="," property="hot">hot</isNotEmpty>
+		<isNotEmpty prepend="," property="nums">nums</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="role_name">role_name</isNotEmpty>
+	<isNotEmpty prepend="," property="blood">blood</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">attack</isNotEmpty>
+		<isNotEmpty prepend="," property="oneattack">oneattack</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">serverid</isNotEmpty>
+		<isNotEmpty prepend="," property="mapd">mapd</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="" property="num">#num#</isNotEmpty>
+		<isNotEmpty prepend="," property="top">#top#</isNotEmpty>
+		<isNotEmpty prepend="," property="hot">#hot#</isNotEmpty>
+		<isNotEmpty prepend="," property="nums">#nums#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="role_name">#role_name#</isNotEmpty>
+		<isNotEmpty prepend="," property="blood">#blood#</isNotEmpty>
+		<isNotEmpty prepend="," property="attack">#attack#</isNotEmpty>
+		<isNotEmpty prepend="," property="oneattack">#oneattack#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="serverId">#serverId#</isNotEmpty>
+		<isNotEmpty prepend="," property="mapd">#mapd#</isNotEmpty>
+		)
+	</insert>
+	
+	<select id="findByNum" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			mapd = #mapd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			serverid = #serverid#
+		</isNotEmpty>
+		ORDER BY top desc,hot desc,nums desc
+		limit #page#,#size#
+	</select>
+	<select id="findByQZ" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =2
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			mapd = #mapd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			serverid = #serverid#
+		</isNotEmpty>
+		ORDER BY attack desc
+		limit #page#,#size#
+	</select>
+	
+	<select id="findByQZFirstTen" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =2
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			serverid = #serverid#
+		</isNotEmpty>
+		ORDER BY attack desc
+	</select>
+	
+	<select id="findByDT" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =3
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			mapd = #mapd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			serverid = #serverid#
+		</isNotEmpty>
+		ORDER BY oneattack desc,blood desc
+		limit #page#,#size#
+	</select>
+	
+	
+	
+	<select id="findByNumone" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY top desc,hot desc
+		limit #page#,#size#
+	</select>
+	<select id="findByQZone" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =2
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY attack desc
+		limit #page#,#size#
+	</select>
+	
+	<select id="findByDTone" parameterClass="java.util.HashMap" resultMap="listResult" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE FLAG =3
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+		ORDER BY oneattack desc,blood desc
+		limit #page#,#size#
+	</select>
+	
+	
+		<select id="findalllie" resultMap="listResult" cacheModel="gameChartsCache">
+		select * from game_charts WHERE FLAG =1 
+	
+	</select>
+	<select id="findallliet" resultMap="listResult" cacheModel="gameChartsCache">
+		select * from game_charts WHERE FLAG =2 
+	
+	</select>
+		<select id="findalllief" resultMap="listResult" cacheModel="gameChartsCache">
+		select * from game_charts WHERE FLAG =3 
+	
+	</select>
+	<update id="updateGameCharts" parameterClass="java.util.HashMap">
+		UPDATE game_charts SET num = #num#
+		
+		<isNotEmpty prepend="," property="top">
+			top = #top#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="hot">
+			hot = #hot#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="nums">
+			nums = #nums#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="name">
+			name = #name#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="type">
+			type = #type#
+		</isNotEmpty>
+		WHERE id = #id#
+	</update>
+	
+	
+		<select id="getid" resultMap="listResult"
+		parameterClass="int" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE roleId = #roleid# and flag=1
+	</select>
+		<select id="getidqz" resultMap="listResult"
+		parameterClass="int" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE roleId = #roleid# and flag=2
+	</select>
+		<select id="getiddt" resultMap="listResult"
+		parameterClass="int" cacheModel="gameChartsCache">
+		SELECT * FROM game_charts WHERE roleId = #roleid# and flag=3
+	</select>
+	<select id="delete" resultMap="listResult"
+		parameterClass="int">
+		SELECT * FROM game_charts WHERE roleId = #playId#
+	</select>
+	<select id="getall" resultMap="listResult">
+		SELECT * FROM game_charts WHERE flag=1
+	</select>
+	
+	
+</sqlMap>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GmLog">
+	<typeAlias alias="GmLogDetail"
+		type="com.stang.game.ffd.entity.detail.EntityGmLogDetail" />
+	<resultMap class="GmLogDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="server_id" column="SERVER_ID" />
+		<result property="op_id" column="OP_ID" />
+		<result property="case_type" column="CASE_TYPE" />
+		<result property="case_id" column="CASE_ID" />
+		<result property="flag" column="FLAG" />
+	</resultMap>
+
+	<select id="findGmLogByMap" parameterClass="java.util.Map"
+		resultMap="listResult">
+		SELECT ID, SERVER_ID, OP_ID, CASE_TYPE, CASE_ID, FLAG
+		FROM GM_LOG WHERE FLAG = 1
+		<isNotEmpty property="id" prepend="AND">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty property="server_id" prepend="AND">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty property="op_id" prepend="AND">
+			OP_ID = #op_id#
+		</isNotEmpty>
+		<isNotEmpty property="case_type" prepend="AND">
+			CASE_TYPE = #case_type#
+		</isNotEmpty>
+		<isNotEmpty property="case_id" prepend="AND">
+			CASE_ID = #case_id#
+		</isNotEmpty>
+		<isNotEmpty property="flag" prepend="AND">
+			FLAG = #flag#
+		</isNotEmpty>
+	</select>
+
+	<update id="updateGmLogDetail" parameterClass="GmLogDetail">
+		UPDATE GM_LOG SET 
+		
+		<isNotEmpty prepend="" property="server_id">
+			SERVER_ID = #server_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="op_id">
+			OP_ID = #op_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="case_type">
+			CASE_TYPE = #case_type#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="case_id">
+			CASE_ID = #case_id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>	
+	<insert id="insertGmLogDetail" parameterClass="GmLogDetail">
+			INSERT INTO GM_LOG (
+			<isNotEmpty prepend="" property="server_id">SERVER_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="op_id">OP_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="case_type">CASE_TYPE</isNotEmpty>
+			<isNotEmpty prepend="," property="case_id">CASE_ID</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+			)
+		VALUES
+			(
+			<isNotEmpty prepend="" property="server_id">#server_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="op_id">#op_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="case_type">#case_type#</isNotEmpty>
+			<isNotEmpty prepend="," property="case_id">#case_id#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+
+		)
+	</insert>
+
+
+</sqlMap>

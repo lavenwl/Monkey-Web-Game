@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>		
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" 
+		maxRequests="16"
+		maxSessions="10" 
+		maxTransactions="5" 
+		useStatementNamespaces="false" />	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver" />
+			<!-- <property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.14.214:1025/monkey2?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" /> -->
+			<!-- <property name="JDBC.Username" value="root"/>  -->
+			<!-- <property name="JDBC.Password" value="3tang!@ddxy"/> -->
+            <!-- <property name="JDBC.ConnectionURL" value="jdbc:mysql://1.4.10.66:1025/monkeyd?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" /> --> 
+			<!-- <property name="JDBC.Username" value="root"/> --> 
+			<!-- <property name="JDBC.Password" value="long123456"/> --> 
+			
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://192.168.2.22:3309/foxmonkey2?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+			<property name="JDBC.Username" value="root"/>
+			<property name="JDBC.Password" value="root"/>
+          
+            <property name="Pool.MaximumActiveConnections" value="100"/>	<!-- 最大连接数 -->
+			<property name="Pool.MaximumIdleConnections"   value="15"/>	<!-- 允许挂机的最大连接数 -->
+			<property name="Pool.MaximumWait"    value="1000"/>			<!-- 最长等待时间 -->
+			<property name ="Pool.LogAbandoned"  value ="true" />
+			<property name ="Pool.RemoveAbandonedTimeout"  value ="1800000" />
+			<property name ="Pool.RemoveAbandoned"  value ="true" />
+			<property name="Pool.PingQuery"   value="select id from xml_store"/> 
+      		<property name="Pool.PingEnabled" value="false"/> 
+      		<property name="Pool.PingConnectionsOlderThan"  value="28000000"/> 
+    		<property name="Pool.PingConnectionsNotUsedFor" value="28000000"/> 
+		</dataSource>
+	</transactionManager>
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameEquip.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameItem.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameRole.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/RoleItem.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/AutoId.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Buy.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/HostStatus.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Member.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Coin.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Sfg.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/RightUser.xml" />
+	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/RightValue.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameMap.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameTask.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameSkill.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameChLevel.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameFoe.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameEProperty.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameBuff.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Gameplat.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameLevel.xml" />
+		<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Gamemlevel.xml" />
+			<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Gamemilitary.xml" />
+			<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameBbuff.xml" />
+			<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameBmap.xml" />
+			<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameBskill.xml" />
+			<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameMission.xml" />
+	    	<sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GameBing.xml" />
+            <sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/GamblingItem.xml" />
+            <sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Activity.xml" />
+            <sqlMap resource="conf/stang/ffd/db/ibatisxy/mapper/Shopdiscount.xml" />
+</sqlMapConfig>

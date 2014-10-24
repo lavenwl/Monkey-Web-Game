@@ -1,0 +1,117 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RoleTavern">
+	<typeAlias alias="RoleTavernDetail"
+		type="com.stang.game.entity.detail.RoleTavernDetail" />
+
+	<cacheModel id="RoleTavernCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		<flushOnExecute statement="insertRoleTavern" />
+		<flushOnExecute statement="updateRoleTavern" />
+	</cacheModel>
+
+	<resultMap class="RoleTavernDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="id1" column="id1" />
+		<result property="roleId" column="roleId" />
+		<result property="id2" column="id2" />
+		<result property="id3" column="id3" />
+		<result property="id4" column="id4" />
+		<result property="id5" column="id5" />
+		<result property="id6" column="id6" />
+		<result property="time" column="time" />
+		<result property="flag" column="flag" />
+		<result property="chuji" column="chuji" />
+		<result property="jifen" column="jifen" />
+	</resultMap>
+	
+	<select id="findAllRoleTavern" resultMap="listResult">
+		SELECT * FROM role_tavern where flag=1
+	</select>  
+	
+	
+	<insert id="insertRoleTavern" parameterClass="java.util.Map">
+		INSERT INTO role_tavern (
+		<isNotEmpty prepend="" property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="id1">id1</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">id2</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">id3</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">id4</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">id5</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">id6</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">name</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="id1">#id1#</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">#id2#</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">#id3#</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">#id4#</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">#id5#</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">#id6#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		)
+	</insert>
+	<insert id="insertRoleTaverntwo" parameterClass="RoleTavernDetail">
+		INSERT INTO role_tavern (
+		<isNotEmpty prepend="" property="roleId">roleId</isNotEmpty>
+		<isNotEmpty prepend="," property="id1">id1</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">id2</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">id3</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">id4</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">id5</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">id6</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+		<isNotEmpty prepend="," property="chuji">chuji</isNotEmpty>
+		<isNotEmpty prepend="," property="jifen">jifen</isNotEmpty>
+		) VALUES (
+		<isNotEmpty prepend="" property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="id1">#id1#</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">#id2#</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">#id3#</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">#id4#</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">#id5#</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">#id6#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="chuji">#chuji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jifen">#jifen#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateRoleTaverntwo" parameterClass="RoleTavernDetail">
+		UPDATE role_tavern SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="roleId">roleId=#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="id1">id1=#id1#</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">id2=#id2#</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">id3=#id3#</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">id4=#id4#</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">id5=#id5#</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">id6=#id6#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag=#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time=#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="chuji">chuji=#chuji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jifen">jifen=#jifen#</isNotEmpty>
+		WHERE roleId = #roleId#
+	</update>
+	<update id="updateRoleTavern" parameterClass="java.util.Map">
+		UPDATE role_tavern SET roleId=#roleId# 
+		<isNotEmpty prepend="," property="id1">id1=#id1#</isNotEmpty>
+		<isNotEmpty prepend="," property="id2">id2=#id2#</isNotEmpty>
+		<isNotEmpty prepend="," property="id3">id3=#id3#</isNotEmpty>
+		<isNotEmpty prepend="," property="id4">id4=#id4#</isNotEmpty>
+		<isNotEmpty prepend="," property="id5">id5=#id5#</isNotEmpty>
+		<isNotEmpty prepend="," property="id6">id6=#id6#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time=#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="chuji">chuji=#chuji#</isNotEmpty>
+		<isNotEmpty prepend="," property="jifen">jifen=#jifen#</isNotEmpty>
+		WHERE roleId = #roleId#
+	</update>
+
+	<select id="getRoleTavern" parameterClass="int" resultClass="RoleTavernDetail">
+		SELECT * FROM role_tavern WHERE roleId =#roleId# and flag=1
+	</select>
+
+</sqlMap>

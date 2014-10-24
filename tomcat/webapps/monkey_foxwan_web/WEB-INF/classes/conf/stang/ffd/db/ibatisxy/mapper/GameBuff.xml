@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBuff">
+	<typeAlias alias="GameBuffDetail"
+		type="com.stang.game.entity.detail.GameBuffDetail" />
+
+	<cacheModel id="gameBuffCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameBuffDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="buffDip" column="buffdip" />
+		<result property="type" column="type" />
+		<result property="buffAtktime" column="buffatktime" />
+		<result property="buffKeeptime" column="buffkeeptime" />
+		<result property="atkperson" column="atkperson" />
+		<result property="bufftype" column="bufftype" />
+		<result property="bufftime" column="bufftime" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+
+<select id="getGameBuff" resultMap="listResult"  >
+		SELECT * FROM game_buff
+	</select>
+	
+		<select id="findAllBuff"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_buff  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameBuffByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_buff WHERE id=#id#
+	</select>
+
+	
+	<insert id="insertGameBuff" parameterClass="GameBuffDetail">
+		INSERT INTO game_buff(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="name">name</isNotEmpty>
+		<isNotEmpty prepend="," property="buffDip">buffdip</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="buffAtktime">buffatktime</isNotEmpty>
+		<isNotEmpty prepend="," property="buffKeeptime">buffkeeptime</isNotEmpty>
+		<isNotEmpty prepend="," property="atkperson">atkperson</isNotEmpty>
+		<isNotEmpty prepend="," property="bufftype">bufftype</isNotEmpty>
+		<isNotEmpty prepend="," property="bufftime">bufftime</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="ctime">ctime</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="name">#name#</isNotEmpty>
+		<isNotEmpty prepend="," property="buffDip">#buffDip#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="buffAtktime">#buffAtktime#</isNotEmpty>
+		<isNotEmpty prepend="," property="buffKeeptime">#buffKeeptime#</isNotEmpty>
+		<isNotEmpty prepend="," property="atkperson">#atkperson#</isNotEmpty>
+		<isNotEmpty prepend="," property="bufftype">#bufftype#</isNotEmpty>
+		<isNotEmpty prepend="," property="bufftime">#bufftime#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="ctime">#ctime#</isNotEmpty>
+		)
+	</insert>
+	
+		<update id="updateGameBuff" parameterClass="java.util.HashMap">
+		UPDATE game_buff SET 
+			name = #name#,
+			buffdip = #buffdip#,
+			type = #type#,
+			buffatktime = #buffatktime#,
+			buffkeeptime = #buffkeeptime#,
+			atkperson = #atkperson#,
+			flag = #flag#,
+			bufftype = #bufftype#,
+			bufftime = #bufftime#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

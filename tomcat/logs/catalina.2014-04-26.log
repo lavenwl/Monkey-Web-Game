@@ -1,0 +1,280 @@
+Apr 26, 2014 2:11:40 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:11:41 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-18] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-19] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-7] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-18] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@31b8e71]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@5b2fca35]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@1e848c58]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@1019f50f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@1827b40b]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@569d4a90]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@708a605c]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@cbc71bd]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@27cf35d3]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@14d6c410]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@1fe20120]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@2eb7ec3a]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@2cf5ebcc]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@454bb523]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@6d61305f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@7aee513]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@6b414655]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@a70ad76]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@6b8c2354]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@3d6396f5]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6bfd8905]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@554bce4f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6249e4f]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4e1557af]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@63d5d048]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:11:41 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:12:08 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 26, 2014 2:12:08 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 520 ms
+Apr 26, 2014 2:12:08 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 26, 2014 2:12:08 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 26, 2014 2:12:08 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 26, 2014 2:12:10 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:12:10 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 26, 2014 2:12:10 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/29  config=null
+Apr 26, 2014 2:12:10 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2100 ms
+Apr 26, 2014 2:20:36 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:20:37 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-13] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-14] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-18] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-7] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [pool-10-thread-2] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6874ece8]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@6b6d079a]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@430e468f]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@5e3a78ad]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@6874ece8]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@50c8d62f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@430e468f]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@3165d118]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 2:20:37 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:23:53 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 26, 2014 2:23:53 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 542 ms
+Apr 26, 2014 2:23:53 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 26, 2014 2:23:53 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 26, 2014 2:23:53 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 26, 2014 2:23:55 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 2:23:55 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 26, 2014 2:23:55 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/29  config=null
+Apr 26, 2014 2:23:55 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2038 ms
+Apr 26, 2014 7:41:22 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 7:41:23 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-21] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-29] but has failed to stop it. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@5c08e00d]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@48e46007]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@95c90f4]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@1c3087f9]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@362efae4]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@4659aa86]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@28ca677f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@50d7c5]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@3b85c6ac]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@4bb664bb]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@338f57d2]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@7ceb670]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@142b7711]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@3196076f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7553f920]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@70c221d7]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4aada4af]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@593be416]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:23 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@5d56ead7]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 26, 2014 7:41:24 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 7:41:44 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 26, 2014 7:41:44 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 7:41:44 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 500 ms
+Apr 26, 2014 7:41:44 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 26, 2014 7:41:44 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 26, 2014 7:41:44 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 26, 2014 7:41:45 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 26, 2014 7:41:45 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 26, 2014 7:41:45 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 26, 2014 7:41:45 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 26, 2014 7:41:45 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 26, 2014 7:41:46 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 26, 2014 7:41:46 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 26, 2014 7:41:46 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/18  config=null
+Apr 26, 2014 7:41:46 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2006 ms

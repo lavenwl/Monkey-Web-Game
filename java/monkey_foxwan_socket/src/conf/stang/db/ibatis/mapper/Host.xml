@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Host">
+	<typeAlias alias="HostDetail"
+		type="com.stang.game.entity.detail.HostDetail" />
+
+	<cacheModel id="hostCache" type="OSCACHE">
+		<flushInterval hours="1" />
+		
+	</cacheModel>
+
+	<resultMap class="HostDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="status" column="status" />
+		<result property="message" column="message" />
+		<result property="itemid" column="itemid" />
+		<result property="odds" column="odds" />
+		<result property="mid1" column="mid1" />
+		<result property="mid2" column="mid2" />
+		<result property="res1" column="res1" />
+		<result property="res2" column="res2" />
+		<result property="reses" column="reses" />
+		<result property="flag" column="flag" />
+		<result property="month" column="month" />
+		<result property="day" column="day" />
+		<result property="monthend" column="monthend" />
+		<result property="dayend" column="dayend" />
+		<result property="server" column="server" />
+		
+	</resultMap>
+	
+		<select id="findAllHost" resultMap="listResult">
+		SELECT * FROM host_status
+	</select> 
+	
+	
+	
+	
+
+	<select id="findHostByParam" parameterClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM host_status WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mid1">
+			mid1 = #mid1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mid2">
+			mid2 = #mid2#
+		</isNotEmpty>
+	</select>
+	
+	<select id="findHostByIdd" parameterClass="String"
+		resultClass="HostDetail" >
+		SELECT * FROM host_status WHERE id =#id#
+	</select>
+	
+</sqlMap>

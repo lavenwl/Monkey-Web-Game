@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameTask">
+	<typeAlias alias="GameTaskDetail"
+		type="com.stang.game.entity.detail.GameTaskDetail" />
+	<cacheModel id="GameTaskCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GameTaskDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="oldid" column="oldid" />
+		<result property="taskname" column="taskname" />
+		<result property="taskdesc" column="taskdesc" />
+		<result property="type" column="type" />
+		<result property="tasktype" column="tasktype" />
+		<result property="tasklevel" column="tasklevel" />
+		<result property="tasksx" column="tasksx" />
+		<result property="tasknum" column="tasknum" />
+		<result property="taskcoin" column="taskcoin" />
+		<result property="cointype" column="cointype" />
+		<result property="taskres" column="taskres" />
+		<result property="taskres2" column="taskres2" />
+		<result property="taskgoal" column="taskgoal" />
+		<result property="gongxun" column="gongxun" />
+		<result property="junling" column="junling" />
+		<result property="flag" column="flag" />
+		<result property="exp" column="exp" />
+	</resultMap>
+
+	
+	
+<select id="getGameTask" resultMap="listResult"  >
+		SELECT * FROM game_task
+	</select>
+	
+		<select id="findAllTask"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_task  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGameTaskByid" parameterClass="int"  resultMap="listResult" >
+		SELECT * FROM game_task WHERE id=#id#
+	</select>
+	
+	<insert id="insertGametask" parameterClass="GameTaskDetail">
+		INSERT INTO game_task(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="oldid">oldid</isNotEmpty>
+		<isNotEmpty prepend="," property="time">ctime</isNotEmpty>
+		<isNotEmpty prepend="," property="taskname">taskname</isNotEmpty>
+		<isNotEmpty prepend="," property="taskdesc">taskdesc</isNotEmpty>
+		<isNotEmpty prepend="," property="type">type</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">tasktype</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">tasklevel</isNotEmpty>
+		<isNotEmpty prepend="," property="tasksx">tasksx</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">tasknum</isNotEmpty>
+		<isNotEmpty prepend="," property="exp">exp</isNotEmpty>
+		<isNotEmpty prepend="," property="taskcoin">taskcoin</isNotEmpty>
+		<isNotEmpty prepend="," property="cointype">cointype</isNotEmpty>
+		<isNotEmpty prepend="," property="taskres">taskres</isNotEmpty>
+		<isNotEmpty prepend="," property="taskres2">taskres2</isNotEmpty>
+		<isNotEmpty prepend="," property="taskgoal">taskgoal</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="gongxun">gongxun</isNotEmpty>
+		<isNotEmpty prepend="," property="junling">junling</isNotEmpty>
+		) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="oldid">#oldid#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskname">#taskname#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskdesc">#taskdesc#</isNotEmpty>
+		<isNotEmpty prepend="," property="type">#type#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasktype">#tasktype#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasklevel">#tasklevel#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasksx">#tasksx#</isNotEmpty>
+		<isNotEmpty prepend="," property="tasknum">#tasknum#</isNotEmpty>
+			<isNotEmpty prepend="," property="exp">#exp#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskcoin">#taskcoin#</isNotEmpty>
+			<isNotEmpty prepend="," property="cointype">#cointype#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskres">#taskres#</isNotEmpty>
+			<isNotEmpty prepend="," property="taskres2">#taskres2#</isNotEmpty>
+		<isNotEmpty prepend="," property="taskgoal">#taskgoal#</isNotEmpty>
+			<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+			<isNotEmpty prepend="," property="gongxun">#gongxun#</isNotEmpty>
+			<isNotEmpty prepend="," property="junling">#junling#</isNotEmpty>
+		)
+	</insert>
+	<update id="updateGametask" parameterClass="java.util.HashMap">
+		UPDATE game_task SET 
+			oldid = #oldid#,
+			taskname = #taskname#,
+			taskdesc = #taskdesc#,
+			type = #type#,
+			tasktype = #tasktype#,
+			tasklevel = #tasklevel#,
+			tasksx = #tasksx#,
+			tasknum = #tasknum#,
+			exp = #exp#,
+			taskcoin = #taskcoin#,
+			cointype = #cointype#,
+			taskres = #taskres#,
+			taskres2 = #taskres2#,
+			taskgoal = #taskgoal#,
+			flag = #flag#,
+			gongxun = #gongxun#,
+			junling = #junling#
+		WHERE id =#id#
+	</update>
+	
+</sqlMap>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameTask">
+	<typeAlias alias="GameTaskDetail"
+		type="com.stang.game.entity.detail.GameTaskDetail" />
+	<cacheModel id="GameTaskCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameTaskDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="oldid" column="oldid" />
+		<result property="taskname" column="taskname" />
+		<result property="taskdesc" column="taskdesc" />
+		<result property="type" column="type" />
+		<result property="tasktype" column="tasktype" />
+		<result property="tasklevel" column="tasklevel" />
+		<result property="tasksx" column="tasksx" />
+		<result property="tasknum" column="tasknum" />
+		<result property="taskcoin" column="taskcoin" />
+		<result property="cointype" column="cointype" />
+		<result property="taskres" column="taskres" />
+		<result property="taskres2" column="taskres2" />
+		<result property="taskgoal" column="taskgoal" />
+		<result property="gongxun" column="gongxun" />
+		<result property="junling" column="junling" />
+		<result property="flag" column="flag" />
+		<result property="exp" column="exp" />
+	</resultMap>
+	
+		<select id="findAllGameTask" resultMap="listResult">
+		SELECT * FROM game_task where flag=1 
+	</select>
+
+	<!-- 查询 -->
+	<select id="getAllGameTask"  resultClass="GameTaskDetail" cacheModel="GameTaskCache">
+		SELECT * FROM game_task WHERE  flag=1 AND id>34
+	</select>
+	
+	<!-- 查询 -->
+	<select id="getGameTaskDetailById" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_task WHERE  flag=1 AND id=#id#
+	</select>
+	
+	<!-- 查询 -->
+	<select id="getGameTaskDetailByoId" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_task WHERE  flag=1 AND oldid=#oldid#
+	</select>
+	
+	<!-- 查询 -->
+	<select id="getGameTaskDetailByLvandold" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT * FROM game_task 
+		WHERE  
+		flag=1 AND oldid =0 AND
+		tasklevel= #tasklevel# 
+	</select>
+	
+	<!-- 查询 -->
+	<select id="getGameTaskDetailByType" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_task WHERE  flag=1 AND type=#type#
+	</select>
+	<!-- 查询 -->
+	<select id="getGameTaskDetailByLv" resultMap="listResult" parameterClass="int">
+		SELECT * FROM game_task WHERE  flag=1 AND tasklevel=#tasklevel#
+	</select>
+
+	<!-- 查询 -->
+	<select id="getGameTaskDetail" parameterClass="java.util.Map" resultMap="listResult">
+		SELECT *FROM game_task 
+		WHERE 
+		<isNotEmpty property="flag" prepend="">
+			flag = #flag#
+		</isNotEmpty>
+		<isNotEmpty property="id" prepend="AND">id = #id#</isNotEmpty>
+		<isNotEmpty property="oldid" prepend="AND">
+			oldid = #oldid#
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			type = #type#
+		</isNotEmpty>
+		<isNotEmpty property="tasktype" prepend="AND">
+			tasktype = #tasktype#
+		</isNotEmpty>
+		<isNotEmpty property="tasklevel" prepend="AND">
+			tasklevel = #tasklevel#
+		</isNotEmpty>
+	</select>
+	
+	<select id="getGameTaskDetailByTypeTasktype" parameterClass="java.util.Map" resultMap="listResult">
+		SELECT * FROM game_task 
+		WHERE 
+			flag = 1 AND type = #type# AND
+			tasktype = #tasktype#
+	</select>
+   <!-- 查询 -->
+	<select id="findGameTaskDetailById" resultClass="GameTaskDetail" parameterClass="int">
+		SELECT * FROM game_task WHERE  flag=1 AND id=#id#
+	</select>
+</sqlMap>

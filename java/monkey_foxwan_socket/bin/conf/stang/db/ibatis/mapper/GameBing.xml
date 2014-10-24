@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GameBing">
+	<typeAlias alias="GameBingDetail"
+		type="com.stang.game.entity.detail.GameBingDetail" />
+
+	<cacheModel id="gameBingCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GameBingDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="icon" column="icon" />
+		<result property="type" column="type" />
+		<result property="artdesc" column="artdesc" />
+		<result property="isenemy" column="isenemy" />
+		<result property="gongji" column="gongji" />
+		<result property="xishu1" column="xishu1" />
+		<result property="xueliang" column="xueliang" />
+		<result property="xishu2" column="xishu2" />
+		<result property="fangyu" column="fangyu" />
+		<result property="gongsu" column="gongsu" />
+		<result property="gongfan" column="gongfan" />
+		<result property="shangfan" column="shangfan" />
+		<result property="sudu" column="sudu" />
+		<result property="renkou" column="renkou" />
+		<result property="jiage" column="jiage" />
+		<result property="lengque" column="lengque" />
+		<result property="bullet" column="bullet" />
+		<result property="bulletfly" column="bulletfly" />
+		<result property="bullethit" column="bullethit" />
+		<result property="flag" column="flag" />
+		<result property="skill" column="skill" />
+		<result property="gongjun" column="gongjun" />
+		<result property="bingfu" column="bingfu" />
+		<result property="xtype" column="xtype" />
+		<result property="xixue" column="xixue" />
+		<result property="accord" column="accord" />
+		<result property="qty" column="qty" />
+		<result property="speakdesc" column="speakdesc" />
+		<result property="speaktext" column="speaktext" />
+		
+	</resultMap>
+
+	<select id="getGameBing" resultClass="GameBingDetail" >
+		SELECT * FROM game_bing WHERE FLAG =1
+	</select>
+	
+	
+	
+	<select id="getGameBingById" resultClass="java.util.HashMap" resultMap="listResult">
+		SELECT * FROM game_bing WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="id">
+			id = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="type">
+			type = #type#
+		</isNotEmpty>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,65 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamePlatsDetail">
+	<typeAlias alias="GamePlatsDetail"
+		type="com.stang.game.entity.detail.GamePlatsDetail" />
+
+	<cacheModel id="GamePlatsCache" type="OSCACHE">
+		<flushInterval hours="24" />
+	</cacheModel>
+
+	<resultMap class="GamePlatsDetail" id="listResult">
+		<result property="id" column="id" />
+		<result property="mid" column="mid" />
+		<result property="res" column="res" />
+		<result property="resodds" column="resodds" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	
+	<select id="getGamePlat" resultMap="listResult"  >
+		SELECT * FROM game_plat
+	</select>
+	
+		<select id="findAllPlat"  parameterClass="java.util.HashMap" resultMap="listResult" >
+		select * from game_plat  limit #page#,#pageSize# 
+	</select>
+	
+	
+	<select id="findGamePlatByid" parameterClass="java.util.HashMap"  resultMap="listResult" >
+		SELECT * FROM game_plat WHERE id=#id#
+		<isNotEmpty prepend="AND" property="mid">
+			mid = #mid#
+		</isNotEmpty>
+	</select>
+	
+	
+	
+	
+	<insert id="insertGameplat" parameterClass="GamePlatsDetail">
+		INSERT INTO game_plat(
+		<isNotEmpty prepend="" property="id">id</isNotEmpty>
+		<isNotEmpty prepend="," property="mid">mid</isNotEmpty>
+		<isNotEmpty prepend="," property="res">res</isNotEmpty>
+		<isNotEmpty prepend="," property="resodds">resodds</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">flag</isNotEmpty>
+		<isNotEmpty prepend="," property="time">time</isNotEmpty>
+	) VALUES(
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="mid">#mid#</isNotEmpty>
+		<isNotEmpty prepend="," property="res">#res#</isNotEmpty>
+		<isNotEmpty prepend="," property="resodds">#resodds#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="time">#time#</isNotEmpty>
+	)
+	</insert>
+	<update id="updateGameplat" parameterClass="java.util.HashMap">
+		UPDATE game_plat SET 
+			mid = #mid#,
+			res = #res#,
+			resodds = #resodds#,
+			flag = #flag#
+		WHERE id =#id# and mid = #mid#
+	</update>
+
+</sqlMap>

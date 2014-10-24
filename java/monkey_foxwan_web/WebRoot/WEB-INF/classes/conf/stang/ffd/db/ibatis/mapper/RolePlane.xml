@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="RolePlane">
+	<typeAlias alias="RolePlaneDetail"
+		type="com.stang.game.ffd.entity.detail.RolePlaneDetail" />
+
+	<cacheModel id="rolePlaneCache" type="OSCACHE">
+		<flushInterval hours="24" />
+		<flushOnExecute statement="insertRolePlaneDetail" />
+		<flushOnExecute statement="updateRolePlaneDetail" />
+		<flushOnExecute statement="batchDeleteRolePlanes" />
+		<flushOnExecute statement="updateRolePlaneByRoleId" />
+		<flushOnExecute statement="updateRolePlaneByPackageId"/>
+		<flushOnExecute statement="deleteRolePlane" />
+	</cacheModel>
+
+	<cacheModel id="topRolePlaneCache" type="OSCACHE">
+		<flushInterval hours="4" />
+	</cacheModel>
+
+	<resultMap class="RolePlaneDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="roleId" column="ROLE_ID" />
+		<result property="planeId" column="PLANE_ID" />
+		<result property="isUsed" column="IS_USED" />
+		<result property="isBind" column="IS_BIND" />
+		<result property="isIdentify" column="IS_IDENTIFY" />
+		<result property="strengthenLevel" column="STRENGTHEN_LEVEL" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="flag" column="FLAG" />
+		<result property="storageType" column="STORAGE_TYPE" />
+		<result property="grade" column="GRADE" />
+		<result property="isCheck" column="IS_CHECK" />
+		<result property="checkAt" column="CHECK_AT" />
+		<result property="checkSp" column="CHECK_SP" />
+		<result property="checkHp" column="CHECK_HP" />
+		<result property="checkDe" column="CHECK_DE" />
+		<result property="checkCu" column="CHECK_CU" />
+		<result property="checkDcu" column ="CHECK_DCU"/>
+		<result property="enchaseType1" column="ENCHASE_TYPE1" />
+		<result property="enchaseId1" column="ENCHASE_ID1" />
+		<result property="enchaseState1" column="ENCHASE_STATE1" />
+		<result property="enchaseType2" column="ENCHASE_TYPE2" />
+		<result property="enchaseId2" column="ENCHASE_ID2" />
+		<result property="enchaseState2" column="ENCHASE_STATE2" />
+		<result property="enchaseType3" column="ENCHASE_TYPE3" />
+		<result property="enchaseId3" column="ENCHASE_ID3" />
+		<result property="enchaseState3" column="ENCHASE_STATE3" />
+		<result property="enchaseType4" column="ENCHASE_TYPE4" />
+		<result property="enchaseId4" column="ENCHASE_ID4" />
+		<result property="enchaseState4" column="ENCHASE_STATE4" />
+		<result property="enchaseType5" column="ENCHASE_TYPE5" />
+		<result property="enchaseId5" column="ENCHASE_ID5" />
+		<result property="enchaseState5" column="ENCHASE_STATE5" />
+	</resultMap>
+
+	<resultMap class="RolePlaneDetail" id="toplistResult">
+		<result property="id" column="ID" />
+		<result property="roleId" column="ROLE_ID" />
+	</resultMap>
+
+	<!-- 录入信息 -->
+	<insert id="insertRolePlaneDetail"
+		parameterClass="RolePlaneDetail">
+		INSERT INTO ROLE_PLANE (
+		<isNotEmpty prepend="" property="id">ID</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">ROLE_ID</isNotEmpty>
+		<isNotEmpty prepend="," property="planeId">PLANE_ID</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">IS_USED</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">IS_BIND</isNotEmpty>
+		<isNotEmpty prepend="," property="isIdentify">
+			IS_IDENTIFY
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">GRADE</isNotEmpty>
+		<isNotEmpty prepend="," property="isCheck">IS_CHECK</isNotEmpty>
+		<isNotEmpty prepend="," property="checkAt">CHECK_AT</isNotEmpty>
+		<isNotEmpty prepend="," property="checkSp">CHECK_SP</isNotEmpty>
+		<isNotEmpty prepend="," property="checkHp">CHECK_HP</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDe">CHECK_DE</isNotEmpty>
+		<isNotEmpty prepend="," property="checkCu">CHECK_CU</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDcu">CHECK_DCU</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType1">
+			ENCHASE_TYPE1
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			ENCHASE_ID1
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			ENCHASE_STATE1
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType2">
+			ENCHASE_TYPE2
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			ENCHASE_ID2
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			ENCHASE_STATE2
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType3">
+			ENCHASE_TYPE3
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			ENCHASE_ID3
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			ENCHASE_STATE3
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType4">
+			ENCHASE_TYPE4
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			ENCHASE_ID4
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			ENCHASE_STATE4
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType5">
+			ENCHASE_TYPE5
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			ENCHASE_ID5
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			ENCHASE_STATE5
+		</isNotEmpty>
+
+		) VALUES (
+		<isNotEmpty prepend="" property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">#roleId#</isNotEmpty>
+		<isNotEmpty prepend="," property="planeId">
+			#planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">#isUsed#</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">#isBind#</isNotEmpty>
+		<isNotEmpty prepend="," property="isIdentify">
+			#isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			#strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			#storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">#grade#</isNotEmpty>
+		<isNotEmpty prepend="," property="isCheck">
+			#isCheck#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="checkAt">
+			#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkSp">
+			#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkHp">
+			#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDe">
+			#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkCu">
+			#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDcu">
+			#checkDcu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType1">
+			#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			#enchaseState1#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType2">
+			#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			#enchaseState2#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType3">
+			#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			#enchaseState3#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType4">
+			#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			#enchaseState4#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType5">
+			#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			#enchaseState5#
+		</isNotEmpty>
+
+		)
+	</insert>
+
+	<!-- 更新信息 -->
+	<update id="updateRolePlaneDetail"
+		parameterClass="RolePlaneDetail">
+		UPDATE ROLE_PLANE SET
+		<isNotEmpty prepend="" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isCheck">
+			IS_CHECK=#isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="," property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+
+
+		WHERE ID = #id#
+	</update>
+
+	<update id="updateRolePlaneByRoleId"
+		parameterClass="RolePlaneDetail">
+		UPDATE ROLE_PLANE SET
+		<isNotEmpty prepend="" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isCheck">
+			IS_CHECK=#isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="," property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+		WHERE ROLE_ID = #roleId#
+	</update>
+
+	<!-- 使用飞机 -->
+
+
+	<!-- 换飞机 -->
+
+
+	<!-- 根据角色序列号组查询该角色当前使用的飞机 -->
+	<select id="findRolePlanesByRoleIds" parameterClass="java.util.Map"
+		resultMap="listResult" cacheModel="rolePlaneCache">
+		SELECT ID, ROLE_ID, PLANE_ID, IS_USED, IS_BIND, IS_IDENTIFY,
+		STRENGTHEN_LEVEL, CREATE_TIME, FLAG, STORAGE_TYPE, GRADE,
+		IS_CHECK, CHECK_AT, CHECK_SP, CHECK_HP, CHECK_DE, CHECK_CU,CHECK_DCU,
+		ENCHASE_TYPE1, ENCHASE_ID1, ENCHASE_STATE1, ENCHASE_TYPE2,
+		ENCHASE_ID2, ENCHASE_STATE2, ENCHASE_TYPE3, ENCHASE_ID3,
+		ENCHASE_STATE3, ENCHASE_TYPE4, ENCHASE_ID4, ENCHASE_STATE4,
+		ENCHASE_TYPE5, ENCHASE_ID5, ENCHASE_STATE5
+
+		FROM ROLE_PLANE WHERE FLAG = 1 AND IS_USED = 1
+		<isNotNull prepend="AND">
+			ROLE_ID IN
+			<iterate property="roleIds" open="(" close=")"
+				conjunction=",">
+				#roleIds[]#
+			</iterate>
+		</isNotNull>
+	</select>
+
+	<!-- 根据角色序列号查询该角色当前使用的飞机 -->
+	<select id="findUsingRolePlanesByRoleId"
+		parameterClass="java.util.Map" resultMap="listResult"
+		cacheModel="rolePlaneCache">
+		SELECT ID, ROLE_ID, PLANE_ID, IS_USED, IS_BIND, IS_IDENTIFY,
+		STRENGTHEN_LEVEL, CREATE_TIME, FLAG, STORAGE_TYPE, GRADE,
+		IS_CHECK, CHECK_AT,CHECK_SP, CHECK_HP, CHECK_DE, CHECK_CU,CHECK_DCU,
+		ENCHASE_TYPE1, ENCHASE_ID1, ENCHASE_STATE1, ENCHASE_TYPE2,
+		ENCHASE_ID2, ENCHASE_STATE2, ENCHASE_TYPE3, ENCHASE_ID3,
+		ENCHASE_STATE3, ENCHASE_TYPE4, ENCHASE_ID4, ENCHASE_STATE4,
+		ENCHASE_TYPE5, ENCHASE_ID5, ENCHASE_STATE5 FROM ROLE_PLANE WHERE
+		FLAG = 1 AND IS_USED = 1 AND ROLE_ID = #roleId#
+	</select>
+
+	<!-- 根据角色序列号查询该角色所拥有的飞机 -->
+	<select id="findRolePlanesByRoleId"
+		parameterClass="java.util.HashMap" resultMap="listResult"
+		cacheModel="rolePlaneCache">
+		SELECT ID, ROLE_ID, PLANE_ID, IS_USED, IS_BIND, IS_IDENTIFY,
+		STRENGTHEN_LEVEL, CREATE_TIME, FLAG, STORAGE_TYPE, GRADE,
+		IS_CHECK, CHECK_AT,CHECK_SP, CHECK_HP, CHECK_DE, CHECK_CU,CHECK_DCU,
+		ENCHASE_TYPE1, ENCHASE_ID1, ENCHASE_STATE1, ENCHASE_TYPE2,
+		ENCHASE_ID2, ENCHASE_STATE2, ENCHASE_TYPE3, ENCHASE_ID3,
+		ENCHASE_STATE3, ENCHASE_TYPE4, ENCHASE_ID4, ENCHASE_STATE4,
+		ENCHASE_TYPE5, ENCHASE_ID5, ENCHASE_STATE5 FROM ROLE_PLANE WHERE
+		FLAG = 1
+		<isNotEmpty prepend="AND" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isCheck">
+			IS_CHECK=#isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="AND" property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+	</select>
+
+	<select id="getRolePlanes" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="rolePlaneCache">
+		SELECT ID, ROLE_ID, PLANE_ID, IS_USED, IS_BIND, IS_IDENTIFY,
+		STRENGTHEN_LEVEL, CREATE_TIME, FLAG, STORAGE_TYPE, GRADE,
+		IS_CHECK, CHECK_AT, CHECK_SP, CHECK_HP, CHECK_DE, CHECK_CU,CHECK_DCU,
+		ENCHASE_TYPE1, ENCHASE_ID1, ENCHASE_STATE1, ENCHASE_TYPE2,
+		ENCHASE_ID2, ENCHASE_STATE2, ENCHASE_TYPE3, ENCHASE_ID3,
+		ENCHASE_STATE3, ENCHASE_TYPE4, ENCHASE_ID4, ENCHASE_STATE4,
+		ENCHASE_TYPE5, ENCHASE_ID5, ENCHASE_STATE5 FROM ROLE_PLANE WHERE
+		<isNotEmpty prepend="" property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty property="flag1" prepend="">
+			FLAG
+			<![CDATA[ <> ]]>
+			#flag1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isCheck">
+			IS_CHECK = #isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="AND" property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+	</select>
+
+	<!-- 批量删除角色-装备信息关系信息 -->
+	<delete id="batchDeleteRolePlanes"
+		parameterClass="java.util.HashMap">
+		DELETE FROM ROLE_PLANE
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="">
+				ID IN
+				<iterate property="ids" open="(" close=")"
+					conjunction=",">
+					#ids[]#
+				</iterate>
+			</isNotNull>
+		</dynamic>
+	</delete>
+
+	<delete id="deleteRolePlane" parameterClass="java.util.HashMap">
+		DELETE FROM ROLE_PLANE WHERE FLAG = 1
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="isCheck">
+			IS_CHECK = #isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+	</delete>
+	<!-- 根据飞机数量排行 -->
+	<select id="topRolePlane" parameterClass="java.util.HashMap"
+		resultMap="toplistResult" cacheModel="topRolePlaneCache">
+		SELECT ROLE_ID, COUNT(ID) ID FROM ROLE_PLANE WHERE FLAG = 1
+		GROUP BY ROLE_ID ORDER BY COUNT(ID) DESC LIMIT 0,#endNum#
+	</select>
+	<update id="updateRolePlaneDetailByRoleIdAndPlaneId"
+		parameterClass="java.util.HashMap">
+		UPDATE ROLE_PLANE SET
+		<isNotEmpty prepend="" property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+		WHERE ROLE_ID = #roleId# AND PLANE_ID = #planeId#
+	</update>
+	<update id="updateRolePlaneByPackageId"
+		parameterClass="java.util.HashMap">
+		UPDATE ROLE_PLANE SET
+		FLAG=1
+		<isNotEmpty prepend="," property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="roleId">
+			ROLE_ID = #roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="planeId">
+			PLANE_ID = #planeId#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isUsed">
+			IS_USED = #isUsed#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isBind">
+			IS_BIND = #isBind#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isIdentify">
+			IS_IDENTIFY = #isIdentify#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="strengthenLevel">
+			STRENGTHEN_LEVEL = #strengthenLevel#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="createTime">
+			CREATE_TIME = #createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">
+			FLAG = #flag#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="storageType">
+			STORAGE_TYPE = #storageType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="grade">
+			GRADE = #grade#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="isCheck">
+			IS_CHECK=#isCheck#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkAt">
+			CHECK_AT=#checkAt#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkSp">
+			CHECK_SP=#checkSp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkHp">
+			CHECK_HP=#checkHp#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDe">
+			CHECK_DE=#checkDe#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkCu">
+			CHECK_CU=#checkCu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="checkDcu">
+			CHECK_DCU=#checkDcu#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType1">
+			ENCHASE_TYPE1=#enchaseType1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId1">
+			ENCHASE_ID1=#enchaseId1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState1">
+			ENCHASE_STATE1=#enchaseState1#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseType2">
+			ENCHASE_TYPE1=#enchaseType2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId2">
+			ENCHASE_ID1=#enchaseId2#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState2">
+			ENCHASE_STATE1=#enchaseState2#
+		</isNotEmpty>
+
+
+		<isNotEmpty prepend="," property="enchaseType3">
+			ENCHASE_TYPE1=#enchaseType3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId3">
+			ENCHASE_ID1=#enchaseId3#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState3">
+			ENCHASE_STATE1=#enchaseState3#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType4">
+			ENCHASE_TYPE1=#enchaseType4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId4">
+			ENCHASE_ID1=#enchaseId4#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState4">
+			ENCHASE_STATE1=#enchaseState4#
+		</isNotEmpty>
+
+		<isNotEmpty prepend="," property="enchaseType5">
+			ENCHASE_TYPE1=#enchaseType5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseId5">
+			ENCHASE_ID1=#enchaseId5#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="enchaseState5">
+			ENCHASE_STATE1=#enchaseState5#
+		</isNotEmpty>
+		WHERE ID = #id#
+	</update>
+	
+	<select id="findPlaneIdById" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT PLANE_ID FROM ROLE_PLANE WHERE ID = #id#
+	</select>
+</sqlMap>

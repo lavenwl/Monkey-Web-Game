@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="Member">
+	<typeAlias alias="EntityCaseInfoDetail" type="com.stang.game.ffd.entity.detail.EntityCaseInfoDetail" />
+	
+	<cacheModel id="MemberCache" type="OSCACHE">
+		<flushInterval minutes="10" />
+	</cacheModel>
+	
+	<resultMap class="EntityCaseInfoDetail" id="listResult">
+		<result property="id" column="ID"/>
+		<result property="lag_type" column="LAG_TYPE"/>
+		<result property="lag_info" column="LAG_INFO"/>
+		<result property="lag_time" column="LAG_TIME"/>
+		<result property="flag" column="FLAG"/>
+	</resultMap>
+	
+	
+	<!-- 获得信息 -->
+	<select id="findAll" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			LAG_TYPE,
+			LAG_INFO,
+			LAG_TIME,
+			FLAG
+		FROM  
+			case_info 
+		WHERE 
+			FLAG = 1 
+			<isNotEmpty property="id" prepend="AND" >
+    	   		ID = #id#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_type" prepend="AND">
+    	   		LAG_TYPE = #lag_type#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_info" prepend="AND">
+    	   		LAG_INFO = #lag_info#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_time" prepend="AND">
+    	   		LAG_TIME = #lag_time#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="likeTime" prepend="AND">
+    	   		LAG_TIME LIKE  '%$likeTime$%'
+    	   	</isNotEmpty>
+    	   ORDER BY LAG_TIME DESC
+    	   	<isNotEmpty property="limit1" prepend="limit">
+    		  #limit1#,#limit2#
+    	   	</isNotEmpty>
+	</select>
+	
+	<!-- 获得信息 -->
+	<select id="findAllForTime" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			LAG_INFO,
+			LAG_TIME,
+			LAG_TYPE,
+			FLAG
+		FROM  
+			case_info 
+		WHERE 
+			FLAG = 1
+    	   	<isNotEmpty property="lag_time" prepend="AND">
+    	   	 <![CDATA[LAG_TIME > #lag_time# ]]>
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_time2" prepend="AND">
+    	   	 <![CDATA[LAG_TIME < #lag_time2# ]]>
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_type" prepend="AND">
+    		  LAG_TYPE = #lag_type#
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="liketime" prepend="AND">
+    		  LAG_TIME  like '%$liketime$%'
+    	   	</isNotEmpty>
+    	   ORDER BY LAG_TIME DESC
+	</select>
+	
+	<insert id="addCaseInfo" parameterClass="java.util.HashMap">
+		INSERT INTO CASE_INFO(
+		<isNotEmpty prepend="" property="lag_type">LAG_TYPE</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_info">LAG_INFO</isNotEmpty>
+		<isNotEmpty prepend="," property="id">ID</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_time">LAG_TIME</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG</isNotEmpty>
+		)VALUES(
+		<isNotEmpty prepend="" property="lag_type">#lag_type#</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_info">#lag_info#</isNotEmpty>
+		<isNotEmpty prepend="," property="id">#id#</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_time">#lag_time#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">#flag#</isNotEmpty>
+		)
+	</insert>
+	
+	<update id="updateCaseInfo" parameterClass="java.util.HashMap">
+		UPDATE CASE_INFO SET 
+		<isNotEmpty prepend="" property="lag_info">LAG_INFO = #lag_info#</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_type">LAG_TYPE = #lag_type#</isNotEmpty>
+		<isNotEmpty prepend="," property="lag_time">LAG_TIME = #lag_time#</isNotEmpty>
+		<isNotEmpty prepend="," property="flag">FLAG = #flag#</isNotEmpty>
+		WHERE LAG_TIME LIKE  '%$like_time$%'
+		
+		<isNotEmpty prepend="AND" property="id">
+			ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="lag_type">
+		    LAG_TYPE = #lag_type#
+		  </isNotEmpty>
+	</update>
+	
+	
+	<select id="SearchYesterday" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			LAG_INFO,
+			LAG_TIME,
+			LAG_TYPE,
+			FLAG
+		FROM  
+			case_info 
+		WHERE 
+			FLAG = 1
+    	   	<isNotEmpty property="lag_time" prepend="AND">
+    	   	 <![CDATA[LAG_TIME > #lag_time# ]]>
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_time2" prepend="AND">
+    	   	 <![CDATA[LAG_TIME < #lag_time2# ]]>
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_type" prepend="AND">
+    		  LAG_TYPE = #lag_type#
+    	   	</isNotEmpty>
+    	   ORDER BY LAG_TIME DESC
+	</select>
+	
+	<select id="SearchYesterdayForLike" resultMap="listResult" parameterClass="java.util.HashMap">
+		SELECT 
+			ID,
+			LAG_INFO,
+			LAG_TIME,
+			LAG_TYPE,
+			FLAG
+		FROM  
+			case_info 
+		WHERE 
+			FLAG = 1
+    	   	<isNotEmpty property="lag_time" prepend="AND">
+    	   	 LAG_TIME LIKE '%$lag_time$%' 
+    	   	</isNotEmpty>
+    	   	<isNotEmpty property="lag_type" prepend="AND">
+    		  LAG_TYPE = #lag_type#
+    	   	</isNotEmpty>
+    	   ORDER BY LAG_TIME DESC
+	</select>
+	
+	<!-- 查询有多少条数据 -->
+	<select id="searchCount" resultClass="int" parameterClass="java.util.HashMap">
+		SELECT 
+		  count(*)
+		FROM  
+			case_info 
+		WHERE 
+			FLAG = 1
+    	   	<isNotEmpty property="lag_type" prepend="AND">
+    		  LAG_TYPE = #lag_type#
+    	   	</isNotEmpty>
+    	   ORDER BY LAG_TIME DESC
+    	   	<isNotEmpty property="limit" prepend="limit">
+    		  #limit1#,#limit2#
+    	   	</isNotEmpty>
+	</select>
+		
+</sqlMap>
+		
+		

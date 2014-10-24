@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMap namespace="GamePrice">
+	<typeAlias alias="GamePriceDetail"
+		type="com.stang.game.entity.detail.GamePriceDetail" />
+
+	<cacheModel id="GamePriceCache" type="OSCACHE">
+		<flushInterval hours="1" />
+	</cacheModel>
+
+	<resultMap class="GamePriceDetail" id="listResult">
+		<result property="id" column="ID" />
+		<result property="resId" column="RESID" />
+		<result property="resType" column="RESTYPE" />
+		<result property="resCost" column="RESCOST" />
+		<result property="costType" column="COSTTYPE" />
+		<result property="keepTime" column="KEEPTIME" />
+		<result property="flag" column="FLAG" />
+		<result property="costitemid" column="costitemid" />
+		<result property="onsale" column="onsale" />
+	</resultMap>
+
+	<select id="getAllGamePrice" resultClass="GamePriceDetail" >
+		SELECT * from game_price WHERE FLAG = 1;
+	</select>
+
+	<select id="getGamePriceById" parameterClass="int"
+		resultClass="GamePriceDetail">
+		SELECT * from game_price WHERE FLAG = 1 and resId=#id#;
+	</select>
+
+
+
+	<select id="getGamePrice" parameterClass="java.util.HashMap"
+		resultMap="listResult" cacheModel="GamePriceCache">
+		SELECT * FROM game_price WHERE FLAG =1
+		<isNotEmpty prepend="AND" property="resId">
+			resId=#resId#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="resType">
+			resType = #resType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="costType">
+			costType = #costType#
+		</isNotEmpty>
+
+	</select>
+</sqlMap>

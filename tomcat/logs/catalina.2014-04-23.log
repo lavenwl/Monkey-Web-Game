@@ -1,0 +1,486 @@
+Apr 23, 2014 11:34:23 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:34:24 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@e7c0d41]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@e7c0d41]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@e7c0d41]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@e7c0d41]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 11:34:24 AM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@e7c0d41]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 11:34:24 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:34:38 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 11:34:38 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:34:38 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 503 ms
+Apr 23, 2014 11:34:38 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 11:34:38 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 11:34:38 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 11:34:38 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 11:34:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 11:34:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 11:34:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 11:34:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 11:34:40 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:34:40 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 11:34:40 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/19  config=null
+Apr 23, 2014 11:34:40 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2117 ms
+Apr 23, 2014 11:56:11 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:56:12 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 11:56:12 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:58:12 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 11:58:12 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:58:12 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 502 ms
+Apr 23, 2014 11:58:12 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 11:58:12 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 11:58:12 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 11:58:13 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 11:58:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 11:58:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 11:58:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 11:58:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 11:58:14 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 11:58:14 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 11:58:14 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/16  config=null
+Apr 23, 2014 11:58:14 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1995 ms
+Apr 23, 2014 12:41:56 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 12:41:57 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 12:41:58 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 12:42:55 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 12:42:56 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 547 ms
+Apr 23, 2014 12:42:56 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 12:42:56 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 12:42:56 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 12:42:58 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 12:42:58 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 12:42:58 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/20  config=null
+Apr 23, 2014 12:42:58 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2145 ms
+Apr 23, 2014 1:14:50 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:14:51 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@66a96863]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@764b2c0]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@64135f0a]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@33c4bcda]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@394aa6c3]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@540a6997]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@779a639b]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@39019275]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@64135f0a]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@16365c90]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@779a639b]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@39019275]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@66a96863]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@4af6fd54]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@394aa6c3]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@1d71bc3f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@66a96863]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@15fddb33]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@394aa6c3]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@4d41fc8c]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:14:56 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:15:03 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 1:15:03 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:15:03 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 523 ms
+Apr 23, 2014 1:15:04 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 1:15:04 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 1:15:04 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 1:15:05 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:15:06 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 1:15:06 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/22  config=null
+Apr 23, 2014 1:15:06 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2107 ms
+Apr 23, 2014 1:19:36 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:19:37 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 1:19:37 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 1:19:37 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@15e8e5a7]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@50c3d062]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:19:37 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@67a5fb5a]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@421906df]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 1:19:37 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:19:42 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 1:19:42 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 536 ms
+Apr 23, 2014 1:19:42 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 1:19:42 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 1:19:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 1:19:43 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 1:19:44 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 1:19:44 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 1:19:44 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/20  config=null
+Apr 23, 2014 1:19:44 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2060 ms
+Apr 23, 2014 2:47:30 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 2:47:31 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@60f38b42]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@8bfc25c]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@65712a80]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@689d6d87]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@60f38b42]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@3781efb9]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@65712a80]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@33a17727]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@60f38b42]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@2d95bbec]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@65712a80]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@41649a55]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@60f38b42]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@33d063fd]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@65712a80]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@3654919e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6fd46259]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@60f38b42]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@6084fa6a]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@65712a80]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@3a5476a7]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 2:47:32 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 2:48:31 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 2:48:31 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 2:48:31 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 504 ms
+Apr 23, 2014 2:48:31 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 2:48:31 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 2:48:31 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 2:48:32 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 2:48:32 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 2:48:32 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 2:48:32 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 2:48:32 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 2:48:33 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 2:48:33 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 2:48:33 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/17  config=null
+Apr 23, 2014 2:48:33 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2049 ms
+Apr 23, 2014 3:34:43 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:34:44 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-14] but has failed to stop it. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [Thread-15] but has failed to stop it. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-10] but has failed to stop it. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] appears to have started a thread named [NioProcessor-17] but has failed to stop it. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6684917a]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [net.sf.json.AbstractJSON$1] (value [net.sf.json.AbstractJSON$1@6684917a]) and a value of type [java.util.HashSet] (value [[]]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@96b152b]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@3c9d17e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@36d8a923]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@4a4854f6]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@96b152b]) and a value of type [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil.FactorySettings] (value [com.ibatis.sqlmap.engine.mapping.result.ResultObjectFactoryUtil$FactorySettings@52c20893]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@36d8a923]) and a value of type [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl] (value [com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl@40c11557]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:34:44 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:35:01 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 3:35:01 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 512 ms
+Apr 23, 2014 3:35:01 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 3:35:01 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 3:35:01 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 3:35:03 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:35:03 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 3:35:03 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/19  config=null
+Apr 23, 2014 3:35:03 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2163 ms
+Apr 23, 2014 3:37:55 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:37:56 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 3:37:56 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:38:08 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 3:38:08 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:38:08 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 545 ms
+Apr 23, 2014 3:38:08 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 3:38:08 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 3:38:08 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 3:38:09 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 3:38:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 3:38:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 3:38:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 3:38:09 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 3:38:10 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:38:10 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 3:38:10 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/19  config=null
+Apr 23, 2014 3:38:10 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2052 ms
+Apr 23, 2014 3:40:50 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:40:51 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 3:40:51 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:40:51 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:40:51 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:40:58 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 3:40:58 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:40:58 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 550 ms
+Apr 23, 2014 3:40:58 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 3:40:58 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 3:40:58 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 3:40:59 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 3:40:59 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 3:40:59 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 3:40:59 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 3:40:59 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 3:41:00 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:41:00 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 3:41:00 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/17  config=null
+Apr 23, 2014 3:41:00 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2104 ms
+Apr 23, 2014 3:45:21 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:45:22 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Apr 23, 2014 3:45:24 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:45:24 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/monkey_foxwan_web] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 23, 2014 3:45:24 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/monkey_foxwan_web] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation.
+Apr 23, 2014 3:45:24 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@7548c02f]) and a value of type [com.opensymphony.xwork2.ActionContext] (value [com.opensymphony.xwork2.ActionContext@7b4189d0]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:45:24 PM org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+SEVERE: The web application [/monkey_foxwan_web] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@bbef5e8]) and a value of type [org.apache.struts2.dispatcher.Dispatcher] (value [org.apache.struts2.dispatcher.Dispatcher@2602585e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Apr 23, 2014 3:45:24 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:45:41 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/jdk1.6.0_45/jre/lib/amd64/server:/usr/java/jdk1.6.0_45/jre/lib/amd64:/usr/java/jdk1.6.0_45/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+Apr 23, 2014 3:45:41 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:45:41 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 547 ms
+Apr 23, 2014 3:45:41 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Apr 23, 2014 3:45:41 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.36
+Apr 23, 2014 3:45:41 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Apr 23, 2014 3:45:42 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Apr 23, 2014 3:45:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Apr 23, 2014 3:45:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Apr 23, 2014 3:45:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory docs
+Apr 23, 2014 3:45:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory monkey_foxwan_web
+Apr 23, 2014 3:45:43 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8181
+Apr 23, 2014 3:45:43 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Apr 23, 2014 3:45:43 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/16  config=null
+Apr 23, 2014 3:45:43 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2077 ms
+Apr 23, 2014 4:44:40 PM org.apache.catalina.loader.WebappClassLoader loadClass
+INFO: Illegal access: this web application instance has been stopped already.  Could not load org.apache.mina.transport.socket.nio.NioProcessor$1.  The eventual following stack trace is caused by an error thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access, and has no functional impact.
+java.lang.IllegalStateException
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1566)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1526)
+	at org.apache.mina.transport.socket.nio.NioProcessor$IoSessionIterator.<init>(NioProcessor.java:321)
+	at org.apache.mina.transport.socket.nio.NioProcessor.allSessions(NioProcessor.java:93)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.notifyIdleSessions(AbstractPollingIoProcessor.java:770)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$900(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1152)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	at java.lang.Thread.run(Thread.java:662)
